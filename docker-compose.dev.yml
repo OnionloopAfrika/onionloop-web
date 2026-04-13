@@ -1,0 +1,30 @@
+services:
+  onionloop-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deps
+    command: pnpm dev
+    container_name: onionloop-web-dev
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+
+    env_file:
+      - .env.local
+
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
