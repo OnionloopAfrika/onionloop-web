@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #024e44;
+  --danger: #cb1a14;
+  --light: #04907e;
 }
 
 @theme inline {
@@ -10,6 +13,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary-color: var(--primary-color);
+  --color-danger: var(--danger);
+  --color-light: var(--light);
 }
 
 @media (prefers-color-scheme: dark) {
