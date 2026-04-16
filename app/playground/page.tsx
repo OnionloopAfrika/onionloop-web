@@ -6,6 +6,39 @@ import Switch from "../components/ui/switch";
 import { useState } from "react";
 import Input from "../components/ui/input";
 import Select from "../components/ui/select";
+import {
+  Calendar,
+  Call,
+  CardProblem,
+  Caution,
+  Chart,
+  CopyIcon,
+  Diagram,
+  Download,
+  EyeSlash,
+  Help,
+  Home,
+  Inbox,
+  Inventory,
+  LiveChat,
+  Location,
+  Lock,
+  Logout,
+  Notification,
+  Payment,
+  Permission,
+  Profile,
+  ReceiptEdit,
+  Revenue,
+  Settings,
+  Shield,
+  SignOut,
+  Sms,
+  Staff,
+  Sync,
+  Transaction,
+  Warning2,
+} from "../components/icons/svgs";
 
 const page = () => {
   const clickBtn = () => {
@@ -153,6 +186,40 @@ const page = () => {
             { value: "viewer", label: "Viewer" },
           ]}
         />
+      </div>
+      <div className="mt-5  grid grid-cols-10 gap-5">
+        <EyeSlash className="text-primary-color" />
+        <Chart className="text-red-500" />
+        <Inventory className="text-red-500" />
+        <Staff className="text-red-500" />
+        <Sms className="text-red-500" />
+        <Notification className="text-red-500" />
+        <Home className="text-primary-color" />
+        <Calendar className="text-white" />
+        <Download className="text-white" />
+        <Revenue className="text-white" />
+        <Caution className="text-white" />
+        <Shield className="text-white" />
+        <Warning2 className="text-white" />
+        <ReceiptEdit className="text-white" />
+        <Profile className="text-white" />
+        <Settings className="text-white" />
+        <Staff className="fill-primary-color text-primary-color" />
+        <Help className="text-white" />
+        <CopyIcon className="text-white" />
+        <Diagram className="text-white" />
+        <Permission className="text-white" />
+        <Logout className="text-white" />
+        <SignOut className="text-white w-5 h-5" />
+        <LiveChat className="text-white w-5 h-5" />
+        <Inbox className="text-white w-5 h-5" />
+        <Call className="text-white w-5 h-5" />
+        <Sync className="text-white w-5 h-5" />
+        <Lock className="text-white w-5 h-5" />
+        <Location className="text-white w-5 h-5" />
+        <Transaction className="text-white w-5 h-5" />
+        <Payment className="text-white w-5 h-5" />
+        <CardProblem className="text-white w-5 h-5" />
       </div>
     </div>
   );
