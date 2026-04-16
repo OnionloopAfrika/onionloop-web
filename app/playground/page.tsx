@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../components/ui/button";
-import Switch from "../components/ui/switch";
+import Button from "../../components/ui/button";
+import Switch from "../../components/ui/switch";
 import { useState } from "react";
-import Input from "../components/ui/input";
-import Select from "../components/ui/select";
+import Input from "../../components/ui/input";
+import Select from "../../components/ui/select";
 
 const page = () => {
   const clickBtn = () => {
