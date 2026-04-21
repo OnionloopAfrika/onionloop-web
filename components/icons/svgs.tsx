@@ -542,7 +542,7 @@ export const CalendarIcon = ({ className, color }: IconProps) => (
 );
 
 // icons/svgs.tsx (Additions)
-export const ProfileIcon = ({ className, color }: IconProps) => (
+export const ProfileIcon = ({ className, color="currentColor" }: IconProps) => (
   <svg
     width="16"
     height="16"
@@ -562,7 +562,7 @@ export const ProfileIcon = ({ className, color }: IconProps) => (
   </svg>
 );
 
-export const SettingsIcon = ({ className, color }: IconProps) => (
+export const SettingsIcon = ({ className, color = "currentColor" }: IconProps) => (
   <svg
     width="16"
     height="16"
@@ -578,7 +578,7 @@ export const SettingsIcon = ({ className, color }: IconProps) => (
   </svg>
 );
 
-export const CopyIcon = ({ className, color }: IconProps) => (
+export const CopyIcon = ({ className, color = "currentColor" }: IconProps) => (
   <svg
     width="16"
     height="16"
@@ -598,7 +598,7 @@ export const CopyIcon = ({ className, color }: IconProps) => (
   </svg>
 );
 
-export const LogoutIcon = ({ className, color }: IconProps) => (
+export const LogoutIcon = ({ className, color = "currentColor" }: IconProps) => (
   <svg
     width="16"
     height="16"
@@ -633,7 +633,7 @@ export const SupportIcon = ({ color = "currentColor" }) => (
   </svg>
 );
 
-export const StaffIconSolid = ({ className, color }: IconProps) => (
+export const StaffIconSolid = ({ className, color = "currentColor" }: IconProps) => (
   <svg
     width="16"
     height="16"
@@ -677,7 +677,7 @@ export const LineChartIcon = ({ className, color }: IconProps) => (
   </svg>
 );
 
-export const SearchIcon = ({ className, color }: IconProps) => (
+export const SearchIcon = ({ className, color = "currentColor" }: IconProps) => (
   <svg
     width="17"
     height="17"
@@ -695,7 +695,7 @@ export const SearchIcon = ({ className, color }: IconProps) => (
   </svg>
 );
 
-export const DownloadIcon = ({ className, color }: IconProps) => (
+export const DownloadIcon = ({ className, color = "currentColor" }: IconProps) => (
   <svg
     width="20"
     height="20"
