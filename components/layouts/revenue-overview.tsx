@@ -38,12 +38,13 @@ export default function RevenueOverview({ initialData }: RevenueOverviewProps) {
     return (
         <div
             className="w-full rounded-2xl bg-white p-6 shadow-md"
-            style={{ maxWidth: 640, fontFamily: "'DM Sans', 'Inter', sans-serif" }}
+            style={{height: "500px"}}
+            
         >
             {/* ── Header ── */}
             <div className="mb-5 flex items-start justify-between">
                 <div>
-                    <h2 className="text-[17px] font-bold text-gray-900">
+                    <h2 className="text-[17px] font-semibold text-gray-900">
                         Revenue Overview
                     </h2>
                     <p
@@ -57,7 +58,7 @@ export default function RevenueOverview({ initialData }: RevenueOverviewProps) {
                 </div>
 
                 {/* Period toggle pill */}
-                <div className="flex items-center gap-1 rounded-full bg-gray-100 p-1">
+                <div className="flex items-center gap-1 rounded-full p-1">
                     {PERIODS.map((p) => (
                         <button
                             key={p}

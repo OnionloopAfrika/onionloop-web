@@ -61,3 +61,23 @@ export function computeStats(txns: Transaction[], month: string): TransactionSta
 }
 
 
+export const formatCurrency = (amount: number) => {
+    const absAmount = Math.abs(amount);
+    const formatted = new Intl.NumberFormat('en-NG', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(absAmount);
+    return `${amount >= 0 ? '+' : '-'}₦${formatted}`;
+};
+
+export const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('en-GB', { month: 'short' });
+    const time = date.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
+    return `${day} ${month} • ${time}`;
+};
