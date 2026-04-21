@@ -1,23 +1,26 @@
 import React from 'react';
 import { ProfileIcon, SettingsIcon, StaffIcon, LogoutIcon, CopyIcon, SupportIcon, StaffIconSolid } from '../icons/svgs';
+import Link from 'next/link';
 
 interface ProfileDropdownProps {
     businessName: string;
     userName: string;
     avatarUrl?: string;
+    active?: string;
+    className?: string
 }
 
-const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ businessName, userName, avatarUrl }) => {
+const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ businessName, userName, avatarUrl, active, className }) => {
     const menuItems = [
-        { label: "My Profile", icon: <ProfileIcon />, color: "text-[#04907E]" },
-        { label: "Account Settings", icon: <SettingsIcon />, color: "text-[#04907E]" },
-        { label: "Staff App Settings", icon: <StaffIconSolid />, color: "text-[#04907E]" },
-        { label: "Help & Support", icon: <SupportIcon />, color: "text-[#04907E]" },
-        { label: "Log Out", icon: <LogoutIcon />, color: "text-[#D32F2F]", isDestructive: true },
+        { id:"my-profile", label: "My Profile", icon: <ProfileIcon />, color: "text-[#04907E]" },
+        { id: "account-settings", label: "Account Settings", icon: <SettingsIcon />, color: "text-[#04907E]" },
+        { id: "staff-app-settings", label: "Staff App Settings", icon: <StaffIconSolid />, color: "text-[#04907E]" },
+        { id: "help-and-support", label: "Help & Support", icon: <SupportIcon />, color: "text-[#04907E]" },
+        { id: "logout", label: "Log Out", icon: <LogoutIcon />, color: "text-[#D32F2F]", isDestructive: true },
     ];
 
     return (
-        <div className="absolute top-[calc(100%+1px)] right-0 w-85 bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex flex-col items-center z-50">
+        <div className={`${!className ? "absolute top-[calc(100%+1px)] right-0 w-85 bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex flex-col items-center z-50" : className}`}>
             <div className="flex flex-col items-center mb-6 px-6 w-full text-center">
                 <div className="w-16 h-16 rounded-full overflow-hidden bg-[#d6f0e6] mb-3 shrink-0">
                     {avatarUrl ? (
@@ -46,9 +49,10 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ businessName, userNam
 
             <div className="w-full flex flex-col">
                 {menuItems.map((item, idx) => (
-                    <button
+                    <Link
+                        href={`/profile/${item.id}`}
                         key={idx}
-                        className="flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group"
+                        className={`${active === item.id ? "bg-[#E7F6EC]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
                     >
                         <div className={`w-10 h-10 rounded-lg border border-gray-100 flex items-center justify-center shrink-0 ${item.isDestructive ? 'text-[#D32F2F] bg-red-50' : 'text-[#04907E]'}`}>
                             {item.icon}
@@ -56,7 +60,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ businessName, userNam
                         <span className={`text-[14px] font-normal ${item.isDestructive ? 'text-[#D32F2F]' : 'text-[#131313]'}`}>
                             {item.label}
                         </span>
-                    </button>
+                    </Link>
                 ))}
             </div>
         </div>

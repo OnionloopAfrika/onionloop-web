@@ -19,7 +19,7 @@ export default async function Page() {
   const initialData = await fetchRevenue("7days");
 
   return (
-    <main className="p-6">
+    <main className="">
       <Header
         heading="Good morning, Yetty Mama Lounge 👋"
         subHeading="Here's what's happening with your business today — Tuesday, Mar 24, 2026"
