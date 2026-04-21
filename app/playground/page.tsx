@@ -7,6 +7,73 @@ import { useState } from "react";
 import Input from "../../components/ui/input";
 import Select from "../../components/ui/select";
 
+import {
+  EyeSlashIcon,
+  ChartIcon,
+  InventoryIcon,
+  StaffIcon,
+  SmsIcon,
+  NotificationIcon,
+  HomeIcon,
+  CalendarIcon,
+  DownloadIcon,
+  RevenueIcon,
+  CautionIcon,
+  WarningIcon,
+  ShieldIcon,
+  Warning2Icon,
+  ReceiptEditIcon,
+  ProfileIcon,
+  SettingsIcon,
+  HelpIcon,
+  CopyIconIcon,
+  DiagramIcon,
+  PermissionIcon,
+  LogoutIcon,
+  SignOutIcon,
+  LiveChatIcon,
+  InboxIcon,
+  CallIcon,
+  SyncIcon,
+  LockIcon,
+  LocationIcon,
+  TransactionIcon,
+  PaymentIcon,
+  CardProblemIcon,
+  AppSyncIcon,
+  OthersIcon,
+  UploadIcon,
+  ArrowRightIcon,
+  SecuritySafeIcon,
+  RecordCircleIcon,
+  MicrophoneIcon,
+  EndCallIcon,
+  BarIcon,
+  UnlimitedTransactionIcon,
+  BriefcaseIcon,
+  MoneySendIcon,
+  StarIcon,
+  CardIcon,
+  BankIcon,
+  MultiplyIcon,
+  VerifyIcon,
+  OnionIcon,
+  NoProductsIcon,
+  UploadImageIcon,
+  MarkIcon,
+  AddIcon,
+  ShopAddIcon,
+  ChainlinkIcon,
+  DangerIcon,
+  EditIcon,
+  DeleteIcon,
+  SearchIcon,
+  TimerIcon,
+  WaveIcon,
+  PhoneNumberIcon,
+  RoleIcon,
+} from "@/components/icons/svgs";
+
 const page = () => {
   const clickBtn = () => {
     alert("Button is Clickable");
@@ -153,6 +220,73 @@ const page = () => {
             { value: "viewer", label: "Viewer" },
           ]}
         />
+      </div>
+      <div className="grid grid-cols-10 bg-yellow-300">
+        <EyeSlashIcon className="w-8 h-8 text-white" />
+        <ChartIcon className="w-8 h-8 text-white" />
+        <InventoryIcon className="w-8 h-8 text-white" />
+        <StaffIcon className="w-8 h-8 text-white" />
+        <SmsIcon className="w-8 h-8 text-white" />
+        <NotificationIcon className="w-8 h-8 text-white" />
+        <HomeIcon className="w-8 h-8 text-white" />
+        <CalendarIcon className="w-8 h-8 text-white" />
+
+        <DownloadIcon className="w-8 h-8 text-white" />
+        <RevenueIcon className="w-8 h-8 text-white" />
+        <CautionIcon className="w-8 h-8 text-white" />
+        <WarningIcon className="w-8 h-8 text-white" />
+        <ShieldIcon className="w-8 h-8 text-white" />
+        <Warning2Icon className="w-8 h-8 text-white" />
+        <ReceiptEditIcon className="w-8 h-8 text-white" />
+        <ProfileIcon className="w-8 h-8 text-white" />
+        <SettingsIcon className="w-8 h-8 text-white" />
+        <HelpIcon className="w-8 h-8 text-white" />
+        <CopyIconIcon className="w-8 h-8 text-white" />
+        <DiagramIcon className="w-8 h-8 text-white" />
+        <PermissionIcon className="w-8 h-8 text-white" />
+        <LogoutIcon className="w-8 h-8 text-white" />
+        <SignOutIcon className="w-8 h-8 text-white" />
+        <LiveChatIcon className="w-8 h-8 text-white" />
+        <InboxIcon className="w-8 h-8 text-white" />
+        <CallIcon className="w-8 h-8 text-white" />
+        <SyncIcon className="w-8 h-8 text-white" />
+        <LockIcon className="w-8 h-8 text-white" />
+        <LocationIcon className="w-8 h-8 text-white" />
+        <TransactionIcon className="w-8 h-8 text-white" />
+        <PaymentIcon className="w-8 h-8 text-white" />
+        <CardProblemIcon className="w-8 h-8 text-white" />
+        <AppSyncIcon className="w-8 h-8 text-white" />
+        <OthersIcon className="w-8 h-8 text-white" />
+        <UploadIcon className="w-8 h-8 text-white" />
+        <ArrowRightIcon className="w-8 h-8 text-white" />
+        <SecuritySafeIcon className="w-8 h-8 text-white" />
+        <RecordCircleIcon className="w-8 h-8 text-white" />
+        <MicrophoneIcon className="w-8 h-8 text-white" />
+        <EndCallIcon className="w-8 h-8 text-white" />
+        <BarIcon className="w-8 h-8 text-white" />
+        <UnlimitedTransactionIcon className="w-8 h-8 text-white" />
+        <BriefcaseIcon className="w-8 h-8 text-white" />
+        <MoneySendIcon className="w-8 h-8 text-white" />
+        <StarIcon className="w-8 h-8 text-white" />
+        <CardIcon className="w-8 h-8 text-white" />
+        <BankIcon className="w-8 h-8 text-white" />
+        <MultiplyIcon className="w-8 h-8 text-white" />
+        <VerifyIcon className="w-8 h-8 text-white" />
+        <OnionIcon className="w-8 h-8 text-white" />
+        <NoProductsIcon className="w-8 h-8 text-white" />
+        <UploadImageIcon className="w-8 h-8 text-white" />
+        <MarkIcon className="w-8 h-8 text-white" />
+        <AddIcon className="w-8 h-8 text-white" />
+        <ShopAddIcon className="w-8 h-8 text-white" />
+        <ChainlinkIcon className="w-8 h-8 text-white" />
+        <DangerIcon className="w-8 h-8 text-white" />
+        <EditIcon className="w-8 h-8 text-white" />
+        <DeleteIcon className="w-8 h-8 text-white" />
+        <SearchIcon className="w-8 h-8 text-white" />
+        <TimerIcon className="w-8 h-8 text-white" />
+        <WaveIcon className="w-8 h-8 text-white" />
+        <PhoneNumberIcon className="w-8 h-8 text-white" />
+        <RoleIcon className="w-8 h-8 text-[#04907e]" />
       </div>
     </div>
   );
