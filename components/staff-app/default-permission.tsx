@@ -6,7 +6,19 @@ import { Toggle } from "../toggle";
 import Switch from "../ui/switch";
 
 export function DefaultPermission() {
-  const [checked, setChecked] = useState(true);
+  const [permissions, setPermissions] = useState({
+    viewPrices: true,
+    stockEdit: true,
+    discount: true,
+    reports: true,
+  });
+
+  const handleToggle = (key: keyof typeof permissions) => {
+    setPermissions((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   return (
     <div className="p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[40px]">
@@ -20,7 +32,11 @@ export function DefaultPermission() {
           title="Allow staff to view prices"
           subtitle="Staff can see product prices in the mobile app"
           toggle={
-            <Switch checked={checked} onCheckedChange={setChecked} size="md" />
+            <Switch
+              checked={permissions.viewPrices}
+              onCheckedChange={() => handleToggle("viewPrices")}
+              size="md"
+            />
           }
         />
 
@@ -28,7 +44,11 @@ export function DefaultPermission() {
           title="Allow stock editing"
           subtitle="Staff can adjust stock quantities"
           toggle={
-            <Switch checked={checked} onCheckedChange={setChecked} size="md" />
+            <Switch
+              checked={permissions.stockEdit}
+              onCheckedChange={() => handleToggle("stockEdit")}
+              size="md"
+            />
           }
         />
 
@@ -36,7 +56,11 @@ export function DefaultPermission() {
           title="Allow discount application"
           subtitle="Staff can apply discounts to transactions"
           toggle={
-            <Switch checked={checked} onCheckedChange={setChecked} size="md" />
+            <Switch
+              checked={permissions.discount}
+              onCheckedChange={() => handleToggle("discount")}
+              size="md"
+            />
           }
         />
 
@@ -45,7 +69,11 @@ export function DefaultPermission() {
           title="Allow report access"
           subtitle="Staff can generate and download reports"
           toggle={
-            <Switch checked={checked} onCheckedChange={setChecked} size="md" />
+            <Switch
+              checked={permissions.reports}
+              onCheckedChange={() => handleToggle("reports")}
+              size="md"
+            />
           }
         />
       </div>

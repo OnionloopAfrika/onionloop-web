@@ -6,7 +6,19 @@ import { Toggle } from "../toggle";
 import Switch from "../ui/switch";
 
 export function Notification() {
-  const [toggleOn, setToggleOn] = useState(false);
+  const [notifications, setNotifications] = useState({
+    lowStock: false,
+    transaction: false,
+    staff: false,
+    feature: false,
+  });
+
+  const handleToggle = (key: keyof typeof notifications) => {
+    setNotifications((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   return (
     <div className="p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[40px]">
@@ -21,8 +33,8 @@ export function Notification() {
           subtitle="Notify me when product are running low"
           toggle={
             <Switch
-              checked={toggleOn}
-              onCheckedChange={setToggleOn}
+              checked={notifications.lowStock}
+              onCheckedChange={() => handleToggle("lowStock")}
               size="md"
             />
           }
@@ -33,8 +45,8 @@ export function Notification() {
           subtitle="Daily email digest of all sales"
           toggle={
             <Switch
-              checked={toggleOn}
-              onCheckedChange={setToggleOn}
+              checked={notifications.transaction}
+              onCheckedChange={() => handleToggle("transaction")}
               size="md"
             />
           }
@@ -45,8 +57,8 @@ export function Notification() {
           subtitle="When staff log in or make changes"
           toggle={
             <Switch
-              checked={toggleOn}
-              onCheckedChange={setToggleOn}
+              checked={notifications.staff}
+              onCheckedChange={() => handleToggle("staff")}
               size="md"
             />
           }
@@ -58,8 +70,8 @@ export function Notification() {
           subtitle="Product updates from Onionloop"
           toggle={
             <Switch
-              checked={toggleOn}
-              onCheckedChange={setToggleOn}
+              checked={notifications.feature}
+              onCheckedChange={() => handleToggle("feature")}
               size="md"
             />
           }

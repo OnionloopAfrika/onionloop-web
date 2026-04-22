@@ -19,7 +19,7 @@ export function ProfilePhoto() {
           />
 
           <div className="space-y-[8px]">
-            <Button variant="outline" size="msg">
+            <Button className="w-full" variant="outline" size="md">
               Edit Photo
             </Button>
 

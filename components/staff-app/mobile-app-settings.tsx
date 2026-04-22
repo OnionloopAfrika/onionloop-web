@@ -8,7 +8,20 @@ import Select from "../ui/select";
 import Button from "../ui/button";
 
 export function MobileAppSettings() {
-  const [open, setOpen] = useState(true);
+  const [settings, setSettings] = useState({
+    requirePin: true,
+    stockEdit: false,
+    offlineMode: true,
+  });
+
+  const [sessionTimeout, setSessionTimeout] = useState("");
+
+  const handleToggle = (key: keyof typeof settings) => {
+    setSettings((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   return (
     <div className="p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[40px]">
@@ -21,30 +34,48 @@ export function MobileAppSettings() {
         <Toggle
           title="Require PIN on app open"
           subtitle="Staff can see product prices in the mobile app"
-          toggle={<Switch checked={open} onCheckedChange={setOpen} size="md" />}
+          toggle={
+            <Switch
+              checked={settings.requirePin}
+              onCheckedChange={() => handleToggle("requirePin")}
+              size="md"
+            />
+          }
         />
 
         <Toggle
           title="Allow stock editing"
           subtitle="Product data syncs automatically every 5 minutes"
-          toggle={<Switch checked={open} onCheckedChange={setOpen} size="md" />}
+          toggle={
+            <Switch
+              checked={settings.stockEdit}
+              onCheckedChange={() => handleToggle("stockEdit")}
+              size="md"
+            />
+          }
         />
 
         <Toggle
           title="Offline mode"
           subtitle="Allow transactions when internet is unavailable"
-          toggle={<Switch checked={open} onCheckedChange={setOpen} size="md" />}
+          toggle={
+            <Switch
+              checked={settings.offlineMode}
+              onCheckedChange={() => handleToggle("offlineMode")}
+              size="md"
+            />
+          }
         />
 
         <Select
-          label="Session Timeout(minutes)"
+          label="Session Timeout (minutes)"
           placeholder="13"
-          //   value={selectedRole}
-          //   onValueChange={setSelectedRole}
+          value={sessionTimeout}
+          onValueChange={setSessionTimeout}
           options={[
-            { value: "admin", label: "10" },
-            { value: "editor", label: "5" },
-            { value: "viewer", label: "2" },
+            { value: "10", label: "10" },
+            { value: "5", label: "5" },
+            { value: "2", label: "2" },
           ]}
         />
       </div>

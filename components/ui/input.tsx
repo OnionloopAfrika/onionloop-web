@@ -28,6 +28,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           <input
             ref={ref}
+            {...props}
             className={`
     flex h-[48px] w-full rounded-[6px] border border-[#C7C7C7] bg-[#F7F7F7] 
     p-[16px] pr-12 font-semibold text-[14px] text-[#131313]

@@ -27,7 +27,7 @@ export function MobileSettings() {
           fullName="Titi Folarin"
           role="Cashier"
           btn={
-            <Button onClick={openModal} variant="signout">
+            <Button onClick={openModal} variant="signout" size="md">
               Sign Out
             </Button>
           }
@@ -38,7 +38,7 @@ export function MobileSettings() {
           fullName="Titi Folarin"
           role="Cashier"
           btn={
-            <Button onClick={openModal} variant="signout">
+            <Button onClick={openModal} variant="signout" size="md">
               Sign Out
             </Button>
           }
@@ -50,7 +50,7 @@ export function MobileSettings() {
           fullName="Titi Folarin"
           role="Cashier"
           btn={
-            <Button onClick={openModal} variant="signout">
+            <Button onClick={openModal} variant="signout" size="md">
               Sign Out
             </Button>
           }
