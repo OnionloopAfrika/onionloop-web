@@ -8,7 +8,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "ghost"
     | "danger"
     | "save"
-    | "msg";
+    | "msg"
+    | "signout";
   size?: "sm" | "md" | "lg" | "save" | "msg";
   isLoading?: boolean;
   icon?: React.ReactNode;
@@ -40,6 +41,8 @@ const Button: React.FC<ButtonProps> = ({
     danger:
       "bg-danger rounded-[8px] text-[#FFFFFF] font-semibold text-[14px] gap-[10px] ",
     msg: "bg-light rounded-[8px] text-[#FFFFFF] font-semibold text-[14px] gap-[10px] ",
+    signout:
+      "bg-transparent rounded-[8px] text-danger font-[500] text-[16px] gap-[10px] border border-[#C7C7C7]",
   };
 
   const sizes = {
