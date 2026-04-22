@@ -29,10 +29,10 @@ export function Billing() {
 
         <div className="flex  ">
           <div className="flex gap-[10px]">
-            <Button variant="outline" size="msg">
+            <Button variant="outline" size="md">
               Manage Billing
             </Button>
-            <Button variant="outline" size="msg">
+            <Button variant="outline" size="md">
               Upgrade Plan
             </Button>
           </div>

@@ -8,7 +8,7 @@ export function PersonalInfo() {
       <ProfileHeader
         title="Personal Information "
         subtitle="Update your name and contact details "
-        btn={<Button variant="outline" size="sm" children="Save Changes" />}
+        btn={<Button variant="outline" size="md" children="Save Changes" />}
       />
 
       <div className="w-full space-y-[32px]">
