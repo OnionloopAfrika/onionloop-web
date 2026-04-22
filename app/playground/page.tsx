@@ -73,6 +73,7 @@ import {
   PhoneNumberIcon,
   RoleIcon,
 } from "@/components/icons/svgs";
+import { Calendar } from "@/components/ui/calendar";
 
 const page = () => {
   const clickBtn = () => {
@@ -81,6 +82,15 @@ const page = () => {
   const [selectedRole, setSelectedRole] = useState("");
 
   const [checked, setChecked] = useState(true);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    new Date(),
+  );
+
+  // const events = {
+  //   "2026-04-22": true,
+  //   "2026-04-25": true,
+  //   "2026-04-28": true,
+  // };
 
   return (
     <div className="w-full max-w-150 mx-auto p-6">
@@ -207,6 +217,14 @@ const page = () => {
               alt="hdhd"
             />
           }
+          prefixicon={
+            <Image
+              src={"/icons/calendar.svg"}
+              width={20}
+              height={20}
+              alt="hdhd"
+            />
+          }
         />
 
         <Select
@@ -230,7 +248,6 @@ const page = () => {
         <NotificationIcon className="w-8 h-8 text-white" />
         <HomeIcon className="w-8 h-8 text-white" />
         <CalendarIcon className="w-8 h-8 text-white" />
-
         <DownloadIcon className="w-8 h-8 text-white" />
         <RevenueIcon className="w-8 h-8 text-white" />
         <CautionIcon className="w-8 h-8 text-white" />
@@ -288,6 +305,11 @@ const page = () => {
         <PhoneNumberIcon className="w-8 h-8 text-white" />
         <RoleIcon className="w-8 h-8 text-[#04907e]" />
       </div>
+      <Calendar
+        value={selectedDate}
+        onChange={setSelectedDate}
+        // events={events}
+      />
     </div>
   );
 };

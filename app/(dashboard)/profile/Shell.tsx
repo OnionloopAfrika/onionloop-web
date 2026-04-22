@@ -1,5 +1,5 @@
-import Header from "@/components/layouts/header"
-import ProfileDropdown from "@/components/layouts/profile-dropdown"
+import Header from "@/components/layouts/header";
+import ProfileDropdown from "@/components/layouts/profile-dropdown";
 
 function ProfileLayout({
   active,
@@ -7,17 +7,14 @@ function ProfileLayout({
   subheading,
   children,
 }: {
-  active: string,
-  heading: string,
-  subheading: string
-  children: React.ReactNode
+  active: string;
+  heading: string;
+  subheading: string;
+  children: React.ReactNode;
 }) {
   return (
-    <div className='w-full'>
-      <Header
-        heading={heading}
-        subHeading={subheading}
-      />
+    <div className="w-full">
+      <Header heading={heading} subHeading={subheading} />
 
       <main className="w-full grid grid-cols-4 gap-6 mt-6">
         <div className="w-full col-span-1">
@@ -29,12 +26,10 @@ function ProfileLayout({
             className="w-85 bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex flex-col items-center z-50"
           />
         </div>
-        <div className="col-span-3 w-full">
-          {children}
-        </div>
+        <div className="col-span-3 w-full">{children}</div>
       </main>
     </div>
-  )
+  );
 }
 
-export default ProfileLayout
+export default ProfileLayout;
