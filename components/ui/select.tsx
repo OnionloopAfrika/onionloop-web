@@ -66,7 +66,7 @@ const Select: React.FC<SelectProps> = ({
           onClick={() => !disabled && setIsOpen(!isOpen)}
           disabled={disabled}
           className={`
-            flex h-[48px] w-full items-center justify-between rounded-[6px] border border-[#C7C7C7] bg-white 
+            flex h-[48px] w-full items-center justify-between rounded-[6px] border border-[#C7C7C7] bg-[#F7F7F7]  
             p-[16px] pr-12 font-semibold text-[14px] text-[#131313]
             placeholder:font-semibold placeholder:text-[12px] placeholder:text-[#8A8A8A]
             focus:outline-none 
@@ -103,7 +103,7 @@ const Select: React.FC<SelectProps> = ({
                 key={option.value}
                 onClick={() => handleSelect(option.value, option.label)}
                 className={`
-                  px-4 py-2.5 text-[14px] font-semibold text-[#131313] cursor-pointer hover:bg-gray-100
+                  px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] cursor-pointer hover:bg-gray-100
                   ${value === option.value ? "bg-blue-50 text-blue-600" : ""}
                 `}
               >

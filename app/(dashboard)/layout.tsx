@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }: {children: React.ReactNode
                 messageCount={1}
                 notificationCount={4}
             />
-            <main>{children}</main>
+            <main className="w-full p-6 bg-[#F7F7F7]">{children}</main>
         </>
     );
 }
