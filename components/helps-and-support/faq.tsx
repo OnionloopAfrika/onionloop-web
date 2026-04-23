@@ -12,24 +12,24 @@ export function Faq() {
   };
 
   return (
-    <div className="space-y-[40px] p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)]">
+    <div className="space-y-10 p-6 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
       <ProfileHeader
         title="Frequently Asked Questions"
         subtitle="Quick answers to common questions"
       />
 
-      <div className="space-y-[16px]">
+      <div className="space-y-4">
         {FAQ_DATA.map((item, index) => {
           const isOpen = openIndex === index;
 
           return (
             <div
               key={index}
-              className="border-b border-[#E5E5E5] rounded-[8px] pb-[16px] "
+              className="border-b border-[#E5E5E5] pb-3"
             >
               <button
                 onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between text-left pb-[12px]"
+                className="w-full flex items-center justify-between text-left pb-3"
               >
                 <p className="font-semibold text-[14px] text-[#131313]">
                   {item.question}
@@ -55,7 +55,7 @@ export function Faq() {
               </button>
 
               {isOpen && (
-                <p className="mt-[12px] text-[13px] text-[#6C6C6C]">
+                <p className="mt-3 text-[13px] text-[#6C6C6C]">
                   {item.answer}
                 </p>
               )}

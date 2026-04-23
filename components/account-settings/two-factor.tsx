@@ -10,7 +10,7 @@ export function TwoFactor() {
   const [appEnabled, setAppEnabled] = useState(false);
 
   return (
-    <div className="p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[40px]">
+    <div className="p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[40px] bg-white">
       <ProfileHeader
         title="Two-Factor Authentication"
         subtitle="Add an extra layer of security to your account"

@@ -12,7 +12,7 @@ const page = () => {
       heading="Account Settings"
       subheading="Security, billing, and integrations"
     >
-      <div className="space-y-[40px]">
+      <div className="space-y-10">
         <SecurityInformation />
         <TwoFactor />
         <Notification />

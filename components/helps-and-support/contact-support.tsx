@@ -3,26 +3,26 @@ import { ProfileHeader } from "../profile-header";
 
 export function ContactSupport() {
   return (
-    <div className="space-y-[40px] p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)]">
+    <div className="space-y-10 p-6 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
       <ProfileHeader title="Contact Support" subtitle="We're here to help" />
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-[16px]">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {CONTACT_GRID.map((item) => {
           const Icon = item.icon;
           return (
             <div
               key={item.title}
-              className="flex flex-col gap-[24px] items-center justify-center p-[16px] border border-gray-300 radius-[6px] min-h-[196px]"
+              className="flex flex-col gap-6 items-center justify-center p-4 border border-gray-300 radius-[6px] min-h-49"
             >
-              <div className="w-[40px] h-[40px] flex justify-center items-center bg-[#E7F6EC] rounded-[8px]">
-                <Icon className="w-8 h-8 text-primary-color" />
+              <div className="w-10 h-10 flex justify-center items-center bg-[#E7F6EC] rounded-lg">
+                <Icon className="w-6 h-6 text-[#04802E]" />
               </div>
 
               <div className="text-center">
-                <p className="font-[600] text-[20px] text-[#000000]">
+                <p className="font-semibold text-[20px] text-[#000000]">
                   {item.title}
                 </p>
-                <p className="font-[400] text-[14px] text-[#6C6C6C]">
+                <p className="font-normal text-[14px] text-[#6C6C6C]">
                   {item.subtitle}
                 </p>
               </div>
