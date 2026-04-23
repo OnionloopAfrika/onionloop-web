@@ -25,7 +25,18 @@
   }
 }
 
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 body {
   overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

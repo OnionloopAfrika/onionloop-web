@@ -11,7 +11,7 @@ const page = () => {
       heading="Help & Support"
       subheading="Documentation, FAQs, and contact"
     >
-      <div className="space-y-[35px]">
+      <div className="space-y-8.75">
         <ContactSupport />
         <Faq />
         <SupportHistory />

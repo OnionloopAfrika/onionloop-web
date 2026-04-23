@@ -93,7 +93,7 @@ const TransactionsPage = () => {
   }
 
   return (
-    <main className="p-8 bg-[#FCFCFC] min-h-screen font-sans">
+    <main className="min-h-screen font-sans">
       <div className="flex justify-between items-start mb-6">
         <Header
           heading="Transactions"

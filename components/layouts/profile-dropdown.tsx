@@ -47,17 +47,17 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ businessName, userNam
                 </div>
             </div>
 
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col gap-1">
                 {menuItems.map((item, idx) => (
                     <Link
                         href={`/profile/${item.id}`}
                         key={idx}
-                        className={`${active === item.id ? "bg-[#E7F6EC]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
+                        className={`${active === item.id ? "bg-[#E7F6EC] text-[#04907E]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
                     >
-                        <div className={`w-10 h-10 rounded-lg border border-gray-100 flex items-center justify-center shrink-0 ${item.isDestructive ? 'text-[#D32F2F] bg-red-50' : 'text-[#04907E]'}`}>
+                        <div className={`w-8 h-8 rounded-lg border border-gray-100 flex items-center justify-center shrink-0 ${item.isDestructive ? 'text-[#D32F2F] bg-red-50' : 'text-[#04907E]'}`}>
                             {item.icon}
                         </div>
-                        <span className={`text-[14px] font-normal ${item.isDestructive ? 'text-[#D32F2F]' : 'text-[#131313]'}`}>
+                        <span className={`text-[12px] font-normal ${item.isDestructive ? 'text-[#D32F2F]' : ''} ${item.isDestructive && active === item.id ? 'text-[#D32F2F] font-bold' : ''} ${active === item.id ? " text-[#04907E] font-bold" : ""}`}>
                             {item.label}
                         </span>
                     </Link>

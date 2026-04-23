@@ -4,7 +4,7 @@ import Input from "../ui/input";
 
 export function SecurityInformation() {
   return (
-    <div className="space-y-[40px] p-[24px] shadow-[0_0_15px_rgba(0,0,0,0.15)] rounded-[12px]">
+    <div className="space-y-[40px] p-[24px] shadow-[0_0_15px_rgba(0,0,0,0.15)] rounded-[12px] bg-white">
       <ProfileHeader
         title="Security Information"
         subtitle="Manage your password and login options"

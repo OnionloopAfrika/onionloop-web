@@ -59,7 +59,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled || isLoading}
       {...props}
     >
-      {icon && <span className="w-[20px] h-[20px]">{icon}</span>}
+      {icon && <span className="w-5 h-5">{icon}</span>}
 
       {children}
     </button>

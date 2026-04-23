@@ -21,7 +21,7 @@ export function DefaultPermission() {
   };
 
   return (
-    <div className="p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[40px]">
+    <div className="p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[40px] bg-white">
       <ProfileHeader
         title="Default Staff Permissions"
         subtitle="Set what staff can do by default when added"

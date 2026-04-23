@@ -105,14 +105,16 @@ export default async function Page() {
                     className="flex items-center justify-between p-4 bg-white"
                   >
                     <div className="flex items-center gap-2">
-                      <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${bgColor}`}
-                      >
-                        {isPositive ? (
-                          <ArrowDownIcon color={iconColor} className={""} />
-                        ) : (
-                          <ArrowUpIcon color={iconColor} className={""} />
-                        )}
+                      <div className="w-10 h-10 rounded-full shadow-sm border border-gray-100 flex items-center justify-center p-2">
+                        <div
+                          className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${bgColor}`}
+                        >
+                          {isPositive ? (
+                            <ArrowDownIcon color={iconColor} className={""} />
+                          ) : (
+                            <ArrowUpIcon color={iconColor} className={""} />
+                          )}
+                        </div>
                       </div>
                       <div className="min-w-0">
                         <h3 className="font-medium text-gray-900 text-[14px] truncate">
