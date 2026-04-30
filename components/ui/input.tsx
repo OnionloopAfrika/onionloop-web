@@ -12,7 +12,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, icon, prefixicon, className = "", ...props }, ref) => {
     return (
-      <div className="w-full flex flex-col gap-2">
+      <div className={`w-full flex flex-col gap-2 ${className}`}>
         {label && (
           <label className="block font-semibold text-[12px] text-[#131313]">
             {label}
@@ -21,7 +21,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
         <div className="relative">
           {prefixicon && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8A8A8A] pointer-events-none">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8A8A8A] pointer-events-auto">
               {prefixicon}
             </div>
           )}
