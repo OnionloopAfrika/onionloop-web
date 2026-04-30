@@ -33,7 +33,7 @@ export const inventoryStats: InventoryStatProps[] = [
 
   {
     icon: ChainlinkIcon,
-    figure: "3",
+    figure: "2",
     desc: "Low stock items",
     action: "Need to restock",
   },
