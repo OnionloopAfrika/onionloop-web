@@ -13,11 +13,13 @@ import Button from "../ui/button";
 type ProductTableProps = {
   products: Product[];
   onProductUpdated?: (updatedProduct: Product) => void;
+  onProductDeleted?: (productId: string) => void;
 };
 
 export function ProductTable({
   products,
   onProductUpdated,
+  onProductDeleted,
 }: ProductTableProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
@@ -27,8 +29,12 @@ export function ProductTable({
 
   const [openDelete, setOpenDelete] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
   const handleDeleted = () => {
+    if (productToDelete) {
+      onProductDeleted?.(productToDelete.id);
+    }
     setOpenDelete(false);
     setDeleted(true);
   };
@@ -240,7 +246,10 @@ export function ProductTable({
                           <span>Edit</span>
                         </button>
                         <button
-                          onClick={() => setOpenDelete(true)}
+                          onClick={() => {
+                            setProductToDelete(product);
+                            setOpenDelete(true);
+                          }}
                           className="cursor-pointer text-red-600 hover:text-red-700 transition-colors"
                         >
                           <DeleteIcon className="w-[24px] h-[24px]" />
@@ -280,7 +289,7 @@ export function ProductTable({
 
             <div className="space-y-[12px] text-center">
               <p className="font-[600] text-[24px] text-danger">
-                Remove Organic Tomatoes?
+                Remove {productToDelete?.name}?
               </p>
               <p className="font-[500] text-[16px] text-[#363636]">
                 Are you sure you want to remove this product from your
@@ -290,7 +299,9 @@ export function ProductTable({
           </div>
 
           <div className="flex items-center gap-[16px]">
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary" onClick={() => setOpenDelete(false)}>
+              Cancel
+            </Button>
             <Button onClick={handleDeleted} variant="danger">
               Remove product
             </Button>
@@ -305,7 +316,7 @@ export function ProductTable({
 
             <div className="space-y-[8px] text-center">
               <p className="font-[600] text-[24px] text-light">
-                Organic tomatoes removed successfully!
+                {productToDelete?.name} removed successfully!
               </p>
 
               <p className="font-[500] text-[16px] text-[#363636]">
@@ -315,7 +326,13 @@ export function ProductTable({
           </div>
 
           <div className="flex justify-center w-[362] mx-auto ">
-            <Button onClick={() => setDeleted(false)} size="sm">
+            <Button
+              onClick={() => {
+                setDeleted(false);
+                setProductToDelete(null);
+              }}
+              size="sm"
+            >
               Done
             </Button>
           </div>

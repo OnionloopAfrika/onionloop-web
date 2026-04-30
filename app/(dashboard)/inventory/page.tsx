@@ -44,6 +44,10 @@ const page = () => {
     );
   };
 
+  const handleDeleteProduct = (productId: string) => {
+    setProducts((prev) => prev.filter((product) => product.id !== productId));
+  };
+
   return (
     <div className="min-h-screen">
       {products.length === 0 ? (
@@ -75,6 +79,7 @@ const page = () => {
           <ProductTable
             products={products}
             onProductUpdated={handleUpdateProduct}
+            onProductDeleted={handleDeleteProduct}
           />
         </div>
       )}

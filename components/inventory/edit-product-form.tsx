@@ -9,7 +9,7 @@ import FileUpload from "../ui/file-uploaded";
 import Button from "../ui/button";
 import { Modal } from "../ui/modal";
 import { VerifyIcon } from "../icons/svgs";
-import { Product } from "@/types/inventory/type";
+import { Product, ProductFormState } from "@/types/inventory/type";
 
 type EditProductFormProps = {
   product: Product | null;
@@ -22,37 +22,46 @@ export function EditProductForm({
   onClose,
   onProductUpdated,
 }: EditProductFormProps) {
-  const [productName, setProductName] = useState("");
-  const [category, setCategory] = useState("");
-  const [unit, setUnit] = useState("");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-  const [lowStockThreshold, setLowStockThreshold] = useState("");
-  const [imageBase64, setImageBase64] = useState("");
   const [productSaved, setProductSaved] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
 
+  const [productForm, setProductForm] = useState<ProductFormState>({
+    productName: "",
+    category: "",
+    unit: "",
+    price: "",
+    quantity: "",
+    selectedDate: undefined,
+    lowStockThreshold: "",
+    imageBase64: "",
+  });
+
+  const handleFieldChange = (field: keyof ProductFormState) => (value: any) => {
+    setProductForm(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
   useEffect(() => {
     if (product) {
-      setProductName(product.name);
-      setCategory(product.category);
-      setUnit(product.unit);
-      setPrice(product.price.toString());
-      setQuantity(product.quantity.toString());
-      setLowStockThreshold(product.lowStock?.toString() || "");
-      setImageBase64(product.image || "");
-
-      if (product.expiryDate) {
-        setSelectedDate(new Date(product.expiryDate));
-      }
+      setProductForm({
+        productName: product.name,
+        category: product.category,
+        unit: product.unit,
+        price: product.price.toString(),
+        quantity: product.quantity.toString(),
+        selectedDate: product.expiryDate ? new Date(product.expiryDate) : undefined,
+        lowStockThreshold: product.lowStock?.toString() || "",
+        imageBase64: product.image || "",
+      });
     }
   }, [product]);
 
   const handleFileSelect = (file: File | null) => {
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => setImageBase64(reader.result as string);
+      reader.onloadend = () => handleFieldChange("imageBase64")(reader.result as string);
       reader.readAsDataURL(file);
     }
   };
@@ -60,28 +69,28 @@ export function EditProductForm({
   const handleSave = () => {
     if (
       !product ||
-      !productName ||
-      !category ||
-      !unit ||
-      !price ||
-      !quantity ||
-      !selectedDate
+      !productForm.productName ||
+      !productForm.category ||
+      !productForm.unit ||
+      !productForm.price ||
+      !productForm.quantity ||
+      !productForm.selectedDate
     ) {
       return;
     }
 
     const updatedProduct: Product = {
       ...product,
-      name: productName,
-      category,
-      unit,
-      price: parseFloat(price),
-      quantity: parseInt(quantity),
-      expiryDate: selectedDate.toISOString().split("T")[0],
-      lowStock: lowStockThreshold
-        ? parseInt(lowStockThreshold)
+      name: productForm.productName,
+      category: productForm.category,
+      unit: productForm.unit,
+      price: parseFloat(productForm.price),
+      quantity: parseInt(productForm.quantity),
+      expiryDate: productForm.selectedDate.toISOString().split("T")[0],
+      lowStock: productForm.lowStockThreshold
+        ? parseInt(productForm.lowStockThreshold)
         : product.lowStock || 10,
-      image: imageBase64 || product.image,
+      image: productForm.imageBase64 || product.image,
     };
 
     onProductUpdated?.(updatedProduct);
@@ -109,8 +118,8 @@ export function EditProductForm({
               <Input
                 placeholder="Input Enter product name"
                 label="Product Name"
-                value={productName}
-                onChange={(e) => setProductName(e.target.value)}
+                value={productForm.productName}
+                onChange={(e) => handleFieldChange("productName")(e.target.value)}
               />
             </div>
 
@@ -118,8 +127,8 @@ export function EditProductForm({
               <Select
                 label="Category"
                 placeholder="Select Category"
-                value={category}
-                onValueChange={setCategory}
+                value={productForm.category}
+                onValueChange={handleFieldChange("category")}
                 options={[
                   { value: "Food", label: "Food" },
                   { value: "Beverages", label: "Beverages" },
@@ -137,8 +146,8 @@ export function EditProductForm({
               <Select
                 label="Units(s)"
                 placeholder="Select Unit"
-                value={unit}
-                onValueChange={setUnit}
+                value={productForm.unit}
+                onValueChange={handleFieldChange("unit")}
                 options={[
                   { value: "Pieces", label: "Pieces" },
                   { value: "kilogram", label: "kilogram" },
@@ -155,16 +164,16 @@ export function EditProductForm({
                 placeholder="₦0.00"
                 label="Price (₦)"
                 type="number"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={productForm.price}
+                onChange={(e) => handleFieldChange("price")(e.target.value)}
               />
 
               <Input
                 placeholder="0"
                 label="Quantity"
                 type="number"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+                value={productForm.quantity}
+                onChange={(e) => handleFieldChange("quantity")(e.target.value)}
               />
             </div>
 
@@ -175,7 +184,7 @@ export function EditProductForm({
               <div className="relative space-y-[8px]">
                 <Input
                   placeholder="Select date"
-                  value={selectedDate ? selectedDate.toLocaleDateString() : ""}
+                  value={productForm.selectedDate ? productForm.selectedDate.toLocaleDateString() : ""}
                   readOnly
                   prefixicon={
                     <button
@@ -199,9 +208,9 @@ export function EditProductForm({
                 {showCalendar && (
                   <div className="absolute top-full left-0 mt-2 z-50 pointer-events-auto">
                     <Calendar
-                      value={selectedDate}
+                      value={productForm.selectedDate}
                       onChange={(date) => {
-                        setSelectedDate(date);
+                        handleFieldChange("selectedDate")(date);
                         setShowCalendar(false);
                       }}
                     />
@@ -215,11 +224,11 @@ export function EditProductForm({
                 placeholder="<10"
                 label="Low Stock Threshold (optional)"
                 type="number"
-                value={lowStockThreshold}
-                onChange={(e) => setLowStockThreshold(e.target.value)}
+                value={productForm.lowStockThreshold}
+                onChange={(e) => handleFieldChange("lowStockThreshold")(e.target.value)}
               />
               <p className="font-[500] text-[12px] text-[#6C6C6C]">
-                This item will be marked as ‘Low in stock’ when stock falls
+                This item will be marked as 'Low in stock' when stock falls
                 between this number
               </p>
             </div>
@@ -239,7 +248,7 @@ export function EditProductForm({
               <div className="max-w-[343px]">
                 <div className="h-[249px] bg-white w-full relative p-[10px]">
                   <Image
-                    src={imageBase64}
+                    src={productForm.imageBase64}
                     fill
                     alt="product-name"
                     className="object-cover rounded-[8px]"
@@ -273,7 +282,7 @@ export function EditProductForm({
               </p>
 
               <p className="font-[500] text-[16px] text-[#363636]">
-                {productName} has been updated
+                {productForm.productName} has been updated
               </p>
             </div>
           </div>

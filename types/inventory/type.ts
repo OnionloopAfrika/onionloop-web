@@ -13,6 +13,17 @@ export interface Product {
   createdAt: string;
 }
 
+export interface ProductFormState {
+  productName: string;
+  category: string;
+  unit: string;
+  price: string;
+  quantity: string;
+  selectedDate: Date | undefined;
+  lowStockThreshold: string;
+  imageBase64: string;
+}
+
 export interface AddProductProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
