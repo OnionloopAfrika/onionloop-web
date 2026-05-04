@@ -4,6 +4,7 @@ export interface ProfileHeaderProps {
   title: string;
   subtitle: string;
   btn?: React.ReactNode;
+  className?: string;
 }
 
 export interface ToggleProps {

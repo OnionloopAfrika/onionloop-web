@@ -44,7 +44,6 @@ export function Calendar({ value, onChange, events = {} }: CalendarProps) {
 
   return (
     <div className="w-full max-w-[360px] rounded-[20px] bg-[#F5F5F5] p-[20px]">
-      {/* Header */}
       <div className="flex items-center justify-between mb-[16px]">
         <p className="text-[18px] font-semibold text-[#131313]">
           {currentMonth.toLocaleString("default", {
@@ -53,7 +52,7 @@ export function Calendar({ value, onChange, events = {} }: CalendarProps) {
           })}
         </p>
 
-        <div className="flex gap-[12px]">
+        <div className="flex gap-[12px] items-center">
           <button className="w-[20px] h-[20px]" onClick={handlePrev}>
             <svg
               width="20"
