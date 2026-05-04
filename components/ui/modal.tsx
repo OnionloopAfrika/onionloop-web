@@ -14,6 +14,7 @@ interface ModalProps {
   footer?: React.ReactNode;
 
   size?: "sm" | "md" | "lg";
+  className?: string;
 }
 
 export function Modal({
@@ -24,6 +25,7 @@ export function Modal({
   children,
   footer,
   size = "md",
+  className = "",
 }: ModalProps) {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -43,14 +45,16 @@ export function Modal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center ">
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center h-screen`}
+    >
       <div
         className="absolute inset-0 bg-black/40 backdrop-blur-sm "
         onClick={() => onOpenChange(false)}
       />
 
       <div
-        className={`relative z-10 w-full ${sizes[size]} rounded-[12px] bg-white p-[24px] shadow-[0_0_25px_rgba(0,0,0,0.2)]`}
+        className={`relative z-10 w-full ${sizes[size]} rounded-[12px] bg-white p-[24px] shadow-[0_0_25px_rgba(0,0,0,0.2)]  ${className}`}
       >
         <button
           onClick={() => onOpenChange(false)}
