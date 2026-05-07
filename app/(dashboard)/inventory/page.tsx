@@ -58,7 +58,7 @@ const page = () => {
         />
       ) : (
         <div className="space-y-[42px]">
-          <div className="space-y-[16px]">
+          {/* <div className="space-y-[16px]">
             {warning.map((items, i) => (
               <Warning
                 icon={
@@ -72,7 +72,7 @@ const page = () => {
                 }
               />
             ))}
-          </div>
+          </div> */}
 
           <InventoryStats onProductAdded={handleAddProduct} />
 

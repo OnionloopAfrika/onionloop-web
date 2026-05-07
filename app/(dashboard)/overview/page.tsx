@@ -14,6 +14,7 @@ import RevenueOverview from "@/components/layouts/revenue-overview";
 import { MOCK_TRANSACTIONS } from "@/lib/mockdata";
 import { formatDate, formatCurrency } from "@/utils/helpers";
 import { fetchRevenue } from "@/utils/helpers/revenue-chart";
+import Link from 'next/link';
 
 export default async function Page() {
   const initialData = await fetchRevenue("7days");
@@ -87,9 +88,9 @@ export default async function Page() {
             <h2 className="text-2xl font-bold text-gray-800">
               Recent Transactions
             </h2>
-            <button className="text-[#04802E] font-bold text-sm hover:underline">
+            <Link href="/transactions" className="text-[#04802E] font-bold text-sm hover:underline">
               View All
-            </button>
+            </Link>
           </div>
 
           <div className="flex-1 overflow-y-auto custom-scrollbar">
