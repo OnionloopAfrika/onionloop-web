@@ -455,7 +455,7 @@ export const ArrowUpIcon = ({
   </svg>
 );
 
-export const CalendarIcon = ({ className, color }: IconProps) => (
+export const CalendarIcon = ({ className, color="currentColor" }: IconProps) => (
   <svg
     width="20"
     height="20"

@@ -1,10 +1,10 @@
-import StaffManagement from '@/components/staff-page/staff-management'
+import LeaveRequestPage from '@/components/staff-page/leave-request'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <StaffManagement />
+        <LeaveRequestPage />
     </div>
   )
 }
