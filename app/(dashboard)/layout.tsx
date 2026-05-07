@@ -8,7 +8,7 @@ export default function DashboardLayout({ children }: {children: React.ReactNode
                 activeKey="overview"
                 businessName="Yetty Mama Lounge"
                 userName="Margaret Adekola"
-                avatarUrl="/path/to/avatar.jpg" // optional — falls back to initial
+                avatarUrl="https://i.pravatar.cc/150?u=12" // optional — falls back to initial
                 messageCount={1}
                 notificationCount={4}
             />

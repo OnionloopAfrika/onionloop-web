@@ -21,7 +21,7 @@ function ProfileLayout({
           <ProfileDropdown
             businessName="{businessName}"
             userName="{userName}"
-            avatarUrl="{avatarUrl}"
+            avatarUrl="https://i.pravatar.cc/150?u=12"
             active={active}
             className="w-85 bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex flex-col items-center z-50"
           />

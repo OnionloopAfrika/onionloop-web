@@ -66,7 +66,7 @@ export function Modal({
         {(title || description) && (
           <div className="mb-[16px]">
             {title && (
-              <h2 className="text-[16px] font-semibold text-[#131313]">
+              <h2 className="text-[20px] font-bold text-center mb-6">
                 {title}
               </h2>
             )}

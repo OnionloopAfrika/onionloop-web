@@ -67,14 +67,14 @@ const Select: React.FC<SelectProps> = ({
           disabled={disabled}
           className={`
             flex h-[48px] w-full items-center justify-between rounded-[6px] border border-[#C7C7C7] bg-[#F7F7F7]  
-            p-[16px] pr-12 font-semibold text-[14px] text-[#131313]
-            placeholder:font-semibold placeholder:text-[12px] placeholder:text-[#8A8A8A]
+            p-[16px] pr-12 font-semibold text-[12px] text-[#131313]
+            placeholder:font-normal placeholder:text-[10px] placeholder:text-[#8A8A8A]
             focus:outline-none 
             disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400
             ${error ? "border-red-500 focus:border-red-500" : ""}
           `}
         >
-          <span className={selectedLabel ? "text-[#131313]" : "text-[#8A8A8A]"}>
+          <span className={selectedLabel ? "text-xs font-semibold" : "text-[#8A8A8A]"}>
             {selectedLabel || placeholder}
           </span>
 

@@ -69,14 +69,16 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           disabled={disabled}
           className={`
             flex h-[48px] w-full items-center justify-between rounded-[6px] border border-[#C7C7C7] bg-[#F7F7F7]  
-            p-[16px] pr-12 font-semibold text-[14px]
+            p-[16px] pr-12 font-semibold text-[12px]
             focus:outline-none 
             disabled:cursor-not-allowed disabled:bg-gray-100
             ${error ? "border-red-500" : ""}
           `}
         >
-          <span className={value.length ? "text-[#131313]" : "text-[#8A8A8A]"}>
-            {value.length ? selectedLabels.join(", ") : placeholder}
+          <span className={`${value.length ? "text-[#131313] font-semibold text-xs flex items-center justify-start w-full overflow-x-auto gap-1" : "text-[#8A8A8A]"}`}>
+            {value.length ? selectedLabels.map((label, index) => (
+              <span key={label} className="border border-[#C7C7C7] rounded-full p-0.5">{label}</span>
+            )) : placeholder}
           </span>
 
           <span className="absolute right-4 text-[#8A8A8A]">
@@ -107,11 +109,10 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                   className="flex justify-between items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-gray-100 "
                 >
                   <span
-                    className={`text-[14px] ${
-                      isChecked
+                    className={`text-[14px] ${isChecked
                         ? "text-primary-color font-semibold"
                         : "text-[#6C6C6C]"
-                    }`}
+                      }`}
                   >
                     {option.label}
                   </span>

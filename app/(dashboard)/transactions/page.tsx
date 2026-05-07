@@ -89,7 +89,7 @@ const TransactionsPage = () => {
   };
 
   if (isLoading || !stats) {
-    return <div className="p-6 font-sans text-gray-500">Loading stats...</div>;
+    return <div className="p-6 font-sans text-gray-500 h-screen flex items-center justify-center">Loading...</div>;
   }
 
   return (
@@ -100,7 +100,7 @@ const TransactionsPage = () => {
           subHeading="View and manage all sales and payment records"
         />
         <div className="flex gap-3 w-full justify-end">
-          <button className="inline-flex items-center justify-center gap-1 px-1 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700">
+          <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700">
             <CalendarIcon />
             Mar 2026
           </button>

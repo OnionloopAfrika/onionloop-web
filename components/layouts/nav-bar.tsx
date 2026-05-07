@@ -53,8 +53,8 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 interface DashboardNavProps {
-  businessName?: string;
-  userName?: string;
+  businessName: string;
+  userName: string;
   avatarUrl?: string;
   messageCount?: number;
   notificationCount?: number;
@@ -62,8 +62,8 @@ interface DashboardNavProps {
 }
 
 export default function DashboardNav({
-  businessName = "Yetty Mama Lounge",
-  userName = "Margaret Adekola",
+  businessName,
+  userName,
   avatarUrl,
   messageCount = 1,
   notificationCount = 4,
@@ -78,7 +78,7 @@ export default function DashboardNav({
     <nav className="w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)] sticky top-0 z-50">
       <div className="flex items-center h-18 px-7 max-w-360 mx-auto justify-between">
         <Link
-          href="/"
+          href="/overview"
           className="flex items-center gap-2 no-underline shrink-0"
         >
           <OnionloopIcon />
@@ -152,7 +152,8 @@ export default function DashboardNav({
               <ProfileDropdown
                 businessName={businessName}
                 userName={userName}
-                avatarUrl={avatarUrl}
+                // avatarUrl={avatarUrl}
+                avatarUrl="https://i.pravatar.cc/150?u=12"
               />
             )}
           </div>
