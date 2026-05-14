@@ -12,6 +12,7 @@ import {
   ChevronDownIcon,
   CalendarIcon,
   DownloadIcon,
+  DownloadIconSolid,
 } from "@/components/icons/svgs";
 import StatCard from "@/components/layouts/card-component";
 import Header from "@/components/layouts/header";
@@ -94,18 +95,18 @@ const TransactionsPage = () => {
 
   return (
     <main className="min-h-screen font-sans">
-      <div className="flex justify-between items-start mb-6">
+      <div className="flex-col md:flex-row gap-4 justify-between items-start mb-2 md:mb-6">
         <Header
           heading="Transactions"
           subHeading="View and manage all sales and payment records"
         />
-        <div className="flex gap-3 w-full justify-end">
+        <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
           <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700">
             <CalendarIcon />
             Mar 2026
           </button>
           <button className="flex items-center gap-2 px-2 py-2 bg-[#044E49] text-white rounded-lg text-[14px] font-semibold">
-            <DownloadIcon />
+            <DownloadIconSolid />
             Download Report
           </button>
         </div>
@@ -119,6 +120,7 @@ const TransactionsPage = () => {
           label="This Month"
           footerText="10% vs last month"
           showTrendIcon
+          changePercentage={10}
         />
         <StatCard
           themeColor="blue"
@@ -127,20 +129,25 @@ const TransactionsPage = () => {
           label="Total Transactions"
           footerText="8% vs yesterday"
           showTrendIcon
+          changePercentage={8}
         />
+          <StatCard
+            themeColor="purple"
+            icon={<LineChartIcon />}
+            value="6"
+            label="Avg. Transaction Value"
+            footerText="8% vs yesterday"
+            showTrendIcon
+            changePercentage={8}
+          />
         <StatCard
           themeColor="red"
           icon={<InventoryIcon color="#CB1A14" />}
-          value="120"
-          label="Total Refunds Today"
-          footerText="1 refund issued"
-        />
-        <StatCard
-          themeColor="purple"
-          icon={<LineChartIcon />}
-          value="6"
-          label="Avg. Transaction Value"
-          footerText="4 online now"
+          value="128"
+          label="Failed Transactions"
+          footerText="8% vs yesterday"
+          showTrendIcon
+          changePercentage={8}
         />
       </div>
 
@@ -193,11 +200,11 @@ const TransactionsPage = () => {
             </thead>
             <tbody className="divide-y divide-gray-50">
               {transactionData.map((txn) => (
-                <tr key={txn.id} className="hover:bg-gray-50 transition-colors">
+                <tr key={txn.id} className="hover:bg-gray-50 transition-colors border-b border-gray-300">
                   <td className="px-6 py-5 text-[14px] text-[#6C6C6C]">
                     {txn.id}
                   </td>
-                  <td className="px-6 py-5 text-[14px] font-medium text-gray-900">
+                  <td className="px-6 py-5 text-[14px] font-medium text-[#6c6c6c]">
                     {txn.customerName}
                   </td>
                   <td className="px-6 py-5 text-[14px]">

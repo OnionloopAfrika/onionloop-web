@@ -10,6 +10,7 @@ interface StatCardProps {
     themeColor: 'green' | 'blue' | 'purple' | 'orange' | 'red';
     showTrendIcon?: boolean;
     changePercentage?: number
+    footerColor?: string;
 }
 
 const StatCard: React.FC<StatCardProps> = ({
@@ -20,7 +21,8 @@ const StatCard: React.FC<StatCardProps> = ({
     footerText,
     themeColor,
     showTrendIcon = false,
-    changePercentage
+    changePercentage,
+    footerColor
 }) => {
     const themes = {
         green: {
@@ -60,11 +62,11 @@ const StatCard: React.FC<StatCardProps> = ({
     return (
         <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex flex-col gap-4 min-w-65 flex-1">
             <div className="flex justify-between items-start">
-                <div className={`p-2.5 rounded-lg ${style.bg} ${style.text}`}>
+                <div className={`p-[8px] rounded-lg ${style.bg} ${style.text}`}>
                     {icon}
                 </div>
                 {percentage && (
-                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${style.badge}`}>
+                    <span className={`text-[10px] font-medium px-2 py-1 rounded-full ${style.badge}`}>
                         +{percentage}%
                     </span>
                 )}
@@ -74,14 +76,14 @@ const StatCard: React.FC<StatCardProps> = ({
                 <h2 className="text-[28px] font-semibold text-gray-900 leading-tight">
                     {value}
                 </h2>
-                <p className="text-[#6C6C6C] text-[14px] font-medium">
+                <p className="text-[#6C6C6C] text-[14px] font-normal">
                     {label}
                 </p>
             </div>
 
-            <div className={`flex items-center gap-1 text-[10px] font-semibold ${style.footer}`}>
+            <div className={`flex items-center gap-1 text-[10px] font-normal ${style.footer}`}>
                 {showTrendIcon && (changePercentage! >= 0 ? <ArrowUpIcon color="#04802E" className='' /> : <ArrowDownIcon color="#CB1A14" className=''/> )}
-                <span className={changePercentage! >= 0 ? "text-[#04802E]" : "text-[#CB1A14]"}>{footerText}</span>
+                <span className={footerColor === "purple" ? "text-[#363636]" : footerColor === "orange" ? "text-[#DD900D]" : (changePercentage! >= 0 ? "text-[#04802E]" : "text-[#CB1A14]")}>{footerText}</span>
             </div>
         </div>
     );
