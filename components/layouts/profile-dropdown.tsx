@@ -20,7 +20,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ businessName, userNam
     ];
 
     return (
-        <div className={`${!className ? "absolute top-[calc(100%+1px)] right-0 w-85 bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex flex-col items-center z-50" : className}`}>
+        <div className={`${!className ? "absolute top-[calc(100%+1px)] right-0 w-80 bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex flex-col items-center z-50" : className}`}>
             <div className="flex flex-col items-center mb-6 px-6 w-full text-center">
                 <div className="w-16 h-16 rounded-full overflow-hidden bg-[#d6f0e6] mb-3 shrink-0">
                     {avatarUrl ? (

@@ -21,7 +21,7 @@ export function InventoryStats({
   };
   return (
     <>
-      <div className="space-y-[42px]">
+      <div className="space-y-[16px]">
         <ProfileHeader
           className="border-b-0"
           title="Inventory"

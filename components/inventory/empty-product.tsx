@@ -21,7 +21,7 @@ export function EmptyProducts({
   return (
     <>
       <div className="w-full pt-[20px] h-full flex justify-center items-start">
-        <div className="min-w-[836px] flex flex-col items-center gap-[42px]">
+        <div className="max-w-[836px] flex flex-col items-center gap-[42px]">
           <div className="space-y-[24px] flex flex-col items-center">
             <NoProductsIcon />
 

@@ -119,26 +119,26 @@ export function ProductTable({
           <table className="w-full">
             <thead>
               <tr className="bg-[#F7F7F7] border-b border-gray-200 h-[93.36px]">
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]"></th>
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]"></th>
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
                   Product Name
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
                   Unit(s)
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
                   Price (₦)
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
                   Stock Qty
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
                   Date
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
                   Expiration Date
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[600] text-[20px] text-[#6C6C6C]"></th>
+                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]"></th>
               </tr>
             </thead>
 
@@ -192,14 +192,14 @@ export function ProductTable({
                     <td className="px-[15px] py-[10px] whitespace-nowrap">
                       <div className="flex items-center gap-3">
                         <div>
-                          <p className="font-medium text-[#131313] text-[18px]">
+                          <p className="font-medium text-[#6C6C6C] text-[18px]">
                             {product.name}
                           </p>
                         </div>
                       </div>
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap text-[18px] text-[#131313] font-[500]">
+                    <td className="px-[15px] py-[10px] whitespace-nowrap text-[18px] text-[#6C6C6C] font-[400]">
                       {product.unit}
                     </td>
 

@@ -181,9 +181,9 @@ export default function LeaveRequestPage() {
                                     <td className="p-6 text-[14px] font-semibold">
                                         <img src={request.avatar} alt="" className="w-8 h-8 rounded-full border border-[#c6c6c6]" />
                                     </td>
-                                    <td className="p-6 text-[14px] font-medium">{request.employee}</td>
-                                    <td className="p-6 text-[14px] font-medium">{request.leaveType}</td>
-                                    <td className="p-6 text-[14px] font-medium">{request.reason}</td>
+                                    <td className="p-6 text-[14px] font-medium text-[#6C6C6C]">{request.employee}</td>
+                                    <td className="p-6 text-[14px] font-medium text-[#6C6C6C]">{request.leaveType}</td>
+                                    <td className="p-6 text-[14px] font-medium text-[#6C6C6C]">{request.reason}</td>
                                     <td className="p-6 text-[14px] font-medium text-[#6C6C6C]">{request.date}</td>
                                     <td className="p-6">
                                         <span

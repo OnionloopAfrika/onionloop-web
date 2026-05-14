@@ -21,7 +21,7 @@ interface Staff {
     image: string;
 }
 
-const mockStaffs: Staff[] = [
+const initialStaffs: Staff[] = [
     {
         id: "1",
         name: "Titi Folarin",
@@ -61,9 +61,14 @@ const roleOptions = [
     { value: "inventory_manager", label: "Inventory Manager" },
     { value: "custom", label: "Custom" },
 ];
+const staffOption = [
+    { value: "activate", label: "Activate" },
+    { value: "deactivate", label: "Deactivated" },
+];
 
 export default function StaffManagement() {
     const router = useRouter();
+    const [staffs, setStaffs] = useState<Staff[]>(initialStaffs);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const [selectedStaff, setSelectedStaff] = useState<Staff | null>(null);
     const [modalType, setModalType] = useState<"profile" | "edit" | "deactivate" | "remove" | "invite" | "success" | null>(null);
@@ -73,6 +78,7 @@ export default function StaffManagement() {
         "Issue Refunds": true,
         "Edit Inventory": true,
     });
+    const [selectedStaffOption, setSelectedStaffOption] = useState<string | null>("activate");
     const [isSaving, setIsSaving] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
@@ -108,6 +114,16 @@ export default function StaffManagement() {
         }, 1500);
     };
 
+    const handleToggleStatus = () => {
+        if (!selectedStaff) return;
+        const newStatus: Staff["status"] =
+            selectedStaff.status === "Active" ? "Deactivated" : "Active";
+        setStaffs(prev =>
+            prev.map(s => (s.id === selectedStaff.id ? { ...s, status: newStatus } : s))
+        );
+        closeModal();
+    };
+
     const closeModal = () => {
         setModalType(null);
         setSelectedStaff(null);
@@ -117,9 +133,11 @@ export default function StaffManagement() {
         setPermissions(prev => ({ ...prev, [key]: !prev[key] }));
     };
 
+    const isReactivating = selectedStaff?.status === "Deactivated";
+
     return (
         <div className=" min-h-screen">
-            <div className="flex justify-between items-start mb-6">
+            <div className="flex-col md:flex-row gap-4 justify-between items-start mb-2 md:mb-6">
                 <Header
                     heading="Staff management"
                     subHeading="Manage your team, role, and app access"
@@ -132,11 +150,11 @@ export default function StaffManagement() {
                         onClick={() => setModalType("invite")}
                         className="flex items-center gap-2 px-2 py-2 bg-[#044E49] text-white rounded-lg text-[14px] font-semibold"
                     >
-                        Import New Staff
+                        Invite New Staff
                     </button>
                 </div>
             </div>
-            <div className="flex gap-4 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
                 {[
                     { label: "Total Staff", count: 6, sub: "All active", color: "bg-[#EDE8FC] text-[#7C53FC]", icon: <MultiUser /> },
                     { label: "Online now", count: 4, sub: "Using staff app", color: "bg-green-100 text-[#04802E]", icon: <TimerClock /> },
@@ -147,25 +165,33 @@ export default function StaffManagement() {
                             {stat.icon}
                         </div>
                         <h3 className="text-[28px] font-semibold">{stat.count}</h3>
-                        <p className="text-gray-500 text-sm font-medium">{stat.label}</p>
+                        <p className="text-gray-500 text-sm font-normal">{stat.label}</p>
                         <span className={`text-[10px] px-2 py-0.5 rounded-full mt-2 inline-block ${stat.color} bg-opacity-20 font-semibold`}>{stat.sub}</span>
                     </div>
                 ))}
             </div>
 
             <div className="bg-white p-4 rounded-xl mb-6 flex items-center justify-between border border-gray-100">
-                <div className="w-1/3">
+                <div className="w-1/3 flex gap-2 items-center">
                     <Input
                         prefixicon={<Search />}
                         placeholder="Search"
                         className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm"
                     />
+                    <div className="w-[150px] bg-white">
+                        <Select
+                            options={staffOption}
+                            value={selectedStaffOption!}
+                            onValueChange={setSelectedStaffOption}
+                            placeholder="All Staff"
+                        />
+                    </div>
                 </div>
                 <span className="text-sm font-semibold text-gray-700">All staff</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {mockStaffs.map((staff) => (
+                {staffs.map((staff) => (
                     <div key={staff.id} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative">
                         <div className="flex justify-between items-start mb-4">
                             <div className="flex gap-3">
@@ -195,7 +221,8 @@ export default function StaffManagement() {
                                             <Edit3 size={18} color="#8A8A8A" /> Edit Role
                                         </button>
                                         <button onClick={() => handleAction("deactivate", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
-                                            <AlertOctagon size={18} color="#8A8A8A" /> Deactivate Staff
+                                            <AlertOctagon size={18} color="#8A8A8A" />
+                                            {staff.status === "Active" ? "Deactivate Staff" : "Activate Staff"}
                                         </button>
                                         <button onClick={() => handleAction("remove", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-red-600 text-[14px]">
                                             <Trash2 size={18} color="#CB1A14" /> Remove Staff
@@ -208,7 +235,7 @@ export default function StaffManagement() {
                         <div className="bg-[#F7F7F7] p-4 rounded-lg flex justify-between items-center mb-4">
                             <div>
                                 <p className="text-[20px] font-bold">{staff.salesToday.toString().padStart(2, '0')}</p>
-                                <p className="text-[10px] text-gray-400 uppercase tracking-wider">Sales Today</p>
+                                <p className="text-[10px] text-[#6C6C6C] tracking-wider">Sales Today</p>
                             </div>
                             <span className={`text-[10px] px-3 py-1 rounded-full font-semibold ${staff.status === 'Active' ? 'bg-[#04802E] text-white' : 'bg-[#98A2B3] text-white'}`}>
                                 {staff.status}
@@ -292,7 +319,9 @@ export default function StaffManagement() {
                     <h2 className="text-[20px] font-bold mb-6">Staff Profile</h2>
                     <div className="flex flex-col items-center mb-8">
                         <img src={selectedStaff?.image} className="w-24 h-24 rounded-full mb-3 border-4 border-white shadow-sm" />
-                        <span className="bg-[#00634B] text-white text-[10px] px-4 py-1 rounded-full font-bold">Active</span>
+                        <span className={`text-white text-[10px] px-4 py-1 rounded-full font-bold ${selectedStaff?.status === 'Active' ? 'bg-[#00634B]' : 'bg-[#98A2B3]'}`}>
+                            {selectedStaff?.status}
+                        </span>
                     </div>
                     <div className="space-y-2 text-left">
                         {[
@@ -344,7 +373,12 @@ export default function StaffManagement() {
                     </div>
                     <div className="grid grid-cols-2 gap-y-6 mb-8 text-[13px]">
                         <div><p className="text-[#6C6C6C]">Full Name:</p><p className="font-bold text-[#131313]">{selectedStaff?.name}</p></div>
-                        <div className="text-right"><p className="text-[#6C6C6C]">Status:</p><span className="text-[#fff] font-bold bg-[#04802E] px-3 py-0.5 rounded-full">Active</span></div>
+                        <div className="text-right">
+                            <p className="text-[#6C6C6C]">Status:</p>
+                            <span className={`text-[#fff] font-bold px-3 py-0.5 rounded-full ${selectedStaff?.status === 'Active' ? 'bg-[#04802E]' : 'bg-[#98A2B3]'}`}>
+                                {selectedStaff?.status}
+                            </span>
+                        </div>
                         <div><p className="text-[#6C6C6C]">Phone Number:</p><p className="font-bold text-[#131313]">{selectedStaff?.phone}</p></div>
                         <div className="text-right"><p className="text-[#6C6C6C]">Email Address:</p><p className="font-bold text-[#131313] truncate">{selectedStaff?.email}</p></div>
                     </div>
@@ -370,14 +404,26 @@ export default function StaffManagement() {
             <Modal open={modalType === "deactivate"} onOpenChange={closeModal} className="text-center">
                 <div className="flex justify-center mb-6">
                     <div className="rounded-2xl">
-                        <AlertOctagon size={60} color="#DD900D" />
+                        <AlertOctagon size={60} color={isReactivating ? "#024E44" : "#DD900D"} />
                     </div>
                 </div>
-                <h2 className="text-[20px] font-bold text-[#DD900D] mb-3">Deactivate Staff Account?</h2>
-                <p className="text-[#6C6C6C] text-[14px] max-w-[400px] mx-auto mb-10">You are about to deactivate a staff member. Are you sure you want to deactivate this staff member?</p>
+                <h2 className={`text-[20px] font-bold mb-3 ${isReactivating ? 'text-[#04802E]' : 'text-[#DD900D]'}`}>
+                    {isReactivating ? "Activate Staff Account?" : "Deactivate Staff Account?"}
+                </h2>
+                <p className="text-[#6C6C6C] text-[14px] max-w-[400px] mx-auto mb-10">
+                    {isReactivating
+                        ? "You are about to reactivate a staff member. Are you sure you want to activate this staff member?"
+                        : "You are about to deactivate a staff member. Are you sure you want to deactivate this staff member?"}
+                </p>
                 <div className="flex gap-4">
                     <Button variant="secondary" className="flex-1 !bg-[#F7F7F7]" onClick={closeModal}>Cancel</Button>
-                    <Button variant="danger" className="flex-1 !bg-[#CB1A14]">Deactivate Account</Button>
+                    <Button
+                        variant={isReactivating ? "primary" : "danger"}
+                        className={`flex-1 ${isReactivating ? '!bg-[#024E44]' : '!bg-[#CB1A14]'}`}
+                        onClick={handleToggleStatus}
+                    >
+                        {isReactivating ? "Activate Account" : "Deactivate Account"}
+                    </Button>
                 </div>
             </Modal>
 
