@@ -49,7 +49,7 @@ const page = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full">
       {products.length === 0 ? (
         <EmptyProducts
           open={open}

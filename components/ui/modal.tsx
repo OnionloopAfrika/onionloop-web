@@ -46,7 +46,7 @@ export function Modal({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center h-screen`}
+      className={`fixed inset-0 z-50 flex items-center justify-center h-screen m-3`}
     >
       <div
         className="absolute inset-0 bg-black/40 backdrop-blur-sm "
