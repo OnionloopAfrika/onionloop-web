@@ -10,9 +10,9 @@ export default function Login() {
     const router = useRouter();
 
     return (
-        <div className="min-h-screen w-full bg-[#F5F7F9] relative flex flex-col items-center justify-center overflow-hidden">
+        <div className="min-h-screen w-full bg-[#F5F7F9] relative flex flex-col items-center justify-center overflow-hidden p-4">
             {/* Header with Logo */}
-            <header className="fixed top-0 left-0 w-full bg-white h-[80px] flex items-center px-8 z-50 shadow-[0px_4px_10px_rgba(0,0,0,0.03)]">
+            <header className="fixed top-0 left-0 w-full bg-white h-[80px] px-8 flex items-center z-50 shadow-[0px_4px_10px_rgba(0,0,0,0.03)]">
                 <OnionloopIcon />
             </header>
 
@@ -52,7 +52,7 @@ export default function Login() {
             </div>
 
             {/* Login Card */}
-            <div className="w-full max-w-[580px] bg-white rounded-[24px] shadow-sm p-8 md:p-16 z-10 mx-4">
+            <div className="w-full max-w-[500px] bg-white rounded-[24px] shadow-sm p-4 md:p-6 z-10 mx-4">
                 <div className="text-center mb-10">
                     <h1 className="text-[28px] font-bold text-[#04907E] mb-3">
                         Sign In to Onionloop

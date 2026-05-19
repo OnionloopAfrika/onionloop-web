@@ -39,7 +39,7 @@ export default async function Page() {
       </div>
       {/* card component for the overview */}
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 py-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 py-4">
         <StatCard
           themeColor="green"
           icon={<RevenueIcon color="#04802E" />}
