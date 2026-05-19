@@ -178,6 +178,7 @@ export default function DashboardNav({
         {showMobileProfile && (
           <div className="md:hidden bg-[#F9FAFB] min-h-[calc(100vh-64px)] p-4 animate-in slide-in-from-right duration-300 overflow-y-auto relative">
             <div className={`${"absolute top-[calc(0)] right-0 w-full md:w-96 bg-[#F9FAFB] md:bg-white rounded-xl md:shadow-[0_8px_30px_rgba(0,0,0,0.12)] md:border border-gray-100 p-4 flex flex-col items-center z-100"}`}>
+              <div className="text-left text-xs w-full py-2 text-[#6C6C6C] pointer" onClick={() => setShowMobileProfile(false)}>&larr;back</div>
               <div className="bg-white border border-gray-100 rounded-2xl p-6 w-full flex flex-col items-center mb-6 shadow-sm">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4 shrink-0 border-2 border-white shadow-sm">
                   {avatarUrl ? (

@@ -60,23 +60,23 @@ const StatCard: React.FC<StatCardProps> = ({
     const style = themes[themeColor];
 
     return (
-        <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex flex-col gap-4 min-w-65 flex-1">
+        <div className="bg-white border border-gray-100 rounded-2xl md:p-5 p-4 shadow-sm flex flex-col gap-4 w-full flex-1">
             <div className="flex justify-between items-start">
-                <div className={`p-[8px] rounded-lg ${style.bg} ${style.text}`}>
+                <div className={`md:p-[8px] p-1 rounded-lg ${style.bg} ${style.text}`}>
                     {icon}
                 </div>
                 {percentage && (
-                    <span className={`text-[10px] font-medium px-2 py-1 rounded-full ${style.badge}`}>
+                    <span className={`md:text-[10px] text-[8px] font-medium px-2 py-1 rounded-full ${style.badge}`}>
                         +{percentage}%
                     </span>
                 )}
             </div>
 
             <div className="flex flex-col gap-1">
-                <h2 className="text-[28px] font-semibold text-gray-900 leading-tight">
+                <h2 className="md:text-[28px] text-[16px] font-semibold text-gray-900 leading-tight">
                     {value}
                 </h2>
-                <p className="text-[#6C6C6C] text-[14px] font-normal">
+                <p className="text-[#6C6C6C] md:text-[14px] text-[12px] font-normal">
                     {label}
                 </p>
             </div>

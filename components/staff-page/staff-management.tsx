@@ -25,7 +25,7 @@ const initialStaffs: Staff[] = [
     {
         id: "1",
         name: "Titi Folarin",
-        role: "Cashier",
+        role: "Cleaner",
         email: "folarin@gmail.com",
         phone: "07053385252",
         salesToday: 24,
@@ -35,22 +35,52 @@ const initialStaffs: Staff[] = [
     {
         id: "2",
         name: "Mary Olarewaju",
-        role: "Store Manager",
+        role: "Cashier",
         email: "mary@gmail.com",
         phone: "08012345678",
         salesToday: 0,
-        status: "Deactivated",
+        status: "Active",
         image: "https://i.pravatar.cc/150?u=2",
     },
     {
         id: "3",
         name: "David Anigbobu",
-        role: "Cashier",
+        role: "Sales Manager",
         email: "david@gmail.com",
         phone: "09087654321",
         salesToday: 24,
-        status: "Active",
+        status: "Deactivated",
         image: "https://i.pravatar.cc/150?u=3",
+    },
+    {
+        id: "4",
+        name: "Sarah Olarewaju",
+        role: "Customer Attendant",
+        email: "sarah@gmail.com",
+        phone: "08123456789",
+        salesToday: 12,
+        status: "Active",
+        image: "https://i.pravatar.cc/150?u=4",
+    },
+    {
+        id: "5",
+        name: "Adanma Dappa",
+        role: "Senior Staff",
+        email: "adanma@gmail.com",
+        phone: "08098765432",
+        salesToday: 40,
+        status: "Active",
+        image: "https://i.pravatar.cc/150?u=5",
+    },
+    {
+        id: "6",
+        name: "Kemi Saidu",
+        role: "Cleaner",
+        email: "kemi@gmail.com",
+        phone: "07011223344",
+        salesToday: 0,
+        status: "Deactivated",
+        image: "https://i.pravatar.cc/150?u=6",
     },
 ];
 
@@ -136,61 +166,67 @@ export default function StaffManagement() {
     const isReactivating = selectedStaff?.status === "Deactivated";
 
     return (
-        <div className=" min-h-screen">
-            <div className="flex-col md:flex-row gap-4 justify-between items-start mb-2 md:mb-6">
+        <div className="min-h-screen py-6">
+            <div className="flex flex-col md:flex-row gap-4 justify-between items-start mb-6">
                 <Header
-                    heading="Staff management"
+                    heading="Staff Management"
                     subHeading="Manage your team, role, and app access"
                 />
-                <div className="flex gap-3 w-full justify-end">
-                    <button onClick={() => router.push('/staffs/leave-request')} className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700">
+                <div className="flex gap-3 w-full md:w-auto justify-end">
+                    <button onClick={() => router.push('/staffs/leave-request')} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
                         View Leave Request
                     </button>
                     <button
                         onClick={() => setModalType("invite")}
-                        className="flex items-center gap-2 px-2 py-2 bg-[#044E49] text-white rounded-lg text-[14px] font-semibold"
+                        className="flex items-center gap-2 px-4 py-2.5 bg-[#044E49] text-white rounded-lg text-[14px] font-semibold whitespace-nowrap shadow-sm"
                     >
                         Invite New Staff
                     </button>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
                 {[
-                    { label: "Total Staff", count: 6, sub: "All active", color: "bg-[#EDE8FC] text-[#7C53FC]", icon: <MultiUser /> },
-                    { label: "Online now", count: 4, sub: "Using staff app", color: "bg-green-100 text-[#04802E]", icon: <TimerClock /> },
-                    { label: "Sales today", count: 100, sub: "By staff", color: "bg-blue-100 text-[#0D5EBA]", icon: <SparkIcon /> },
+                    { label: "Total Staffs", count: 6, sub: "All active", color: "bg-[#EDE8FC] text-[#7C53FC]", icon: <MultiUser />, className: "col-span-2 md:col-span-1" },
+                    { label: "Online now", count: 4, sub: "Using staff app", color: "bg-green-100 text-[#04802E]", icon: <TimerClock />, className: "col-span-1" },
+                    { label: "Sales so far today", count: 100, sub: "By staff", color: "bg-blue-100 text-[#0D5EBA]", icon: <SparkIcon />, className: "col-span-1" },
                 ].map((stat, i) => (
-                    <div key={i} className="flex-1 bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <div key={i} className={`bg-white p-4 md:p-6 rounded-xl border border-gray-100 shadow-sm ${stat.className}`}>
                         <div className={`w-10 h-10 rounded mb-4 flex items-center justify-center ${stat.color}`}>
                             {stat.icon}
                         </div>
-                        <h3 className="text-[28px] font-semibold">{stat.count}</h3>
+                        <h3 className="text-[16px] md:text-[28px] font-semibold">{stat.count}</h3>
                         <p className="text-gray-500 text-sm font-normal">{stat.label}</p>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full mt-2 inline-block ${stat.color} bg-opacity-20 font-semibold`}>{stat.sub}</span>
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full mt-2 inline-block ${stat.color} bg-opacity-20 font-medium`}>{stat.sub}</span>
                     </div>
                 ))}
             </div>
 
-            <div className="bg-white p-4 rounded-xl mb-6 flex items-center justify-between border border-gray-100">
-                <div className="w-1/3 flex gap-2 items-center">
-                    <Input
-                        prefixicon={<Search />}
-                        placeholder="Search"
-                        className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm"
-                    />
-                    <div className="w-[150px] bg-white">
-                        <Select
-                            options={staffOption}
-                            value={selectedStaffOption!}
-                            onValueChange={setSelectedStaffOption}
-                            placeholder="All Staff"
-                        />
+            <div className="my-0 md:my-6">
+                <h3 className="text-[14px] font-normal text-[#131313] mb-2 md:hidden">All Staffs</h3>
+                <div className="bg-white p-4 md:rounded-xl rounded-t-xl flex flex-row-reverse md:flex-row items-center justify-between border border-gray-100 gap-4">
+                    <div className="w-full md:w-1/3 flex gap-2 items-center">
+                        <div className="flex-1">
+                            <Input
+                                prefixicon={<Search />}
+                                placeholder="Search products..."
+                                className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
+                            />
+                        </div>
+                        <div className="w-[120px] md:w-[150px] bg-white">
+                            <Select
+                                options={staffOption}
+                                value={selectedStaffOption!}
+                                onValueChange={setSelectedStaffOption}
+                                placeholder="All Status"
+                            />
+                        </div>
                     </div>
+                    <span className="text-sm font-semibold text-gray-700 hidden md:inline">All staff</span>
                 </div>
-                <span className="text-sm font-semibold text-gray-700">All staff</span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6">
                 {staffs.map((staff) => (
                     <div key={staff.id} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative">
                         <div className="flex justify-between items-start mb-4">
@@ -204,7 +240,7 @@ export default function StaffManagement() {
                                     <p className="text-xs text-gray-500">{staff.role}</p>
                                 </div>
                             </div>
-                            <div className="relative" ref={activeMenu === staff.id ? menuRef : null}>
+                            <div className="relative">
                                 <button
                                     onClick={() => setActiveMenu(activeMenu === staff.id ? null : staff.id)}
                                     className="text-gray-400 hover:text-black"
@@ -213,7 +249,7 @@ export default function StaffManagement() {
                                 </button>
 
                                 {activeMenu === staff.id && (
-                                    <div className="absolute right-0 top-8 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden">
+                                    <div ref={menuRef} className="absolute right-0 top-8 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden">
                                         <button onClick={() => handleAction("profile", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
                                             <UserProfile size={20} color="#8A8A8A" /> View Staff Profile
                                         </button>
@@ -245,6 +281,70 @@ export default function StaffManagement() {
                         <Button variant="primary" className="!bg-[#00634B] w-full">Send message</Button>
                     </div>
                 ))}
+            </div>
+
+            <div className="block md:hidden bg-white rounded-b-xl border border-gray-100 overflow-hidden shadow-sm">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse min-w-[480px]">
+                        <thead>
+                            <tr className="border-b border-gray-100 bg-[#F9FAFB]">
+                                <th className="p-4 text-sm font-semibold text-gray-500 text-left w-1/2"></th>
+                                <th className="p-4 text-sm font-semibold text-gray-500 text-left w-1/2">Name</th>
+                                <th className="p-4 text-sm font-semibold text-gray-500 text-left w-1/4">Role</th>
+                                <th className="p-4 text-sm font-semibold text-gray-500 text-left w-1/5">Status</th>
+                                <th className="p-4 text-sm font-semibold text-gray-500 text-right w-[40px]"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {staffs.map((staff) => (
+                                <tr key={staff.id} className="border-b border-gray-100 last:border-none align-middle">
+                                    <td className="flex items-center gap-3 p-2">
+                                            <img src={staff.image} alt={staff.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                                    </td>
+                                    <td className="p-4 pr-2">
+                                        <div className="flex items-center gap-3">
+                                            <span className="font-normal text-sm text-[#6C6C6C] truncate max-w-[140px]">{staff.name}</span>
+                                        </div>
+                                    </td>
+                                    <td className="p-4 px-2 text-sm text-[#6C6C6C] text-left whitespace-nowrap">
+                                        {staff.role}
+                                    </td>
+                                    <td className="p-4 px-2 text-left">
+                                        <span className={`text-[12px] px-3 py-1 rounded-full font-medium inline-block text-center min-w-[80px] ${staff.status === 'Active' ? 'bg-[#04802E] text-[#ffffff]' : 'bg-[#98A2B3] text-[#F9FAFB]'}`}>
+                                            {staff.status}
+                                        </span>
+                                    </td>
+                                    <td className="p-4 pl-2 text-right relative">
+                                        <button
+                                            onClick={() => setActiveMenu(activeMenu === staff.id ? null : staff.id)}
+                                            className="text-gray-400 hover:text-black p-1 inline-block"
+                                        >
+                                            <MoreVertical color="#A8A8A8" />
+                                        </button>
+
+                                        {activeMenu === staff.id && (
+                                            <div ref={menuRef} className="absolute right-4 top-12 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden text-left">
+                                                <button onClick={() => handleAction("profile", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
+                                                    <UserProfile size={20} color="#8A8A8A" /> View Staff Profile
+                                                </button>
+                                                <button onClick={() => handleAction("edit", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
+                                                    <Edit3 size={18} color="#8A8A8A" /> Edit Role
+                                                </button>
+                                                <button onClick={() => handleAction("deactivate", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
+                                                    <AlertOctagon size={18} color="#8A8A8A" />
+                                                    {staff.status === "Active" ? "Deactivate Staff" : "Activate Staff"}
+                                                </button>
+                                                <button onClick={() => handleAction("remove", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-red-600 text-[14px]">
+                                                    <Trash2 size={18} color="#CB1A14" /> Remove Staff
+                                                </button>
+                                            </div>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <Modal open={modalType === "invite"} onOpenChange={closeModal} className="max-w-[600px]">
