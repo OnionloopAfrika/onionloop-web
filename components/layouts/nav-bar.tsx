@@ -27,6 +27,7 @@ import {
   SupportIcon,
   StaffIconSolid,
 } from "../icons/svgs";
+import NotificationDropdown from "../notifications/notification-dropdown";
 
 const ACTIVE_COLOR = "#024E44";
 
@@ -88,6 +89,7 @@ export default function DashboardNav({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showMobileProfile, setShowMobileProfile] = useState(false);
   const [isDesktopProfileOpen, setIsDesktopProfileOpen] = useState(false);
+  const [notificationDropdown, setNotificationDropDown] = useState(false);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -140,13 +142,31 @@ export default function DashboardNav({
           </div>
 
           <div className="hidden md:flex items-center gap-2 shrink-0">
-            <IconButton badge={messageCount}>
-              <MessageIcon />
-            </IconButton>
+            <div onClick={() => router.push("/messages")}>
+              <IconButton badge={messageCount}>
+                <MessageIcon />
+              </IconButton>
+            </div>
 
-            <IconButton badge={notificationCount}>
-              <NotificationIcon />
-            </IconButton>
+            <div
+              onMouseEnter={() => setNotificationDropDown(true)}
+              onMouseLeave={() => setNotificationDropDown(false)}
+            >
+              <IconButton badge={notificationCount}>
+                <NotificationIcon />
+              </IconButton>
+
+              {notificationDropdown && (
+                <div
+                  className="relative translete-y-[20px] "
+                  onMouseEnter={() => setNotificationDropDown(true)}
+                >
+                  <NotificationDropdown
+                    setNotificationDropDown={setNotificationDropDown}
+                  />
+                </div>
+              )}
+            </div>
 
             <div
               className="relative h-full flex items-center"

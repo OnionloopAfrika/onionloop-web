@@ -89,7 +89,7 @@ export function Notis() {
                     </p>
 
                     <span
-                      className={`p-[8px] max-md:hidden  rounded-full font-[500] text-[10px]  ${items.status === "critical" ? " bg-[#F2BCBA] text-[#CB1A14]" : "bg-[#FBE2B7] text-[#DD900D]"}`}
+                      className={`p-[8px] h-[18px] flex justify-center items-center max-md:hidden  rounded-full font-[500] text-[10px]  ${items.status === "critical" ? " bg-[#F2BCBA] text-[#CB1A14]" : "bg-[#FBE2B7] text-[#DD900D]"}`}
                     >
                       {items.status}
                     </span>
