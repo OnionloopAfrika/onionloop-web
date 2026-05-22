@@ -31,7 +31,7 @@ export function Notis() {
         </button>
       </div>
 
-      <div className="w-full bg-white shadow-[0_0_5px_rgba(0,0,0,0.15)] md:py-[24px] rounded-[40px]">
+      <div className="w-full bg-white shadow-[0_0_5px_rgba(0,0,0,0.15)] md:py-[24px] px-4 rounded-[40px]">
         <div className="flex w-full gap-[24px] overflow-x-auto rounded-[40px] bg-white p-1 no-scrollbar md:w-fit md:bg-[#F7F7F7]">
           {filters.map((filter) => (
             <button
