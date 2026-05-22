@@ -192,7 +192,7 @@ export default function LeaveRequestPage() {
                             {filteredRequests.map((request) => (
                                 <tr key={request.id} className="border-b border-[#F0F0F0] last:border-none hover:bg-gray-50 transition-colors align-middle">
                                     <td className="p-4 md:p-6 pr-2">
-                                        <img src={request.avatar} alt="" className="w-10 h-10 rounded-full border flex-shrink-0" />
+                                        <img src={request.avatar} alt="" className="w-10 h-10 rounded-full flex-shrink-0" />
                                     </td>
                                     <td className="p-4 md:p-6 pr-2">
                                         <div className="flex items-center gap-3">

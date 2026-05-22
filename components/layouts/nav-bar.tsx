@@ -253,7 +253,7 @@ export default function DashboardNav({
                 &larr;back
               </div>
               <div className="bg-white border border-gray-100 rounded-2xl p-6 w-full flex flex-col items-center mb-6 shadow-sm">
-                <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4 shrink-0 border-2 border-white shadow-sm">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4 shrink-0  shadow-sm">
                   {avatarUrl ? (
                     <img
                       src={avatarUrl}
