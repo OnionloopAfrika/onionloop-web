@@ -31,15 +31,15 @@ export function Notis() {
         </button>
       </div>
 
-      <div className="w-full bg-white py-[10px] px-[16px] shadow-[0_0_5px_rgba(0,0,0,0.15)] md:py-[24px] rounded-2xl">
-        <div className="flex w-full gap-[24px] overflow-x-auto rounded-[8px] bg-white p-1 no-scrollbar md:w-fit md:rounded-full md:bg-[#F7F7F7]">
+      <div className="w-full bg-white shadow-[0_0_5px_rgba(0,0,0,0.15)] md:py-[24px] rounded-[40px]">
+        <div className="flex w-full gap-[24px] overflow-x-auto rounded-[40px] bg-white p-1 no-scrollbar md:w-fit md:bg-[#F7F7F7]">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={`p-3 flex items-center justify-center rounded-[40px] text-[16px] font-[500] whitespace-nowrap transition-colors ${activeFilter === filter
-                  ? "min-w-[60px] bg-[#024E44]/10 font-[700] text-[#024E44] md:bg-white md:py-[4px]"
-                  : "min-w-[60px] text-[#8A8A8A] hover:text-[#131313]"
+                  ? " bg-[#024E44]/10 font-[700] text-[#024E44] md:bg-white"
+                  : " text-[#8A8A8A] hover:text-[#131313]"
                 }`}
             >
               {filter}
@@ -82,7 +82,7 @@ export function Notis() {
               <div className="space-y-2">
                 <div className="space-y-2">
                   <div className="flex items-center gap-[8px]">
-                    <p className="text-[10px] font-[500] text-[#000000] md:text-[16px] md:font-[600]">
+                    <p className="text-[14px] font-[500] text-[#000000] md:text-[16px] md:font-[600]">
                       {items.title}
                     </p>
 
@@ -92,7 +92,7 @@ export function Notis() {
                       {items.status}
                     </span>
                   </div>
-                  <p className="text-[10px] font-[500] text-[#6C6C6C] md:text-[14px]">
+                  <p className="text-[12px] font-[500] text-[#6C6C6C] md:text-[14px]">
                     {items.description}
                   </p>
                 </div>
