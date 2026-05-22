@@ -29,7 +29,7 @@ import {
 } from "../icons/svgs";
 import NotificationDropdown from "../notifications/notification-dropdown";
 
-const ACTIVE_COLOR = "#024E44";
+const ACTIVE_COLOR = "#6C6C6C";
 
 type NavItem = {
   key: string;
@@ -94,8 +94,14 @@ export default function DashboardNav({
   const router = useRouter();
   const pathname = usePathname();
 
-  const active =
-    NAV_ITEMS.find((i) => pathname.startsWith(i.href))?.key;
+  const isMessagesActive = pathname.startsWith("/messages");
+  const isNotificationsActive = pathname.startsWith("/notifications");
+
+  const active = isMessagesActive
+    ? "messages"
+    : isNotificationsActive
+      ? "notifications"
+      : NAV_ITEMS.find((i) => pathname.startsWith(i.href))?.key;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -141,10 +147,16 @@ export default function DashboardNav({
             })}
           </div>
 
-          <div className={`${active === "messages" ? "text-[#024E44]" : "text-[#8A8A8A]"} hidden md:flex items-center gap-2 shrink-0`}>
+          <div className={`${active === "messages" || active === "notifications" ? "text-[#024E44]" : "text-[#8A8A8A]"} hidden md:flex items-center gap-2 shrink-0`}>
             <div onClick={() => router.push("/messages")}>
-              <IconButton badge={messageCount}>
-                <MessageIcon />
+              <IconButton badge={messageCount} active={active === "messages"}>
+              {active !== "messages" ? (
+                <MessageIcon color={ACTIVE_COLOR} />
+              ) : (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 4H17C18.4234 4 19.5335 4.35572 20.2852 5.05371C21.0301 5.74547 21.5 6.84538 21.5 8.5V15.5C21.5 17.1546 21.0301 18.2545 20.2852 18.9463C19.5335 19.6443 18.4234 20 17 20H7C5.57665 20 4.46652 19.6443 3.71484 18.9463C2.96994 18.2545 2.5 17.1546 2.5 15.5V8.5C2.5 6.84538 2.96994 5.74547 3.71484 5.05371C4.46652 4.35572 5.57665 4 7 4ZM17.9668 8.21484C17.5387 7.66607 16.7458 7.59326 16.2178 8.01953L13.0879 10.5195L13.0869 10.5205C12.8116 10.7413 12.4159 10.8672 11.9951 10.8672C11.5744 10.8672 11.1786 10.7413 10.9033 10.5205L10.9023 10.5195L7.77246 8.01953C7.22753 7.57941 6.44601 7.69235 6.02148 8.21484L6.01562 8.22266C5.59988 8.75534 5.68162 9.54528 6.21484 9.97852L6.21777 9.98047L9.34375 12.4766V12.4775C10.0957 13.0907 11.0625 13.3799 12 13.3799C12.9395 13.3799 13.8933 13.0897 14.6523 12.4805L17.7822 9.98047L17.7852 9.97852C18.3148 9.54816 18.4001 8.76297 17.9775 8.22852H17.9785C17.9768 8.22621 17.9744 8.22397 17.9727 8.22168C17.9709 8.21952 17.9695 8.217 17.9678 8.21484H17.9668Z" fill="#024E44" stroke="#024E44" />
+                </svg>
+              )}
               </IconButton>
             </div>
 
@@ -152,8 +164,15 @@ export default function DashboardNav({
               onMouseEnter={() => setNotificationDropDown(true)}
               onMouseLeave={() => setNotificationDropDown(false)}
             >
-              <IconButton badge={notificationCount}>
-                <NotificationIcon />
+              <IconButton badge={notificationCount} active={active === "notifications"}>
+                {active !== "notifications" ? (
+                  <NotificationIcon color={ACTIVE_COLOR} />
+                ) : (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.0195 2.5498C15.3628 2.54997 18.0889 5.27563 18.0889 8.62988V10.5C18.0889 10.8024 18.1562 11.1686 18.249 11.501C18.3415 11.8318 18.4738 12.1779 18.6309 12.4365V12.4375L19.7607 14.3174C20.0935 14.8788 20.1562 15.5389 19.9316 16.1426C19.7325 16.6689 19.3416 17.095 18.8271 17.335L18.5996 17.4258C17.5437 17.7777 16.4606 18.0503 15.3701 18.2256L15.3594 18.2275C15.2458 18.2482 15.1581 18.2638 15.0742 18.2715L15.0557 18.2734L15.0371 18.2764L14.5244 18.3428L14.5117 18.3447C14.3059 18.3728 14.0879 18.3919 13.8555 18.4121H13.8506C13.2472 18.4705 12.6335 18.5 12.0195 18.5C11.3951 18.5 10.7702 18.4706 10.1562 18.4121L10.1465 18.4111L9.76758 18.376C9.64278 18.3617 9.51925 18.3442 9.39551 18.3252L9.38574 18.3242L8.9502 18.2646H8.94922C8.88858 18.2541 8.83027 18.2458 8.78223 18.2393L8.63867 18.2178L8.63379 18.2168L7.82129 18.0645C7.01325 17.8979 6.21702 17.6889 5.42773 17.4258L5.42383 17.4238L5.18359 17.332C4.64309 17.0891 4.24587 16.6626 4.05859 16.1562L4.05762 16.1543L3.99219 15.9395C3.86962 15.4274 3.96048 14.844 4.2793 14.3027L5.4082 12.4277L5.41113 12.4229C5.5613 12.1663 5.68995 11.8199 5.78125 11.4883C5.87233 11.1573 5.93939 10.7922 5.93945 10.4902V8.62988C5.93945 5.27763 8.66383 2.55963 12.0195 2.5498ZM11.9893 5.63965C11.2932 5.63965 10.7297 6.20345 10.7295 6.89941V10C10.7296 10.6961 11.2932 11.2598 11.9893 11.2598C12.6853 11.2597 13.2489 10.696 13.249 10V6.89941C13.2488 6.20346 12.6853 5.63967 11.9893 5.63965Z" fill="#024E44" stroke="#024E44" />
+                    <path d="M10.2461 20.627V20.6279C10.8279 20.679 11.4226 20.71 12.0195 20.71C12.6067 20.71 13.1917 20.679 13.7637 20.6279H13.7676C13.8099 20.6239 13.8566 20.6192 13.9062 20.6152C13.4451 21.1563 12.7616 21.4999 12 21.5C11.3411 21.5 10.6919 21.2318 10.2393 20.7627L10.2217 20.7451L10.1299 20.6523C10.118 20.6395 10.1073 20.6255 10.0957 20.6123C10.1457 20.6172 10.1958 20.6227 10.2461 20.627Z" fill="#024E44" stroke="#024E44" />
+                  </svg>
+                )}
               </IconButton>
 
               {notificationDropdown && (
@@ -392,11 +411,10 @@ export default function DashboardNav({
                       router.push(item.href);
                       setIsMenuOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${
-                      isActive
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${isActive
                         ? "bg-[#E6F0EE] text-[#024E44] font-bold"
                         : "text-gray-600 hover:bg-gray-50"
-                    }`}
+                      }`}
                   >
                     <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
                       {isActive
@@ -408,16 +426,47 @@ export default function DashboardNav({
                 );
               })}
 
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50" onClick={() => router.push('/messages')}>
+              <button
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${active === "messages"
+                    ? "bg-[#E6F0EE] text-[#024E44] font-bold"
+                    : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                onClick={() => {
+                  router.push('/messages');
+                  setIsMenuOpen(false);
+                }}
+              >
                 <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
-                  <MessageIcon color="#6B7280" />
+                  {active !== "messages" ? (
+                    <MessageIcon color={ACTIVE_COLOR} />
+                  ) : (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 4H17C18.4234 4 19.5335 4.35572 20.2852 5.05371C21.0301 5.74547 21.5 6.84538 21.5 8.5V15.5C21.5 17.1546 21.0301 18.2545 20.2852 18.9463C19.5335 19.6443 18.4234 20 17 20H7C5.57665 20 4.46652 19.6443 3.71484 18.9463C2.96994 18.2545 2.5 17.1546 2.5 15.5V8.5C2.5 6.84538 2.96994 5.74547 3.71484 5.05371C4.46652 4.35572 5.57665 4 7 4ZM17.9668 8.21484C17.5387 7.66607 16.7458 7.59326 16.2178 8.01953L13.0879 10.5195L13.0869 10.5205C12.8116 10.7413 12.4159 10.8672 11.9951 10.8672C11.5744 10.8672 11.1786 10.7413 10.9033 10.5205L10.9023 10.5195L7.77246 8.01953C7.22753 7.57941 6.44601 7.69235 6.02148 8.21484L6.01562 8.22266C5.59988 8.75534 5.68162 9.54528 6.21484 9.97852L6.21777 9.98047L9.34375 12.4766V12.4775C10.0957 13.0907 11.0625 13.3799 12 13.3799C12.9395 13.3799 13.8933 13.0897 14.6523 12.4805L17.7822 9.98047L17.7852 9.97852C18.3148 9.54816 18.4001 8.76297 17.9775 8.22852H17.9785C17.9768 8.22621 17.9744 8.22397 17.9727 8.22168C17.9709 8.21952 17.9695 8.217 17.9678 8.21484H17.9668Z" fill="#024E44" stroke="#024E44" />
+                      </svg>
+                  )}
                 </div>
                 Messages
               </button>
 
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50" onClick={() => router.push('/notifications')}>
+              <button
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${active === "notifications"
+                    ? "bg-[#E6F0EE] text-[#024E44] font-bold"
+                    : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                onClick={() => {
+                  router.push('/notifications');
+                  setIsMenuOpen(false);
+                }}
+              >
                 <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
-                  <NotificationIcon color="#6B7280" />
+                  {active !== "notifications" ? (
+                    <NotificationIcon color={ACTIVE_COLOR} />
+                  ) : (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.0195 2.5498C15.3628 2.54997 18.0889 5.27563 18.0889 8.62988V10.5C18.0889 10.8024 18.1562 11.1686 18.249 11.501C18.3415 11.8318 18.4738 12.1779 18.6309 12.4365V12.4375L19.7607 14.3174C20.0935 14.8788 20.1562 15.5389 19.9316 16.1426C19.7325 16.6689 19.3416 17.095 18.8271 17.335L18.5996 17.4258C17.5437 17.7777 16.4606 18.0503 15.3701 18.2256L15.3594 18.2275C15.2458 18.2482 15.1581 18.2638 15.0742 18.2715L15.0557 18.2734L15.0371 18.2764L14.5244 18.3428L14.5117 18.3447C14.3059 18.3728 14.0879 18.3919 13.8555 18.4121H13.8506C13.2472 18.4705 12.6335 18.5 12.0195 18.5C11.3951 18.5 10.7702 18.4706 10.1562 18.4121L10.1465 18.4111L9.76758 18.376C9.64278 18.3617 9.51925 18.3442 9.39551 18.3252L9.38574 18.3242L8.9502 18.2646H8.94922C8.88858 18.2541 8.83027 18.2458 8.78223 18.2393L8.63867 18.2178L8.63379 18.2168L7.82129 18.0645C7.01325 17.8979 6.21702 17.6889 5.42773 17.4258L5.42383 17.4238L5.18359 17.332C4.64309 17.0891 4.24587 16.6626 4.05859 16.1562L4.05762 16.1543L3.99219 15.9395C3.86962 15.4274 3.96048 14.844 4.2793 14.3027L5.4082 12.4277L5.41113 12.4229C5.5613 12.1663 5.68995 11.8199 5.78125 11.4883C5.87233 11.1573 5.93939 10.7922 5.93945 10.4902V8.62988C5.93945 5.27763 8.66383 2.55963 12.0195 2.5498ZM11.9893 5.63965C11.2932 5.63965 10.7297 6.20345 10.7295 6.89941V10C10.7296 10.6961 11.2932 11.2598 11.9893 11.2598C12.6853 11.2597 13.2489 10.696 13.249 10V6.89941C13.2488 6.20346 12.6853 5.63967 11.9893 5.63965Z" fill="#024E44" stroke="#024E44" />
+                        <path d="M10.2461 20.627V20.6279C10.8279 20.679 11.4226 20.71 12.0195 20.71C12.6067 20.71 13.1917 20.679 13.7637 20.6279H13.7676C13.8099 20.6239 13.8566 20.6192 13.9062 20.6152C13.4451 21.1563 12.7616 21.4999 12 21.5C11.3411 21.5 10.6919 21.2318 10.2393 20.7627L10.2217 20.7451L10.1299 20.6523C10.118 20.6395 10.1073 20.6255 10.0957 20.6123C10.1457 20.6172 10.1958 20.6227 10.2461 20.627Z" fill="#024E44" stroke="#024E44" />
+                      </svg>
+                  )}
                 </div>
                 Notifications
               </button>
@@ -484,12 +533,14 @@ function Avatar({
 function IconButton({
   children,
   badge,
+  active = false,
 }: {
   children: React.ReactNode;
   badge?: number;
+  active?: boolean;
 }) {
   return (
-    <button className="relative flex items-center justify-center w-9.5 h-9.5 rounded-full border border-gray-200 bg-white cursor-pointer shrink-0 hover:border-gray-300 transition-colors duration-150">
+    <button className={`relative flex items-center justify-center w-9.5 h-9.5 rounded-full border bg-white cursor-pointer shrink-0 transition-colors duration-150 ${active ? "border-[#024E44] bg-[#E6F0EE]/30" : "border-gray-200 hover:border-gray-300"}`}>
       {children}
       {badge !== undefined && badge > 0 && (
         <span className="absolute top-0.5 right-0.5 min-w-4 h-4 rounded-full bg-red-500 text-white text-[9.5px] font-bold flex items-center justify-center px-[3px] leading-none">

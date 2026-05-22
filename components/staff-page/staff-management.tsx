@@ -298,8 +298,12 @@ export default function StaffManagement() {
                         <tbody>
                             {staffs.map((staff) => (
                                 <tr key={staff.id} className="border-b border-gray-100 last:border-none align-middle">
-                                    <td className="flex items-center gap-3 p-2">
-                                            <img src={staff.image} alt={staff.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                                    <td className="p-4 pr-2">
+                                        <img
+                                            src={staff.image}
+                                            alt={staff.name}
+                                            className="w-10 h-10 min-w-10 rounded-full object-cover"
+                                        />
                                     </td>
                                     <td className="p-4 pr-2">
                                         <div className="flex items-center gap-3">

@@ -24,13 +24,13 @@ export function MessageSidebar({
   return (
     <div className="flex flex-col h-full  space-y-[16px] rounded-[16px] overflow-hidden max-md:border-0 max-md:rounded-0">
       <ProfileHeader
-        className="border-b-0  max-md:px-[16px] pt-[10px] pb-[0px] md:hidden"
+        className="border-b-0 md:hidden"
         title="Messages"
         subtitle="Real-time operational alerts across all branches "
       />
 
-      <div className=" max-md:px-[16px] space-y-[16px]">
-        <div className="  flex gap-[16px] items-center max-md:px-0 p-1 ">
+      <div className="space-y-[16px]">
+        <div className="  flex gap-[16px] items-center">
           <div className="flex-1 overflow-hidden max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)]">
             <Input
               placeholder="Search"

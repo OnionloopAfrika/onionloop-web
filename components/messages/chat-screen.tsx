@@ -8,9 +8,8 @@ import {
   PlusIcon,
   MicIcon,
   SmileIcon,
-  SendIcon,
-  ChatSendIcon,
   ChevronLeftIcon,
+  ChatSendIcon,
 } from "../icons/svgs";
 import Image from "next/image";
 import Input from "../ui/input";
@@ -24,18 +23,18 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
   if (!message) return null;
 
   return (
-    <div className="flex flex-col p-[24px]  max-md:p-0 h-full bg-white border border-[#E5E7EB] rounded-[16px] overflow-hidden max-md:border-0 max-md:rounded-0">
-      <div className=" border-b border-b-[#C7C7C7] max-md:px-[16px] max-md:p-[16px] pb-[16px]  flex items-center justify-between bg-white max-md:px-0">
-        <div className="flex items-center gap-3 ">
+    <div className="fixed top-16 bottom-0 left-0 right-0 flex flex-col overflow-hidden bg-white md:relative md:top-auto md:bottom-auto md:left-auto md:right-auto md:h-full md:w-full md:rounded-[16px] md:border md:border-[#E5E7EB] md:p-[24px]">
+      <div className="sticky top-0 z-10 shrink-0 flex items-center justify-between bg-white p-[16px] px-[16px] pb-[16px] border-b border-b-[#C7C7C7] md:static md:px-0">
+        <div className="flex items-center gap-3">
           {onBack && (
             <button
               onClick={onBack}
-              className="md:hidden p-1 text-[#8A8A8A] hover:text-[#131313]"
+              className="p-1 text-[#8A8A8A] hover:text-[#131313] md:hidden"
             >
-              <ChevronLeftIcon className="w-6 h-6 text-[#8A8A8A]" />
+              <ChevronLeftIcon className="h-6 w-6 text-[#8A8A8A]" />
             </button>
           )}
-          <div className="w-[48px] h-[49.5px] max-md:w-[31px] max-md:h-[32px] rounded-full overflow-hidden bg-gray-100 shrink-0 relative">
+          <div className="relative h-[32px] w-[31px] shrink-0 overflow-hidden rounded-full bg-gray-100 md:h-[49.5px] md:w-[48px]">
             <Image
               src={message.avatar}
               fill
@@ -44,46 +43,46 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
             />
           </div>
           <div className="space-y-[4px]">
-            <h2 className="font-[600] text-[18px] text-[#131313] leading-tight flex items-center gap-2">
-              <span className="max-md:text-[#131313] max-md:font-[600] max-md:text-[12px] md:hidden">
+            <h2 className="flex items-center gap-2 text-[12px] font-[600] leading-tight text-[#131313] md:text-[18px]">
+              <span className="md:hidden">
                 @joshuaakin
               </span>
-              <span className="max-md:hidden font-[400] text-[10px] text-[#8A8A8A]">
+              <span className="hidden text-[10px] font-[400] text-[#8A8A8A] md:inline">
                 {message.name}
               </span>
             </h2>
-            <p className="font-[400] text-[14px] text-[#6C6C6C] ">
-              <span className="max-md:hidden">{message.role}</span>
-              <span className="md:hidden uppercase tracking-wider">
+            <p className="text-[14px] font-[400] uppercase tracking-wider text-[#6C6C6C] md:normal-case md:tracking-normal">
+              <span className="hidden md:inline">{message.role}</span>
+              <span className="md:hidden">
                 {message.name}
               </span>
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-[24px] max-md:hidden">
-          <button className="text-[#8A8A8A] hover:text-[#131313] transition-colors">
-            <VideoIcon className="w-6 h-6 text-[#6C6C6C]" />
+        <div className="hidden items-center gap-[24px] md:flex">
+          <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
+            <VideoIcon className="h-6 w-6 text-[#6C6C6C]" />
           </button>
-          <button className="text-[#8A8A8A] hover:text-[#131313] transition-colors">
-            <PhoneIcon className="w-6 h-6 text-[#6C6C6C]" />
+          <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
+            <PhoneIcon className="h-6 w-6 text-[#6C6C6C]" />
           </button>
-          <button className="text-[#8A8A8A] hover:text-[#131313] transition-colors">
-            <StarIcon className="w-6 h-6 text-[#6C6C6C]" />
+          <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
+            <StarIcon className="h-6 w-6 text-[#6C6C6C]" />
           </button>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6 max-md:py-[10px] max-md:px-[16px] space-y-8 bg-white max-md:bg-[#f7f7f7] no-scrollbar max-md:px-0">
+      <div className="no-scrollbar flex-1 overflow-y-auto bg-[#f7f7f7] px-[16px] py-[10px] space-y-8 md:bg-white md:p-6 md:px-0">
         {message.chatHistory.map((chat: any) => (
           <div
             key={chat.id}
             className={`flex flex-col ${chat.sender === "me" ? "items-end" : "items-start"}`}
           >
             <div
-              className={`flex gap-[8px] max-w-[80%]  ${chat.sender === "me" ? "flex-row-reverse" : ""}`}
+              className={`flex max-w-[80%] gap-[8px] ${chat.sender === "me" ? "flex-row-reverse" : ""}`}
             >
               {chat.sender === "other" && (
-                <div className="w-[39px] h-[40px] rounded-full  overflow-hidden bg-gray-100 shrink-0 mt-1 relative">
+                <div className="relative mt-1 h-[40px] w-[39px] shrink-0 overflow-hidden rounded-full bg-gray-100">
                   <Image
                     src={message.avatar}
                     fill
@@ -92,18 +91,17 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
                   />
                 </div>
               )}
-              <div className="space-y-[8px] ">
+              <div className="space-y-[8px]">
                 <div
-                  className={`px-4 py-2.5  text-[14px] leading-relaxed max-md:font-[400] max-md:text-[14px]  ${
-                    chat.sender === "me"
-                      ? "bg-[#04907E] font-[500]  text-[16px] text-white rounded-br-none rounded-tr-[8px] rounded-tl-[8px] rounded-bl-[8px]"
-                      : "bg-[#F7F7F7] font-[500]  text-[16px] text-[#131313] rounded-tr-[8px] rounded-br-[8px] rounded-bl-[8px] bg-white"
-                  }`}
+                  className={`px-4 py-2.5 text-[14px] font-[400] leading-relaxed md:text-[16px] md:font-[500] ${chat.sender === "me"
+                    ? "rounded-bl-[8px] rounded-tl-[8px] rounded-tr-[8px] rounded-br-none bg-[#04907E] text-white"
+                    : "rounded-bl-[8px] rounded-br-[8px] rounded-tr-[8px] bg-white text-[#131313]"
+                    }`}
                 >
                   {chat.text}
                 </div>
                 <p
-                  className={`font-[400] text-[14px] max-md:text-[12px] text-[#363636] mt-1 ${chat.sender === "me" ? "text-right" : "ml-[20px]"}`}
+                  className={`mt-1 text-[12px] font-[400] text-[#363636] md:text-[14px] ${chat.sender === "me" ? "text-right" : "ml-[20px]"}`}
                 >
                   {chat.time}
                 </p>
@@ -113,30 +111,30 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
         ))}
       </div>
 
-      <div className="p-6 bg-white max-md:px-0 max-md:px-[12px] ">
+      <div className="sticky bottom-0 z-10 shrink-0 bg-white p-6 px-[12px] md:static">
         <div className="flex items-center gap-4">
-          <button className="p-2 text-[#8A8A8A] hover:text-[#131313] transition-colors">
-            <PlusIcon className="w-[32px] h-[32px]" />
+          <button className="p-2 text-[#8A8A8A] transition-colors hover:text-[#131313]">
+            <PlusIcon className="h-[32px] w-[32px]" />
           </button>
-          <div className="flex items-center gap-[16px] w-full ">
-            <div className="border w-full rounded-full border-[#C7C7C7]  max-md:bg-white">
+          <div className="flex w-full items-center gap-[16px]">
+            <div className="w-full rounded-full border border-[#C7C7C7] bg-white">
               <Input
                 type="text"
-                className="w-full h-full rounded-full border-0 overflow-hidden bg-white focus:outline-none text-[14px] text-[#131313] placeholder:text-[#6C6C6C] placeholder:font-[400] placeholder:text-[14px] "
+                className="h-full w-full overflow-hidden rounded-full border-0 bg-white text-[14px] text-[#131313] placeholder:text-[14px] placeholder:font-[400] placeholder:text-[#6C6C6C] focus:outline-none"
                 placeholder="Write me a message...."
               />
             </div>
 
-            <div className="flex items-center gap-[16px] ">
-              <button className="text-[#8A8A8A] hover:text-[#131313] transition-colors">
-                <MicIcon className="w-[32px] h-[32px] max-md:hidden" />
+            <div className="flex items-center gap-[16px]">
+              <button className="hidden text-[#8A8A8A] transition-colors hover:text-[#131313] md:block">
+                <MicIcon className="h-[32px] w-[32px]" />
               </button>
-              <button className="text-[#8A8A8A] hover:text-[#131313] transition-colors">
-                <SmileIcon className="w-[32px] h-[32px]" />
+              <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
+                <SmileIcon className="h-[32px] w-[32px]" />
               </button>
 
-              <button className="w-[32px] h-[32px] bg-[#024E44] rounded-full flex items-center justify-center text-white  ">
-                <ChatSendIcon className="w-[19.2px] h-[19.2px] " />
+              <button className="flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#024E44] text-white">
+                <ChatSendIcon className="h-[19.2px] w-[19.2px]" />
               </button>
             </div>
           </div>
