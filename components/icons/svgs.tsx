@@ -363,7 +363,7 @@ export const StaffIcon = ({ color = "#8A8A8A", className }: IconProps) => (
   </svg>
 );
 
-export const MessageIcon = ({ color = "#6C6C6C" }: { color?: string }) => (
+export const MessageIcon = ({ color = "currentColor" }: { color?: string }) => (
   <svg
     width="24"
     height="24"

@@ -8,6 +8,7 @@ import {
   CalendarIcon,
   DownloadIconSolid,
 } from "@/components/icons/svgs";
+import DashboardActivityGrid from "@/components/inventory/dashboard-activity";
 import StatCard from "@/components/layouts/card-component";
 import Header from "@/components/layouts/header";
 import RevenueOverview from "@/components/layouts/revenue-overview";
@@ -39,7 +40,7 @@ export default async function Page() {
       </div>
       {/* card component for the overview */}
 
-      <div className="grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2 py-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4 gap-2 py-4">
         <StatCard
           themeColor="green"
           icon={<RevenueIcon color="#04802E" />}
@@ -145,6 +146,7 @@ export default async function Page() {
           </div>
         </div>
       </div>
+      {/* <DashboardActivityGrid /> */}
     </main>
   );
 }

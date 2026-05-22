@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import {
   CautionIcon,
   FilterIcon,
-  InventoryIcon,
   ReceiptEditIcon,
   SearchIcon,
   ShieldIcon,
@@ -19,30 +18,29 @@ export function Notis() {
 
   return (
     <div className="space-y-[16px]">
-      <div className="  flex gap-[16px] items-center max-md:px-0 p-1 md:hidden">
-        <div className="flex-1 overflow-hidden max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)]">
+      <div className="flex items-center gap-[16px] px-0 p-1 md:hidden">
+        <div className="flex-1 overflow-hidden shadow-[0_0_5px_rgba(0,0,0,0.15)]">
           <Input
             placeholder="Search"
             prefixicon={<SearchIcon color="#8A8A8A" />}
-            className="!bg-white max-md:!bg-[#F7F7F7] max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)] overflow-hidden"
+            className="!bg-[#F7F7F7] shadow-[0_0_5px_rgba(0,0,0,0.15)] overflow-hidden"
           />
         </div>
-        <button className="p-2 border border-[#C7C7C7] rounded-lg hover:bg-gray-50 h-12 w-12 flex items-center justify-center shrink-0 max-md:bg-[#F7F7F7] max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)]">
+        <button className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-[#C7C7C7] bg-[#F7F7F7] p-2 shadow-[0_0_5px_rgba(0,0,0,0.15)] hover:bg-gray-50">
           <FilterIcon className="text-gray-500" />
         </button>
       </div>
 
-      <div className="w-full bg-white flex items-center py-[24px] px-[16px] max-md:py-[10px] max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)]">
-        <div className="p-[4px] h-[52px] p-[4px] flex gap-[24px]  overflow-x-auto no-scrollbar  bg-[#F7F7F7] max-md:bg-white w-fit max-md:w-full rounded-full max-md:w-full max-md:rounded-[8px] max-md:h-[48px] max-md:px-[12px]  ">
+      <div className="w-full bg-white py-[10px] px-[16px] shadow-[0_0_5px_rgba(0,0,0,0.15)] md:py-[24px] rounded-2xl">
+        <div className="flex w-full gap-[24px] overflow-x-auto rounded-[8px] bg-white p-1 no-scrollbar md:w-fit md:rounded-full md:bg-[#F7F7F7]">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-[12px] py-[4px] rounded-full text-[16px] font-[500] whitespace-nowrap transition-colors flex justify-center items-center ${
-                activeFilter === filter
-                  ? "font-[700] bg-white text-[#024E44] max-md:bg-[#024E44]/10 min-w-[60px]  max-md:py-[10px] max-md:px-[12px]"
-                  : "text-[#8A8A8A] min-w-[60px] hover:text-[#131313]"
-              }`}
+              className={`p-3 flex items-center justify-center rounded-[40px] text-[16px] font-[500] whitespace-nowrap transition-colors ${activeFilter === filter
+                  ? "min-w-[60px] bg-[#024E44]/10 font-[700] text-[#024E44] md:bg-white md:py-[4px]"
+                  : "min-w-[60px] text-[#8A8A8A] hover:text-[#131313]"
+                }`}
             >
               {filter}
             </button>
@@ -50,67 +48,67 @@ export function Notis() {
         </div>
       </div>
 
-      <div className="space-y-[24px] w-full">
+      <div className="w-full space-y-[24px]">
         {notis.map((items, i) => (
           <div
             key={i}
-            className={`p-[24px] max-md:p-[12px] rounded-[12px]   flex justify-between items-center shadow-[0_0_15px_rgba(0,0,0,0.15)] ${items.type === "out of stock" ? "bg-[#e7f6ec]" : "bg-white"}`}
+            className={`flex items-center justify-between rounded-[12px] p-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] md:p-[24px] ${items.type === "out of stock" ? "bg-[#e7f6ec]" : "bg-white"}`}
           >
-            <div className="flex gap-[16px] max-md:flex-col">
+            <div className="flex flex-col gap-[16px] md:flex-row">
               {items.type === "out of stock" && (
-                <div className="w-[48px] h-[48px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#F2BCBA] flex justify-center items-center">
-                  <CautionIcon className="text-[#CB1A14] max-md:w-[15px] max-md:h-[15px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#F2BCBA] md:h-[48px] md:w-[48px]">
+                  <CautionIcon className="h-[15px] w-[15px] text-[#CB1A14] md:h-[24px] md:w-[24px]" />
                 </div>
               )}
 
               {items.type === "warning" && (
-                <div className="w-[48px] h-[48px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#FBE2B7] flex justify-center items-center">
-                  <WarningIcon className="text-[#DD900D] max-md:w-[15px] max-md:h-[15px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#FBE2B7] md:h-[48px] md:w-[48px]">
+                  <WarningIcon className="h-[15px] w-[15px] text-[#DD900D] md:h-[24px] md:w-[24px]" />
                 </div>
               )}
 
               {items.type === "new sale" && (
-                <div className="w-[48px] h-[48px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#B5E3C4] flex justify-center items-center">
-                  <ShieldIcon className="text-[#04802E] max-md:w-[15px] max-md:h-[15px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#B5E3C4] md:h-[48px] md:w-[48px]">
+                  <ShieldIcon className="h-[15px] w-[15px] text-[#04802E]  md:h-[24px] md:w-[24px]" />
                 </div>
               )}
 
               {items.type === "inventory" && (
-                <div className="w-[48px] h-[48px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#E7F6EC] flex justify-center items-center">
-                  <ReceiptEditIcon className="text-[#04802E] max-md:w-[15px] max-md:h-[15px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#E7F6EC] md:h-[48px] md:w-[48px]">
+                  <ReceiptEditIcon className="h-[15px] w-[15px] text-[#04802E] md:h-[24px] md:w-[24px]" />
                 </div>
               )}
 
-              <div className="space-y-[16px]">
-                <div className="space-y-[8px]">
+              <div className="space-y-2">
+                <div className="space-y-2">
                   <div className="flex items-center gap-[8px]">
-                    <p className="font-[600] max-md:font-[500] max-md:text6-[10px] text-[20px] text-[#000000]">
+                    <p className="text-[10px] font-[500] text-[#000000] md:text-[16px] md:font-[600]">
                       {items.title}
                     </p>
 
                     <span
-                      className={`p-[8px] h-[18px] flex justify-center items-center max-md:hidden  rounded-full font-[500] text-[10px]  ${items.status === "critical" ? " bg-[#F2BCBA] text-[#CB1A14]" : "bg-[#FBE2B7] text-[#DD900D]"}`}
+                      className={`hidden h-[18px] items-center justify-center rounded-full p-[8px] text-[10px] font-[500] md:flex ${items.status === "critical" ? " bg-[#F2BCBA] text-[#CB1A14]" : "bg-[#FBE2B7] text-[#DD900D]"}`}
                     >
                       {items.status}
                     </span>
                   </div>
-                  <p className="max-md:text-[9px] font-[500] text-[16px] text-[#6C6C6C]">
+                  <p className="text-[10px] font-[500] text-[#6C6C6C] md:text-[14px]">
                     {items.description}
                   </p>
                 </div>
-                <p className="font-[400] text-[14px] text-[#6C6C6C] max-md:hidden">
+                <p className="hidden text-[12px] font-[400] text-[#6C6C6C] md:block">
                   {items.time}
                 </p>
               </div>
             </div>
 
-            <div className=" max-md:flex max-md:flex-col max-md:items-end max-md:gap-[34px]">
-              <p className="font-[400] text-[14px] text-[#6C6C6C] md:hidden max-md:text-[10px]">
+            <div className="flex flex-col items-end gap-[34px] md:block">
+              <p className="text-[10px] font-[400] text-[#6C6C6C] md:hidden">
                 {items.time}
               </p>
 
               {items.type === "out of stock" && (
-                <div className="w-[12px] h-[12px] rounded-full bg-[#04907E]" />
+                <div className="h-[12px] w-[12px] rounded-full bg-[#04907E]" />
               )}
             </div>
           </div>

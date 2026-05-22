@@ -166,7 +166,7 @@ export default function StaffManagement() {
     const isReactivating = selectedStaff?.status === "Deactivated";
 
     return (
-        <div className="min-h-screen py-6">
+        <div className="min-h-screen">
             <div className="flex flex-col md:flex-row gap-4 justify-between items-start mb-6">
                 <Header
                     heading="Staff Management"
@@ -185,7 +185,7 @@ export default function StaffManagement() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-4 gap-2 py-4">
                 {[
                     { label: "Total Staffs", count: 6, sub: "All active", color: "bg-[#EDE8FC] text-[#7C53FC]", icon: <MultiUser />, className: "col-span-2 md:col-span-1" },
                     { label: "Online now", count: 4, sub: "Using staff app", color: "bg-green-100 text-[#04802E]", icon: <TimerClock />, className: "col-span-1" },

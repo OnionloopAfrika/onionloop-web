@@ -18,19 +18,19 @@ export default function NotificationDropdown({
   const router = useRouter();
 
   return (
-    <div className=" max-h-[80vh]  absolute top-[calc(100%+2px)] left-[-500px] right-0.5 max-w-[600px] min-w-[600px] bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100  flex flex-col items-center z-50">
-      <div className="w-full flex justify-between items-center p-[24px] h-[110px]">
-        <p className="font-[600] text-[24px] text-[#131313] flex items-center gap-[8px]">
+    <div className="absolute top-[calc(100%+2px)] left-[-350px] right-0.5 z-50 flex max-h-[80vh] w-full min-w-[600px] max-w-[600px] flex-col items-center rounded-lg border border-gray-100 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+      <div className="flex w-full items-center justify-between px-4 py-3">
+        <p className="flex items-center gap-[8px] text-[20px] font-[600] text-[#131313]">
           Notification{" "}
-          <span className="bg-[#F2BCBA] p-[10px] rounded-full font-[500] text-[12px] text-[#CB1A14] h-[20px] flex justify-center items-center">
+          <span className="flex h-[20px] items-center justify-center rounded-full bg-[#F2BCBA] p-[10px] text-[12px] font-[500] text-[#CB1A14]">
             {notis.length} new
           </span>
         </p>
 
-        <p className="font-[600] text-[14px] text-[#024E44]">Mark all read</p>
+        <p className="text-[14px] font-normal text-[#024E44]">Mark all read</p>
       </div>
 
-      <div className="max-h-[60vh]  overflow-y-scroll">
+      <div className="max-h-[50vh] overflow-y-scroll w-full">
         {notis.slice(0, 3).map((items, i) => (
           <div
             onClick={() => {
@@ -38,67 +38,67 @@ export default function NotificationDropdown({
               setNotificationDropDown(false);
             }}
             key={i}
-            className={`p-[24px] max-md:p-[12px] cursor-pointer  flex justify-between items-center border-b border-b-[#C7C7C7]  ${items.type === "out of stock" ? "bg-[#e7f6ec]" : "bg-white"}`}
+            className={`flex cursor-pointer items-center justify-between border-b border-b-[#C7C7C7] p-[12px] md:p-[18px] ${items.type === "out of stock" ? "bg-[#e7f6ec]" : "bg-white"}`}
           >
-            <div className="flex gap-[16px] max-md:flex-col">
+            <div className="flex flex-col gap-2 md:flex-row">
               {items.type === "out of stock" && (
-                <div className="w-[40px] h-[40px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#F2BCBA] flex justify-center items-center">
-                  <CautionIcon className="text-[#CB1A14] max-md:w-[15px] max-md:h-[15px] w-[25.81px] h-[25.81px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#F2BCBA] md:h-[40px] md:w-[40px]">
+                  <CautionIcon className="h-[15px] w-[15px] text-[#CB1A14] md:h-[25.81px] md:w-[25.81px]" />
                 </div>
               )}
 
               {items.type === "warning" && (
-                <div className="w-[40px] h-[40px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#FBE2B7] flex justify-center items-center">
-                  <WarningIcon className="text-[#DD900D] max-md:w-[15px] max-md:h-[15px] w-[25.81px] h-[25.81px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#FBE2B7] md:h-[40px] md:w-[40px]">
+                  <WarningIcon className="h-[15px] w-[15px] text-[#DD900D] md:h-[25.81px] md:w-[25.81px]" />
                 </div>
               )}
 
               {items.type === "new sale" && (
-                <div className="w-[40px] h-[40px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#B5E3C4] flex justify-center items-center">
-                  <ShieldIcon className="text-[#04802E] max-md:w-[15px] max-md:h-[15px] w-[25.81px] h-[25.81px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#B5E3C4] md:h-[40px] md:w-[40px]">
+                  <ShieldIcon className="h-[15px] w-[15px] text-[#04802E] md:h-[25.81px] md:w-[25.81px]" />
                 </div>
               )}
 
               {items.type === "inventory" && (
-                <div className="w-[40px] h-[40px] max-md:w-[24px] max-md:h-[24px] rounded-[7.74px] bg-[#E7F6EC] flex justify-center items-center">
-                  <ReceiptEditIcon className="text-[#04802E] max-md:w-[15px] max-md:h-[15px] w-[25.81px] h-[25.81px]" />
+                <div className="flex h-[24px] w-[24px] items-center justify-center rounded-[7.74px] bg-[#E7F6EC] md:h-[40px] md:w-[40px]">
+                  <ReceiptEditIcon className="h-[15px] w-[15px] text-[#04802E] md:h-[25.81px] md:w-[25.81px]" />
                 </div>
               )}
 
-              <div className="space-y-[16px]">
-                <div className="space-y-[8px]">
+              <div className="space-y-1">
+                <div className="">
                   <div className="flex items-center gap-[8px]">
-                    <p className="font-[600] max-md:font-[500] max-md:text6-[10px] text-[20px] text-[#000000]">
+                    <p className="text-[10px] font-bold text-[#000000] md:text-[16px] md:font-semibold">
                       {items.title}
                     </p>
                   </div>
-                  <p className="max-md:text-[9px] font-[500] text-[14px] text-[#6C6C6C]">
+                  <p className="text-[10px] font-[500] text-[#6C6C6C] md:text-[12px]">
                     {items.description}
                   </p>
                 </div>
-                <p className="font-[400] text-[14px] text-[#6C6C6C] max-md:hidden">
+                <p className="hidden text-[12px] font-[400] text-[#6C6C6C] md:block">
                   {items.time}
                 </p>
               </div>
             </div>
 
-            <div className=" max-md:flex max-md:flex-col max-md:items-end max-md:gap-[34px]">
-              <p className="font-[400] text-[14px] text-[#6C6C6C] md:hidden max-md:text-[10px]">
+            <div className="flex flex-col items-end gap-[34px] md:block">
+              <p className="text-[10px] font-[400] text-[#6C6C6C] md:hidden">
                 {items.time}
               </p>
 
               {items.type === "out of stock" && (
-                <div className="w-[12px] h-[12px] rounded-full bg-[#04907E]" />
+                <div className="h-[12px] w-[12px] rounded-full bg-[#04907E]" />
               )}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center items-center h-[64px]">
+      <div className="flex h-[64px] items-center justify-center">
         <p
           onClick={() => router.push("/notifications")}
-          className="font-[600] text-[16px] text-[#024E44] cursor-pointer"
+          className="cursor-pointer text-[16px] font-[600] text-[#024E44]"
         >
           View all notification
         </p>

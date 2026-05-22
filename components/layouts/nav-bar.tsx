@@ -95,7 +95,7 @@ export default function DashboardNav({
   const pathname = usePathname();
 
   const active =
-    NAV_ITEMS.find((i) => pathname.startsWith(i.href))?.key ?? "overview";
+    NAV_ITEMS.find((i) => pathname.startsWith(i.href))?.key;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -141,7 +141,7 @@ export default function DashboardNav({
             })}
           </div>
 
-          <div className="hidden md:flex items-center gap-2 shrink-0">
+          <div className={`${active === "messages" ? "text-[#024E44]" : "text-[#8A8A8A]"} hidden md:flex items-center gap-2 shrink-0`}>
             <div onClick={() => router.push("/messages")}>
               <IconButton badge={messageCount}>
                 <MessageIcon />
@@ -408,14 +408,14 @@ export default function DashboardNav({
                 );
               })}
 
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50">
+              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50" onClick={() => router.push('/messages')}>
                 <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
                   <MessageIcon color="#6B7280" />
                 </div>
                 Messages
               </button>
 
-              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50">
+              <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50" onClick={() => router.push('/notifications')}>
                 <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
                   <NotificationIcon color="#6B7280" />
                 </div>
