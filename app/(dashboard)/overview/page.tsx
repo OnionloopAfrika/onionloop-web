@@ -8,6 +8,7 @@ import {
   CalendarIcon,
   DownloadIconSolid,
 } from "@/components/icons/svgs";
+import DashboardActivityGrid from "@/components/inventory/dashboard-activity";
 import StatCard from "@/components/layouts/card-component";
 import Header from "@/components/layouts/header";
 import RevenueOverview from "@/components/layouts/revenue-overview";
@@ -145,6 +146,7 @@ export default async function Page() {
           </div>
         </div>
       </div>
+      {/* <DashboardActivityGrid /> */}
     </main>
   );
 }

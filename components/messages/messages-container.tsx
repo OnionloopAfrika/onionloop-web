@@ -18,7 +18,7 @@ export function MessagesContainer() {
     messages.find((m) => m.id === selectedId) || messages[0];
 
   return (
-    <div className="flex-1 grid grid-cols-1 md:grid-cols-[1fr_2.5fr] gap-[24px] px-4 max-md:px-0 md:px-6 pb-6 overflow-hidden relative">
+    <div className="flex-1 grid grid-cols-1 md:grid-cols-[1fr_2.5fr] gap-[24px] pb-6 overflow-hidden relative">
       <div
         className={`min-h-full ${showChatOnMobile ? "max-md:hidden" : "max-md:block"}`}
       >

@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <div className="h-screen flex flex-col bg-[#f7f7f7]">
       <ProfileHeader
-        className="border-b-0 pl-[24px] pt-[10px] max-md:pl-0 max-md:hidden"
+        className="border-b-0 max-md:hidden"
         title="Messages"
         subtitle="Real-time operational alerts across all branches"
       />

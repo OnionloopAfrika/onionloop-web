@@ -130,7 +130,7 @@ const TransactionsPage = () => {
           heading="Transactions"
           subHeading="View and manage all sales and payment records"
         />
-        <div className="flex gap-3 w-full md:w-auto justify-end mt-4 md:mt-0">
+        <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
           <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700">
             <CalendarIcon />
             Mar 2026
@@ -182,8 +182,9 @@ const TransactionsPage = () => {
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+        <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
+          <div className="flex sm:flex-row gap-2 w-full md:w-auto">
+            <div className="flex-1">
             <Input
               type="text"
               placeholder="Search by ref or amount..."
@@ -205,13 +206,18 @@ const TransactionsPage = () => {
                 </svg>
               }
             />
-            <Select
-              value={statusFilter}
-              onValueChange={setStatusFilter}
-              options={statusOptions}
-              placeholder="All Status"
+            </div>
+
+            <div className="w-[120px] md:w-[150px] bg-white">
+              <Select
+                value={statusFilter}
+                onValueChange={setStatusFilter}
+                options={statusOptions}
+                placeholder="All Status"
               // className="w-full sm:w-48"
-            />
+              />
+            </div>
+
           </div>
           <span className="text-[13px] text-gray-500 font-medium whitespace-nowrap self-end md:self-auto">
             Showing {filteredTransactions.length} transactions

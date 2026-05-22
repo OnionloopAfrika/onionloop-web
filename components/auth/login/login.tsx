@@ -93,7 +93,7 @@ export default function Login() {
                             className="w-full !bg-[#044E49] !py-4 !text-[16px] font-bold rounded-lg"
                             onClick={() => router.push('/overview') }
                         >
-                            Signin
+                            Sign in
                         </Button>
                     </div>
                 </form>
