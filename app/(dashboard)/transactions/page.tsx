@@ -17,6 +17,7 @@ import Header from "@/components/layouts/header";
 import { MOCK_TRANSACTIONS } from "@/lib/mockdata";
 import Input from "@/components/ui/input";
 import Select from "@/components/ui/select";
+import { Search } from "@/components/staff-page/icon";
 
 interface Transaction {
   id: string;
@@ -186,25 +187,11 @@ const TransactionsPage = () => {
           <div className="flex sm:flex-row gap-2 w-full md:w-auto">
             <div className="flex-1">
             <Input
-              type="text"
               placeholder="Search by ref or amount..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full sm:w-72"
-              prefixicon={
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14.12 12.71h-.74l-.27-.25A5.87 5.87 0 1 0 11.8 13.8l.25.27v.74l4.24 4.23 1.27-1.27-4.44-4.26zm-5.62 0a4.22 4.22 0 1 1 0-8.44 4.22 4.22 0 0 1 0 8.44z"
-                    fill="#8A8A8A"
-                  />
-                </svg>
-              }
+              className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
+              prefixicon={<Search />}
             />
             </div>
 

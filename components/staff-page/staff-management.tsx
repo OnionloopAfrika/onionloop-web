@@ -209,7 +209,7 @@ export default function StaffManagement() {
                         <div className="flex-1">
                             <Input
                                 prefixicon={<Search />}
-                                placeholder="Search products..."
+                                placeholder="Search staff..."
                                 className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
                             />
                         </div>
