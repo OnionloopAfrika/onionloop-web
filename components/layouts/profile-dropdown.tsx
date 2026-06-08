@@ -9,7 +9,7 @@ import {
   StaffIconSolid,
 } from "../icons/svgs";
 import Link from "next/link";
-
+import { useSubdomain } from "@/hooks/useSubdomain";
 interface ProfileDropdownProps {
   businessName: string;
   userName: string;
@@ -58,6 +58,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
       isDestructive: true,
     },
   ];
+  const subdomain = useSubdomain();
 
   return (
     <div
@@ -100,7 +101,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
       <div className="w-full flex flex-col gap-1">
         {menuItems.map((item, idx) => (
           <Link
-            href={`/profile/${item.id}`}
+            href={`/${subdomain}/profile/${item.id}`}
             key={idx}
             className={`${active === item.id ? "bg-[#E7F6EC] text-[#04907E]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
           >

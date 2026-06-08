@@ -5,9 +5,11 @@ import Input from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { OnionloopIcon } from "@/components/icons/svgs";
+import { useSubdomain } from "@/hooks/useSubdomain";
 
 export default function Login() {
     const router = useRouter();
+    const subdomain = useSubdomain()
 
     return (
         <div className="min-h-screen w-full bg-[#F5F7F9] relative flex flex-col items-center justify-center overflow-hidden p-4">
@@ -91,7 +93,7 @@ export default function Login() {
                         <Button
                             variant="primary"
                             className="w-full !bg-[#044E49] !py-4 !text-[16px] font-bold rounded-lg"
-                            onClick={() => router.push('/overview') }
+                            onClick={() => router.push(`/${subdomain}`) }
                         >
                             Sign in
                         </Button>
