@@ -10,7 +10,11 @@ export default function DashboardLayout({
 }) {
     const pathname = usePathname();
 
-    const isMessagesPage = pathname.startsWith("/messages");
+    const isAuthPage = pathname?.includes("/auth/login") || pathname?.includes("/auth/logout");
+
+    if (isAuthPage) {
+        return <>{children}</>;
+    }
 
     return (
         <>
@@ -23,9 +27,7 @@ export default function DashboardLayout({
                 notificationCount={4}
             />
 
-            <main
-                className={`w-full bg-[#F7F7F7] p-4 md:p-6`}
-            >
+            <main className="w-full bg-[#F7F7F7] p-4 md:p-6">
                 {children}
             </main>
         </>

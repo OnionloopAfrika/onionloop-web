@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
 import ProfileDropdown from "./profile-dropdown";
 import {
   OverviewIcon,
@@ -28,7 +27,7 @@ import {
   StaffIconSolid,
 } from "../icons/svgs";
 import NotificationDropdown from "../notifications/notification-dropdown";
-
+import { useSubdomain } from "@/hooks/useSubdomain";
 const ACTIVE_COLOR = "#6C6C6C";
 
 type NavItem = {
@@ -39,36 +38,6 @@ type NavItem = {
   href: string;
 };
 
-const NAV_ITEMS: NavItem[] = [
-  {
-    key: "overview",
-    href: "/overview",
-    label: "Overview",
-    icon: (color) => <OverviewIcon color={color} />,
-    activeIcon: (color) => <OverviewActiveIcon color={color} />,
-  },
-  {
-    key: "transactions",
-    href: "/transactions",
-    label: "Transactions",
-    icon: (color) => <TransactionIcon color={color} />,
-    activeIcon: (color) => <TransactionActiveIcon color={color} />,
-  },
-  {
-    key: "inventory",
-    href: "/inventory",
-    label: "Inventory",
-    icon: (color) => <InventoryIcon color={color} />,
-    activeIcon: (color) => <InventoryActiveIcon color={color} />,
-  },
-  {
-    key: "staffs",
-    href: "/staffs",
-    label: "Staffs",
-    icon: (color) => <StaffIcon color={color} />,
-    activeIcon: (color) => <StaffActiveIcon color={color} />,
-  },
-];
 
 interface DashboardNavProps {
   businessName: string;
@@ -86,6 +55,7 @@ export default function DashboardNav({
   messageCount = 1,
   notificationCount = 4,
 }: DashboardNavProps) {
+  const subdomain = useSubdomain();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showMobileProfile, setShowMobileProfile] = useState(false);
   const [isDesktopProfileOpen, setIsDesktopProfileOpen] = useState(false);
@@ -93,6 +63,38 @@ export default function DashboardNav({
 
   const router = useRouter();
   const pathname = usePathname();
+
+
+  const NAV_ITEMS: NavItem[] = [
+    {
+      key: "overview",
+      href: `/${subdomain}/overview`,
+      label: "Overview",
+      icon: (color) => <OverviewIcon color={color} />,
+      activeIcon: (color) => <OverviewActiveIcon color={color} />,
+    },
+    {
+      key: "transactions",
+      href: `/${subdomain}/transactions`,
+      label: "Transactions",
+      icon: (color) => <TransactionIcon color={color} />,
+      activeIcon: (color) => <TransactionActiveIcon color={color} />,
+    },
+    {
+      key: "inventory",
+      href: `/${subdomain}/inventory`,
+      label: "Inventory",
+      icon: (color) => <InventoryIcon color={color} />,
+      activeIcon: (color) => <InventoryActiveIcon color={color} />,
+    },
+    {
+      key: "staffs",
+      href: `/${subdomain}/staffs`,
+      label: "Staffs",
+      icon: (color) => <StaffIcon color={color} />,
+      activeIcon: (color) => <StaffActiveIcon color={color} />,
+    },
+  ];
 
   const isMessagesActive = pathname.startsWith("/messages");
   const isNotificationsActive = pathname.startsWith("/notifications");
@@ -113,18 +115,20 @@ export default function DashboardNav({
     setIsMenuOpen(false);
   };
 
+
   return (
     <>
-      <nav className="w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)] sticky top-0 z-[60]">
+      <nav className="w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)] sticky top-0 z-[10]">
         <div className="flex items-center h-16 md:h-18 px-4 md:px-7 max-w-360 mx-auto justify-between">
           <Link
-            href="/overview"
+            href={`/${subdomain}/overview`}
             className="flex items-center gap-2 no-underline shrink-0"
           >
             <OnionloopIcon />
           </Link>
 
-          <div className="hidden md:flex items-center justify-center gap-1 flex-1">
+          { subdomain === "crew" &&
+            <div className="hidden md:flex items-center justify-center gap-1 flex-1">
             {NAV_ITEMS.map((item) => {
               const isActive = active === item.key;
               return (
@@ -146,9 +150,10 @@ export default function DashboardNav({
               );
             })}
           </div>
+          }
 
           <div className={`${active === "messages" || active === "notifications" ? "text-[#024E44]" : "text-[#8A8A8A]"} hidden md:flex items-center gap-2 shrink-0`}>
-            <div onClick={() => router.push("/messages")}>
+            <div onClick={() => router.push(`/${subdomain}/messages`)}>
               <IconButton badge={messageCount} active={active === "messages"}>
               {active !== "messages" ? (
                 <MessageIcon color={ACTIVE_COLOR} />
@@ -432,7 +437,7 @@ export default function DashboardNav({
                     : "text-gray-600 hover:bg-gray-50"
                   }`}
                 onClick={() => {
-                  router.push('/messages');
+                  router.push(`/${subdomain}/messages`);
                   setIsMenuOpen(false);
                 }}
               >
@@ -454,7 +459,7 @@ export default function DashboardNav({
                     : "text-gray-600 hover:bg-gray-50"
                   }`}
                 onClick={() => {
-                  router.push('/notifications');
+                  router.push(`/${subdomain}/notifications`);
                   setIsMenuOpen(false);
                 }}
               >

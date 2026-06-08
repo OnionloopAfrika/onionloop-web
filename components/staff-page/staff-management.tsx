@@ -9,6 +9,7 @@ import Select from "../ui/select";
 import { UserProfile, Search, MoreVertical, Edit3, AlertOctagon, Trash2, Mail, Phone, SquareProfile, MultiUser, TimerClock, SparkIcon, CheckIconGreen } from "./icon";
 import Header from "../layouts/header";
 import { useRouter } from "next/navigation";
+import { useSubdomain } from "@/hooks/useSubdomain";
 
 interface Staff {
     id: string;
@@ -98,6 +99,7 @@ const staffOption = [
 
 export default function StaffManagement() {
     const router = useRouter();
+    const subdomain = useSubdomain();
     const [staffs, setStaffs] = useState<Staff[]>(initialStaffs);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const [selectedStaff, setSelectedStaff] = useState<Staff | null>(null);
@@ -173,7 +175,7 @@ export default function StaffManagement() {
                     subHeading="Manage your team, role, and app access"
                 />
                 <div className="flex gap-3 w-full md:w-auto justify-end">
-                    <button onClick={() => router.push('/staffs/leave-request')} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
+                    <button onClick={() => router.push(`/${subdomain}/staffs/leave-request`)} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
                         View Leave Request
                     </button>
                     <button
@@ -352,7 +354,7 @@ export default function StaffManagement() {
             </div>
 
             <Modal open={modalType === "invite"} onOpenChange={closeModal} className="max-w-[600px]">
-                <div className="max-h-[85vh] overflow-y-auto px-1">
+                <div className="max-h-[75vh] overflow-y-auto z-10">
                     <div className="text-center mb-8">
                         <h2 className="text-[24px] font-bold text-[#131313] mb-2">Invite New Staff</h2>
                         <p className="text-[#6C6C6C] text-[14px]">They will receive an invite to download the onionloop staff app</p>
