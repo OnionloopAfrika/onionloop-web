@@ -21,8 +21,8 @@ function AppCard({ title, description, subdomain, badge, icon }: AppCardProps) {
       return;
     }
 
-    if (hostname.includes("vercel.app")) {
-      window.location.href = `https://${subdomain}.onionloop-web.vercel.app/${subdomain}/auth/login/`;
+    if (hostname === "onionloop-web.vercel.app") {
+      window.location.href = `https://onionloop-web.vercel.app/${subdomain}/auth/login/`;
       return;
     }
 
