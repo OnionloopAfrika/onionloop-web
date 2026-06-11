@@ -89,6 +89,11 @@ export default function DashboardNav({
       value: "group-manager",
       href: "/mega/group-manager/dashboard",
     },
+    {
+      label: "Branch Manager",
+      value: "branch-manager",
+      href: "/mega/branch-manager/dashboard",
+    },
   ];
 
   const currentRole =

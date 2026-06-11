@@ -7,9 +7,11 @@ import {
   CASHIER_NAV_ITEMS,
   SUPER_ADMIN_NAV_SECTIONS,
   GROUP_MANAGER_NAV_SECTIONS,
+  BRANCH_MANAGER_NAV_SECTIONS,
   NavItem,
   NavSection,
 } from "@/utils/constant/navigation";
+import { ROLE } from "@/utils/constant/const";
 
 export default function DashboardLayout({
   children,
@@ -28,15 +30,31 @@ export default function DashboardLayout({
   let navItems: NavItem[] | undefined = undefined;
   let navSections: NavSection[] | undefined = undefined;
 
-  if (pathname?.includes("/mega/cashier")) {
-    navItems = CASHIER_NAV_ITEMS;
-  } else if (pathname?.includes("/mega/group-manager")) {
-    navSections = GROUP_MANAGER_NAV_SECTIONS;
-  } else if (
-    pathname?.includes("/mega/super-admin") ||
-    pathname === "/mega/dashboard"
-  ) {
-    navSections = SUPER_ADMIN_NAV_SECTIONS;
+  const activeRole = pathname?.includes("/mega/cashier")
+    ? "CASHIER"
+    : pathname?.includes("/mega/group-manager")
+      ? "GROUP_MANAGER"
+      : pathname?.includes("/mega/branch-manager")
+        ? "BRANCH_MANAGER"
+        : pathname?.includes("/mega/super-admin")
+          ? "SUPER_ADMIN"
+          : ROLE;
+
+  switch (activeRole) {
+    case "CASHIER":
+      navItems = CASHIER_NAV_ITEMS;
+      break;
+    case "GROUP_MANAGER":
+      navSections = GROUP_MANAGER_NAV_SECTIONS;
+      break;
+    case "BRANCH_MANAGER":
+      navSections = BRANCH_MANAGER_NAV_SECTIONS;
+      break;
+    case "SUPER_ADMIN":
+      navSections = SUPER_ADMIN_NAV_SECTIONS;
+      break;
+    default:
+      navSections = SUPER_ADMIN_NAV_SECTIONS;
   }
 
   return (
