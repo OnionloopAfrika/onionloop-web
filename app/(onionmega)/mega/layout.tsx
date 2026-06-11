@@ -10,13 +10,13 @@ import {
   NavItem,
   NavSection,
 } from "@/utils/constant/navigation";
-
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+
 
   const isAuthPage =
     pathname?.includes("/auth/login") || pathname?.includes("/auth/logout");
