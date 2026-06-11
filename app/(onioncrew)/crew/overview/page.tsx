@@ -28,7 +28,7 @@ export default async function Page() {
         subHeading="Here's what's happening with your business today — Tuesday, Mar 24, 2026"
       />
         <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
-          <button className="inline-flex items-center justify-center gap-1 px-1 border border-gray-200 rounded-lg bg-white text-[14px] font-medium text-gray-700">
+          <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-medium text-gray-700">
             <CalendarIcon />
             Mar 2026
           </button>

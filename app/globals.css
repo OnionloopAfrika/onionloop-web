@@ -40,3 +40,8 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* In your global CSS file */
+.recharts-wrapper, .recharts-surface {
+  outline: none !important;
+}

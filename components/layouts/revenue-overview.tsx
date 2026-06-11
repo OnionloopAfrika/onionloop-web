@@ -38,12 +38,12 @@ export default function RevenueOverview({ initialData }: RevenueOverviewProps) {
   return (
     <div
       className="w-full rounded-2xl bg-white p-6 shadow-md"
-      style={{ height: "500px" }}
+      style={{ height: "520px" }}
     >
       {/* ── Header ── */}
       <div className="mb-5 flex items-start justify-between">
         <div>
-          <h2 className="text-[17px] font-semibold text-gray-900">
+          <h2 className="text-[20px] font-semibold text-gray-900">
             Revenue Overview
           </h2>
           <p
