@@ -6,7 +6,8 @@ export function middleware(request: NextRequest) {
 
     const currentHost = hostname
         .replace('.localhost:3000', '')
-        .replace('.onionloop.com', '');
+        .replace('.onionloop.com', '')
+        .replace('.onionloop-web.vercel.app', '');
 
     const url = request.nextUrl.clone();
 
@@ -20,7 +21,7 @@ export function middleware(request: NextRequest) {
         return NextResponse.rewrite(url);
     }
 
-    if (currentHost === 'crew' || currentHost === 'www' || currentHost === '') {
+    if (currentHost === 'crew' || currentHost === 'www' || currentHost === '' || currentHost === 'onionloop-web.vercel.app') {
         url.pathname = `/(onioncrew)${request.nextUrl.pathname}`;
         return NextResponse.rewrite(url);
     }

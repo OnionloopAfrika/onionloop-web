@@ -121,8 +121,8 @@ export default function RevenueChart({ series }: RevenueChartProps) {
 
     return (
         <ResponsiveContainer width="100%" height="100%" >
-            <AreaChart data={series} margin={{ top: 44, right: 24, left: 0, bottom: 0 }
-            }>
+            <AreaChart data={series} margin={{ top: 44, right: 24, left: 0, bottom: 0 } 
+            } accessibilityLayer={false}>
 
                 {/* Gradient fill — bold top opacity, slow 3-stop fade */}
                 < defs >

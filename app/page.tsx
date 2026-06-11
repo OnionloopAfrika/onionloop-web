@@ -13,10 +13,20 @@ interface AppCardProps {
 
 function AppCard({ title, description, subdomain, badge, icon }: AppCardProps) {
   const handleNavigation = () => {
-    const isLocalhost = window.location.hostname.includes("localhost") || window.location.hostname.includes("lvh.me");
-    const baseDomain = isLocalhost ? "lvh.me:3000" : "onionloop.com";
+    const hostname = window.location.hostname;
+    const isLocalhost = hostname.includes("localhost") || hostname.includes("lvh.me");
 
-    window.location.href = `http://${subdomain}.${baseDomain}/${subdomain}/auth/login/`;
+    if (isLocalhost) {
+      window.location.href = `http://${subdomain}.lvh.me:3000/${subdomain}/auth/login/`;
+      return;
+    }
+
+    if (hostname.includes("vercel.app")) {
+      window.location.href = `https://${subdomain}.onionloop-web.vercel.app/${subdomain}/auth/login/`;
+      return;
+    }
+
+    window.location.href = `https://${subdomain}.onionloop.com/${subdomain}/auth/login/`;
   };
 
   return (
@@ -59,8 +69,6 @@ export default function Home() {
         <OnionloopIcon />
       </header>
 
-
-      {/* Decorative Background SVGs - anchored to screen corners */}
       <div className="fixed bottom-0 left-0 pointer-events-none z-0">
         <svg width="362" height="269" viewBox="0 0 362 269" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g opacity="0.7">
@@ -94,6 +102,7 @@ export default function Home() {
           </g>
         </svg>
       </div>
+
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div className="w-full max-w-5xl text-center">
           <h1 className="text-4xl font-extrabold tracking-tight text-[#024e44] sm:text-5xl">
