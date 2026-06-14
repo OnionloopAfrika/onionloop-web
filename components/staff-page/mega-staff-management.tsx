@@ -206,7 +206,7 @@ export default function StaffManagement() {
                     subHeading="Manage your team, role, and app access"
                 />
                 <div className="flex gap-3 w-full md:w-auto justify-end">
-                    <button onClick={() => router.push(`/${subdomain}/staff/leave-request`)} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
+                    <button onClick={() => router.push(`/${subdomain}/super-admin/staff/leave-request`)} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
                         View Leave Request
                     </button>
                     <button
