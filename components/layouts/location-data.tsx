@@ -4,19 +4,10 @@ import React, { useState } from "react";
 import Input from "../ui/input";
 import Select from "../ui/select";
 import { Search } from "../staff-page/icon";
+import LocationList from "./location-table";
+import { LocationItem } from "@/types/types";
 
-interface LocationItem {
-    id: string;
-    group: string;
-    name: string;
-    manager: string;
-    revenue: string;
-    trend: string;
-    isTrendUp: boolean;
-    transactions: number;
-    perfScore: number;
-    status: "Healthy" | "Warning" | "Critical";
-}
+
 
 interface LocationManagementProps {
     selectedGroupFilter: string;
@@ -26,7 +17,7 @@ interface LocationManagementProps {
     statusAlertFilter: string;
 }
 
-const mockLocationsData: LocationItem[] = [
+export const mockLocationsData: LocationItem[] = [
     { id: "1", group: "SW Region", name: "Ikeja", manager: "Tunde Obi", revenue: "₦12.4M", trend: "14.8%", isTrendUp: true, transactions: 1000, perfScore: 91, status: "Healthy" },
     { id: "2", group: "SW Region", name: "Gbagi", manager: "Ebipade Goinbo", revenue: "₦11.2M", trend: "10.9%", isTrendUp: true, transactions: 200, perfScore: 91, status: "Healthy" },
     { id: "3", group: "SW Region", name: "Ilesha", manager: "Modupe Kolapo", revenue: "₦10.8M", trend: "10.2%", isTrendUp: true, transactions: 101, perfScore: 79, status: "Warning" },
@@ -166,63 +157,7 @@ export default function LocationManagement({
             </div>
 
             {viewMode === "list" ? (
-                <div className="w-full overflow-x-auto bg-white border border-gray-100 shadow-sm">
-                    <table className="w-full text-left border-collapse table-auto">
-                        <thead>
-                            <tr className="border-b border-gray-100 bg-[#F7F7F7]">
-                                <th className="px-4 py-3 text-[15px] font-semibold text-[#6C6C6C] whitespace-nowrap">Groups</th>
-                                <th className="px-4 py-3 text-[15px] font-semibold text-[#6C6C6C] whitespace-nowrap">Location</th>
-                                <th className="px-4 py-3 text-[15px] font-semibold text-[#6C6C6C] whitespace-nowrap">Manager</th>
-                                <th className="px-4 py-3 text-[15px] font-semibold text-[#6C6C6C] whitespace-nowrap">Revenue</th>
-                                <th className="px-4 py-3 text-[15px] font-semibold text-[#6C6C6C] whitespace-nowrap">Transactions</th>
-                                <th className="px-4 py-3 text-[15px] font-semibold text-[#6C6C6C] whitespace-nowrap">Perf. Score</th>
-                                <th className="px-4 py-3 text-[15px] font-semibold text-[#6C6C6C] whitespace-nowrap">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-100">
-                            {filteredData.map((loc) => {
-                                const styles = getStatusStyles(loc.status);
-                                return (
-                                    <tr key={loc.id} className="hover:bg-gray-30/50 transition-colors">
-                                        <td className="px-4 py-3 text-[15px] text-[#6C6C6C] font-medium whitespace-nowrap">
-                                            {loc.group}
-                                        </td>
-                                        <td className="px-4 py-3 text-[15px] text-[#6C6C6C] font-normal whitespace-nowrap">
-                                            {loc.name}
-                                        </td>
-                                        <td className="px-4 py-3 text-[15px] text-[#6C6C6C] font-normal whitespace-nowrap">
-                                            {loc.manager}
-                                        </td>
-                                        <td className="px-4 py-3 whitespace-nowrap">
-                                            <div className="flex flex-col">
-                                                <span className="text-[15px] font-normal text-[#6C6C6C]">{loc.revenue}</span>
-                                                <span className={`text-xs font-normal flex items-center gap-0.5 ${loc.isTrendUp ? 'text-green-600' : 'text-red-600'}`}>
-                                                    {loc.isTrendUp ? "↑" : "↓"}{loc.trend}
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td className="px-4 py-3 text-[15px] text-[#6C6C6C] font-normal whitespace-nowrap">
-                                            {loc.transactions}
-                                        </td>
-                                        <td className="px-4 py-3 whitespace-nowrap w-[180px]">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-24 bg-gray-100 rounded-full h-2 overflow-hidden">
-                                                    <div className={`h-full ${styles.bar}`} style={{ width: `${loc.perfScore}%` }} />
-                                                </div>
-                                                <span className="text-xs font-normal text-[#6C6C6C]">{loc.perfScore}</span>
-                                            </div>
-                                        </td>
-                                        <td className="px-4 py-3 whitespace-nowrap">
-                                            <span className={`px-4 py-1 border rounded-full text-xs font-normal ${styles.badge}`}>
-                                                {loc.status}
-                                            </span>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+                <LocationList filteredData={filteredData} />
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {filteredData.map((loc) => {
