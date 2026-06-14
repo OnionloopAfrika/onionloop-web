@@ -4,7 +4,13 @@ const nextConfig: NextConfig = {
   output: "standalone",
   trailingSlash: true,
   images: {
-    unoptimized: true
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.onionloop.com",
+      },
+    ],
   }
 };
 

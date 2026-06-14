@@ -9,6 +9,7 @@ import Select from "../ui/select";
 import { UserProfile, Search, MoreVertical, Edit3, AlertOctagon, Trash2, Mail, Phone, SquareProfile, MultiUser, TimerClock, SparkIcon, CheckIconGreen } from "./icon";
 import Header from "../layouts/header";
 import { useRouter } from "next/navigation";
+import { useSubdomain } from "@/hooks/useSubdomain";
 
 interface Staff {
     id: string;
@@ -98,6 +99,7 @@ const staffOption = [
 
 export default function StaffManagement() {
     const router = useRouter();
+    const subdomain = useSubdomain();
     const [staffs, setStaffs] = useState<Staff[]>(initialStaffs);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const [selectedStaff, setSelectedStaff] = useState<Staff | null>(null);
@@ -110,16 +112,16 @@ export default function StaffManagement() {
     });
     const [selectedStaffOption, setSelectedStaffOption] = useState<string | null>("activate");
     const [isSaving, setIsSaving] = useState(false);
-    const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+            const target = event.target as HTMLElement;
+            if (!target.closest("[data-menu-container]")) {
                 setActiveMenu(null);
             }
         };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
+        document.addEventListener("click", handleClickOutside);
+        return () => document.removeEventListener("click", handleClickOutside);
     }, []);
 
     const handleAction = (type: "profile" | "edit" | "deactivate" | "remove", staff: Staff) => {
@@ -173,7 +175,7 @@ export default function StaffManagement() {
                     subHeading="Manage your team, role, and app access"
                 />
                 <div className="flex gap-3 w-full md:w-auto justify-end">
-                    <button onClick={() => router.push('/staffs/leave-request')} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
+                    <button onClick={() => router.push(`/${subdomain}/staffs/leave-request`)} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
                         View Leave Request
                     </button>
                     <button
@@ -240,7 +242,7 @@ export default function StaffManagement() {
                                     <p className="text-xs text-gray-500">{staff.role}</p>
                                 </div>
                             </div>
-                            <div className="relative">
+                            <div className="relative" data-menu-container>
                                 <button
                                     onClick={() => setActiveMenu(activeMenu === staff.id ? null : staff.id)}
                                     className="text-gray-400 hover:text-black"
@@ -249,7 +251,7 @@ export default function StaffManagement() {
                                 </button>
 
                                 {activeMenu === staff.id && (
-                                    <div ref={menuRef} className="absolute right-0 top-8 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden">
+                                    <div className="absolute right-0 top-8 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden">
                                         <button onClick={() => handleAction("profile", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
                                             <UserProfile size={20} color="#8A8A8A" /> View Staff Profile
                                         </button>
@@ -318,7 +320,7 @@ export default function StaffManagement() {
                                             {staff.status}
                                         </span>
                                     </td>
-                                    <td className="p-4 pl-2 text-right relative">
+                                    <td className="p-4 pl-2 text-right relative" data-menu-container>
                                         <button
                                             onClick={() => setActiveMenu(activeMenu === staff.id ? null : staff.id)}
                                             className="text-gray-400 hover:text-black p-1 inline-block"
@@ -327,7 +329,7 @@ export default function StaffManagement() {
                                         </button>
 
                                         {activeMenu === staff.id && (
-                                            <div ref={menuRef} className="absolute right-4 top-12 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden text-left">
+                                            <div className="absolute right-4 top-12 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden text-left">
                                                 <button onClick={() => handleAction("profile", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
                                                     <UserProfile size={20} color="#8A8A8A" /> View Staff Profile
                                                 </button>
@@ -352,7 +354,7 @@ export default function StaffManagement() {
             </div>
 
             <Modal open={modalType === "invite"} onOpenChange={closeModal} className="max-w-[600px]">
-                <div className="max-h-[85vh] overflow-y-auto px-1">
+                <div className="max-h-[75vh] overflow-y-auto z-10">
                     <div className="text-center mb-8">
                         <h2 className="text-[24px] font-bold text-[#131313] mb-2">Invite New Staff</h2>
                         <p className="text-[#6C6C6C] text-[14px]">They will receive an invite to download the onionloop staff app</p>
@@ -541,7 +543,7 @@ export default function StaffManagement() {
                 <p className="text-[#6C6C6C] text-[14px] mb-10">Are you sure you want to remove this staff as your staff member?</p>
                 <div className="flex gap-4">
                     <Button variant="secondary" className="flex-1 !bg-[#F7F7F7]" onClick={closeModal}>Cancel</Button>
-                    <Button variant="danger" className="flex-1 !bg-[#CB1A14]">Remove Account</Button>
+                    <Button variant="danger" className="flex-1 !bg-[#CB1A14]" onClick={handleToggleStatus}>Remove Account</Button>
                 </div>
             </Modal>
         </div>
