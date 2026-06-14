@@ -5,17 +5,16 @@ export function useSubdomain() {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const hostname = window.location.hostname;
+            const pathname = window.location.pathname;
+            const segments = pathname.split("/").filter(Boolean);
+            const firstSegment = segments[0];
 
-            const cleanHost = hostname
-                .replace(".localhost", "")
-                .replace(".lvh.me", "")
-                .replace(".onionloop.com", "");
-
-            if (cleanHost === hostname || cleanHost === "www" || cleanHost === "") {
-                setSubdomain("crew");
+            if (firstSegment === "mega") {
+                setSubdomain("mega");
+            } else if (firstSegment === "aggregator") {
+                setSubdomain("aggregator");
             } else {
-                setSubdomain(cleanHost);
+                setSubdomain("crew");
             }
         }
     }, []);

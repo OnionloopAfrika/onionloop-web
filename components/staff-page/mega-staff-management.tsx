@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../ui/button";
 import Input from "../ui/input";
 import { Modal } from "../ui/modal";
@@ -20,18 +20,20 @@ interface Staff {
     salesToday: number;
     status: "Active" | "Deactivated";
     image: string;
+    groupAssigned: string;
 }
 
 const initialStaffs: Staff[] = [
     {
         id: "1",
         name: "Titi Folarin",
-        role: "Cleaner",
-        email: "folarin@gmail.com",
+        role: "Group Manager",
+        email: "titifolarin@gmail.com",
         phone: "07053385252",
         salesToday: 24,
         status: "Active",
         image: "https://i.pravatar.cc/150?u=1",
+        groupAssigned: "Group 1",
     },
     {
         id: "2",
@@ -42,6 +44,7 @@ const initialStaffs: Staff[] = [
         salesToday: 0,
         status: "Active",
         image: "https://i.pravatar.cc/150?u=2",
+        groupAssigned: "Group 1",
     },
     {
         id: "3",
@@ -52,6 +55,7 @@ const initialStaffs: Staff[] = [
         salesToday: 24,
         status: "Deactivated",
         image: "https://i.pravatar.cc/150?u=3",
+        groupAssigned: "Group 2",
     },
     {
         id: "4",
@@ -62,6 +66,7 @@ const initialStaffs: Staff[] = [
         salesToday: 12,
         status: "Active",
         image: "https://i.pravatar.cc/150?u=4",
+        groupAssigned: "Group 1",
     },
     {
         id: "5",
@@ -72,6 +77,7 @@ const initialStaffs: Staff[] = [
         salesToday: 40,
         status: "Active",
         image: "https://i.pravatar.cc/150?u=5",
+        groupAssigned: "Group 3",
     },
     {
         id: "6",
@@ -82,20 +88,39 @@ const initialStaffs: Staff[] = [
         salesToday: 0,
         status: "Deactivated",
         image: "https://i.pravatar.cc/150?u=6",
+        groupAssigned: "Group 2",
     },
 ];
 
 const roleOptions = [
-    { value: "cashier", label: "Cashier" },
-    { value: "cleaner", label: "Cleaner" },
-    { value: "sales_manager", label: "Sales Manager" },
-    { value: "inventory_manager", label: "Inventory Manager" },
-    { value: "custom", label: "Custom" },
+    { value: "Admin", label: "Admin" },
+    { value: "Manager", label: "Manager" },
+    { value: "Group Manager", label: "Group Manager" },
+    { value: "State Manager", label: "State Manager" },
+    { value: "Branch/Location Manager", label: "Branch/Location Manager" },
+    { value: "Cashier", label: "Cashier" },
+    { value: "Custom", label: "Custom" },
 ];
+
 const staffOption = [
     { value: "activate", label: "Activate" },
     { value: "deactivate", label: "Deactivated" },
 ];
+
+const groupOptions = [
+    { value: "group-1", label: "Group 1 - Tunde Obi (manager)" },
+    { value: "group-2", label: "Group 2 - Sarah Alao (manager)" },
+];
+
+const branchOptions = [
+    { value: "ikeja", label: "Ikeja - Mall Branch" },
+    { value: "vi", label: "Victoria Island Branch" },
+];
+
+const mockLocations = Array(20).fill({
+    name: "Ikeja",
+    address: "Ikeja city mall, 2nd floor, Ikeja Lgaos.",
+});
 
 export default function StaffManagement() {
     const router = useRouter();
@@ -103,7 +128,7 @@ export default function StaffManagement() {
     const [staffs, setStaffs] = useState<Staff[]>(initialStaffs);
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
     const [selectedStaff, setSelectedStaff] = useState<Staff | null>(null);
-    const [modalType, setModalType] = useState<"profile" | "edit" | "deactivate" | "remove" | "invite" | "success" | null>(null);
+    const [modalType, setModalType] = useState<"profile" | "all-locations" | "edit" | "deactivate" | "remove" | "invite" | "success" | null>(null);
     const [permissions, setPermissions] = useState<Record<string, boolean>>({
         "Process Sales": true,
         "View Reports": true,
@@ -111,6 +136,9 @@ export default function StaffManagement() {
         "Edit Inventory": true,
     });
     const [selectedStaffOption, setSelectedStaffOption] = useState<string | null>("activate");
+    const [selectedRole, setSelectedRole] = useState("");
+    const [selectedGroup, setSelectedGroup] = useState("");
+    const [selectedBranch, setSelectedBranch] = useState("");
     const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
@@ -159,6 +187,9 @@ export default function StaffManagement() {
     const closeModal = () => {
         setModalType(null);
         setSelectedStaff(null);
+        setSelectedRole("");
+        setSelectedGroup("");
+        setSelectedBranch("");
     };
 
     const togglePermission = (key: string) => {
@@ -175,7 +206,7 @@ export default function StaffManagement() {
                     subHeading="Manage your team, role, and app access"
                 />
                 <div className="flex gap-3 w-full md:w-auto justify-end">
-                    <button onClick={() => router.push(`/${subdomain}/staffs/leave-request`)} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
+                    <button onClick={() => router.push(`/${subdomain}/super-admin/staff/leave-request`)} className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm">
                         View Leave Request
                     </button>
                     <button
@@ -354,56 +385,76 @@ export default function StaffManagement() {
             </div>
 
             <Modal open={modalType === "invite"} onOpenChange={closeModal} className="max-w-[600px]">
-                <div className="max-h-[75vh] overflow-y-auto z-10">
+                <div className="max-h-[85vh] overflow-y-auto px-1 font-sans">
                     <div className="text-center mb-8">
-                        <h2 className="text-[24px] font-bold text-[#131313] mb-2">Invite New Staff</h2>
-                        <p className="text-[#6C6C6C] text-[14px]">They will receive an invite to download the onionloop staff app</p>
+                        <h2 className="text-[28px] font-bold text-gray-900 mb-2">Invite New Staff</h2>
+                        <p className="text-gray-500 text-[15px] font-medium">They will receive an invite to download the onionloop staff app</p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                        <Input label="First Name" placeholder="Enter First Name" />
-                        <Input label="Last Name" placeholder="Enter Last Name" />
+                    <div className="grid grid-cols-2 gap-4 mb-5">
+                        <Input label="First Name" placeholder="Tunde" />
+                        <Input label="Last Name" placeholder="Obi" />
                     </div>
 
-                    <div className="mb-4">
-                        <Input label="Email Address" placeholder="Enter Address" />
+                    <div className="mb-5">
+                        <Input label="Email Address" placeholder="tundeobi@gmail.com" />
                     </div>
 
-                    <div className="mb-4">
-                        <Input label="Phone Number" placeholder="Enter Phone Number" />
+                    <div className="mb-5">
+                        <Input label="Phone Number" placeholder="0902 9485 221" />
                     </div>
 
-                    <div className="mb-6">
+                    <div className="mb-5">
                         <Select
                             label="Role"
                             placeholder="Select Role"
                             options={roleOptions}
+                            value={selectedRole}
+                            onValueChange={setSelectedRole}
                         />
                     </div>
 
-                    <p className="font-bold text-[14px] text-[#131313] mb-4">App Permissions</p>
-                    <div className="grid grid-cols-2 gap-4 mb-10">
-                        {Object.keys(permissions).map((perm) => (
-                            <div key={perm} className="flex justify-between items-center p-4 bg-[#F7F7F7] rounded-xl border border-gray-50">
-                                <span className="text-[14px] text-[#6C6C6C] font-medium">{perm}</span>
-                                <Switch
-                                    checked={permissions[perm]}
-                                    onCheckedChange={() => togglePermission(perm)}
-                                    size="sm"
-                                />
-                            </div>
-                        ))}
-                    </div>
+                    {selectedRole === "Group Manager" && (
+                        <div className="mb-5">
+                            <Select
+                                label="Assign Group"
+                                placeholder="Select group"
+                                options={groupOptions}
+                                value={selectedGroup}
+                                onValueChange={setSelectedGroup}
+                            />
+                            <button className="text-[14px] font-bold text-[#044E49] mt-2 block hover:opacity-80 transition-opacity">
+                                Create new group
+                            </button>
+                        </div>
+                    )}
 
-                    <div className="flex gap-4">
-                        <Button variant="secondary" className="flex-1 !bg-[#F7F7F7] !py-4" onClick={closeModal}>Cancel</Button>
+                    {selectedRole === "Branch/Location Manager" && (
+                        <div className="mb-5">
+                            <Select
+                                label="Assign Branch/Location"
+                                placeholder="Select branch/location"
+                                options={branchOptions}
+                                value={selectedBranch}
+                                onValueChange={setSelectedBranch}
+                            />
+                            <button className="text-[14px] font-bold text-[#044E49] mt-2 block hover:opacity-80 transition-opacity">
+                                Create new branch/location
+                            </button>
+                        </div>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-4 mt-8">
+                        <button onClick={closeModal} className="w-full py-4 bg-[#F7F7F7] text-gray-700 font-bold rounded-xl text-[15px] hover:bg-gray-100 transition-colors">
+                            Cancel
+                        </button>
                         <Button
                             variant="primary"
-                            className="flex-1 !bg-[#044E49] !py-4"
+                            className="w-full !bg-[#044E49] !py-4 font-bold text-[15px] shadow-sm"
                             isLoading={isSaving}
                             onClick={handleSendInvite}
                         >
-                            {isSaving ? "Sending..." : "Send Invite"}
+                            Send Invite
                         </Button>
                     </div>
                 </div>
@@ -420,40 +471,136 @@ export default function StaffManagement() {
                 </div>
             </Modal>
 
-            <Modal open={modalType === "profile"} onOpenChange={closeModal} className="text-center">
-                <div className="max-h-[85vh] overflow-y-auto px-1">
-                    <h2 className="text-[20px] font-bold mb-6">Staff Profile</h2>
-                    <div className="flex flex-col items-center mb-8">
-                        <img src={selectedStaff?.image} className="w-24 h-24 rounded-full mb-3 border-4 border-white shadow-sm" />
-                        <span className={`text-white text-[10px] px-4 py-1 rounded-full font-bold ${selectedStaff?.status === 'Active' ? 'bg-[#00634B]' : 'bg-[#98A2B3]'}`}>
-                            {selectedStaff?.status}
-                        </span>
+            <Modal open={modalType === "profile"} onOpenChange={closeModal} className="max-w-[580px]"
+            footer={
+                <div className="grid grid-cols-2 gap-4 w-full">
+                    <button
+                        className="w-full py-4 bg-[#F7F7F7] text-gray-700 font-semibold rounded-xl text-[14px] hover:bg-gray-100 transition-colors"
+                        onClick={() => selectedStaff && setModalType("edit")}
+                    >
+                        Edit role
+                    </button>
+                    <button className="w-full py-4 bg-[#044E49] text-white font-semibold rounded-xl text-[14px] hover:opacity-90 transition-opacity">
+                        Send message
+                    </button>
+                </div>
+            }
+            >
+                <div className="max-h-[65vh] overflow-y-auto px-1 font-sans relative">
+                    <div className="absolute top-0 left-0">
+                        <button className="text-gray-400 hover:text-black">
+                            <MoreVertical size={20} color="#A8A8A8" />
+                        </button>
                     </div>
-                    <div className="space-y-2 text-left">
-                        {[
-                            { icon: <UserProfile />, label: "Full name", value: selectedStaff?.name },
-                            { icon: <Mail />, label: "Email", value: selectedStaff?.email },
-                            { icon: <Phone />, label: "Phone number", value: selectedStaff?.phone },
-                            { icon: <SquareProfile />, label: "Role", value: selectedStaff?.role },
-                        ].map((item, i) => (
-                            <div key={i} className="flex items-center justify-between p-4 border border-gray-100 rounded-xl">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-2.5 bg-[#FFF] shadow-sm rounded-lg">{item.icon}</div>
-                                    <span className="text-[#6C6C6C] text-[14px]">{item.label}</span>
+
+                    <div className="flex flex-col items-center mb-6">
+                        <h2 className="text-[22px] font-bold text-gray-900 mb-4">Staff Profile</h2>
+                        <div className="relative">
+                            <img src={selectedStaff?.image} className="w-20 h-20 rounded-full object-cover border border-gray-100" />
+                            <div className="absolute bottom-1 right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-4 mb-6 pb-6 border-b border-gray-100 text-[14px]">
+                        <div>
+                            <span className="text-gray-400 block mb-1">Full Name:</span>
+                            <span className="font-bold text-gray-900">{selectedStaff?.name}</span>
+                        </div>
+                        <div className="text-right">
+                            <span className="text-gray-400 block mb-1">Status:</span>
+                            <span className="inline-block px-3 py-0.5 rounded-full text-xs font-semibold bg-[#04802E] text-white">
+                                {selectedStaff?.status}
+                            </span>
+                        </div>
+                        <div>
+                            <span className="text-gray-400 block mb-1">Phone Number:</span>
+                            <span className="font-bold text-gray-900">{selectedStaff?.phone}</span>
+                        </div>
+                        <div className="text-right">
+                            <span className="text-gray-400 block mb-1">Email Address:</span>
+                            <span className="font-bold text-gray-900 truncate block">{selectedStaff?.email}</span>
+                        </div>
+                        <div>
+                            <span className="text-gray-400 block mb-1">Role:</span>
+                            <span className="font-bold text-gray-900">{selectedStaff?.role}</span>
+                        </div>
+                        <div className="text-right">
+                            <span className="text-gray-400 block mb-1">Group Assigned:</span>
+                            <span className="font-bold text-gray-900">{selectedStaff?.groupAssigned}</span>
+                        </div>
+                    </div>
+
+                    <div className="mb-6">
+                        <div className="flex justify-between items-center mb-4">
+                            <span className="text-[14px] font-medium text-gray-500">Branches/Locations(20)</span>
+                            <button
+                                onClick={() => setModalType("all-locations")}
+                                className="text-[14px] font-bold text-[#044E49] hover:opacity-80 transition-opacity"
+                            >
+                                View All Locations
+                            </button>
+                        </div>
+
+                        <div className="space-y-3">
+                            {mockLocations.slice(0, 5).map((loc, idx) => (
+                                <div key={idx} className="flex items-center justify-between p-1 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-xl bg-[#EDE8FC] text-[#7C53FC] font-semibold text-sm flex items-center justify-center flex-shrink-0">
+                                            IK
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="font-bold text-gray-900 text-[14px]">{loc.name}</span>
+                                            <span className="text-gray-400 text-xs flex items-center gap-1">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                                    <circle cx="12" cy="10" r="3" />
+                                                </svg>
+                                                {loc.address}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="text-gray-400">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="9 18 15 12 9 6" />
+                                        </svg>
+                                    </div>
                                 </div>
-                                <span className="font-semibold text-[#131313] text-[14px]">{item.value}</span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </Modal>
+
+            <Modal open={modalType === "all-locations"} onOpenChange={() => setModalType("profile")} className="max-w-[580px]">
+                <div className="max-h-[85vh] overflow-y-auto px-1 font-sans text-center">
+                    <h2 className="text-[22px] font-bold text-gray-900 mb-2">All Assigned Locations</h2>
+                    <p className="text-[#6C6C6C] text-[14px] mb-6">They will receive an invite to download the onionloop staff app</p>
+
+                    <div className="space-y-3 text-left">
+                        {mockLocations.map((loc, idx) => (
+                            <div key={idx} className="flex items-center justify-between p-1 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-xl bg-[#EDE8FC] text-[#7C53FC] font-semibold text-sm flex items-center justify-center flex-shrink-0">
+                                        IK
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="font-bold text-gray-900 text-[14px]">{loc.name}</span>
+                                        <span className="text-gray-400 text-xs flex items-center gap-1">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                                <circle cx="12" cy="10" r="3" />
+                                            </svg>
+                                            {loc.address}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="text-gray-400">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="9 18 15 12 9 6" />
+                                    </svg>
+                                </div>
                             </div>
                         ))}
-                    </div>
-                    <div className="flex gap-4 mt-10">
-                        <Button
-                            variant="secondary"
-                            className="flex-1 !bg-[#F7F7F7]"
-                            onClick={() => selectedStaff && setModalType("edit")}
-                        >
-                            Edit role
-                        </Button>
-                        <Button variant="primary" className="flex-1 !bg-[#004D3C]">Send message</Button>
                     </div>
                 </div>
             </Modal>
