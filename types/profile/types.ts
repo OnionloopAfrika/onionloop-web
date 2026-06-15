@@ -2,7 +2,7 @@ import React from "react";
 
 export interface ProfileHeaderProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   btn?: React.ReactNode;
   className?: string;
 }

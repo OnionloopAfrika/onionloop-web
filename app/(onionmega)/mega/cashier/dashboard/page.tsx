@@ -1,7 +1,9 @@
-import React from "react";
+import CashierDashboard from "@/components/cashier/cashier-dashboard";
 
-const CashierDashboard = () => {
-  return <div>CashierDashboard</div>;
-};
-
-export default CashierDashboard;
+export default function page() {
+  return (
+    <div className="w-full">
+      <CashierDashboard />
+    </div>
+  );
+}

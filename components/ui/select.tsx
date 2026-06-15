@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { SelectIcon } from "../icons/svgs";
 
 interface SelectProps {
   label?: string;
@@ -74,25 +75,18 @@ const Select: React.FC<SelectProps> = ({
             ${error ? "border-red-500 focus:border-red-500" : ""}
           `}
         >
-          <span className={selectedLabel ? "text-xs font-semibold" : "text-[#8A8A8A]"}>
-            {selectedLabel || placeholder}
+          <span
+            className={
+              selectedLabel
+                ? "text-xs font-semibold text-start "
+                : " text-start text-[#8A8A8A]"
+            }
+          >
+            {`${placeholder}  ${selectedLabel}`}
           </span>
 
           <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8A8A8A] pointer-events-none">
-            {icon || (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14.9336 6.81641H9.74195H5.06695C4.26695 6.81641 3.86695 7.78307 4.43361 8.34974L8.75028 12.6664C9.44195 13.3581 10.5669 13.3581 11.2586 12.6664L12.9003 11.0247L15.5753 8.34974C16.1336 7.78307 15.7336 6.81641 14.9336 6.81641Z"
-                  fill="#8A8A8A"
-                />
-              </svg>
-            )}
+            {icon || <SelectIcon />}
           </div>
         </button>
 
@@ -103,7 +97,7 @@ const Select: React.FC<SelectProps> = ({
                 key={option.value}
                 onClick={() => handleSelect(option.value, option.label)}
                 className={`
-                  px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] cursor-pointer hover:bg-gray-100
+                  px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] cursor-pointer hover:bg-gray-100 border-b border-b-[#C7C7C7]
                   ${value === option.value ? "bg-blue-50 text-blue-600" : ""}
                 `}
               >
