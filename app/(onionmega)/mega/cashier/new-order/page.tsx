@@ -1,7 +1,9 @@
-import React from "react";
+import NewOrder from "@/components/cashier/new-order";
 
-const NewOrderPage = () => {
-  return <div>NewOrderPage</div>;
-};
-
-export default NewOrderPage;
+export default function page() {
+  return (
+    <div className="w-full">
+      <NewOrder />
+    </div>
+  );
+}

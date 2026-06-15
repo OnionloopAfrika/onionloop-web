@@ -240,70 +240,262 @@ const page = () => {
         />
       </div>
       <div className="grid grid-cols-10 bg-yellow-300">
-        <EyeSlashIcon className="w-8 h-8 text-white" />
-        <ChartIcon className="w-8 h-8 text-white" />
-        <InventoryIcon className="w-8 h-8 text-white" />
-        <StaffIcon className="w-8 h-8 text-white" />
-        <SmsIcon className="w-8 h-8 text-white" />
-        <NotificationIcon className="w-8 h-8 text-white" />
-        <HomeIcon className="w-8 h-8 text-white" />
-        <CalendarIcon className="w-8 h-8 text-white" />
-        <DownloadIcon className="w-8 h-8 text-white" />
-        <RevenueIcon className="w-8 h-8 text-white" />
-        <CautionIcon className="w-8 h-8 text-white" />
-        <WarningIcon className="w-8 h-8 text-white" />
-        <ShieldIcon className="w-8 h-8 text-white" />
-        <Warning2Icon className="w-8 h-8 text-white" />
-        <ReceiptEditIcon className="w-8 h-8 text-white" />
-        <ProfileIcon className="w-8 h-8 text-white" />
-        <SettingsIcon className="w-8 h-8 text-white" />
-        <HelpIcon className="w-8 h-8 text-white" />
-        <CopyIconIcon className="w-8 h-8 text-white" />
-        <DiagramIcon className="w-8 h-8 text-white" />
-        <PermissionIcon className="w-8 h-8 text-white" />
-        <LogoutIcon className="w-8 h-8 text-white" />
-        <SignOutIcon className="w-8 h-8 text-white" />
-        <LiveChatIcon className="w-8 h-8 text-white" />
-        <InboxIcon className="w-8 h-8 text-white" />
-        <CallIcon className="w-8 h-8 text-white" />
-        <SyncIcon className="w-8 h-8 text-white" />
-        <LockIcon className="w-8 h-8 text-white" />
-        <LocationIcon className="w-8 h-8 text-white" />
-        <TransactionIcon className="w-8 h-8 text-white" />
-        <PaymentIcon className="w-8 h-8 text-white" />
-        <CardProblemIcon className="w-8 h-8 text-white" />
-        <AppSyncIcon className="w-8 h-8 text-white" />
-        <OthersIcon className="w-8 h-8 text-white" />
-        <UploadIcon className="w-8 h-8 text-white" />
-        <ArrowRightIcon className="w-8 h-8 text-white" />
-        <SecuritySafeIcon className="w-8 h-8 text-white" />
-        <RecordCircleIcon className="w-8 h-8 text-white" />
-        <MicrophoneIcon className="w-8 h-8 text-white" />
-        <EndCallIcon className="w-8 h-8 text-white" />
-        <BarIcon className="w-8 h-8 text-white" />
-        <UnlimitedTransactionIcon className="w-8 h-8 text-white" />
-        <BriefcaseIcon className="w-8 h-8 text-white" />
-        <MoneySendIcon className="w-8 h-8 text-white" />
-        <StarIcon className="w-8 h-8 text-white" />
-        <CardIcon className="w-8 h-8 text-white" />
-        <BankIcon className="w-8 h-8 text-white" />
-        <MultiplyIcon className="w-8 h-8 text-white" />
-        <VerifyIcon className="w-8 h-8 text-white" />
-        <OnionIcon className="w-8 h-8 text-white" />
-        <NoProductsIcon className="w-8 h-8 text-white" />
-        <UploadImageIcon className="w-8 h-8 text-white" />
-        <MarkIcon className="w-8 h-8 text-white" />
-        <AddIcon className="w-8 h-8 text-white" />
-        <ShopAddIcon className="w-8 h-8 text-white" />
-        <ChainlinkIcon className="w-8 h-8 text-white" />
-        <DangerIcon className="w-8 h-8 text-white" />
-        <EditIcon className="w-8 h-8 text-white" />
-        <DeleteIcon className="w-8 h-8 text-white" />
-        <SearchIcon className="w-8 h-8 text-white" />
-        <TimerIcon className="w-8 h-8 text-white" />
-        <WaveIcon className="w-8 h-8 text-white" />
-        <PhoneNumberIcon className="w-8 h-8 text-white" />
-        <RoleIcon className="w-8 h-8 text-[#04907e]" />
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">1</span>
+          <EyeSlashIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">2</span>
+          <ChartIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">3</span>
+          <InventoryIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">4</span>
+          <StaffIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">5</span>
+          <SmsIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">6</span>
+          <NotificationIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">7</span>
+          <HomeIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">8</span>
+          <CalendarIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">9</span>
+          <DownloadIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">10</span>
+          <RevenueIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">11</span>
+          <CautionIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">12</span>
+          <WarningIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">13</span>
+          <ShieldIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">14</span>
+          <Warning2Icon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">15</span>
+          <ReceiptEditIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">16</span>
+          <ProfileIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">17</span>
+          <SettingsIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">18</span>
+          <HelpIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">19</span>
+          <CopyIconIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">20</span>
+          <DiagramIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">21</span>
+          <PermissionIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">22</span>
+          <LogoutIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">23</span>
+          <SignOutIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">24</span>
+          <LiveChatIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">25</span>
+          <InboxIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">26</span>
+          <CallIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">27</span>
+          <SyncIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">28</span>
+          <LockIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">29</span>
+          <LocationIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">30</span>
+          <TransactionIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">31</span>
+          <PaymentIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">32</span>
+          <CardProblemIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">33</span>
+          <AppSyncIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">34</span>
+          <OthersIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">35</span>
+          <UploadIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">36</span>
+          <ArrowRightIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">37</span>
+          <SecuritySafeIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">38</span>
+          <RecordCircleIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">39</span>
+          <MicrophoneIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">40</span>
+          <EndCallIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">41</span>
+          <BarIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">42</span>
+          <UnlimitedTransactionIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">43</span>
+          <BriefcaseIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">44</span>
+          <MoneySendIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">45</span>
+          <StarIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">46</span>
+          <CardIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">47</span>
+          <BankIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">48</span>
+          <MultiplyIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">49</span>
+          <VerifyIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">50</span>
+          <OnionIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">51</span>
+          <NoProductsIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">52</span>
+          <UploadImageIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">53</span>
+          <MarkIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">54</span>
+          <AddIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">55</span>
+          <ShopAddIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">56</span>
+          <ChainlinkIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">57</span>
+          <DangerIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">58</span>
+          <EditIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">59</span>
+          <DeleteIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">60</span>
+          <SearchIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">61</span>
+          <TimerIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">62</span>
+          <WaveIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">63</span>
+          <PhoneNumberIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">64</span>
+          <RoleIcon className="w-8 h-8 text-[#04907e]" />
+        </div>
       </div>
       <Calendar
         value={selectedDate}

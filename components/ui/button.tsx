@@ -9,8 +9,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "danger"
     | "save"
     | "msg"
-    | "signout";
-  size?: "sm" | "md" | "lg" | "save" | "msg";
+    | "signout"
+    | "scan"
+    | "cashierOutline"
+    | "cashierSolid";
+  size?:
+    | "sm"
+    | "md"
+    | "lg"
+    | "save"
+    | "msg"
+    | "newOrder"
+    | "scan"
+    | "cashierOutline";
   isLoading?: boolean;
   icon?: React.ReactNode;
   children: React.ReactNode;
@@ -43,6 +54,11 @@ const Button: React.FC<ButtonProps> = ({
     msg: "bg-light rounded-[8px] text-[#FFFFFF] font-semibold text-[14px] gap-[10px] ",
     signout:
       "bg-transparent rounded-[8px] text-danger font-[500] text-[16px] gap-[10px] border border-[#C7C7C7]",
+    scan: "bg-[#04802E] rounded-[8px] font-[500] text-[18px] text-white flex items-center gap-[10px]",
+    cashierOutline:
+      "bg-white border border-primary-color rounded-[6px] font-[600] text-[14px] text-primary-color",
+    cashierSolid:
+      "bg-primary-color rounded-[6px] font-[600] text-[14px] text-white",
   };
 
   const sizes = {
@@ -51,6 +67,9 @@ const Button: React.FC<ButtonProps> = ({
     sm: "p-[16px]  w-full ",
     md: "px-5 py-2.5 text-base",
     lg: "px-6 py-3.5 text-lg",
+    newOrder: "px-6 py-3.5 text-[14px] md:min-w-[428px]",
+    scan: "px-[10px] h-[52px] w-fit",
+    cashierOutline: " py-[16px] px-[24px] h-[48px]",
   };
 
   return (
