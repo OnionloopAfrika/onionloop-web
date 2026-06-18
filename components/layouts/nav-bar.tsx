@@ -38,6 +38,12 @@ interface DashboardNavProps {
   notificationCount?: number;
   navItems?: NavItem[];
   showLogo?: boolean;
+  productNav: {
+    id: string;
+    label: string;
+    icon: React.ReactNode;
+    isDestructive: boolean;
+  }[];
 }
 
 export default function DashboardNav({
@@ -48,6 +54,7 @@ export default function DashboardNav({
   notificationCount = 4,
   navItems = [],
   showLogo = true,
+  productNav = [],
 }: DashboardNavProps) {
   const subdomain = useSubdomain();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -119,11 +126,10 @@ export default function DashboardNav({
                   <button
                     key={role.value}
                     onClick={() => router.push(role.href)}
-                    className={`px-3 py-1.5 text-[12px] font-medium rounded-md transition-all ${
-                      currentRole === role.value
+                    className={`px-3 py-1.5 text-[12px] font-medium rounded-md transition-all ${currentRole === role.value
                         ? "bg-white text-[#024E44] shadow-sm border border-gray-100"
                         : "text-gray-500 hover:text-gray-700"
-                    }`}
+                      }`}
                   >
                     {role.label}
                   </button>
@@ -251,6 +257,7 @@ export default function DashboardNav({
                   businessName={businessName}
                   userName={userName}
                   avatarUrl={avatarUrl || "https://i.pravatar.cc/150?u=12"}
+                  productNav={productNav}
                 />
               )}
             </div>
@@ -323,38 +330,7 @@ export default function DashboardNav({
               </div>
 
               <div className="w-full bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
-                {[
-                  {
-                    id: "my-profile",
-                    label: "My Profile",
-                    icon: <ProfileIcon />,
-                    isDestructive: false,
-                  },
-                  {
-                    id: "account-settings",
-                    label: "Account Settings",
-                    icon: <SettingsIcon />,
-                    isDestructive: false,
-                  },
-                  {
-                    id: "staff-app-settings",
-                    label: "Staff App Settings",
-                    icon: <StaffIconSolid />,
-                    isDestructive: false,
-                  },
-                  {
-                    id: "help-and-support",
-                    label: "Help & Support",
-                    icon: <SupportIcon />,
-                    isDestructive: false,
-                  },
-                  {
-                    id: "logout",
-                    label: "Log Out",
-                    icon: <LogoutIcon />,
-                    isDestructive: true,
-                  },
-                ].map((item, idx) => (
+                {productNav?.map((item, idx) => (
                   <Link
                     href={`/profile/${item.id}`}
                     key={idx}
@@ -452,11 +428,10 @@ export default function DashboardNav({
                           router.push(role.href);
                           setIsMenuOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-2 rounded-lg text-[13px] transition-colors ${
-                          currentRole === role.value
+                        className={`w-full text-left px-3 py-2 rounded-lg text-[13px] transition-colors ${currentRole === role.value
                             ? "bg-[#E6F0EE] text-[#024E44] font-bold"
                             : "text-gray-600 hover:bg-gray-50"
-                        }`}
+                          }`}
                       >
                         {role.label}
                       </button>
@@ -475,11 +450,10 @@ export default function DashboardNav({
                       router.push(item.href);
                       setIsMenuOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${
-                      isActive
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${isActive
                         ? "bg-[#E6F0EE] text-[#024E44] font-bold"
                         : "text-gray-500 hover:text-gray-700 font-normal"
-                    }`}
+                      }`}
                   >
                     <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
                       {isActive
@@ -492,11 +466,10 @@ export default function DashboardNav({
               })}
 
               <button
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${
-                  active === "messages"
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${active === "messages"
                     ? "bg-[#E6F0EE] text-[#024E44] font-bold"
                     : "text-gray-600 hover:bg-gray-50"
-                }`}
+                  }`}
                 onClick={() => {
                   router.push(`/${subdomain}/messages`);
                   setIsMenuOpen(false);
@@ -525,11 +498,10 @@ export default function DashboardNav({
               </button>
 
               <button
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${
-                  active === "notifications"
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${active === "notifications"
                     ? "bg-[#E6F0EE] text-[#024E44] font-bold"
                     : "text-gray-600 hover:bg-gray-50"
-                }`}
+                  }`}
                 onClick={() => {
                   router.push(`/${subdomain}/notifications`);
                   setIsMenuOpen(false);
@@ -632,11 +604,10 @@ function IconButton({
 }) {
   return (
     <button
-      className={`relative p-2 rounded-xl transition-all duration-150 border border-transparent ${
-        active
+      className={`relative p-2 rounded-xl transition-all duration-150 border border-transparent ${active
           ? "bg-[#E6F0EE] text-[#024E44]"
           : "text-gray-500 hover:bg-gray-50"
-      }`}
+        }`}
     >
       {children}
       {badge !== undefined && badge > 0 && (
