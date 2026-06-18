@@ -4,7 +4,38 @@ import DashboardNav from "@/components/layouts/nav-bar";
 import { usePathname } from "next/navigation";
 import { CREW_NAV_ITEMS } from "@/utils/constant/navigation";
 import { ProfileIcon, SettingsIcon, StaffIconSolid, SupportIcon, LogoutIcon } from "@/components/icons/svgs";
-
+export const productNav = [
+  {
+    id: "my-profile",
+    label: "My Profile",
+    icon: <ProfileIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "account-settings",
+    label: "Account Settings",
+    icon: <SettingsIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "staff-app-settings",
+    label: "Staff App Settings",
+    icon: <StaffIconSolid />,
+    isDestructive: false,
+  },
+  {
+    id: "help-and-support",
+    label: "Help & Support",
+    icon: <SupportIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "logout",
+    label: "Log Out",
+    icon: <LogoutIcon />,
+    isDestructive: true,
+  },
+]
 export default function DashboardLayout({
   children,
 }: {
@@ -18,38 +49,7 @@ export default function DashboardLayout({
   if (isAuthPage) {
     return <>{children}</>;
   }
-  const productNav = [
-    {
-      id: "my-profile",
-      label: "My Profile",
-      icon: <ProfileIcon />,
-      isDestructive: false,
-    },
-    {
-      id: "account-settings",
-      label: "Account Settings",
-      icon: <SettingsIcon />,
-      isDestructive: false,
-    },
-    {
-      id: "staff-app-settings",
-      label: "Staff App Settings",
-      icon: <StaffIconSolid />,
-      isDestructive: false,
-    },
-    {
-      id: "help-and-support",
-      label: "Help & Support",
-      icon: <SupportIcon />,
-      isDestructive: false,
-    },
-    {
-      id: "logout",
-      label: "Log Out",
-      icon: <LogoutIcon />,
-      isDestructive: true,
-    },
-  ]
+
 
   return (
     <>
