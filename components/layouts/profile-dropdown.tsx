@@ -16,6 +16,12 @@ interface ProfileDropdownProps {
   avatarUrl?: string;
   active?: string;
   className?: string;
+  productNav: {
+    id: string;
+    label: string;
+    icon: React.ReactNode;
+    isDestructive: boolean;
+  }[];
 }
 
 const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
@@ -24,40 +30,9 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
   avatarUrl,
   active,
   className,
+  productNav,
 }) => {
-  const menuItems = [
-    {
-      id: "my-profile",
-      label: "My Profile",
-      icon: <ProfileIcon />,
-      color: "text-[#04907E]",
-    },
-    {
-      id: "account-settings",
-      label: "Account Settings",
-      icon: <SettingsIcon />,
-      color: "text-[#04907E]",
-    },
-    {
-      id: "staff-app-settings",
-      label: "Staff App Settings",
-      icon: <StaffIconSolid />,
-      color: "text-[#04907E]",
-    },
-    {
-      id: "help-and-support",
-      label: "Help & Support",
-      icon: <SupportIcon />,
-      color: "text-[#04907E]",
-    },
-    {
-      id: "logout",
-      label: "Log Out",
-      icon: <LogoutIcon />,
-      color: "text-[#D32F2F]",
-      isDestructive: true,
-    },
-  ];
+  const menuItems = [...productNav];
   const subdomain = useSubdomain();
 
   return (

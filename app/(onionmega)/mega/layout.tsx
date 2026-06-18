@@ -70,6 +70,7 @@ export default function DashboardLayout({
           notificationCount={4}
           navItems={[]}
           showLogo={false}
+          productNav={[]}
         />
 
         <main className="flex-1 p-4 md:p-6 overflow-y-auto overflow-x-hidden">
