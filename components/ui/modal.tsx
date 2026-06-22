@@ -54,7 +54,7 @@ export function Modal({
       />
 
       <div
-        className={`relative z-100 w-full ${sizes[size]} rounded-[12px] bg-white p-[24px] shadow-[0_0_25px_rgba(0,0,0,0.2)]  ${className}`}
+        className={`relative z-100 w-full ${sizes[size]} rounded-[12px] bg-white p-[24px] shadow-[0_0_25px_rgba(0,0,0,0.2)] max-h-[90vh] overflow-auto ${className}`}
       >
         <button
           onClick={() => onOpenChange(false)}
