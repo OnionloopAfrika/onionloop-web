@@ -113,7 +113,7 @@ export default function DashboardNav({
           <div className="flex items-center gap-6">
             {showLogo && (
               <Link
-                href={`/${subdomain}/overview`}
+                href={`/${subdomain}`}
                 className="flex items-center gap-2 no-underline shrink-0"
               >
                 <OnionloopIcon />
@@ -332,7 +332,7 @@ export default function DashboardNav({
               <div className="w-full bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                 {productNav?.map((item, idx) => (
                   <Link
-                    href={`/profile/${item.id}`}
+                    href={`/${subdomain}/${item.id}`}
                     key={idx}
                     className={`flex items-center justify-between w-full p-2 transition-all hover:bg-gray-50 border-b border-gray-50 last:border-0 ${active === item.id ? "bg-gray-50" : ""}`}
                   >
