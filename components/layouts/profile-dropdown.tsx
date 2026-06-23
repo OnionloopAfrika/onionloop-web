@@ -76,7 +76,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
       <div className="w-full flex flex-col gap-1">
         {menuItems.map((item, idx) => (
           <Link
-            href={`/${subdomain}/profile/${item.id}`}
+            href={`/${subdomain}/${item.id}`}
             key={idx}
             className={`${active === item.id ? "bg-[#E7F6EC] text-[#04907E]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
           >

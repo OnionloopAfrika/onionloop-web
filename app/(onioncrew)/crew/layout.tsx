@@ -6,31 +6,31 @@ import { CREW_NAV_ITEMS } from "@/utils/constant/navigation";
 import { ProfileIcon, SettingsIcon, StaffIconSolid, SupportIcon, LogoutIcon } from "@/components/icons/svgs";
 export const productNav = [
   {
-    id: "my-profile",
+    id: "profile/my-profile",
     label: "My Profile",
     icon: <ProfileIcon />,
     isDestructive: false,
   },
   {
-    id: "account-settings",
+    id: "profile/account-settings",
     label: "Account Settings",
     icon: <SettingsIcon />,
     isDestructive: false,
   },
   {
-    id: "staff-app-settings",
+    id: "profile/staff-app-settings",
     label: "Staff App Settings",
     icon: <StaffIconSolid />,
     isDestructive: false,
   },
   {
-    id: "help-and-support",
+    id: "profile/help-and-support",
     label: "Help & Support",
     icon: <SupportIcon />,
     isDestructive: false,
   },
   {
-    id: "logout",
+    id: "profile/logout",
     label: "Log Out",
     icon: <LogoutIcon />,
     isDestructive: true,
@@ -54,8 +54,8 @@ export default function DashboardLayout({
   return (
     <>
       <DashboardNav
-        businessName="KFC Lounge"
-        userName="HQ Admin"
+        businessName="Yetty Mama Lounge"
+        userName="Margaret Ade"
         avatarUrl="https://i.pravatar.cc/150?u=12"
         messageCount={1}
         notificationCount={4}
