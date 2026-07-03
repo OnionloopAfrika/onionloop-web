@@ -190,9 +190,244 @@ export default function TransactionsTable() {
       );
     }
     return (
+<<<<<<< HEAD
       <span className="px-3 py-1 rounded-full text-[12px] font-medium bg-[#FFEBEE] text-[#C62828]">
         Failed
       </span>
+=======
+        <div className="w-full bg-white font-sans">
+            <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
+                <div className="flex flex-wrap items-center gap-3 w-full md:w-auto flex-1 max-w-4xl">
+                    <div className="relative w-full max-w-[320px]">
+                        <input
+                            type="text"
+                            placeholder="Search by transaction ID or amount..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full h-[48px] bg-white border border-gray-200 rounded-lg pl-10 pr-4 py-2 text-[13px] text-gray-700 placeholder-gray-400 focus:outline-none"
+                        />
+                        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div className="w-[160px]">
+                        <Select
+                            value={locationFilter}
+                            onValueChange={setLocationFilter}
+                            options={[{ value: "all", label: "All Locations" }]}
+                            placeholder="Location: "
+                        />
+                    </div>
+
+                    <div className="w-[140px]">
+                        <Select
+                            value={sortFilter}
+                            onValueChange={setSortFilter}
+                            options={[{ value: "completed", label: "Completed" }]}
+                            placeholder="Status: "
+                        />
+                    </div>
+
+                    <div className="w-[120px]">
+                        <Select
+                            value={latestFilter}
+                            onValueChange={setLatestFilter}
+                            options={[{ value: "latest", label: "Latest" }]}
+                            placeholder="Sort by: "
+                        />
+                    </div>
+                </div>
+
+                <span className="text-[14px] text-[#6C6C6C] font-medium whitespace-nowrap">
+                    Showing {mockTransactions.length} transactions
+                </span>
+            </div>
+
+            <div className="w-full overflow-x-auto border border-gray-100 shadow-sm">
+                <table className="w-full text-left border-collapse table-auto">
+                    <thead>
+                        <tr className="bg-[#F9FAFB] border-b border-gray-100">
+                            <th className="px-6 py-4 text-[14px] font-semibold text-gray-500 whitespace-nowrap">
+                                TXN ID
+                            </th>
+                            <th className="px-6 py-4 text-[14px] font-semibold text-gray-500 whitespace-nowrap">
+                                Location
+                            </th>
+                            <th className="px-6 py-4 text-[14px] font-semibold text-gray-500 whitespace-nowrap">
+                                Amount
+                            </th>
+                            <th className="px-6 py-4 text-[14px] font-semibold text-gray-500 whitespace-nowrap">
+                                Processed by
+                            </th>
+                            <th className="px-6 py-4 text-[14px] font-semibold text-gray-500 whitespace-nowrap">
+                                Trans. Type
+                            </th>
+                            <th className="px-6 py-4 text-[14px] font-semibold text-gray-500 whitespace-nowrap">
+                                Status
+                            </th>
+                            <th className="px-6 py-4 text-[14px] font-semibold text-gray-500 whitespace-nowrap">
+                                Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                        {mockTransactions.map((txn) => (
+                            <tr
+                                key={txn.id}
+                                className="hover:bg-gray-50/50 transition-colors cursor-pointer"
+                                onClick={() => handleRowClick(txn)}
+                            >
+                                <td className="px-6 py-5 text-[14px] text-[#6C6C6C] font-medium whitespace-nowrap">
+                                    {txn.id}
+                                </td>
+                                <td className="px-6 py-5 text-[14px] text-[#6C6C6C] font-normal whitespace-nowrap">
+                                    {txn.location}
+                                </td>
+                                <td className="px-6 py-5 text-[14px] whitespace-nowrap">
+                                    {formatAmount(txn.amount, txn.id)}
+                                </td>
+                                <td className="px-6 py-5 text-[14px] text-[#6C6C6C] font-normal whitespace-nowrap">
+                                    {txn.processedBy}
+                                </td>
+                                <td className="px-6 py-5 text-[14px] text-[#6C6C6C] font-normal whitespace-nowrap">
+                                    {txn.transType}
+                                </td>
+                                <td className="px-6 py-5 whitespace-nowrap">
+                                    {getStatusBadge(txn.status)}
+                                </td>
+                                <td className="px-6 py-5 text-[14px] text-[#6C6C6C] font-normal whitespace-nowrap">
+                                    {txn.date}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+            <Modal open={modalOpen} onOpenChange={setModalOpen} title="Transaction Details"
+                footer={
+                    <div className="grid grid-cols-2 gap-3 w-full mt-6">
+                        <button
+                            onClick={() => setModalOpen(false)}
+                            className="w-full py-3.5 bg-gray-50 text-gray-500 font-semibold rounded-xl text-[15px] hover:bg-gray-100 transition-colors"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className="w-full py-3.5 bg-[#C62828] text-white font-semibold rounded-xl text-[15px] hover:bg-[#B71C1C] transition-colors"
+                        >
+                            Report Transaction
+                        </button>
+                    </div>
+                }>
+                {selectedTxn && (
+                    <div className="flex flex-col items-center w-full font-sans h-[60vh] overflow-auto">
+                        <div className="flex items-center justify-center mb-3">
+                            <div className="relative flex items-center">
+                                <div className="w-8 h-8 rounded-full bg-[#022E40] flex items-center justify-center z-10 border border-white">
+                                    <span className="text-white font-bold text-[10px]">M</span>
+                                </div>
+                                <div className="w-8 h-8 rounded-full bg-[#1A73E8] flex items-center justify-center -ml-2.5 z-0 border border-white">
+                                    <span className="text-white font-bold text-[10px]">M</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="text-[26px] font-bold text-gray-900 mb-1">
+                            -₦{selectedTxn.amount.toLocaleString("en-NG", { minimumFractionDigits: 2 })}
+                        </div>
+
+                        <div className="text-[13px] font-medium text-gray-500 uppercase tracking-wider mb-3">
+                            {selectedTxn.senderName}
+                        </div>
+
+                        <div className="mb-8">
+                            {getModalStatusBadge(selectedTxn.status)}
+                        </div>
+
+                        <div className="w-full flex flex-col gap-5 border-t border-gray-100 pt-6">
+                            <h3 className="text-[15px] font-semibold text-gray-800 self-start">Transaction Details</h3>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">From:</span>
+                                <span className="text-gray-700 font-semibold flex items-center gap-1.5">
+                                    <span className="w-4 h-4 bg-teal-700 rounded-full inline-block"></span>
+                                    Onionloop
+                                </span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">To:</span>
+                                <span className="text-gray-700 font-semibold flex items-center gap-1.5">
+                                    <span className="w-4 h-4 bg-blue-600 rounded-full flex items-center justify-center text-[8px] text-white font-bold">M</span>
+                                    Moniepoint MFB
+                                </span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Date:</span>
+                                <span className="text-gray-700 font-semibold">{selectedTxn.date}</span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Transaction Location:</span>
+                                <span className="text-gray-700 font-semibold">{selectedTxn.location}</span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Amount:</span>
+                                <span className="text-gray-700 font-semibold">-₦{selectedTxn.amount.toLocaleString("en-NG", { minimumFractionDigits: 2 })}</span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Transaction Fee:</span>
+                                <span className="text-gray-700 font-semibold">₦{selectedTxn.fee.toLocaleString("en-NG", { minimumFractionDigits: 2 })}</span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Sender's Name:</span>
+                                <span className="text-gray-700 font-semibold">{selectedTxn.senderName}</span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Recipient's Account Name:</span>
+                                <span className="text-gray-700 font-semibold">{selectedTxn.recipientAccountName}</span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Payment Method:</span>
+                                <span className="text-gray-700 font-semibold">{selectedTxn.transType}</span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px]">
+                                <span className="text-gray-400 font-medium">Transaction ID:</span>
+                                <span className="text-gray-700 font-semibold flex items-center gap-1.5 text-xs">
+                                    {selectedTxn.id}
+                                    <button className="text-gray-400 hover:text-[#6C6C6C]">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </div>
+
+                            <div className="flex justify-between items-center text-[14px] pb-4">
+                                <span className="text-gray-400 font-medium">Description:</span>
+                                <span className="text-gray-700 font-semibold">{selectedTxn.description}</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                )}
+            </Modal>
+        </div>
+>>>>>>> origin/staging
     );
   };
 

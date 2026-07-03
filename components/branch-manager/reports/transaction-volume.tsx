@@ -8,7 +8,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Select from "../../ui/select";
 
 interface VolumeDataPoint {
@@ -16,7 +16,6 @@ interface VolumeDataPoint {
   value: number;
 }
 
-// Exact data from the design image
 const exactData: VolumeDataPoint[] = [
   { label: "Mon", value: 110 },
   { label: "Tues", value: 30 },
@@ -30,6 +29,11 @@ const exactData: VolumeDataPoint[] = [
 export default function TransactionVolume() {
   const [volumeData] = useState<VolumeDataPoint[]>(exactData);
   const [timeFilter, setTimeFilter] = useState("This Week");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const yTicks = [0, 40, 80, 120];
 
@@ -54,41 +58,48 @@ export default function TransactionVolume() {
       </div>
 
       <div style={{ height: 280 }}>
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={volumeData}
-            margin={{ top: 0, right: 32, left: 16, bottom: 0 }}
-            barCategoryGap="40%"
+        {isMounted && (
+          <ResponsiveContainer
+            width="100%"
+            height="100%"
+            minHeight={280}
+            minWidth={300}
           >
-            <CartesianGrid
-              horizontal
-              vertical={false}
-              stroke="#e5e7eb"
-              strokeDasharray="0"
-            />
-            <XAxis
-              dataKey="label"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: "#9ca3af", fontSize: 13, fontWeight: 500 }}
-              dy={12}
-            />
-            <YAxis
-              ticks={yTicks}
-              domain={[0, 120]}
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: "#9ca3af", fontSize: 13 }}
-              width={48}
-            />
-            <Bar
-              dataKey="value"
-              fill="#2a8f62"
-              radius={[4, 4, 0, 0]}
-              barSize={32}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+            <BarChart
+              data={volumeData}
+              margin={{ top: 0, right: 32, left: 16, bottom: 0 }}
+              barCategoryGap="40%"
+            >
+              <CartesianGrid
+                horizontal
+                vertical={false}
+                stroke="#e5e7eb"
+                strokeDasharray="0"
+              />
+              <XAxis
+                dataKey="label"
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: "#9ca3af", fontSize: 13, fontWeight: 500 }}
+                dy={12}
+              />
+              <YAxis
+                ticks={yTicks}
+                domain={[0, 120]}
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: "#9ca3af", fontSize: 13 }}
+                width={48}
+              />
+              <Bar
+                dataKey="value"
+                fill="#2a8f62"
+                radius={[4, 4, 0, 0]}
+                barSize={32}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </div>
   );
