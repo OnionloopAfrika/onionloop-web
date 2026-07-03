@@ -12,8 +12,13 @@ import {
   NavSection,
 } from "@/utils/constant/navigation";
 import { ROLE } from "@/utils/constant/const";
-import { LogoutIcon, ProfileIcon, SettingsIcon, SupportIcon } from "@/components/icons/svgs";
-import { ControlIconSolid } from '../../../components/icons/svgs';
+import {
+  LogoutIcon,
+  ProfileIcon,
+  SettingsIcon,
+  SupportIcon,
+} from "@/components/icons/svgs";
+import { ControlIconSolid } from "../../../components/icons/svgs";
 
 interface ProductNavItem {
   id: string;
@@ -54,7 +59,7 @@ export const SUPER_ADMIN_PRODUCT_NAV: ProductNavItem[] = [
     icon: <LogoutIcon />,
     isDestructive: true,
   },
-]
+];
 const GROUP_MANAGER_PRODUCT_NAV: ProductNavItem[] = [];
 const BRANCH_MANAGER_PRODUCT_NAV: ProductNavItem[] = [];
 

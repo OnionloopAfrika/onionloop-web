@@ -86,23 +86,23 @@ export const VideoIcon = ({ className, color = "currentColor" }: IconProps) => (
     <path
       d="M12.53 20.4201H6.21C3.05 20.4201 2 18.3201 2 16.2101V7.79008C2 4.63008 3.05 3.58008 6.21 3.58008H12.53C15.69 3.58008 16.74 4.63008 16.74 7.79008V16.2101C16.74 19.3701 15.68 20.4201 12.53 20.4201Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.5202 17.1001L16.7402 15.1501V8.84013L19.5202 6.89013C20.8802 5.94013 22.0002 6.52013 22.0002 8.19013V15.8101C22.0002 17.4801 20.8802 18.0601 19.5202 17.1001Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.5 11C12.3284 11 13 10.3284 13 9.5C13 8.67157 12.3284 8 11.5 8C10.6716 8 10 8.67157 10 9.5C10 10.3284 10.6716 11 11.5 11Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -176,37 +176,37 @@ export const MicIcon = ({ className, color = "currentColor" }: IconProps) => (
     <path
       d="M15.9993 20.667C18.946 20.667 21.3327 18.2803 21.3327 15.3337V8.00033C21.3327 5.05366 18.946 2.66699 15.9993 2.66699C13.0527 2.66699 10.666 5.05366 10.666 8.00033V15.3337C10.666 18.2803 13.0527 20.667 15.9993 20.667Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.80078 12.8662V15.1329C5.80078 20.7595 10.3741 25.3329 16.0008 25.3329C21.6274 25.3329 26.2008 20.7595 26.2008 15.1329V12.8662"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.1465 8.57316C15.3465 8.13316 16.6532 8.13316 17.8532 8.57316"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.9336 11.3998C15.6403 11.2131 16.3736 11.2131 17.0803 11.3998"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16 25.333V29.333"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -380,23 +380,23 @@ export const WalletIcon = ({
     <path
       d="M13 9H7"
       stroke="#7C53FC"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M22.0002 10.9702V13.0302C22.0002 13.5802 21.5602 14.0302 21.0002 14.0502H19.0402C17.9602 14.0502 16.9702 13.2602 16.8802 12.1802C16.8202 11.5502 17.0602 10.9602 17.4802 10.5502C17.8502 10.1702 18.3602 9.9502 18.9202 9.9502H21.0002C21.5602 9.9702 22.0002 10.4202 22.0002 10.9702Z"
       stroke="#7C53FC"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M17.48 10.55C17.06 10.96 16.82 11.55 16.88 12.18C16.97 13.26 17.96 14.05 19.04 14.05H21V15.5C21 18.5 19 20.5 16 20.5H7C4 20.5 2 18.5 2 15.5V8.5C2 5.78 3.64 3.88 6.19 3.56C6.45 3.52 6.72 3.5 7 3.5H16C16.26 3.5 16.51 3.50999 16.75 3.54999C19.33 3.84999 21 5.76 21 8.5V9.95001H18.92C18.36 9.95001 17.85 10.17 17.48 10.55Z"
       stroke="#7C53FC"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -594,23 +594,23 @@ export const RevenueIcon = ({ color = "#8A8A8A", className }: IconProps) => (
     <path
       d="M8.67188 14.3298C8.67188 15.6198 9.66188 16.6598 10.8919 16.6598H13.4019C14.4719 16.6598 15.3419 15.7498 15.3419 14.6298C15.3419 13.4098 14.8119 12.9798 14.0219 12.6998L9.99187 11.2998C9.20187 11.0198 8.67188 10.5898 8.67188 9.36984C8.67188 8.24984 9.54187 7.33984 10.6119 7.33984H13.1219C14.3519 7.33984 15.3419 8.37984 15.3419 9.66984"
       stroke="#04802E"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 6V18"
       stroke="#04802E"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15 22H9C4 22 2 20 2 15V9C2 4 4 2 9 2H15C20 2 22 4 22 9V15C22 20 20 22 15 22Z"
       stroke="#04802E"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -810,7 +810,7 @@ export function OnionloopIcon() {
 
 export const ArrowDownIcon = ({
   color = "currentColor",
-  className,
+  className = "not-last:",
 }: {
   color: string;
   className: string;
@@ -869,76 +869,76 @@ export const CalendarIcon = ({
     <path
       d="M6.66602 1.66699V4.16699"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M13.334 1.66699V4.16699"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M2.91602 7.5752H17.0827"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M17.5 7.08366V14.167C17.5 16.667 16.25 18.3337 13.3333 18.3337H6.66667C3.75 18.3337 2.5 16.667 2.5 14.167V7.08366C2.5 4.58366 3.75 2.91699 6.66667 2.91699H13.3333C16.25 2.91699 17.5 4.58366 17.5 7.08366Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M13.0781 11.4167H13.0856"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M13.0781 13.9167H13.0856"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.99607 11.4167H10.0036"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.99607 13.9167H10.0036"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.91209 11.4167H6.91957"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.91209 13.9167H6.91957"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1076,10 +1076,19 @@ export const StaffIconSolid = ({
 );
 
 export const ControlIconSolid = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12.6267 3.61329L9.18005 1.61996C8.52005 1.23996 7.48672 1.23996 6.82672 1.61996L3.34672 3.62663C1.96672 4.55996 1.88672 4.69996 1.88672 6.18663V9.80663C1.88672 11.2933 1.96672 11.44 3.37339 12.3866L6.82005 14.38C7.15338 14.5733 7.58005 14.6666 8.00005 14.6666C8.42005 14.6666 8.84672 14.5733 9.17339 14.38L12.6534 12.3733C14.0334 11.44 14.1134 11.3 14.1134 9.81329V6.18663C14.1134 4.69996 14.0334 4.55996 12.6267 3.61329ZM8.00005 10.1666C6.80672 10.1666 5.83339 9.19329 5.83339 7.99996C5.83339 6.80663 6.80672 5.83329 8.00005 5.83329C9.19339 5.83329 10.1667 6.80663 10.1667 7.99996C10.1667 9.19329 9.19339 10.1666 8.00005 10.1666Z" fill="currentColor" />
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.6267 3.61329L9.18005 1.61996C8.52005 1.23996 7.48672 1.23996 6.82672 1.61996L3.34672 3.62663C1.96672 4.55996 1.88672 4.69996 1.88672 6.18663V9.80663C1.88672 11.2933 1.96672 11.44 3.37339 12.3866L6.82005 14.38C7.15338 14.5733 7.58005 14.6666 8.00005 14.6666C8.42005 14.6666 8.84672 14.5733 9.17339 14.38L12.6534 12.3733C14.0334 11.44 14.1134 11.3 14.1134 9.81329V6.18663C14.1134 4.69996 14.0334 4.55996 12.6267 3.61329ZM8.00005 10.1666C6.80672 10.1666 5.83339 9.19329 5.83339 7.99996C5.83339 6.80663 6.80672 5.83329 8.00005 5.83329C9.19339 5.83329 10.1667 6.80663 10.1667 7.99996C10.1667 9.19329 9.19339 10.1666 8.00005 10.1666Z"
+      fill="currentColor"
+    />
   </svg>
-)
+);
 
 export const LineChartIcon = ({ className, color }: IconProps) => (
   <svg
@@ -1119,7 +1128,7 @@ export const SearchIcon = ({
 );
 
 export const DownloadIcon = ({
-  className,
+  className = "",
   color = "currentColor",
 }: IconProps) => (
   <svg
@@ -1133,45 +1142,45 @@ export const DownloadIcon = ({
     <path
       d="M10.0007 6.66699V1.66699L8.33398 3.33366"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10 1.66699L11.6667 3.33366"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.83333 10C2.5 10 2.5 11.4917 2.5 13.3333V14.1667C2.5 16.4667 2.5 18.3333 6.66667 18.3333H13.3333C16.6667 18.3333 17.5 16.4667 17.5 14.1667V13.3333C17.5 11.4917 17.5 10 14.1667 10C13.3333 10 13.1 10.175 12.6667 10.5L11.8167 11.4C10.8333 12.45 9.16667 12.45 8.175 11.4L7.33333 10.5C6.9 10.175 6.66667 10 5.83333 10Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.16602 9.99987V8.3332C4.16602 6.6582 4.16602 5.27487 6.66602 5.0332"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15.834 9.99987V8.3332C15.834 6.6582 15.834 5.27487 13.334 5.0332"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
 export const DownloadIconSolid = ({
-  className,
+  className = "",
   color = "currentColor",
 }: IconProps) => (
   <svg
@@ -1180,44 +1189,45 @@ export const DownloadIconSolid = ({
     viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
     <path
       d="M10.0007 6.66699V1.66699L8.33398 3.33366"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10 1.66699L11.6667 3.33366"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.83333 10C2.5 10 2.5 11.4917 2.5 13.3333V14.1667C2.5 16.4667 2.5 18.3333 6.66667 18.3333H13.3333C16.6667 18.3333 17.5 16.4667 17.5 14.1667V13.3333C17.5 11.4917 17.5 10 14.1667 10C13.3333 10 13.1 10.175 12.6667 10.5L11.8167 11.4C10.8333 12.45 9.16667 12.45 8.175 11.4L7.33333 10.5C6.9 10.175 6.66667 10 5.83333 10Z"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.16602 9.99987V8.3332C4.16602 6.6582 4.16602 5.27487 6.66602 5.0332"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15.834 9.99987V8.3332C15.834 6.6582 15.834 5.27487 13.334 5.0332"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1236,44 +1246,44 @@ export const EyeSlashIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.1092 7.8916L7.89258 12.1083C7.35091 11.5666 7.01758 10.8249 7.01758 9.99993C7.01758 8.34993 8.35091 7.0166 10.0009 7.0166C10.8259 7.0166 11.5676 7.34994 12.1092 7.8916Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.8499 4.8084C13.3915 3.7084 11.7249 3.1084 9.99987 3.1084C7.0582 3.1084 4.31654 4.84173 2.4082 7.84173C1.6582 9.01673 1.6582 10.9917 2.4082 12.1667C3.06654 13.2001 3.8332 14.0917 4.66654 14.8084"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.01758 16.2751C7.96758 16.6751 8.97591 16.8917 10.0009 16.8917C12.9426 16.8917 15.6842 15.1584 17.5926 12.1584C18.3426 10.9834 18.3426 9.0084 17.5926 7.8334C17.3176 7.40006 17.0176 6.99173 16.7092 6.6084"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9242 10.583C12.7076 11.758 11.7492 12.7163 10.5742 12.933"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.89102 12.1084L1.66602 18.3334"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M18.3324 1.66699L12.1074 7.89199"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1290,31 +1300,31 @@ export const ChartIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.66602 18.333H18.3327"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.125 3.33366V18.3337H11.875V3.33366C11.875 2.41699 11.5 1.66699 10.375 1.66699H9.625C8.5 1.66699 8.125 2.41699 8.125 3.33366Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M2.5 8.33366V18.3337H5.83333V8.33366C5.83333 7.41699 5.5 6.66699 4.5 6.66699H3.83333C2.83333 6.66699 2.5 7.41699 2.5 8.33366Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.166 12.4997V18.333H17.4993V12.4997C17.4993 11.583 17.166 10.833 16.166 10.833H15.4993C14.4993 10.833 14.166 11.583 14.166 12.4997Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1331,18 +1341,18 @@ export const SmsIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
       stroke="currentColor"
-      stroke-width="1.8"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.8"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9"
       stroke="currentColor"
-      stroke-width="1.8"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.8"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1375,23 +1385,23 @@ export const CautionIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.9023 9.67773V15.0541"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9025 23.022H6.38635C2.65517 23.022 1.09603 20.3553 2.90248 17.0972L6.25732 11.0542L9.41861 5.3768C11.3326 1.92518 14.4724 1.92518 16.3864 5.3768L19.5476 11.065L22.9025 17.108C24.7089 20.366 23.139 23.0327 19.4186 23.0327H12.9025V23.022Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.8965 18.2793H12.9061"
       stroke="currentColor"
-      stroke-width="2.58065"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2.58065"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1408,23 +1418,23 @@ export const WarningIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.9023 8.33301V13.9782"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M22.6666 9.2257V16.5805C22.6666 17.7848 22.0214 18.9031 20.9784 19.516L14.5913 23.2042C13.5483 23.8063 12.2579 23.8063 11.2042 23.2042L4.81709 19.516C3.77408 18.9139 3.12891 17.7956 3.12891 16.5805V9.2257C3.12891 8.02139 3.77408 6.90307 4.81709 6.29017L11.2042 2.602C12.2472 1.99985 13.5375 1.99985 14.5913 2.602L20.9784 6.29017C22.0214 6.90307 22.6666 8.01064 22.6666 9.2257Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9023 17.4189V17.5265"
       stroke="currentColor"
-      stroke-width="2.58065"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2.58065"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1441,9 +1451,9 @@ export const ShieldIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M22.4836 11.9566C22.4836 17.2146 18.6664 22.1394 13.4513 23.5802C13.0965 23.677 12.7094 23.677 12.3545 23.5802C7.13946 22.1394 3.32227 17.2146 3.32227 11.9566V7.23612C3.32227 6.3544 3.98895 5.35441 4.8169 5.02107L10.8061 2.56949C12.1502 2.02111 13.6663 2.02111 15.0104 2.56949L20.9997 5.02107C21.8169 5.35441 22.4943 6.3544 22.4943 7.23612L22.4836 11.9566Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1460,23 +1470,23 @@ export const Warning2Icon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.9031 23.6558C18.8171 23.6558 23.6558 18.8171 23.6558 12.9031C23.6558 6.9891 18.8171 2.15039 12.9031 2.15039C6.9891 2.15039 2.15039 6.9891 2.15039 12.9031C2.15039 18.8171 6.9891 23.6558 12.9031 23.6558Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9023 8.60254V13.9789"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.8965 17.2041H12.9061"
       stroke="currentColor"
-      stroke-width="2.58065"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2.58065"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1493,39 +1503,39 @@ export const ReceiptEditIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M22.0432 12.1504V7.56975C22.0432 3.23642 21.0325 2.15039 16.968 2.15039H8.83894C4.77443 2.15039 3.76367 3.23642 3.76367 7.56975V19.6773C3.76367 22.5375 5.33358 23.2149 7.2368 21.1719L7.24753 21.1611C8.12925 20.2257 9.47334 20.3009 10.2368 21.3224L11.3228 22.774"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.60156 7.52734H17.2037"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.67773 11.8281H16.1293"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.5814 15.8818L15.775 19.6882C15.6245 19.8388 15.4847 20.1183 15.4524 20.3226L15.2481 21.7742C15.1728 22.3011 15.5384 22.6667 16.0653 22.5915L17.5169 22.3872C17.7212 22.3549 18.0116 22.2151 18.1513 22.0646L21.9578 18.2581C22.6137 17.6022 22.9255 16.8388 21.9578 15.871C21.0008 14.914 20.2373 15.2259 19.5814 15.8818Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.0312 16.4297C19.3538 17.591 20.2571 18.4942 21.4183 18.8168"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1700,23 +1710,23 @@ export const SyncIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M14.75 5.25V14.25C14.75 17.85 13.875 18.75 10.375 18.75H5.125C1.625 18.75 0.75 17.85 0.75 14.25V5.25C0.75 1.65 1.625 0.75 5.125 0.75H10.375C13.875 0.75 14.75 1.65 14.75 5.25Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.5 3.90039H6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.75078 16.1396C8.49982 16.1396 9.10703 15.515 9.10703 14.7446C9.10703 13.9742 8.49982 13.3496 7.75078 13.3496C7.00175 13.3496 6.39453 13.9742 6.39453 14.7446C6.39453 15.515 7.00175 16.1396 7.75078 16.1396Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1733,23 +1743,23 @@ export const LockIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M3.5 7.5V6C3.5 3.5175 4.08333 1.5 7 1.5C9.91667 1.5 10.5 3.5175 10.5 6V7.5"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.99935 13.875C7.80476 13.875 8.45768 13.0355 8.45768 12C8.45768 10.9645 7.80476 10.125 6.99935 10.125C6.19393 10.125 5.54102 10.9645 5.54102 12C5.54102 13.0355 6.19393 13.875 6.99935 13.875Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.91602 16.5H4.08268C1.74935 16.5 1.16602 15.75 1.16602 12.75V11.25C1.16602 8.25 1.74935 7.5 4.08268 7.5H9.91602C12.2493 7.5 12.8327 8.25 12.8327 11.25V12.75C12.8327 15.75 12.2493 16.5 9.91602 16.5Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1766,12 +1776,12 @@ export const LocationIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M9.00016 10.0726C10.2925 10.0726 11.3402 9.02492 11.3402 7.73258C11.3402 6.44023 10.2925 5.39258 9.00016 5.39258C7.70781 5.39258 6.66016 6.44023 6.66016 7.73258C6.66016 9.02492 7.70781 10.0726 9.00016 10.0726Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
     <path
       d="M2.71527 6.3675C4.19277 -0.127498 13.8153 -0.119998 15.2853 6.375C16.1478 10.185 13.7778 13.41 11.7003 15.405C10.1928 16.86 7.80777 16.86 6.29277 15.405C4.22277 13.41 1.85277 10.1775 2.71527 6.3675Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
   </svg>
 );
@@ -1788,33 +1798,33 @@ export const PaymentIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.66699 7.08789H18.3337"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5 13.7539H6.66667"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.75 13.7539H12.0833"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.36699 2.9209H14.6253C17.592 2.9209 18.3337 3.65423 18.3337 6.57923V13.4209C18.3337 16.3459 17.592 17.0792 14.6337 17.0792H5.36699C2.40866 17.0876 1.66699 16.3542 1.66699 13.4292V6.57923C1.66699 3.65423 2.40866 2.9209 5.36699 2.9209Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1831,47 +1841,47 @@ export const CardProblemIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.66699 7.08301H12.7003"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5 13.75H6.075"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.16699 13.75H12.0837"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.65039 17.0829H14.6337C17.6004 17.0829 18.3337 16.3495 18.3337 13.4245V5.74121"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16.6587 3.12533C16.142 2.97533 15.4753 2.91699 14.6337 2.91699H5.36699C2.40866 2.91699 1.66699 3.65033 1.66699 6.57533V13.417C1.66699 15.367 1.99199 16.342 3.09199 16.7753"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M18.3337 1.66699L1.66699 18.3337"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1888,33 +1898,33 @@ export const AppSyncIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M7.44141 1.66699L7.46641 2.94202C7.48307 3.61702 8.04141 4.16699 8.71641 4.16699H11.2331C11.9248 4.16699 12.4831 3.60033 12.4831 2.91699V1.66699"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.1667 14.167L12.5 15.8337L14.1667 17.5003"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16.667 14.167L18.3337 15.8337L16.667 17.5003"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.8333 18.3337H6.66667C3.75 18.3337 2.5 16.667 2.5 14.167V5.83366C2.5 3.33366 3.75 1.66699 6.66667 1.66699H13.3333C16.25 1.66699 17.5 3.33366 17.5 5.83366V11.667"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1931,17 +1941,17 @@ export const OthersIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M4.16667 8.33301C3.25 8.33301 2.5 9.08301 2.5 9.99967C2.5 10.9163 3.25 11.6663 4.16667 11.6663C5.08333 11.6663 5.83333 10.9163 5.83333 9.99967C5.83333 9.08301 5.08333 8.33301 4.16667 8.33301Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
     <path
       d="M15.8337 8.33301C14.917 8.33301 14.167 9.08301 14.167 9.99967C14.167 10.9163 14.917 11.6663 15.8337 11.6663C16.7503 11.6663 17.5003 10.9163 17.5003 9.99967C17.5003 9.08301 16.7503 8.33301 15.8337 8.33301Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
     <path
       d="M9.99967 8.33301C9.08301 8.33301 8.33301 9.08301 8.33301 9.99967C8.33301 10.9163 9.08301 11.6663 9.99967 11.6663C10.9163 11.6663 11.6663 10.9163 11.6663 9.99967C11.6663 9.08301 10.9163 8.33301 9.99967 8.33301Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
   </svg>
 );
@@ -1978,23 +1988,23 @@ export const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M7.99967 14.6673C11.6816 14.6673 14.6663 11.6825 14.6663 8.00065C14.6663 4.31875 11.6816 1.33398 7.99967 1.33398C4.31778 1.33398 1.33301 4.31875 1.33301 8.00065C1.33301 11.6825 4.31778 14.6673 7.99967 14.6673Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.66699 8H9.66699"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.33301 10L10.333 8L8.33301 6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2011,25 +2021,25 @@ export const SecuritySafeIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M13.9396 7.41288C13.9396 10.6729 11.5729 13.7262 8.33958 14.6195C8.11958 14.6795 7.87957 14.6795 7.65957 14.6195C4.42623 13.7262 2.05957 10.6729 2.05957 7.41288V4.4862C2.05957 3.93953 2.47291 3.31954 2.98625 3.11287L6.69956 1.59289C7.5329 1.25289 8.4729 1.25289 9.30623 1.59289L13.0196 3.11287C13.5262 3.31954 13.9462 3.93953 13.9462 4.4862L13.9396 7.41288Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.00033 8.33268C8.73671 8.33268 9.33366 7.73573 9.33366 6.99935C9.33366 6.26297 8.73671 5.66602 8.00033 5.66602C7.26395 5.66602 6.66699 6.26297 6.66699 6.99935C6.66699 7.73573 7.26395 8.33268 8.00033 8.33268Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8 8.33203V10.332"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2046,17 +2056,17 @@ export const RecordCircleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M11.9697 22C17.4926 22 21.9697 17.5228 21.9697 12C21.9697 6.47715 17.4926 2 11.9697 2C6.44688 2 1.96973 6.47715 1.96973 12C1.96973 17.5228 6.44688 22 11.9697 22Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.9995 16.2295C14.3357 16.2295 16.2295 14.3357 16.2295 11.9995C16.2295 9.66337 14.3357 7.76953 11.9995 7.76953C9.66337 7.76953 7.76953 9.66337 7.76953 11.9995C7.76953 14.3357 9.66337 16.2295 11.9995 16.2295Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2073,51 +2083,51 @@ export const MicrophoneIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M16 6.3V6C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6V11"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.04004 14.19C9.77004 15 10.83 15.5 12 15.5C14.21 15.5 16 13.71 16 11.5V11"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.78027 16.9504C8.15027 18.2204 9.98027 19.0004 12.0003 19.0004C16.2203 19.0004 19.6503 15.5704 19.6503 11.3504V9.65039"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.34961 9.65039V11.3504C4.34961 12.4104 4.55961 13.4104 4.94961 14.3304"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M20.0697 2.83984L3.92969 18.9898"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11 3V6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 19V22"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2135,8 +2145,8 @@ export const EndCallIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M31.97 28.33C31.97 28.69 31.89 29.06 31.72 29.42C31.55 29.78 31.33 30.12 31.04 30.44C30.55 30.98 30.01 31.37 29.4 31.62C28.8 31.87 28.15 32 27.45 32C26.43 32 25.34 31.76 24.19 31.27C23.04 30.78 21.89 30.12 20.75 29.29C19.6 28.45 18.51 27.52 17.47 26.49C16.44 25.45 15.51 24.36 14.68 23.22C13.86 22.08 13.2 20.94 12.72 19.81C12.24 18.67 12 17.58 12 16.54C12 15.86 12.12 15.21 12.36 14.61C12.6 14 12.98 13.44 13.51 12.94C14.15 12.31 14.85 12 15.59 12C15.87 12 16.15 12.06 16.4 12.18C16.66 12.3 16.89 12.48 17.07 12.74L19.39 16.01C19.57 16.26 19.7 16.49 19.79 16.71C19.88 16.92 19.93 17.13 19.93 17.32C19.93 17.56 19.86 17.8 19.72 18.03C19.59 18.26 19.4 18.5 19.16 18.74L18.4 19.53C18.29 19.64 18.24 19.77 18.24 19.93C18.24 20.01 18.25 20.08 18.27 20.16C18.3 20.24 18.33 20.3 18.35 20.36C18.53 20.69 18.84 21.12 19.28 21.64C19.73 22.16 20.21 22.69 20.73 23.22C21.27 23.75 21.79 24.24 22.32 24.69C22.84 25.13 23.27 25.43 23.61 25.61C23.66 25.63 23.72 25.66 23.79 25.69C23.87 25.72 23.95 25.73 24.04 25.73C24.21 25.73 24.34 25.67 24.45 25.56L25.21 24.81C25.46 24.56 25.7 24.37 25.93 24.25C26.16 24.11 26.39 24.04 26.64 24.04C26.83 24.04 27.03 24.08 27.25 24.17C27.47 24.26 27.7 24.39 27.95 24.56L31.26 26.91C31.52 27.09 31.7 27.3 31.81 27.55C31.91 27.8 31.97 28.05 31.97 28.33Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
   </svg>
 );
@@ -2203,49 +2213,49 @@ export const BriefcaseIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M8.00065 12.1341C9.47341 12.1341 10.6673 10.9402 10.6673 9.46745C10.6673 7.99469 9.47341 6.80078 8.00065 6.80078C6.52789 6.80078 5.33398 7.99469 5.33398 9.46745C5.33398 10.9402 6.52789 12.1341 8.00065 12.1341Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.96094 9.53419L7.39427 9.96753C7.52094 10.0942 7.7276 10.0942 7.85427 9.97419L9.04094 8.88086"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.33387 14.6667H10.6672C13.3472 14.6667 13.8272 13.5933 13.9672 12.2867L14.4672 6.95333C14.6472 5.32667 14.1805 4 11.3339 4H4.6672C1.82054 4 1.35387 5.32667 1.53387 6.95333L2.03387 12.2867C2.17387 13.5933 2.65387 14.6667 5.33387 14.6667Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.33398 4.00065V3.46732C5.33398 2.28732 5.33398 1.33398 7.46732 1.33398H8.53398C10.6673 1.33398 10.6673 2.28732 10.6673 3.46732V4.00065"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.4338 7.33398C13.2805 8.17398 12.0005 8.76065 10.6738 9.09398"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M1.74609 7.51367C2.85943 8.27367 4.07276 8.81367 5.33276 9.12034"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2262,76 +2272,76 @@ export const MoneySendIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M5.33398 1.33398V3.33398"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.666 1.33398V3.33398"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M2.33398 6.06055H13.6673"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14 5.66732V11.334C14 13.334 13 14.6673 10.6667 14.6673H5.33333C3 14.6673 2 13.334 2 11.334V5.66732C2 3.66732 3 2.33398 5.33333 2.33398H10.6667C13 2.33398 14 3.66732 14 5.66732Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.4625 9.13411H10.4685"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.4625 11.1341H10.4685"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.99764 9.13411H8.00363"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.99764 11.1341H8.00363"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.52889 9.13411H5.53488"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.52889 11.1341H5.53488"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2348,9 +2358,9 @@ export const MoneySendIcon = (props: React.SVGProps<SVGSVGElement>) => (
 //     <path
 //       d="M11.4421 2.92422L12.9087 5.85755C13.1087 6.26589 13.6421 6.65755 14.0921 6.73255L16.7504 7.17422C18.4504 7.45755 18.8504 8.69089 17.6254 9.90755L15.5587 11.9742C15.2087 12.3242 15.0171 12.9992 15.1254 13.4826L15.7171 16.0409C16.1837 18.0659 15.1087 18.8492 13.3171 17.7909L10.8254 16.3159C10.3754 16.0492 9.63375 16.0492 9.17541 16.3159L6.68375 17.7909C4.90041 18.8492 3.81708 18.0576 4.28375 16.0409L4.87541 13.4826C4.98375 12.9992 4.79208 12.3242 4.44208 11.9742L2.37541 9.90755C1.15875 8.69089 1.55041 7.45755 3.25041 7.17422L5.90875 6.73255C6.35041 6.65755 6.88375 6.26589 7.08375 5.85755L8.55041 2.92422C9.35041 1.33255 10.6504 1.33255 11.4421 2.92422Z"
 //       stroke="currentColor"
-//       stroke-width="1.5"
-//       stroke-linecap="round"
-//       stroke-linejoin="round"
+//       strokeWidth="1.5"
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
 //     />
 //   </svg>
 // );
@@ -2367,33 +2377,33 @@ export const CardIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.5 6.37891H16.5"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.5 12.3789H6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.875 12.3789H10.875"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.83 2.62891H13.1625C15.8325 2.62891 16.5 3.28891 16.5 5.92141V12.0789C16.5 14.7114 15.8325 15.3714 13.17 15.3714H4.83C2.1675 15.3789 1.5 14.7189 1.5 12.0864V5.92141C1.5 3.28891 2.1675 2.62891 4.83 2.62891Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2410,74 +2420,74 @@ export const BankIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M9.2775 1.61336L16.0275 4.31334C16.29 4.41834 16.5 4.73334 16.5 5.01084V7.50084C16.5 7.91334 16.1625 8.25084 15.75 8.25084H2.25C1.8375 8.25084 1.5 7.91334 1.5 7.50084V5.01084C1.5 4.73334 1.71 4.41834 1.9725 4.31334L8.7225 1.61336C8.8725 1.55336 9.1275 1.55336 9.2775 1.61336Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16.5 16.5H1.5V14.25C1.5 13.8375 1.8375 13.5 2.25 13.5H15.75C16.1625 13.5 16.5 13.8375 16.5 14.25V16.5Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M3 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15 13.5V8.25"
       stroke="#0D5EBA"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M0.75 16.5H17.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9 6.375C9.62132 6.375 10.125 5.87132 10.125 5.25C10.125 4.62868 9.62132 4.125 9 4.125C8.37868 4.125 7.875 4.62868 7.875 5.25C7.875 5.87132 8.37868 6.375 9 6.375Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2494,6 +2504,85 @@ export const MultiplyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M18.8023 15.0291C17.7609 13.9877 16.0724 13.9877 15.031 15.0291C13.9897 16.0705 13.9897 17.7589 15.031 18.8003L28.2304 31.9997L15.031 45.199C13.9897 46.2404 13.9897 47.9288 15.031 48.9702C16.0724 50.0116 17.7609 50.0116 18.8023 48.9702L32.0016 35.7709L45.2009 48.9702C46.2423 50.0116 47.9308 50.0116 48.9722 48.9702C50.0136 47.9288 50.0136 46.2404 48.9722 45.199L35.7728 31.9997L48.9722 18.8003C50.0136 17.7589 50.0136 16.0705 48.9722 15.0291C47.9308 13.9877 46.2423 13.9877 45.2009 15.0291L32.0016 28.2284L18.8023 15.0291Z"
       fill="currentColor"
+    />
+  </svg>
+);
+
+export const DollarSignIcon = ({
+  color = "currentColor",
+  className,
+}: IconProps) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M12 2V22"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M17 5H9.5C8.09554 5 7 6.09554 7 7.5V8.5C7 9.90446 8.09554 11 9.5 11H14.5C15.9045 11 17 12.0955 17 13.5V14.5C17 15.9045 15.9045 17 14.5 17H6"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const BarChart3Icon = ({
+  color = "currentColor",
+  className,
+}: IconProps) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M3 3V21"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7 17V7"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11 14V4"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M15 16V10"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M19 18V8"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2638,7 +2727,7 @@ export const OnionIcon = (props: React.SVGProps<SVGSVGElement>) => (
         rx="30.5"
         ry="3.5"
         fill="#024E44"
-        fill-opacity="0.17"
+        fillOpacity="0.17"
       />
     </g>
     <defs>
@@ -2679,7 +2768,7 @@ export const NoProductsIcon = (props: React.SVGProps<SVGSVGElement>) => (
       d="M132.5 146.575C157.433 146.575 179.967 150.541 196.233 156.922C204.369 160.114 210.894 163.892 215.369 168.043C219.843 172.193 222.205 176.65 222.205 181.229C222.205 185.807 219.843 190.263 215.369 194.413C210.894 198.564 204.369 202.342 196.233 205.534C179.967 211.916 157.433 215.882 132.5 215.882C107.567 215.882 85.0344 211.915 68.7676 205.534C60.6314 202.342 54.1072 198.564 49.6318 194.413C45.1577 190.263 42.7959 185.807 42.7959 181.229C42.7959 176.65 45.1576 172.193 49.6318 168.043C54.1072 163.892 60.6316 160.114 68.7676 156.922C85.0343 150.541 107.567 146.575 132.5 146.575Z"
       fill="#F9FAFB"
       stroke="#8A8A8A"
-      stroke-width="1.76667"
+      strokeWidth="1.76667"
     />
     <path
       d="M135.476 75.9544C135.302 75.7189 135.103 75.5029 134.882 75.3091C134.102 74.627 133.047 74.2344 131.876 74.2344C131.516 74.2344 131.138 74.2736 130.755 74.3521C130.568 74.3914 130.387 74.4405 130.208 74.4945C130.188 74.4994 130.168 74.5043 130.149 74.5092C130.075 74.5337 130.002 74.5607 129.928 74.5877C129.899 74.5975 129.867 74.6073 129.837 74.6196C129.717 74.6662 129.597 74.7153 129.479 74.7668C129.472 74.7693 129.464 74.7742 129.459 74.7766C129.297 74.8503 129.14 74.9312 128.986 75.0171C128.976 75.022 128.969 75.0269 128.959 75.0318C128.922 75.0539 128.888 75.0784 128.851 75.1005C128.755 75.1594 128.659 75.2183 128.566 75.2796C128.549 75.2919 128.529 75.3017 128.512 75.314C128.475 75.3385 128.441 75.368 128.404 75.395C128.328 75.4514 128.252 75.5054 128.176 75.5643C128.154 75.5815 128.129 75.5986 128.105 75.6158C128.075 75.6403 128.046 75.6673 128.017 75.6919C127.945 75.7508 127.877 75.8121 127.808 75.8734C127.781 75.898 127.754 75.9201 127.727 75.9446C127.676 75.9937 127.624 76.0428 127.575 76.0943C127.509 76.163 127.445 76.2317 127.381 76.3004C127.364 76.3176 127.352 76.3372 127.334 76.3568C127.261 76.4403 127.19 76.5286 127.121 76.6145C127.096 76.6464 127.067 76.6758 127.045 76.7077C127.038 76.7175 127.033 76.7273 127.025 76.7371C126.92 76.877 126.822 77.0218 126.731 77.1715C126.726 77.1788 126.721 77.1837 126.716 77.1911C126.652 77.2966 126.591 77.4046 126.532 77.5125C126.52 77.5346 126.51 77.5591 126.498 77.5812C126.458 77.6597 126.417 77.7383 126.382 77.8168C126.373 77.8364 126.368 77.856 126.358 77.8757C126.341 77.9174 126.324 77.9591 126.306 78.0033C126.272 78.0867 126.24 78.1701 126.211 78.2535C126.193 78.2977 126.179 78.3443 126.164 78.3885C126.135 78.4768 126.11 78.5627 126.086 78.651C126.076 78.6928 126.063 78.732 126.054 78.7737C126.022 78.9013 125.995 79.0314 125.975 79.1614C125.919 79.5098 125.899 79.8681 125.926 80.2239L126.054 82.0838L131.359 89.3148L131.231 87.4549C131.204 87.0967 131.224 86.7409 131.28 86.3925C131.3 86.2624 131.329 86.1324 131.359 86.0048C131.368 85.9631 131.381 85.9238 131.39 85.8821C131.415 85.7938 131.439 85.7054 131.466 85.6196C131.481 85.5754 131.496 85.5288 131.513 85.4846C131.543 85.4012 131.574 85.3178 131.609 85.2343C131.626 85.1926 131.643 85.1509 131.66 85.1092C131.705 85.011 131.751 84.9129 131.8 84.8147C131.812 84.7927 131.822 84.7681 131.835 84.746C131.896 84.6307 131.962 84.5154 132.031 84.4025C132.122 84.2553 132.222 84.1105 132.325 83.9682C132.357 83.9265 132.389 83.8872 132.423 83.8455C132.492 83.7572 132.563 83.6713 132.637 83.5879C132.715 83.4996 132.794 83.4112 132.877 83.3253C132.953 83.2493 133.032 83.1781 133.11 83.1045C133.179 83.0432 133.248 82.9818 133.319 82.9229C133.371 82.8788 133.425 82.8346 133.479 82.7929C133.552 82.734 133.628 82.6776 133.707 82.6236C133.761 82.5843 133.812 82.5451 133.869 82.5083C133.962 82.4469 134.058 82.388 134.153 82.3291C134.2 82.3021 134.244 82.2727 134.291 82.2457C134.445 82.1598 134.602 82.0789 134.764 82.0052C134.889 81.9488 135.015 81.8948 135.145 81.8458C135.174 81.8335 135.206 81.8237 135.235 81.8139C135.329 81.7795 135.422 81.7501 135.518 81.7206C135.697 81.6666 135.878 81.6151 136.065 81.5783C136.448 81.4998 136.825 81.4605 137.186 81.4605C138.359 81.4605 139.414 81.8531 140.192 82.5353C140.413 82.7291 140.611 82.9426 140.786 83.1806L135.476 75.9544Z"
@@ -2916,9 +3005,9 @@ export const MarkIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M4.16602 10.0007L8.33268 14.1673L16.666 5.83398"
       stroke="currentColor"
-      stroke-width="1.66667"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.66667"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2971,10 +3060,10 @@ export const ChainlinkIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M3 8.2V15.8C3 16.5 3.4 17.2 4 17.5L11 21.4C11.6 21.7 12.3 21.7 12.9 21.4L19.9 17.5C20.5 17.1 20.9 16.5 20.9 15.8V8.2C20.9 7.5 20.5 6.8 19.9 6.5L12.9 2.6C12.3 2.3 11.6 2.3 11 2.6L4 6.4C3.4 6.8 3 7.5 3 8.2Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2991,23 +3080,23 @@ export const DangerIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12 9V14"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.9994 21.4093H5.93944C2.46944 21.4093 1.01944 18.9293 2.69944 15.8993L5.81944 10.2793L8.75944 4.9993C10.5394 1.7893 13.4594 1.7893 15.2394 4.9993L18.1794 10.2893L21.2994 15.9093C22.9794 18.9393 21.5194 21.4193 18.0594 21.4193H11.9994V21.4093Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.9941 17H12.0031"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -3064,24 +3153,24 @@ export const TimerIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M20.75 13.25C20.75 18.08 16.83 22 12 22C7.17 22 3.25 18.08 3.25 13.25C3.25 8.42 7.17 4.5 12 4.5C16.83 4.5 20.75 8.42 20.75 13.25Z"
       stroke="currentColor"
-      stroke-width="1.47502"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.47502"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 8V13"
       stroke="currentColor"
-      stroke-width="1.47502"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.47502"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9 2H15"
       stroke="currentColor"
-      stroke-width="1.47502"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.47502"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -3343,23 +3432,23 @@ export const DashboardSettings = ({
 //       <path
 //         d="M21.9688 15V9C21.9688 4 19.9688 2 14.9688 2H8.96875C3.96875 2 1.96875 4 1.96875 9V15C1.96875 20 3.96875 22 8.96875 22H14.9688C19.9688 22 21.9688 20 21.9688 15Z"
 //         stroke={color}
-//         stroke-width="1.5"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
+//         strokeWidth="1.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
 //       />
 //       <path
 //         d="M7.96875 2V22"
 //         stroke={color}
-//         stroke-width="1.5"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
+//         strokeWidth="1.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
 //       />
 //       <path
 //         d="M14.9702 9.44043L12.4102 12.0004L14.9702 14.5604"
 //         stroke={color}
-//         stroke-width="1.5"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
+//         strokeWidth="1.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
 //       />
 //     </svg>
 //   );
@@ -3574,7 +3663,7 @@ export const DashboardSettingsActive = ({
 };
 
 export const UpwordIcon = ({
-  className,
+  className = "",
   color = "currentColor",
 }: IconProps) => {
   return (
@@ -3589,18 +3678,18 @@ export const UpwordIcon = ({
       <path
         d="M3.4574 5.58203L6.99823 2.0412L10.5391 5.58203"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M7 11.958V2.14051"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3622,18 +3711,18 @@ export const OutofStockIcon = ({
       <path
         d="M3.4574 8.41797L6.99823 11.9588L10.5391 8.41797"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M7 2.04199V11.8595"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3676,10 +3765,10 @@ export const RightArrowIcon = ({
       <path
         d="M9.00016 4.07992L15.5202 10.5999C16.2902 11.3699 16.2902 12.6299 15.5202 13.3999L9.00016 19.9199"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3701,44 +3790,44 @@ export const ScanQrIcon = ({
       <path
         d="M1.66797 7.50033V5.41699C1.66797 3.34199 3.34297 1.66699 5.41797 1.66699H7.5013"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12.5 1.66699H14.5833C16.6583 1.66699 18.3333 3.34199 18.3333 5.41699V7.50033"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M18.332 13.333V14.583C18.332 16.658 16.657 18.333 14.582 18.333H13.332"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M7.5013 18.3333H5.41797C3.34297 18.3333 1.66797 16.6583 1.66797 14.5833V12.5"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M14.1654 7.91699V12.0837C14.1654 13.7503 13.332 14.5837 11.6654 14.5837H8.33203C6.66536 14.5837 5.83203 13.7503 5.83203 12.0837V7.91699C5.83203 6.25033 6.66536 5.41699 8.33203 5.41699H11.6654C13.332 5.41699 14.1654 6.25033 14.1654 7.91699Z"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M15.8346 10H4.16797"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3781,9 +3870,9 @@ export const RemoveFromCart = ({
       <path
         d="M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
         stroke="#A8A8A8"
-        stroke-width="1.33333"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.33333"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3805,9 +3894,9 @@ export const AddedToCart = ({
       <path
         d="M33.3346 10L15.0013 28.3333L6.66797 20"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3847,8 +3936,8 @@ export const DragBtn = ({ className }: IconProps) => {
         x2="39"
         y2="1"
         stroke="#C7C7C7"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -3867,16 +3956,16 @@ export const TipsIcon = ({ className = "" }: IconProps) => {
       <path
         d="M8.29938 18.0402V16.8802C5.99938 15.4902 4.10938 12.7802 4.10938 9.90018C4.10938 4.95018 8.65938 1.07018 13.7994 2.19018C16.0594 2.69018 18.0394 4.19018 19.0694 6.26018C21.1594 10.4602 18.9594 14.9202 15.7294 16.8702V18.0302C15.7294 18.3202 15.8394 18.9902 14.7694 18.9902H9.25938C8.15938 19.0002 8.29938 18.5702 8.29938 18.0402Z"
         stroke="#04802E"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8.5 22.0002C10.79 21.3502 13.21 21.3502 15.5 22.0002"
         stroke="#04802E"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -4007,14 +4096,14 @@ export const SuccessIcon = ({ className = "" }: IconProps) => {
       <path
         d="M8.00065 14.6663C11.6673 14.6663 14.6673 11.6663 14.6673 7.99967C14.6673 4.33301 11.6673 1.33301 8.00065 1.33301C4.33398 1.33301 1.33398 4.33301 1.33398 7.99967C1.33398 11.6663 4.33398 14.6663 8.00065 14.6663Z"
         stroke="#04802E"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M5.16602 7.99995L7.05268 9.88661L10.8327 6.11328"
         stroke="#04802E"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -4071,38 +4160,38 @@ export const ShareReceiptIcon = ({
       <path
         d="M14.1328 5.1416C15.7995 6.29993 16.9495 8.1416 17.1828 10.2666"
         stroke={color}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M2.91016 10.3083C3.12682 8.19168 4.26016 6.35002 5.91016 5.18335"
         stroke={color}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M6.82422 17.45C7.79089 17.9416 8.89089 18.2166 10.0492 18.2166C11.1659 18.2166 12.2159 17.9666 13.1576 17.5083"
         stroke={color}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M10.051 6.41678C11.3305 6.41678 12.3677 5.37957 12.3677 4.10011C12.3677 2.82065 11.3305 1.78345 10.051 1.78345C8.77158 1.78345 7.73438 2.82065 7.73438 4.10011C7.73438 5.37957 8.77158 6.41678 10.051 6.41678Z"
         stroke={color}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4.0237 16.5999C5.30316 16.5999 6.34036 15.5627 6.34036 14.2832C6.34036 13.0038 5.30316 11.9666 4.0237 11.9666C2.74424 11.9666 1.70703 13.0038 1.70703 14.2832C1.70703 15.5627 2.74424 16.5999 4.0237 16.5999Z"
         stroke={color}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M15.9768 16.5999C17.2563 16.5999 18.2935 15.5627 18.2935 14.2832C18.2935 13.0038 17.2563 11.9666 15.9768 11.9666C14.6974 11.9666 13.6602 13.0038 13.6602 14.2832C13.6602 15.5627 14.6974 16.5999 15.9768 16.5999Z"
         stroke={color}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -4125,7 +4214,45 @@ export const TroubleIcon = ({
         d="M10.001 2.24976C10.7568 2.24986 11.5322 2.70603 12.166 3.73608L12.291 3.94995L17.624 13.5496C18.2333 14.6479 18.2448 15.6032 17.8389 16.2966C17.4339 16.9881 16.5993 17.4421 15.334 17.4421H4.66699C3.40189 17.442 2.56701 16.9881 2.16211 16.2966C1.75659 15.6038 1.7675 14.6566 2.37793 13.5486L2.37695 13.5476L7.71094 3.94995C8.36619 2.76896 9.19476 2.24976 10.001 2.24976ZM10.001 6.29175C9.33725 6.29175 8.79217 6.83607 8.79199 7.49976V11.6667C8.79199 12.1925 9.13457 12.6416 9.60645 12.8064C9.56972 12.8174 9.53478 12.832 9.5 12.8464C9.39459 12.8816 9.29812 12.9319 9.21094 12.99L9.18945 13.0037L9.16992 13.0193C9.12826 13.0526 9.08657 13.0866 9.04492 13.1199L9.01367 13.1443L8.98535 13.1736C8.73968 13.4329 8.58398 13.791 8.58398 14.1667C8.58398 14.5425 8.73968 14.9006 8.98535 15.1599L9.01367 15.1892L9.04492 15.2136C9.06574 15.2303 9.0866 15.2477 9.10742 15.2644C9.12812 15.281 9.14922 15.2977 9.16992 15.3142L9.18945 15.3298L9.21094 15.3435C9.27606 15.3869 9.34753 15.4224 9.42285 15.4539V15.4548C9.51956 15.5032 9.62536 15.5395 9.73828 15.5583V15.5593L9.75195 15.5613C9.79861 15.568 9.90139 15.5837 10.001 15.5837C10.0944 15.5837 10.1856 15.5692 10.2402 15.5603L10.2412 15.5613C10.3362 15.5477 10.421 15.5191 10.501 15.4861L10.502 15.4871C10.6074 15.4519 10.7038 15.4016 10.791 15.3435L10.8125 15.3298L10.832 15.3142C10.8528 15.2976 10.8737 15.281 10.8945 15.2644C10.9154 15.2477 10.9362 15.2303 10.957 15.2136L10.9883 15.1892L11.0156 15.1599C11.2613 14.9006 11.417 14.5425 11.417 14.1667C11.417 13.791 11.2613 13.4329 11.0156 13.1736L10.9883 13.1443L10.957 13.1199L10.832 13.0193L10.8125 13.0037L10.791 12.99L10.6533 12.9099C10.6051 12.8858 10.5538 12.864 10.501 12.8464C10.4664 12.8322 10.4316 12.8173 10.3945 12.8064C10.8666 12.6417 11.209 12.1927 11.209 11.6667V7.49976C11.2088 6.83616 10.6646 6.29189 10.001 6.29175Z"
         fill="#CB1A14"
         stroke={color}
-        stroke-width="1.16667"
+        strokeWidth="1.16667"
+      />
+    </svg>
+  );
+};
+
+export const FailedTransactionIcon = ({
+  color = "currentColor",
+  className = "",
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.17188 14.8299L14.8319 9.16992"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14.8319 14.8299L9.17188 9.16992"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
