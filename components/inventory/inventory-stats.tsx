@@ -7,6 +7,7 @@ import { Modal } from "../ui/modal";
 import { AddProductForm } from "./add-product-form";
 import { Product } from "@/types/inventory/type";
 import { useState } from "react";
+import { DownloadIcon, DownloadIconSolid, PlusIcon } from "../icons/svgs";
 
 export function InventoryStats({
   onProductAdded,
@@ -27,11 +28,14 @@ export function InventoryStats({
           title="Inventory"
           subtitle="Manage your products and stock levels"
           btn={
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px]  max-w-[341px]">
-              <Button className="bg-white" variant="secondary">
-                Export
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px]  ">
+              <Button className="bg-white" size="md" variant="outline">
+                <DownloadIconSolid className="" /> Export
               </Button>
-              <Button onClick={() => setOpen(true)}>Add product</Button>
+              <Button variant="primary" size="md" onClick={() => setOpen(true)}>
+                {" "}
+                <PlusIcon /> Add product
+              </Button>
             </div>
           }
         />

@@ -1,4 +1,14 @@
-import { ArrowDownIcon, ArrowUpIcon, CalendarIcon, DownloadIconSolid, InventoryIcon, RevenueIcon, StaffIcon, TransactionIcon, WalletIcon } from "@/components/icons/svgs";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CalendarIcon,
+  DownloadIconSolid,
+  InventoryIcon,
+  RevenueIcon,
+  StaffIcon,
+  TransactionIcon,
+  WalletIcon,
+} from "@/components/icons/svgs";
 import Alerts, { mockAlerts } from "@/components/layouts/alert-items";
 import StatCard from "@/components/layouts/card-component";
 import Header from "@/components/layouts/header";
@@ -7,7 +17,6 @@ import TopSellingProducts from "@/components/layouts/top-selling-products";
 import TopPerformingLocations from "@/components/ui/charts/top-performer";
 
 import { fetchRevenue } from "@/utils/helpers/revenue-chart";
-
 
 const SuperAdminDashboard = async () => {
   const initialData = await fetchRevenue("7days");

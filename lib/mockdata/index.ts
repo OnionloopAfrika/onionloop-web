@@ -1,5 +1,54 @@
 import { Transaction } from "@/types/transactions/types";
 
+function generateMockTransactions(): Transaction[] {
+  const transactions: Transaction[] = [];
+  const baseDate = new Date("2026-03-24T00:00:00Z"); // Wednesday
+  const customers = [
+    "Adaeze Nwosu",
+    "Emeka Eze",
+    "Chidinma Obi",
+    "Femi Adeyemi",
+    "Nkechi Uba",
+    "Gbenga Olanrewaju",
+  ];
+  const staff = [
+    "Titi Folarin",
+    "Mary Olarenwaju",
+    "David Anigbogu",
+    "Samuel Saidu",
+    "Kemi Saidu",
+    "Adanma Dappa",
+  ];
+
+  const dailyCounts = [
+    { date: "2026-03-18", count: 45 },
+    { date: "2026-03-19", count: 80 },
+    { date: "2026-03-20", count: 65 },
+    { date: "2026-03-21", count: 10 },
+    { date: "2026-03-22", count: 110 },
+    { date: "2026-03-23", count: 40 },
+    { date: "2026-03-24", count: 30 },
+  ];
+
+  let idCounter = 7900;
+  dailyCounts.forEach(({ date, count }) => {
+    for (let i = 0; i < count; i++) {
+      const hour = 8 + Math.floor(Math.random() * 10);
+      const minute = Math.floor(Math.random() * 60);
+      transactions.push({
+        id: `TXN-${idCounter++}`,
+        customerName: customers[Math.floor(Math.random() * customers.length)],
+        amount: 1000 + Math.floor(Math.random() * 50000),
+        processedBy: staff[Math.floor(Math.random() * staff.length)],
+        status: "completed",
+        date: `${date}T${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}:00Z`,
+      });
+    }
+  });
+
+  return transactions;
+}
+
 export const MOCK_TRANSACTIONS: Transaction[] = [
   // January 2026
   {
@@ -117,7 +166,7 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
     date: "2026-02-27T09:45:00Z",
   },
 
-  // March 2026
+  // March 2026 - plus generated transactions
   {
     id: "TXN-7816",
     customerName: "Nkechi Uba",
@@ -166,4 +215,5 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
     status: "refunded",
     date: "2026-03-24T09:12:00Z",
   },
+  ...generateMockTransactions(),
 ];
