@@ -412,12 +412,60 @@ export default function TransactionsTable() {
                 </div>
               </div>
             </div>
+        );
+    };
 
-            <div className="text-[26px] font-bold text-gray-900 mb-1">
-              -₦
-              {selectedTxn.amount.toLocaleString("en-NG", {
-                minimumFractionDigits: 2,
-              })}
+    return (
+        <div className="w-full bg-white font-sans">
+            <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
+                <div className="flex flex-wrap items-center gap-3 w-full md:w-auto flex-1 max-w-4xl">
+                    <div className="relative w-full max-w-[320px]">
+                        <input
+                            type="text"
+                            placeholder="Search by transaction ID or amount..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full h-[48px] bg-white border border-gray-200 rounded-lg pl-10 pr-4 py-2 text-[13px] text-gray-700 placeholder-gray-400 focus:outline-none"
+                        />
+                        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div className="w-[160px]">
+                        <Select
+                            value={locationFilter}
+                            onValueChange={setLocationFilter}
+                            options={[{ value: "all", label: "All Locations" }]}
+                            placeholder="Location: "
+                        />
+                    </div>
+
+                    <div className="w-[140px]">
+                        <Select
+                            value={sortFilter}
+                            onValueChange={setSortFilter}
+                            options={[{ value: "completed", label: "Completed" }]}
+                            placeholder="Status: "
+                        />
+                    </div>
+
+                    <div className="w-[120px]">
+                        <Select
+                            value={latestFilter}
+                            onValueChange={setLatestFilter}
+                            options={[{ value: "latest", label: "Latest" }]}
+                            placeholder="Sort by: "
+                        />
+                    </div>
+                </div>
+
+                <span className="text-[14px] text-[#6C6C6C] font-medium whitespace-nowrap">
+                    Showing {mockTransactions.length} transactions
+                </span>
             </div>
 
             <div className="text-[13px] font-medium text-gray-500 uppercase tracking-wider mb-3">

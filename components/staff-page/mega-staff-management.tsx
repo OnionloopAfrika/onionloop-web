@@ -383,24 +383,105 @@ export default function StaffManagement({
                     >
                       <Edit3 size={18} color="#8A8A8A" /> Edit Role
                     </button>
-                    <button
-                      onClick={() => handleAction("deactivate", staff)}
-                      className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50"
-                    >
-                      <AlertOctagon size={18} color="#8A8A8A" />
-                      {staff.status === "Active"
-                        ? "Deactivate Staff"
-                        : "Activate Staff"}
-                    </button>
-                    <button
-                      onClick={() => handleAction("remove", staff)}
-                      className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-red-600 text-[14px]"
-                    >
-                      <Trash2 size={18} color="#CB1A14" /> Remove Staff
-                    </button>
-                  </div>
-                )}
-              </div>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-4 gap-2 py-4">
+                {[
+                    { label: "Total Staffs", count: 6, sub: "All active", color: "bg-[#EDE8FC] text-[#7C53FC]", icon: <MultiUser />, className: "col-span-2 md:col-span-1" },
+                    { label: "Online now", count: 4, sub: "Using staff app", color: "bg-green-100 text-[#04802E]", icon: <TimerClock />, className: "col-span-1" },
+                    { label: "Sales so far today", count: 100, sub: "By staff", color: "bg-blue-100 text-[#0D5EBA]", icon: <SparkIcon />, className: "col-span-1" },
+                ].map((stat, i) => (
+                    <div key={i} className={`bg-white p-4 md:p-6 rounded-xl border border-gray-100 shadow-sm ${stat.className}`}>
+                        <div className={`w-10 h-10 rounded mb-4 flex items-center justify-center ${stat.color}`}>
+                            {stat.icon}
+                        </div>
+                        <h3 className="text-[16px] md:text-[28px] font-semibold">{stat.count}</h3>
+                        <p className="text-gray-500 text-sm font-normal">{stat.label}</p>
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full mt-2 inline-block ${stat.color} bg-opacity-20 font-medium`}>{stat.sub}</span>
+                    </div>
+                ))}
+            </div>
+
+            <div className="my-0 md:my-6">
+                <h3 className="text-[14px] font-normal text-[#131313] mb-2 md:hidden">All Staffs</h3>
+                <div className="bg-white p-4 md:rounded-xl rounded-t-xl flex flex-row-reverse md:flex-row items-center justify-between border border-gray-100 gap-4">
+                    <div className="w-full md:w-1/3 flex gap-2 items-center">
+                        <div className="flex-1">
+                            <Input
+                                prefixicon={<Search />}
+                                placeholder="Search staff..."
+                                className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
+                            />
+                        </div>
+                        <div className="w-[120px] md:w-[150px] bg-white">
+                            <Select
+                                options={staffOption}
+                                value={selectedStaffOption!}
+                                onValueChange={setSelectedStaffOption}
+                                placeholder="Status: "
+                            />
+                        </div>
+                    </div>
+                    <span className="text-sm font-semibold text-gray-700 hidden md:inline">All staff</span>
+                </div>
+            </div>
+
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6">
+                {staffs.map((staff) => (
+                    <div key={staff.id} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative">
+                        <div className="flex justify-between items-start mb-4">
+                            <div className="flex gap-3">
+                                <div className="relative">
+                                    <img src={staff.image} alt={staff.name} className="w-12 h-12 rounded-full object-cover" />
+                                    <div className={`absolute bottom-0 right-0 w-3 h-3 border-2 border-white rounded-full ${staff.status === 'Active' ? 'bg-green-500' : 'bg-red-500'}`} />
+                                </div>
+                                <div>
+                                    <h4 className="font-medium text-[#131313]">{staff.name}</h4>
+                                    <p className="text-xs text-gray-500">{staff.role}</p>
+                                </div>
+                            </div>
+                            <div className="relative" data-menu-container>
+                                <button
+                                    onClick={() => setActiveMenu(activeMenu === staff.id ? null : staff.id)}
+                                    className="text-gray-400 hover:text-black"
+                                >
+                                    <MoreVertical color="#A8A8A8" />
+                                </button>
+
+                                {activeMenu === staff.id && (
+                                    <div className="absolute right-0 top-8 w-56 bg-white border border-gray-100 shadow-xl rounded-lg z-20 overflow-hidden">
+                                        <button onClick={() => handleAction("profile", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
+                                            <UserProfile size={20} color="#8A8A8A" /> View Staff Profile
+                                        </button>
+                                        <button onClick={() => handleAction("edit", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
+                                            <Edit3 size={18} color="#8A8A8A" /> Edit Role
+                                        </button>
+                                        <button onClick={() => handleAction("deactivate", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-[#6C6C6C] text-[14px] border-b border-gray-50">
+                                            <AlertOctagon size={18} color="#8A8A8A" />
+                                            {staff.status === "Active" ? "Deactivate Staff" : "Activate Staff"}
+                                        </button>
+                                        <button onClick={() => handleAction("remove", staff)} className="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-red-600 text-[14px]">
+                                            <Trash2 size={18} color="#CB1A14" /> Remove Staff
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="bg-[#F7F7F7] p-4 rounded-lg flex justify-between items-center mb-4">
+                            <div>
+                                <p className="text-[20px] font-bold">{staff.salesToday.toString().padStart(2, '0')}</p>
+                                <p className="text-[10px] text-[#6C6C6C] tracking-wider">Sales Today</p>
+                            </div>
+                            <span className={`text-[10px] px-3 py-1 rounded-full font-semibold ${staff.status === 'Active' ? 'bg-[#04802E] text-white' : 'bg-[#98A2B3] text-white'}`}>
+                                {staff.status}
+                            </span>
+                        </div>
+
+                        <Button variant="primary" className="!bg-[#00634B] w-full">Send message</Button>
+                    </div>
+                ))}
             </div>
 
             <div className="bg-[#F7F7F7] p-4 rounded-lg flex justify-between items-center mb-4">

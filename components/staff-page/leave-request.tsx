@@ -160,7 +160,7 @@ export default function LeaveRequestPage() {
                                 options={statusOptions}
                                 value={selectedStatus}
                                 onValueChange={setSelectedStatus}
-                                placeholder="All Status"
+                                placeholder="Status: "
                             />
                         </div>
                         <div className="w-[120px] md:w-[150px] bg-white">
@@ -168,7 +168,7 @@ export default function LeaveRequestPage() {
                                 options={monthOptions}
                                 value={selectedMonth}
                                 onValueChange={setSelectedMonth}
-                                placeholder="All Status"
+                                placeholder="Timeline: "
                             />
                         </div>
                     </div>
