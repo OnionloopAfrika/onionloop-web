@@ -129,7 +129,7 @@ export default function TransactionsTable() {
                             value={locationFilter}
                             onValueChange={setLocationFilter}
                             options={[{ value: "all", label: "All Locations" }]}
-                            placeholder="All Locations"
+                            placeholder="Location: "
                         />
                     </div>
 
@@ -138,7 +138,7 @@ export default function TransactionsTable() {
                             value={sortFilter}
                             onValueChange={setSortFilter}
                             options={[{ value: "completed", label: "Completed" }]}
-                            placeholder="Completed"
+                            placeholder="Status: "
                         />
                     </div>
 
@@ -147,7 +147,7 @@ export default function TransactionsTable() {
                             value={latestFilter}
                             onValueChange={setLatestFilter}
                             options={[{ value: "latest", label: "Latest" }]}
-                            placeholder="Latest"
+                            placeholder="Sort by: "
                         />
                     </div>
                 </div>

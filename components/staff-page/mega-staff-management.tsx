@@ -251,7 +251,7 @@ export default function StaffManagement() {
                                 options={staffOption}
                                 value={selectedStaffOption!}
                                 onValueChange={setSelectedStaffOption}
-                                placeholder="All Status"
+                                placeholder="Status: "
                             />
                         </div>
                     </div>
