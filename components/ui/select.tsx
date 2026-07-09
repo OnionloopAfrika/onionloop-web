@@ -17,7 +17,7 @@ interface SelectProps {
 const Select: React.FC<SelectProps> = ({
   label,
   error,
-  placeholder = "Select an option",
+  // placeholder = "Select an option",
   value,
   onValueChange,
   options,
@@ -82,7 +82,7 @@ const Select: React.FC<SelectProps> = ({
                 : " text-start text-[#8A8A8A]"
             }
           >
-            {`${placeholder}  ${selectedLabel}`}
+            {`${selectedLabel}`}
           </span>
 
           <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8A8A8A] pointer-events-none">
@@ -97,8 +97,8 @@ const Select: React.FC<SelectProps> = ({
                 key={option.value}
                 onClick={() => handleSelect(option.value, option.label)}
                 className={`
-                  px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] cursor-pointer hover:bg-gray-100 border-b border-b-[#C7C7C7]
-                  ${value === option.value ? "bg-blue-50 text-blue-600" : ""}
+                  px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] cursor-pointer hover:bg-gray-100 last:border-b-0 border-b border-b-[#C7C7C7]
+                  ${value === option.value ? " text-[#6C6C6C]" : ""}
                 `}
               >
                 {option.label}

@@ -86,23 +86,23 @@ export const VideoIcon = ({ className, color = "currentColor" }: IconProps) => (
     <path
       d="M12.53 20.4201H6.21C3.05 20.4201 2 18.3201 2 16.2101V7.79008C2 4.63008 3.05 3.58008 6.21 3.58008H12.53C15.69 3.58008 16.74 4.63008 16.74 7.79008V16.2101C16.74 19.3701 15.68 20.4201 12.53 20.4201Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.5202 17.1001L16.7402 15.1501V8.84013L19.5202 6.89013C20.8802 5.94013 22.0002 6.52013 22.0002 8.19013V15.8101C22.0002 17.4801 20.8802 18.0601 19.5202 17.1001Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.5 11C12.3284 11 13 10.3284 13 9.5C13 8.67157 12.3284 8 11.5 8C10.6716 8 10 8.67157 10 9.5C10 10.3284 10.6716 11 11.5 11Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -176,37 +176,37 @@ export const MicIcon = ({ className, color = "currentColor" }: IconProps) => (
     <path
       d="M15.9993 20.667C18.946 20.667 21.3327 18.2803 21.3327 15.3337V8.00033C21.3327 5.05366 18.946 2.66699 15.9993 2.66699C13.0527 2.66699 10.666 5.05366 10.666 8.00033V15.3337C10.666 18.2803 13.0527 20.667 15.9993 20.667Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.80078 12.8662V15.1329C5.80078 20.7595 10.3741 25.3329 16.0008 25.3329C21.6274 25.3329 26.2008 20.7595 26.2008 15.1329V12.8662"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.1465 8.57316C15.3465 8.13316 16.6532 8.13316 17.8532 8.57316"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.9336 11.3998C15.6403 11.2131 16.3736 11.2131 17.0803 11.3998"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16 25.333V29.333"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -366,13 +366,40 @@ export const StaffIcon = ({ color = "#8A8A8A", className }: IconProps) => (
   </svg>
 );
 
-export const WalletIcon = ({ color = "currentColor", className }: IconProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <path d="M13 9H7" stroke="#7C53FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M22.0002 10.9702V13.0302C22.0002 13.5802 21.5602 14.0302 21.0002 14.0502H19.0402C17.9602 14.0502 16.9702 13.2602 16.8802 12.1802C16.8202 11.5502 17.0602 10.9602 17.4802 10.5502C17.8502 10.1702 18.3602 9.9502 18.9202 9.9502H21.0002C21.5602 9.9702 22.0002 10.4202 22.0002 10.9702Z" stroke="#7C53FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M17.48 10.55C17.06 10.96 16.82 11.55 16.88 12.18C16.97 13.26 17.96 14.05 19.04 14.05H21V15.5C21 18.5 19 20.5 16 20.5H7C4 20.5 2 18.5 2 15.5V8.5C2 5.78 3.64 3.88 6.19 3.56C6.45 3.52 6.72 3.5 7 3.5H16C16.26 3.5 16.51 3.50999 16.75 3.54999C19.33 3.84999 21 5.76 21 8.5V9.95001H18.92C18.36 9.95001 17.85 10.17 17.48 10.55Z" stroke="#7C53FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+export const WalletIcon = ({
+  color = "currentColor",
+  className,
+}: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M13 9H7"
+      stroke="#7C53FC"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M22.0002 10.9702V13.0302C22.0002 13.5802 21.5602 14.0302 21.0002 14.0502H19.0402C17.9602 14.0502 16.9702 13.2602 16.8802 12.1802C16.8202 11.5502 17.0602 10.9602 17.4802 10.5502C17.8502 10.1702 18.3602 9.9502 18.9202 9.9502H21.0002C21.5602 9.9702 22.0002 10.4202 22.0002 10.9702Z"
+      stroke="#7C53FC"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M17.48 10.55C17.06 10.96 16.82 11.55 16.88 12.18C16.97 13.26 17.96 14.05 19.04 14.05H21V15.5C21 18.5 19 20.5 16 20.5H7C4 20.5 2 18.5 2 15.5V8.5C2 5.78 3.64 3.88 6.19 3.56C6.45 3.52 6.72 3.5 7 3.5H16C16.26 3.5 16.51 3.50999 16.75 3.54999C19.33 3.84999 21 5.76 21 8.5V9.95001H18.92C18.36 9.95001 17.85 10.17 17.48 10.55Z"
+      stroke="#7C53FC"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
-)
+);
 
 export const MessageIcon = ({ color = "currentColor" }: { color?: string }) => (
   <svg
@@ -567,23 +594,23 @@ export const RevenueIcon = ({ color = "#8A8A8A", className }: IconProps) => (
     <path
       d="M8.67188 14.3298C8.67188 15.6198 9.66188 16.6598 10.8919 16.6598H13.4019C14.4719 16.6598 15.3419 15.7498 15.3419 14.6298C15.3419 13.4098 14.8119 12.9798 14.0219 12.6998L9.99187 11.2998C9.20187 11.0198 8.67188 10.5898 8.67188 9.36984C8.67188 8.24984 9.54187 7.33984 10.6119 7.33984H13.1219C14.3519 7.33984 15.3419 8.37984 15.3419 9.66984"
       stroke="#04802E"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 6V18"
       stroke="#04802E"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15 22H9C4 22 2 20 2 15V9C2 4 4 2 9 2H15C20 2 22 4 22 9V15C22 20 20 22 15 22Z"
       stroke="#04802E"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -783,7 +810,7 @@ export function OnionloopIcon() {
 
 export const ArrowDownIcon = ({
   color = "currentColor",
-  className,
+  className = "not-last:",
 }: {
   color: string;
   className: string;
@@ -842,76 +869,76 @@ export const CalendarIcon = ({
     <path
       d="M6.66602 1.66699V4.16699"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M13.334 1.66699V4.16699"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M2.91602 7.5752H17.0827"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M17.5 7.08366V14.167C17.5 16.667 16.25 18.3337 13.3333 18.3337H6.66667C3.75 18.3337 2.5 16.667 2.5 14.167V7.08366C2.5 4.58366 3.75 2.91699 6.66667 2.91699H13.3333C16.25 2.91699 17.5 4.58366 17.5 7.08366Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M13.0781 11.4167H13.0856"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M13.0781 13.9167H13.0856"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.99607 11.4167H10.0036"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.99607 13.9167H10.0036"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.91209 11.4167H6.91957"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.91209 13.9167H6.91957"
       stroke={color}
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1048,6 +1075,21 @@ export const StaffIconSolid = ({
   </svg>
 );
 
+export const ControlIconSolid = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.6267 3.61329L9.18005 1.61996C8.52005 1.23996 7.48672 1.23996 6.82672 1.61996L3.34672 3.62663C1.96672 4.55996 1.88672 4.69996 1.88672 6.18663V9.80663C1.88672 11.2933 1.96672 11.44 3.37339 12.3866L6.82005 14.38C7.15338 14.5733 7.58005 14.6666 8.00005 14.6666C8.42005 14.6666 8.84672 14.5733 9.17339 14.38L12.6534 12.3733C14.0334 11.44 14.1134 11.3 14.1134 9.81329V6.18663C14.1134 4.69996 14.0334 4.55996 12.6267 3.61329ZM8.00005 10.1666C6.80672 10.1666 5.83339 9.19329 5.83339 7.99996C5.83339 6.80663 6.80672 5.83329 8.00005 5.83329C9.19339 5.83329 10.1667 6.80663 10.1667 7.99996C10.1667 9.19329 9.19339 10.1666 8.00005 10.1666Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 export const LineChartIcon = ({ className, color }: IconProps) => (
   <svg
     width="20"
@@ -1086,7 +1128,7 @@ export const SearchIcon = ({
 );
 
 export const DownloadIcon = ({
-  className,
+  className = "",
   color = "currentColor",
 }: IconProps) => (
   <svg
@@ -1100,45 +1142,45 @@ export const DownloadIcon = ({
     <path
       d="M10.0007 6.66699V1.66699L8.33398 3.33366"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10 1.66699L11.6667 3.33366"
       stroke={color}
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.83333 10C2.5 10 2.5 11.4917 2.5 13.3333V14.1667C2.5 16.4667 2.5 18.3333 6.66667 18.3333H13.3333C16.6667 18.3333 17.5 16.4667 17.5 14.1667V13.3333C17.5 11.4917 17.5 10 14.1667 10C13.3333 10 13.1 10.175 12.6667 10.5L11.8167 11.4C10.8333 12.45 9.16667 12.45 8.175 11.4L7.33333 10.5C6.9 10.175 6.66667 10 5.83333 10Z"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.16602 9.99987V8.3332C4.16602 6.6582 4.16602 5.27487 6.66602 5.0332"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15.834 9.99987V8.3332C15.834 6.6582 15.834 5.27487 13.334 5.0332"
       stroke={color}
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
 export const DownloadIconSolid = ({
-  className,
+  className = "",
   color = "currentColor",
 }: IconProps) => (
   <svg
@@ -1147,44 +1189,45 @@ export const DownloadIconSolid = ({
     viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
     <path
       d="M10.0007 6.66699V1.66699L8.33398 3.33366"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10 1.66699L11.6667 3.33366"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.83333 10C2.5 10 2.5 11.4917 2.5 13.3333V14.1667C2.5 16.4667 2.5 18.3333 6.66667 18.3333H13.3333C16.6667 18.3333 17.5 16.4667 17.5 14.1667V13.3333C17.5 11.4917 17.5 10 14.1667 10C13.3333 10 13.1 10.175 12.6667 10.5L11.8167 11.4C10.8333 12.45 9.16667 12.45 8.175 11.4L7.33333 10.5C6.9 10.175 6.66667 10 5.83333 10Z"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.16602 9.99987V8.3332C4.16602 6.6582 4.16602 5.27487 6.66602 5.0332"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15.834 9.99987V8.3332C15.834 6.6582 15.834 5.27487 13.334 5.0332"
-      stroke="white"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1203,44 +1246,44 @@ export const EyeSlashIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.1092 7.8916L7.89258 12.1083C7.35091 11.5666 7.01758 10.8249 7.01758 9.99993C7.01758 8.34993 8.35091 7.0166 10.0009 7.0166C10.8259 7.0166 11.5676 7.34994 12.1092 7.8916Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.8499 4.8084C13.3915 3.7084 11.7249 3.1084 9.99987 3.1084C7.0582 3.1084 4.31654 4.84173 2.4082 7.84173C1.6582 9.01673 1.6582 10.9917 2.4082 12.1667C3.06654 13.2001 3.8332 14.0917 4.66654 14.8084"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.01758 16.2751C7.96758 16.6751 8.97591 16.8917 10.0009 16.8917C12.9426 16.8917 15.6842 15.1584 17.5926 12.1584C18.3426 10.9834 18.3426 9.0084 17.5926 7.8334C17.3176 7.40006 17.0176 6.99173 16.7092 6.6084"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9242 10.583C12.7076 11.758 11.7492 12.7163 10.5742 12.933"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.89102 12.1084L1.66602 18.3334"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M18.3324 1.66699L12.1074 7.89199"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1257,31 +1300,31 @@ export const ChartIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.66602 18.333H18.3327"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.125 3.33366V18.3337H11.875V3.33366C11.875 2.41699 11.5 1.66699 10.375 1.66699H9.625C8.5 1.66699 8.125 2.41699 8.125 3.33366Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M2.5 8.33366V18.3337H5.83333V8.33366C5.83333 7.41699 5.5 6.66699 4.5 6.66699H3.83333C2.83333 6.66699 2.5 7.41699 2.5 8.33366Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.166 12.4997V18.333H17.4993V12.4997C17.4993 11.583 17.166 10.833 16.166 10.833H15.4993C14.4993 10.833 14.166 11.583 14.166 12.4997Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1298,18 +1341,18 @@ export const SmsIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z"
       stroke="currentColor"
-      stroke-width="1.8"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.8"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M17 9L13.87 11.5C12.84 12.32 11.15 12.32 10.12 11.5L7 9"
       stroke="currentColor"
-      stroke-width="1.8"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.8"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1342,23 +1385,23 @@ export const CautionIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.9023 9.67773V15.0541"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9025 23.022H6.38635C2.65517 23.022 1.09603 20.3553 2.90248 17.0972L6.25732 11.0542L9.41861 5.3768C11.3326 1.92518 14.4724 1.92518 16.3864 5.3768L19.5476 11.065L22.9025 17.108C24.7089 20.366 23.139 23.0327 19.4186 23.0327H12.9025V23.022Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.8965 18.2793H12.9061"
       stroke="currentColor"
-      stroke-width="2.58065"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2.58065"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1375,23 +1418,23 @@ export const WarningIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.9023 8.33301V13.9782"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M22.6666 9.2257V16.5805C22.6666 17.7848 22.0214 18.9031 20.9784 19.516L14.5913 23.2042C13.5483 23.8063 12.2579 23.8063 11.2042 23.2042L4.81709 19.516C3.77408 18.9139 3.12891 17.7956 3.12891 16.5805V9.2257C3.12891 8.02139 3.77408 6.90307 4.81709 6.29017L11.2042 2.602C12.2472 1.99985 13.5375 1.99985 14.5913 2.602L20.9784 6.29017C22.0214 6.90307 22.6666 8.01064 22.6666 9.2257Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9023 17.4189V17.5265"
       stroke="currentColor"
-      stroke-width="2.58065"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2.58065"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1408,9 +1451,9 @@ export const ShieldIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M22.4836 11.9566C22.4836 17.2146 18.6664 22.1394 13.4513 23.5802C13.0965 23.677 12.7094 23.677 12.3545 23.5802C7.13946 22.1394 3.32227 17.2146 3.32227 11.9566V7.23612C3.32227 6.3544 3.98895 5.35441 4.8169 5.02107L10.8061 2.56949C12.1502 2.02111 13.6663 2.02111 15.0104 2.56949L20.9997 5.02107C21.8169 5.35441 22.4943 6.3544 22.4943 7.23612L22.4836 11.9566Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1427,23 +1470,23 @@ export const Warning2Icon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12.9031 23.6558C18.8171 23.6558 23.6558 18.8171 23.6558 12.9031C23.6558 6.9891 18.8171 2.15039 12.9031 2.15039C6.9891 2.15039 2.15039 6.9891 2.15039 12.9031C2.15039 18.8171 6.9891 23.6558 12.9031 23.6558Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.9023 8.60254V13.9789"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.8965 17.2041H12.9061"
       stroke="currentColor"
-      stroke-width="2.58065"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2.58065"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1460,39 +1503,39 @@ export const ReceiptEditIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M22.0432 12.1504V7.56975C22.0432 3.23642 21.0325 2.15039 16.968 2.15039H8.83894C4.77443 2.15039 3.76367 3.23642 3.76367 7.56975V19.6773C3.76367 22.5375 5.33358 23.2149 7.2368 21.1719L7.24753 21.1611C8.12925 20.2257 9.47334 20.3009 10.2368 21.3224L11.3228 22.774"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.60156 7.52734H17.2037"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.67773 11.8281H16.1293"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.5814 15.8818L15.775 19.6882C15.6245 19.8388 15.4847 20.1183 15.4524 20.3226L15.2481 21.7742C15.1728 22.3011 15.5384 22.6667 16.0653 22.5915L17.5169 22.3872C17.7212 22.3549 18.0116 22.2151 18.1513 22.0646L21.9578 18.2581C22.6137 17.6022 22.9255 16.8388 21.9578 15.871C21.0008 14.914 20.2373 15.2259 19.5814 15.8818Z"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.0312 16.4297C19.3538 17.591 20.2571 18.4942 21.4183 18.8168"
       stroke="currentColor"
-      stroke-width="1.93548"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.93548"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1667,23 +1710,23 @@ export const SyncIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M14.75 5.25V14.25C14.75 17.85 13.875 18.75 10.375 18.75H5.125C1.625 18.75 0.75 17.85 0.75 14.25V5.25C0.75 1.65 1.625 0.75 5.125 0.75H10.375C13.875 0.75 14.75 1.65 14.75 5.25Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.5 3.90039H6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.75078 16.1396C8.49982 16.1396 9.10703 15.515 9.10703 14.7446C9.10703 13.9742 8.49982 13.3496 7.75078 13.3496C7.00175 13.3496 6.39453 13.9742 6.39453 14.7446C6.39453 15.515 7.00175 16.1396 7.75078 16.1396Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1700,23 +1743,23 @@ export const LockIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M3.5 7.5V6C3.5 3.5175 4.08333 1.5 7 1.5C9.91667 1.5 10.5 3.5175 10.5 6V7.5"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.99935 13.875C7.80476 13.875 8.45768 13.0355 8.45768 12C8.45768 10.9645 7.80476 10.125 6.99935 10.125C6.19393 10.125 5.54102 10.9645 5.54102 12C5.54102 13.0355 6.19393 13.875 6.99935 13.875Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.91602 16.5H4.08268C1.74935 16.5 1.16602 15.75 1.16602 12.75V11.25C1.16602 8.25 1.74935 7.5 4.08268 7.5H9.91602C12.2493 7.5 12.8327 8.25 12.8327 11.25V12.75C12.8327 15.75 12.2493 16.5 9.91602 16.5Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1733,12 +1776,12 @@ export const LocationIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M9.00016 10.0726C10.2925 10.0726 11.3402 9.02492 11.3402 7.73258C11.3402 6.44023 10.2925 5.39258 9.00016 5.39258C7.70781 5.39258 6.66016 6.44023 6.66016 7.73258C6.66016 9.02492 7.70781 10.0726 9.00016 10.0726Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
     <path
       d="M2.71527 6.3675C4.19277 -0.127498 13.8153 -0.119998 15.2853 6.375C16.1478 10.185 13.7778 13.41 11.7003 15.405C10.1928 16.86 7.80777 16.86 6.29277 15.405C4.22277 13.41 1.85277 10.1775 2.71527 6.3675Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
   </svg>
 );
@@ -1755,33 +1798,33 @@ export const PaymentIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.66699 7.08789H18.3337"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5 13.7539H6.66667"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.75 13.7539H12.0833"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.36699 2.9209H14.6253C17.592 2.9209 18.3337 3.65423 18.3337 6.57923V13.4209C18.3337 16.3459 17.592 17.0792 14.6337 17.0792H5.36699C2.40866 17.0876 1.66699 16.3542 1.66699 13.4292V6.57923C1.66699 3.65423 2.40866 2.9209 5.36699 2.9209Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1798,47 +1841,47 @@ export const CardProblemIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.66699 7.08301H12.7003"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5 13.75H6.075"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.16699 13.75H12.0837"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.65039 17.0829H14.6337C17.6004 17.0829 18.3337 16.3495 18.3337 13.4245V5.74121"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16.6587 3.12533C16.142 2.97533 15.4753 2.91699 14.6337 2.91699H5.36699C2.40866 2.91699 1.66699 3.65033 1.66699 6.57533V13.417C1.66699 15.367 1.99199 16.342 3.09199 16.7753"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M18.3337 1.66699L1.66699 18.3337"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1855,33 +1898,33 @@ export const AppSyncIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M7.44141 1.66699L7.46641 2.94202C7.48307 3.61702 8.04141 4.16699 8.71641 4.16699H11.2331C11.9248 4.16699 12.4831 3.60033 12.4831 2.91699V1.66699"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.1667 14.167L12.5 15.8337L14.1667 17.5003"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16.667 14.167L18.3337 15.8337L16.667 17.5003"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.8333 18.3337H6.66667C3.75 18.3337 2.5 16.667 2.5 14.167V5.83366C2.5 3.33366 3.75 1.66699 6.66667 1.66699H13.3333C16.25 1.66699 17.5 3.33366 17.5 5.83366V11.667"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1898,17 +1941,17 @@ export const OthersIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M4.16667 8.33301C3.25 8.33301 2.5 9.08301 2.5 9.99967C2.5 10.9163 3.25 11.6663 4.16667 11.6663C5.08333 11.6663 5.83333 10.9163 5.83333 9.99967C5.83333 9.08301 5.08333 8.33301 4.16667 8.33301Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
     <path
       d="M15.8337 8.33301C14.917 8.33301 14.167 9.08301 14.167 9.99967C14.167 10.9163 14.917 11.6663 15.8337 11.6663C16.7503 11.6663 17.5003 10.9163 17.5003 9.99967C17.5003 9.08301 16.7503 8.33301 15.8337 8.33301Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
     <path
       d="M9.99967 8.33301C9.08301 8.33301 8.33301 9.08301 8.33301 9.99967C8.33301 10.9163 9.08301 11.6663 9.99967 11.6663C10.9163 11.6663 11.6663 10.9163 11.6663 9.99967C11.6663 9.08301 10.9163 8.33301 9.99967 8.33301Z"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
     />
   </svg>
 );
@@ -1945,23 +1988,23 @@ export const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M7.99967 14.6673C11.6816 14.6673 14.6663 11.6825 14.6663 8.00065C14.6663 4.31875 11.6816 1.33398 7.99967 1.33398C4.31778 1.33398 1.33301 4.31875 1.33301 8.00065C1.33301 11.6825 4.31778 14.6673 7.99967 14.6673Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.66699 8H9.66699"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.33301 10L10.333 8L8.33301 6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1978,25 +2021,25 @@ export const SecuritySafeIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M13.9396 7.41288C13.9396 10.6729 11.5729 13.7262 8.33958 14.6195C8.11958 14.6795 7.87957 14.6795 7.65957 14.6195C4.42623 13.7262 2.05957 10.6729 2.05957 7.41288V4.4862C2.05957 3.93953 2.47291 3.31954 2.98625 3.11287L6.69956 1.59289C7.5329 1.25289 8.4729 1.25289 9.30623 1.59289L13.0196 3.11287C13.5262 3.31954 13.9462 3.93953 13.9462 4.4862L13.9396 7.41288Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8.00033 8.33268C8.73671 8.33268 9.33366 7.73573 9.33366 6.99935C9.33366 6.26297 8.73671 5.66602 8.00033 5.66602C7.26395 5.66602 6.66699 6.26297 6.66699 6.99935C6.66699 7.73573 7.26395 8.33268 8.00033 8.33268Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8 8.33203V10.332"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2013,17 +2056,17 @@ export const RecordCircleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M11.9697 22C17.4926 22 21.9697 17.5228 21.9697 12C21.9697 6.47715 17.4926 2 11.9697 2C6.44688 2 1.96973 6.47715 1.96973 12C1.96973 17.5228 6.44688 22 11.9697 22Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.9995 16.2295C14.3357 16.2295 16.2295 14.3357 16.2295 11.9995C16.2295 9.66337 14.3357 7.76953 11.9995 7.76953C9.66337 7.76953 7.76953 9.66337 7.76953 11.9995C7.76953 14.3357 9.66337 16.2295 11.9995 16.2295Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2040,51 +2083,51 @@ export const MicrophoneIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M16 6.3V6C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6V11"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9.04004 14.19C9.77004 15 10.83 15.5 12 15.5C14.21 15.5 16 13.71 16 11.5V11"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.78027 16.9504C8.15027 18.2204 9.98027 19.0004 12.0003 19.0004C16.2203 19.0004 19.6503 15.5704 19.6503 11.3504V9.65039"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.34961 9.65039V11.3504C4.34961 12.4104 4.55961 13.4104 4.94961 14.3304"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M20.0697 2.83984L3.92969 18.9898"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11 3V6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 19V22"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2102,8 +2145,8 @@ export const EndCallIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M31.97 28.33C31.97 28.69 31.89 29.06 31.72 29.42C31.55 29.78 31.33 30.12 31.04 30.44C30.55 30.98 30.01 31.37 29.4 31.62C28.8 31.87 28.15 32 27.45 32C26.43 32 25.34 31.76 24.19 31.27C23.04 30.78 21.89 30.12 20.75 29.29C19.6 28.45 18.51 27.52 17.47 26.49C16.44 25.45 15.51 24.36 14.68 23.22C13.86 22.08 13.2 20.94 12.72 19.81C12.24 18.67 12 17.58 12 16.54C12 15.86 12.12 15.21 12.36 14.61C12.6 14 12.98 13.44 13.51 12.94C14.15 12.31 14.85 12 15.59 12C15.87 12 16.15 12.06 16.4 12.18C16.66 12.3 16.89 12.48 17.07 12.74L19.39 16.01C19.57 16.26 19.7 16.49 19.79 16.71C19.88 16.92 19.93 17.13 19.93 17.32C19.93 17.56 19.86 17.8 19.72 18.03C19.59 18.26 19.4 18.5 19.16 18.74L18.4 19.53C18.29 19.64 18.24 19.77 18.24 19.93C18.24 20.01 18.25 20.08 18.27 20.16C18.3 20.24 18.33 20.3 18.35 20.36C18.53 20.69 18.84 21.12 19.28 21.64C19.73 22.16 20.21 22.69 20.73 23.22C21.27 23.75 21.79 24.24 22.32 24.69C22.84 25.13 23.27 25.43 23.61 25.61C23.66 25.63 23.72 25.66 23.79 25.69C23.87 25.72 23.95 25.73 24.04 25.73C24.21 25.73 24.34 25.67 24.45 25.56L25.21 24.81C25.46 24.56 25.7 24.37 25.93 24.25C26.16 24.11 26.39 24.04 26.64 24.04C26.83 24.04 27.03 24.08 27.25 24.17C27.47 24.26 27.7 24.39 27.95 24.56L31.26 26.91C31.52 27.09 31.7 27.3 31.81 27.55C31.91 27.8 31.97 28.05 31.97 28.33Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
     />
   </svg>
 );
@@ -2170,49 +2213,49 @@ export const BriefcaseIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M8.00065 12.1341C9.47341 12.1341 10.6673 10.9402 10.6673 9.46745C10.6673 7.99469 9.47341 6.80078 8.00065 6.80078C6.52789 6.80078 5.33398 7.99469 5.33398 9.46745C5.33398 10.9402 6.52789 12.1341 8.00065 12.1341Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6.96094 9.53419L7.39427 9.96753C7.52094 10.0942 7.7276 10.0942 7.85427 9.97419L9.04094 8.88086"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.33387 14.6667H10.6672C13.3472 14.6667 13.8272 13.5933 13.9672 12.2867L14.4672 6.95333C14.6472 5.32667 14.1805 4 11.3339 4H4.6672C1.82054 4 1.35387 5.32667 1.53387 6.95333L2.03387 12.2867C2.17387 13.5933 2.65387 14.6667 5.33387 14.6667Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.33398 4.00065V3.46732C5.33398 2.28732 5.33398 1.33398 7.46732 1.33398H8.53398C10.6673 1.33398 10.6673 2.28732 10.6673 3.46732V4.00065"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14.4338 7.33398C13.2805 8.17398 12.0005 8.76065 10.6738 9.09398"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M1.74609 7.51367C2.85943 8.27367 4.07276 8.81367 5.33276 9.12034"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2229,76 +2272,76 @@ export const MoneySendIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M5.33398 1.33398V3.33398"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.666 1.33398V3.33398"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M2.33398 6.06055H13.6673"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14 5.66732V11.334C14 13.334 13 14.6673 10.6667 14.6673H5.33333C3 14.6673 2 13.334 2 11.334V5.66732C2 3.66732 3 2.33398 5.33333 2.33398H10.6667C13 2.33398 14 3.66732 14 5.66732Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.4625 9.13411H10.4685"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.4625 11.1341H10.4685"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.99764 9.13411H8.00363"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.99764 11.1341H8.00363"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.52889 9.13411H5.53488"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5.52889 11.1341H5.53488"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2315,9 +2358,9 @@ export const MoneySendIcon = (props: React.SVGProps<SVGSVGElement>) => (
 //     <path
 //       d="M11.4421 2.92422L12.9087 5.85755C13.1087 6.26589 13.6421 6.65755 14.0921 6.73255L16.7504 7.17422C18.4504 7.45755 18.8504 8.69089 17.6254 9.90755L15.5587 11.9742C15.2087 12.3242 15.0171 12.9992 15.1254 13.4826L15.7171 16.0409C16.1837 18.0659 15.1087 18.8492 13.3171 17.7909L10.8254 16.3159C10.3754 16.0492 9.63375 16.0492 9.17541 16.3159L6.68375 17.7909C4.90041 18.8492 3.81708 18.0576 4.28375 16.0409L4.87541 13.4826C4.98375 12.9992 4.79208 12.3242 4.44208 11.9742L2.37541 9.90755C1.15875 8.69089 1.55041 7.45755 3.25041 7.17422L5.90875 6.73255C6.35041 6.65755 6.88375 6.26589 7.08375 5.85755L8.55041 2.92422C9.35041 1.33255 10.6504 1.33255 11.4421 2.92422Z"
 //       stroke="currentColor"
-//       stroke-width="1.5"
-//       stroke-linecap="round"
-//       stroke-linejoin="round"
+//       strokeWidth="1.5"
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
 //     />
 //   </svg>
 // );
@@ -2334,33 +2377,33 @@ export const CardIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M1.5 6.37891H16.5"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.5 12.3789H6"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M7.875 12.3789H10.875"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M4.83 2.62891H13.1625C15.8325 2.62891 16.5 3.28891 16.5 5.92141V12.0789C16.5 14.7114 15.8325 15.3714 13.17 15.3714H4.83C2.1675 15.3789 1.5 14.7189 1.5 12.0864V5.92141C1.5 3.28891 2.1675 2.62891 4.83 2.62891Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2377,74 +2420,74 @@ export const BankIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M9.2775 1.61336L16.0275 4.31334C16.29 4.41834 16.5 4.73334 16.5 5.01084V7.50084C16.5 7.91334 16.1625 8.25084 15.75 8.25084H2.25C1.8375 8.25084 1.5 7.91334 1.5 7.50084V5.01084C1.5 4.73334 1.71 4.41834 1.9725 4.31334L8.7225 1.61336C8.8725 1.55336 9.1275 1.55336 9.2775 1.61336Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16.5 16.5H1.5V14.25C1.5 13.8375 1.8375 13.5 2.25 13.5H15.75C16.1625 13.5 16.5 13.8375 16.5 14.25V16.5Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M3 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M6 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 13.5V8.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15 13.5V8.25"
       stroke="#0D5EBA"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M0.75 16.5H17.25"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9 6.375C9.62132 6.375 10.125 5.87132 10.125 5.25C10.125 4.62868 9.62132 4.125 9 4.125C8.37868 4.125 7.875 4.62868 7.875 5.25C7.875 5.87132 8.37868 6.375 9 6.375Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2461,6 +2504,85 @@ export const MultiplyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M18.8023 15.0291C17.7609 13.9877 16.0724 13.9877 15.031 15.0291C13.9897 16.0705 13.9897 17.7589 15.031 18.8003L28.2304 31.9997L15.031 45.199C13.9897 46.2404 13.9897 47.9288 15.031 48.9702C16.0724 50.0116 17.7609 50.0116 18.8023 48.9702L32.0016 35.7709L45.2009 48.9702C46.2423 50.0116 47.9308 50.0116 48.9722 48.9702C50.0136 47.9288 50.0136 46.2404 48.9722 45.199L35.7728 31.9997L48.9722 18.8003C50.0136 17.7589 50.0136 16.0705 48.9722 15.0291C47.9308 13.9877 46.2423 13.9877 45.2009 15.0291L32.0016 28.2284L18.8023 15.0291Z"
       fill="currentColor"
+    />
+  </svg>
+);
+
+export const DollarSignIcon = ({
+  color = "currentColor",
+  className,
+}: IconProps) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M12 2V22"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M17 5H9.5C8.09554 5 7 6.09554 7 7.5V8.5C7 9.90446 8.09554 11 9.5 11H14.5C15.9045 11 17 12.0955 17 13.5V14.5C17 15.9045 15.9045 17 14.5 17H6"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const BarChart3Icon = ({
+  color = "currentColor",
+  className,
+}: IconProps) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M3 3V21"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7 17V7"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11 14V4"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M15 16V10"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M19 18V8"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2605,7 +2727,7 @@ export const OnionIcon = (props: React.SVGProps<SVGSVGElement>) => (
         rx="30.5"
         ry="3.5"
         fill="#024E44"
-        fill-opacity="0.17"
+        fillOpacity="0.17"
       />
     </g>
     <defs>
@@ -2646,7 +2768,7 @@ export const NoProductsIcon = (props: React.SVGProps<SVGSVGElement>) => (
       d="M132.5 146.575C157.433 146.575 179.967 150.541 196.233 156.922C204.369 160.114 210.894 163.892 215.369 168.043C219.843 172.193 222.205 176.65 222.205 181.229C222.205 185.807 219.843 190.263 215.369 194.413C210.894 198.564 204.369 202.342 196.233 205.534C179.967 211.916 157.433 215.882 132.5 215.882C107.567 215.882 85.0344 211.915 68.7676 205.534C60.6314 202.342 54.1072 198.564 49.6318 194.413C45.1577 190.263 42.7959 185.807 42.7959 181.229C42.7959 176.65 45.1576 172.193 49.6318 168.043C54.1072 163.892 60.6316 160.114 68.7676 156.922C85.0343 150.541 107.567 146.575 132.5 146.575Z"
       fill="#F9FAFB"
       stroke="#8A8A8A"
-      stroke-width="1.76667"
+      strokeWidth="1.76667"
     />
     <path
       d="M135.476 75.9544C135.302 75.7189 135.103 75.5029 134.882 75.3091C134.102 74.627 133.047 74.2344 131.876 74.2344C131.516 74.2344 131.138 74.2736 130.755 74.3521C130.568 74.3914 130.387 74.4405 130.208 74.4945C130.188 74.4994 130.168 74.5043 130.149 74.5092C130.075 74.5337 130.002 74.5607 129.928 74.5877C129.899 74.5975 129.867 74.6073 129.837 74.6196C129.717 74.6662 129.597 74.7153 129.479 74.7668C129.472 74.7693 129.464 74.7742 129.459 74.7766C129.297 74.8503 129.14 74.9312 128.986 75.0171C128.976 75.022 128.969 75.0269 128.959 75.0318C128.922 75.0539 128.888 75.0784 128.851 75.1005C128.755 75.1594 128.659 75.2183 128.566 75.2796C128.549 75.2919 128.529 75.3017 128.512 75.314C128.475 75.3385 128.441 75.368 128.404 75.395C128.328 75.4514 128.252 75.5054 128.176 75.5643C128.154 75.5815 128.129 75.5986 128.105 75.6158C128.075 75.6403 128.046 75.6673 128.017 75.6919C127.945 75.7508 127.877 75.8121 127.808 75.8734C127.781 75.898 127.754 75.9201 127.727 75.9446C127.676 75.9937 127.624 76.0428 127.575 76.0943C127.509 76.163 127.445 76.2317 127.381 76.3004C127.364 76.3176 127.352 76.3372 127.334 76.3568C127.261 76.4403 127.19 76.5286 127.121 76.6145C127.096 76.6464 127.067 76.6758 127.045 76.7077C127.038 76.7175 127.033 76.7273 127.025 76.7371C126.92 76.877 126.822 77.0218 126.731 77.1715C126.726 77.1788 126.721 77.1837 126.716 77.1911C126.652 77.2966 126.591 77.4046 126.532 77.5125C126.52 77.5346 126.51 77.5591 126.498 77.5812C126.458 77.6597 126.417 77.7383 126.382 77.8168C126.373 77.8364 126.368 77.856 126.358 77.8757C126.341 77.9174 126.324 77.9591 126.306 78.0033C126.272 78.0867 126.24 78.1701 126.211 78.2535C126.193 78.2977 126.179 78.3443 126.164 78.3885C126.135 78.4768 126.11 78.5627 126.086 78.651C126.076 78.6928 126.063 78.732 126.054 78.7737C126.022 78.9013 125.995 79.0314 125.975 79.1614C125.919 79.5098 125.899 79.8681 125.926 80.2239L126.054 82.0838L131.359 89.3148L131.231 87.4549C131.204 87.0967 131.224 86.7409 131.28 86.3925C131.3 86.2624 131.329 86.1324 131.359 86.0048C131.368 85.9631 131.381 85.9238 131.39 85.8821C131.415 85.7938 131.439 85.7054 131.466 85.6196C131.481 85.5754 131.496 85.5288 131.513 85.4846C131.543 85.4012 131.574 85.3178 131.609 85.2343C131.626 85.1926 131.643 85.1509 131.66 85.1092C131.705 85.011 131.751 84.9129 131.8 84.8147C131.812 84.7927 131.822 84.7681 131.835 84.746C131.896 84.6307 131.962 84.5154 132.031 84.4025C132.122 84.2553 132.222 84.1105 132.325 83.9682C132.357 83.9265 132.389 83.8872 132.423 83.8455C132.492 83.7572 132.563 83.6713 132.637 83.5879C132.715 83.4996 132.794 83.4112 132.877 83.3253C132.953 83.2493 133.032 83.1781 133.11 83.1045C133.179 83.0432 133.248 82.9818 133.319 82.9229C133.371 82.8788 133.425 82.8346 133.479 82.7929C133.552 82.734 133.628 82.6776 133.707 82.6236C133.761 82.5843 133.812 82.5451 133.869 82.5083C133.962 82.4469 134.058 82.388 134.153 82.3291C134.2 82.3021 134.244 82.2727 134.291 82.2457C134.445 82.1598 134.602 82.0789 134.764 82.0052C134.889 81.9488 135.015 81.8948 135.145 81.8458C135.174 81.8335 135.206 81.8237 135.235 81.8139C135.329 81.7795 135.422 81.7501 135.518 81.7206C135.697 81.6666 135.878 81.6151 136.065 81.5783C136.448 81.4998 136.825 81.4605 137.186 81.4605C138.359 81.4605 139.414 81.8531 140.192 82.5353C140.413 82.7291 140.611 82.9426 140.786 83.1806L135.476 75.9544Z"
@@ -2883,9 +3005,9 @@ export const MarkIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M4.16602 10.0007L8.33268 14.1673L16.666 5.83398"
       stroke="currentColor"
-      stroke-width="1.66667"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.66667"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2938,10 +3060,10 @@ export const ChainlinkIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M3 8.2V15.8C3 16.5 3.4 17.2 4 17.5L11 21.4C11.6 21.7 12.3 21.7 12.9 21.4L19.9 17.5C20.5 17.1 20.9 16.5 20.9 15.8V8.2C20.9 7.5 20.5 6.8 19.9 6.5L12.9 2.6C12.3 2.3 11.6 2.3 11 2.6L4 6.4C3.4 6.8 3 7.5 3 8.2Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -2958,23 +3080,23 @@ export const DangerIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12 9V14"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.9994 21.4093H5.93944C2.46944 21.4093 1.01944 18.9293 2.69944 15.8993L5.81944 10.2793L8.75944 4.9993C10.5394 1.7893 13.4594 1.7893 15.2394 4.9993L18.1794 10.2893L21.2994 15.9093C22.9794 18.9393 21.5194 21.4193 18.0594 21.4193H11.9994V21.4093Z"
       stroke="currentColor"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M11.9941 17H12.0031"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -3031,24 +3153,24 @@ export const TimerIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M20.75 13.25C20.75 18.08 16.83 22 12 22C7.17 22 3.25 18.08 3.25 13.25C3.25 8.42 7.17 4.5 12 4.5C16.83 4.5 20.75 8.42 20.75 13.25Z"
       stroke="currentColor"
-      stroke-width="1.47502"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.47502"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 8V13"
       stroke="currentColor"
-      stroke-width="1.47502"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.47502"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M9 2H15"
       stroke="currentColor"
-      stroke-width="1.47502"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.47502"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -3310,23 +3432,23 @@ export const DashboardSettings = ({
 //       <path
 //         d="M21.9688 15V9C21.9688 4 19.9688 2 14.9688 2H8.96875C3.96875 2 1.96875 4 1.96875 9V15C1.96875 20 3.96875 22 8.96875 22H14.9688C19.9688 22 21.9688 20 21.9688 15Z"
 //         stroke={color}
-//         stroke-width="1.5"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
+//         strokeWidth="1.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
 //       />
 //       <path
 //         d="M7.96875 2V22"
 //         stroke={color}
-//         stroke-width="1.5"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
+//         strokeWidth="1.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
 //       />
 //       <path
 //         d="M14.9702 9.44043L12.4102 12.0004L14.9702 14.5604"
 //         stroke={color}
-//         stroke-width="1.5"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
+//         strokeWidth="1.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
 //       />
 //     </svg>
 //   );
@@ -3541,7 +3663,7 @@ export const DashboardSettingsActive = ({
 };
 
 export const UpwordIcon = ({
-  className,
+  className = "",
   color = "currentColor",
 }: IconProps) => {
   return (
@@ -3556,18 +3678,18 @@ export const UpwordIcon = ({
       <path
         d="M3.4574 5.58203L6.99823 2.0412L10.5391 5.58203"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M7 11.958V2.14051"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3589,18 +3711,18 @@ export const OutofStockIcon = ({
       <path
         d="M3.4574 8.41797L6.99823 11.9588L10.5391 8.41797"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M7 2.04199V11.8595"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3643,10 +3765,10 @@ export const RightArrowIcon = ({
       <path
         d="M9.00016 4.07992L15.5202 10.5999C16.2902 11.3699 16.2902 12.6299 15.5202 13.3999L9.00016 19.9199"
         stroke={color}
-        stroke-width="1.5"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3668,44 +3790,44 @@ export const ScanQrIcon = ({
       <path
         d="M1.66797 7.50033V5.41699C1.66797 3.34199 3.34297 1.66699 5.41797 1.66699H7.5013"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12.5 1.66699H14.5833C16.6583 1.66699 18.3333 3.34199 18.3333 5.41699V7.50033"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M18.332 13.333V14.583C18.332 16.658 16.657 18.333 14.582 18.333H13.332"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M7.5013 18.3333H5.41797C3.34297 18.3333 1.66797 16.6583 1.66797 14.5833V12.5"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M14.1654 7.91699V12.0837C14.1654 13.7503 13.332 14.5837 11.6654 14.5837H8.33203C6.66536 14.5837 5.83203 13.7503 5.83203 12.0837V7.91699C5.83203 6.25033 6.66536 5.41699 8.33203 5.41699H11.6654C13.332 5.41699 14.1654 6.25033 14.1654 7.91699Z"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M15.8346 10H4.16797"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3748,9 +3870,9 @@ export const RemoveFromCart = ({
       <path
         d="M8 12H16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
         stroke="#A8A8A8"
-        stroke-width="1.33333"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.33333"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3772,9 +3894,9 @@ export const AddedToCart = ({
       <path
         d="M33.3346 10L15.0013 28.3333L6.66797 20"
         stroke={color}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3814,8 +3936,8 @@ export const DragBtn = ({ className }: IconProps) => {
         x2="39"
         y2="1"
         stroke="#C7C7C7"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -3834,16 +3956,16 @@ export const TipsIcon = ({ className = "" }: IconProps) => {
       <path
         d="M8.29938 18.0402V16.8802C5.99938 15.4902 4.10938 12.7802 4.10938 9.90018C4.10938 4.95018 8.65938 1.07018 13.7994 2.19018C16.0594 2.69018 18.0394 4.19018 19.0694 6.26018C21.1594 10.4602 18.9594 14.9202 15.7294 16.8702V18.0302C15.7294 18.3202 15.8394 18.9902 14.7694 18.9902H9.25938C8.15938 19.0002 8.29938 18.5702 8.29938 18.0402Z"
         stroke="#04802E"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8.5 22.0002C10.79 21.3502 13.21 21.3502 15.5 22.0002"
         stroke="#04802E"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -3974,14 +4096,14 @@ export const SuccessIcon = ({ className = "" }: IconProps) => {
       <path
         d="M8.00065 14.6663C11.6673 14.6663 14.6673 11.6663 14.6673 7.99967C14.6673 4.33301 11.6673 1.33301 8.00065 1.33301C4.33398 1.33301 1.33398 4.33301 1.33398 7.99967C1.33398 11.6663 4.33398 14.6663 8.00065 14.6663Z"
         stroke="#04802E"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M5.16602 7.99995L7.05268 9.88661L10.8327 6.11328"
         stroke="#04802E"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -4018,6 +4140,120 @@ export const BarCode = () => {
           // xlink:href="data:image/png;base64,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9alfubOz076r8MILL7w8n89/lIhO3nrrrT+4s7Pj7vx0LBYL9c477/wmpdQDInr/c5/73P/i2rVryu3f29tT77zzzm8hontEJMzcENGyLMuGiH785ZdfftPFJSK6du3a7J133vmviOiwLEspiuKfvfTSSy/5cXzz+bx46623fi0R/fR8Phci+sqrr7762eeff/4jSqkfY2ZRStXM3CilGjZ3zb78+uuvf9NsNuu8i/LMM8/cfP755/+uzVeISGazmTDzu2+99da/N5/P2/gf/ehHX2Lmn9je3hYiOnz77bd//87OTq/fnMViwe+8886/o5R6b2trS4joZ375L//lf+j27ds/Ysu0/OQnP/nHb9y4sf2JT3zilxDRe4vFQojo0TvvvPMf7e7uurvyrTt37nxjVVU/Rqbfjz/5yU/+nxaLhfroRz/6UlVVX7R1F5u+sHkV/6U33njjV/h18S0WC37jjTe+WSn1c7Ydajs233v77bd//fb2dqccr7zyymtbW1s/TkTy1ltv/ZHd3d3i+eeff/7atWs/NJvNhIhO3n777T92/fr1uX/cjRs3ynfeeed3M/MHW1tbNRHJ7du3/86zzz5708W5c+fOc7u7uz+ozN3q5VtvvfX/3N/fd3cmWy+//PIbSqkft/k9+sxnPvN/3N3d7Y3XF1544cWtra0fsO2yJCKZz+f/83PPPffcL/2lv/R3EtGh7ZsvvfHGG58JDiciohs3buw/99xzf8O26fHnP//5H/+Wb/mWHyeiEyKS55577u98y7d8y6+bz+c/yMyP3nrrrT/89NNPd8q8t7en3n777V9HRO/Z8fNTb7755r/lzz9nPp/z66+//g4z/0RRFDKbzZZE9N5nP/vZP/T2229/KxH9xHw+F6XUe2+99db/Zmdnh2/evHntmWee+RtkxsXyE5/4xJ+9ffv2FhHR/v7+4s033/xvyKwFyzt37vzY5z//+b9LRI/IjPcfevHFFz/m8g9tb28Xn/vc534vER1XVSXM/KVv/uZv/g3PPPPMD5LJ7+zjH//4H9/Z2SmvX7++fefOnf+RiGTL3ACQ55577tv29vYWH/vYx14qiuIniOjRG2+88Z8MzR3ftWvXtl566aVvJyKpqkrKspSyLOX111//8zdu3Fi4eC+99NJLs9nsX9mxe/a5z33uD1+7dq0kMnfFPvvZz/7fiahW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"
         />
       </defs>
+    </svg>
+  );
+};
+
+export const ShareReceiptIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M14.1328 5.1416C15.7995 6.29993 16.9495 8.1416 17.1828 10.2666"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2.91016 10.3083C3.12682 8.19168 4.26016 6.35002 5.91016 5.18335"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.82422 17.45C7.79089 17.9416 8.89089 18.2166 10.0492 18.2166C11.1659 18.2166 12.2159 17.9666 13.1576 17.5083"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.051 6.41678C11.3305 6.41678 12.3677 5.37957 12.3677 4.10011C12.3677 2.82065 11.3305 1.78345 10.051 1.78345C8.77158 1.78345 7.73438 2.82065 7.73438 4.10011C7.73438 5.37957 8.77158 6.41678 10.051 6.41678Z"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.0237 16.5999C5.30316 16.5999 6.34036 15.5627 6.34036 14.2832C6.34036 13.0038 5.30316 11.9666 4.0237 11.9666C2.74424 11.9666 1.70703 13.0038 1.70703 14.2832C1.70703 15.5627 2.74424 16.5999 4.0237 16.5999Z"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.9768 16.5999C17.2563 16.5999 18.2935 15.5627 18.2935 14.2832C18.2935 13.0038 17.2563 11.9666 15.9768 11.9666C14.6974 11.9666 13.6602 13.0038 13.6602 14.2832C13.6602 15.5627 14.6974 16.5999 15.9768 16.5999Z"
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const TroubleIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M10.001 2.24976C10.7568 2.24986 11.5322 2.70603 12.166 3.73608L12.291 3.94995L17.624 13.5496C18.2333 14.6479 18.2448 15.6032 17.8389 16.2966C17.4339 16.9881 16.5993 17.4421 15.334 17.4421H4.66699C3.40189 17.442 2.56701 16.9881 2.16211 16.2966C1.75659 15.6038 1.7675 14.6566 2.37793 13.5486L2.37695 13.5476L7.71094 3.94995C8.36619 2.76896 9.19476 2.24976 10.001 2.24976ZM10.001 6.29175C9.33725 6.29175 8.79217 6.83607 8.79199 7.49976V11.6667C8.79199 12.1925 9.13457 12.6416 9.60645 12.8064C9.56972 12.8174 9.53478 12.832 9.5 12.8464C9.39459 12.8816 9.29812 12.9319 9.21094 12.99L9.18945 13.0037L9.16992 13.0193C9.12826 13.0526 9.08657 13.0866 9.04492 13.1199L9.01367 13.1443L8.98535 13.1736C8.73968 13.4329 8.58398 13.791 8.58398 14.1667C8.58398 14.5425 8.73968 14.9006 8.98535 15.1599L9.01367 15.1892L9.04492 15.2136C9.06574 15.2303 9.0866 15.2477 9.10742 15.2644C9.12812 15.281 9.14922 15.2977 9.16992 15.3142L9.18945 15.3298L9.21094 15.3435C9.27606 15.3869 9.34753 15.4224 9.42285 15.4539V15.4548C9.51956 15.5032 9.62536 15.5395 9.73828 15.5583V15.5593L9.75195 15.5613C9.79861 15.568 9.90139 15.5837 10.001 15.5837C10.0944 15.5837 10.1856 15.5692 10.2402 15.5603L10.2412 15.5613C10.3362 15.5477 10.421 15.5191 10.501 15.4861L10.502 15.4871C10.6074 15.4519 10.7038 15.4016 10.791 15.3435L10.8125 15.3298L10.832 15.3142C10.8528 15.2976 10.8737 15.281 10.8945 15.2644C10.9154 15.2477 10.9362 15.2303 10.957 15.2136L10.9883 15.1892L11.0156 15.1599C11.2613 14.9006 11.417 14.5425 11.417 14.1667C11.417 13.791 11.2613 13.4329 11.0156 13.1736L10.9883 13.1443L10.957 13.1199L10.832 13.0193L10.8125 13.0037L10.791 12.99L10.6533 12.9099C10.6051 12.8858 10.5538 12.864 10.501 12.8464C10.4664 12.8322 10.4316 12.8173 10.3945 12.8064C10.8666 12.6417 11.209 12.1927 11.209 11.6667V7.49976C11.2088 6.83616 10.6646 6.29189 10.001 6.29175Z"
+        fill="#CB1A14"
+        stroke={color}
+        strokeWidth="1.16667"
+      />
+    </svg>
+  );
+};
+
+export const FailedTransactionIcon = ({
+  color = "currentColor",
+  className = "",
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.17188 14.8299L14.8319 9.16992"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14.8319 14.8299L9.17188 9.16992"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 };

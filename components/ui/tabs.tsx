@@ -53,6 +53,41 @@ function TodaysMenuTabList({ children, className, ...props }: TabsListProps) {
   );
 }
 
+function NavTabsList({ children, className, ...props }: TabsListProps) {
+  return (
+    <div
+      className={`flex gap-[8px] rounded-[12px] p-[4px] bg-[#F7F7F7] ${className}`}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+function NavTabsTrigger({
+  value,
+  children,
+  className,
+  ...props
+}: TabsTriggerProps) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("TabsTrigger must be used within Tabs");
+
+  const isActive = context.activeTab === value;
+
+  return (
+    <button
+      onClick={() => context.setActiveTab(value)}
+      className={`h-[44px] py-[8px] px-[16px] transition-all whitespace-nowrap font-[500] text-[16px] rounded-[8px]  cursor-pointer ${
+        isActive ? "bg-white text-primary-color" : "text-[#6C6C6C] bg-[#F7F7F7]"
+      } ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
 function TodaysTrigger({
   value,
   children,
@@ -159,8 +194,10 @@ export {
   Tabs,
   TabsList,
   TabsTrigger,
+  NavTabsList,
   TabsContent,
   TodaysMenuTabList,
   TodaysTrigger,
   PaymentTrigger,
+  NavTabsTrigger,
 };

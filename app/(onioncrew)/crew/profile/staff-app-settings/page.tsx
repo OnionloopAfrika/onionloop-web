@@ -7,7 +7,7 @@ import { MobileSettings } from "@/components/staff-app/mobile-settings";
 const page = () => {
   return (
     <ProfileLayout
-      active="staff-app-settings"
+      active="profile/staff-app-settings"
       heading="Staff Settings"
       subheading="Roles, permissions, and app access"
     >

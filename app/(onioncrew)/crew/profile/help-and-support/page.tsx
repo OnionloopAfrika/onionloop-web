@@ -7,7 +7,7 @@ import { SupportHistory } from "@/components/helps-and-support/support-history";
 const page = () => {
   return (
     <ProfileLayout
-      active="help-and-support"
+      active="profile/help-and-support"
       heading="Help & Support"
       subheading="Documentation, FAQs, and contact"
     >

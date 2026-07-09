@@ -110,7 +110,7 @@ export default function LocationManagement({
                             value={statusFilter}
                             onValueChange={setStatusFilter}
                             options={statusOptions}
-                            placeholder="Sort by: All Status"
+                            placeholder="Sort by:"
                         />
                     </div>
 
@@ -119,7 +119,7 @@ export default function LocationManagement({
                             value={regionFilter}
                             onValueChange={setRegionFilter}
                             options={regionOptions}
-                            placeholder="Filter by: South West"
+                            placeholder="Filter by: "
                         />
                     </div>
                 </div>
