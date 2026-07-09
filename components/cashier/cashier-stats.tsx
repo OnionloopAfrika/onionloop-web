@@ -38,7 +38,7 @@ export default function CashierStats() {
               </div>
               {stat.percentage && (
                 <span
-                  className={`rounded-[24px] px-[8px] text-[12px] font-[500] flex items-center gap-2 ${stat.desc === "Todays Total Sales" ? "bg-[#E7F6EC] text-[#04802E]" : "bg-[#C6DDF7] text-[#0D5EBA]"}`}
+                  className={`rounded-[24px] px-[8px] text-[10px] font-[500] flex items-center gap-2 ${stat.desc === "Todays Total Sales" ? "bg-[#E7F6EC] text-[#04802E]" : "bg-[#C6DDF7] text-[#0D5EBA]"}`}
                 >
                   {stat.percentage}
                 </span>
@@ -46,7 +46,7 @@ export default function CashierStats() {
             </div>
 
             <div className="space-y-[4px]">
-              <p className="font-[600] text-[36px] text-[#000000]">
+              <p className="font-[600] text-[16px] sm:text-[28px] text-[#000000]">
                 {stat.figure}
               </p>
               <p className="font-[400] text-[14px] text-[#6C6C6C]">

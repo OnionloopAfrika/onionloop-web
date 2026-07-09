@@ -3,7 +3,7 @@
 import Header from "@/components/layouts/header";
 import ProfileDropdown from "@/components/layouts/profile-dropdown";
 import { useRouter } from "next/navigation";
-import { SUPER_ADMIN_PRODUCT_NAV } from "../../layout";
+import { GROUP_MANAGER_PRODUCT_NAV } from "../../layout";
 
 function ProfileLayout({
   active,
@@ -29,7 +29,7 @@ function ProfileLayout({
             userName="{userName}"
             avatarUrl="https://i.pravatar.cc/150?u=12"
             active={active}
-            productNav={SUPER_ADMIN_PRODUCT_NAV}
+            productNav={GROUP_MANAGER_PRODUCT_NAV}
             className="w-full bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex-col items-center hidden md:flex"
           />
         </div>

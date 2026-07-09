@@ -1,8 +1,17 @@
 import React from 'react'
+import ProfileLayout from '../Shell'
 
 const page = () => {
   return (
-    <div>page</div>
+    <ProfileLayout
+      active="/group-manager/profile/logout"
+      heading="Staff Settings"
+      subheading="Roles, permissions, and app access"
+    >
+      <div className="space-y-[40px]">
+        Logout
+      </div>
+    </ProfileLayout>
   )
 }
 
