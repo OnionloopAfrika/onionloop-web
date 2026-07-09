@@ -60,7 +60,38 @@ export const SUPER_ADMIN_PRODUCT_NAV: ProductNavItem[] = [
     isDestructive: true,
   },
 ];
-const GROUP_MANAGER_PRODUCT_NAV: ProductNavItem[] = [];
+export const GROUP_MANAGER_PRODUCT_NAV: ProductNavItem[] = [
+  {
+    id: "/group-manager/profile/my-profile",
+    label: "My Profile",
+    icon: <ProfileIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/group-manager/profile/account-settings",
+    label: "Account Settings",
+    icon: <SettingsIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/group-manager/profile/permission-and-access-control",
+    label: "Permission & Access Control",
+    icon: <ControlIconSolid />,
+    isDestructive: false,
+  },
+  {
+    id: "/group-manager/profile/help-and-support",
+    label: "Help & Support",
+    icon: <SupportIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/group-manager/profile/logout",
+    label: "Log Out",
+    icon: <LogoutIcon />,
+    isDestructive: true,
+  },
+];
 const BRANCH_MANAGER_PRODUCT_NAV: ProductNavItem[] = [];
 
 export default function DashboardLayout({

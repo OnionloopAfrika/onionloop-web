@@ -8,7 +8,7 @@ import { Notification } from "@/components/account-settings/notification";
 const page = () => {
   return (
     <ProfileLayout
-      active="account-settings"
+      active="profile/account-settings"
       heading="Account Settings"
       subheading="Security, billing, and integrations"
     >

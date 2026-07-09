@@ -8,7 +8,7 @@ import { BusinessCategory } from "@/components/profile/business-category";
 const page = () => {
   return (
     <ProfileLayout
-      active="my-profile"
+      active="profile/my-profile"
       heading="My Profile"
       subheading="Manage your personal Information"
     >
