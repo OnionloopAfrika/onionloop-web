@@ -89,35 +89,35 @@ export function StaffSalesPerformance() {
         </div>
       </div>
 
-      <div className="bg-white  border border-gray-100 overflow-hidden ">
-        <div className="overflow-x-auto">
-          <table className="w-full">
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="w-full overflow-x-auto select-none">
+          <table className="w-full text-left border-collapse table-auto">
             <thead>
-              <tr className="bg-[#F7F7F7] border-b border-gray-200 h-[72px]">
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C] w-[64px]"></th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+              <tr className="border-y border-gray-50 bg-[#F9FAFB]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap w-[64px]"></th>
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Staff Name
                 </th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Sales
                 </th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Order
                 </th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]"></th>
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-50">
               {mockStaff.map((staff) => (
                 <tr
                   onClick={() =>
                     router.push(`/mega/branch-manager/transactions/${staff.id}`)
                   }
                   key={staff.id}
-                  className="hover:bg-gray-50 transition-colors h-[96px] cursor-pointer"
+                  className="hover:bg-gray-50 transition-colors border-b border-gray-300 cursor-pointer"
                 >
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-6 py-5 whitespace-nowrap">
                     <div className="w-[32px] h-[32px] overflow-hidden rounded-full flex-shrink-0">
                       <Image
                         src={staff.avatar}
@@ -129,23 +129,23 @@ export function StaffSalesPerformance() {
                     </div>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <p className="font-[500] text-[18px] text-[#6C6C6C]">
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <p className="text-[14px] font-medium text-[#6C6C6C]">
                       {staff.name}
                     </p>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-start font-[500] text-[#04802E] text-[18px]">
+                  <td className="px-6 py-5 whitespace-nowrap text-start font-medium text-[#04802E] text-[14px]">
                     +₦{staff.sales.toLocaleString()}
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-start font-[500] text-[#6C6C6C] text-[18px]">
+                  <td className="px-6 py-5 whitespace-nowrap text-start font-medium text-[#6C6C6C] text-[14px]">
                     {staff.orders}
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-end">
+                  <td className="px-6 py-5 whitespace-nowrap text-end">
                     <button className="cursor-pointer text-[#6C6C6C] hover:text-[#131313] transition-colors">
-                      <RightArrowIcon className="w-[24px h-[24px" />
+                      <RightArrowIcon className="w-[24px] h-[24px]" />
                     </button>
                   </td>
                 </tr>

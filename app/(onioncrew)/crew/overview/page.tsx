@@ -15,7 +15,7 @@ import RevenueOverview from "@/components/layouts/revenue-overview";
 import { MOCK_TRANSACTIONS } from "@/lib/mockdata";
 import { formatDate, formatCurrency } from "@/utils/helpers";
 import { fetchRevenue } from "@/utils/helpers/revenue-chart";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default async function Page() {
   const initialData = await fetchRevenue("7days");
@@ -23,10 +23,10 @@ export default async function Page() {
   return (
     <main className="">
       <div className="flex-col md:flex-row gap-4 justify-between items-start mb-6">
-      <Header
-        heading="Good morning, Yetty Mama Lounge 👋"
-        subHeading="Here's what's happening with your business today — Tuesday, Mar 24, 2026"
-      />
+        <Header
+          heading="Good morning, Yetty Mama Lounge 👋"
+          subHeading="Here's what's happening with your business today — Tuesday, Mar 24, 2026"
+        />
         <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
           <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-medium text-gray-700">
             <CalendarIcon />
@@ -95,7 +95,10 @@ export default async function Page() {
             <h2 className="text-2xl font-bold text-gray-800">
               Recent Transactions
             </h2>
-            <Link href="/transactions" className="text-[#04802E] font-bold text-sm hover:underline">
+            <Link
+              href="/transactions"
+              className="text-[#04802E] font-bold text-sm hover:underline"
+            >
               View All
             </Link>
           </div>
