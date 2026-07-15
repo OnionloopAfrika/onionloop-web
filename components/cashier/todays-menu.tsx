@@ -29,7 +29,7 @@ export function TodaysMenu() {
         <SearchBar
           searchPlaceholder="Search  Products or Categories"
           statusPlaceholder="Sort by:"
-          datePlaceholder="filter by:"
+          datePlaceholder="Filter by:"
           statusOptions={[
             { value: "all", label: "All Status" },
             { value: "In stock", label: "In stock" },

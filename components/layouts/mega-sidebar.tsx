@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { OnionloopIcon, SidebarTrigger } from "../icons/svgs";
@@ -15,9 +15,24 @@ export default function MegaSidebar({
   navItems,
   navSections,
 }: MegaSidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const pathname = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    const saved = localStorage.getItem("sidebar-collapsed");
+    if (saved !== null) {
+      setIsCollapsed(JSON.parse(saved));
+    }
+  }, []);
+
+  const handleToggleCollapse = () => {
+    setIsCollapsed((prev) => {
+      const nextState = !prev;
+      localStorage.setItem("sidebar-collapsed", JSON.stringify(nextState));
+      return nextState;
+    });
+  };
 
   const renderItem = (item: NavItem) => {
     const isActive = pathname.startsWith(item.href);
@@ -25,11 +40,10 @@ export default function MegaSidebar({
       <div
         key={item.key}
         onClick={() => router.push(item.href)}
-        className={`w-full flex items-center ${isCollapsed ? "justify-center" : "justify-between"} px-4 py-3 rounded-xl transition-all duration-200 group cursor-pointer ${
-          isActive
+        className={`w-full flex items-center ${isCollapsed ? "justify-center" : "justify-between"} px-4 py-3 rounded-xl transition-all duration-200 group cursor-pointer ${isActive
             ? "bg-[#B5E3C4] text-primary-color font-[500] shadow-sm"
             : "text-gray-500 hover:bg-gray-50 font-[500]"
-        }`}
+          }`}
       >
         <div className="flex items-center gap-3">
           <div
@@ -68,8 +82,8 @@ export default function MegaSidebar({
           </Link>
         )}
         <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className={`p-1.5 rounded-lg border border-gray-100 text-gray-400 hover:bg-gray-50 transition-colors ${isCollapsed ? "" : ""}`}
+          onClick={handleToggleCollapse}
+          className="p-1.5 rounded-lg border border-gray-100 text-gray-400 hover:bg-gray-50 transition-colors"
         >
           <SidebarTrigger />
         </button>

@@ -83,7 +83,7 @@ export function BranchStaffActivity() {
       <div className="flex flex-col">
         {mockStaff.map((staff, index) => (
           <div key={staff.id}>
-            <div className="flex items-center justify-between py-4">
+            <div className="flex items-center justify-between py-2">
               <div className="flex items-center gap-[10px]">
                 <div className="w-[40px] h-[40px] rounded-full bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">
                   <img
@@ -96,7 +96,7 @@ export function BranchStaffActivity() {
                   <p className="font-[500] text-[16px] text-[#131313]">
                     {staff.name}
                   </p>
-                  <p className="font-[400] text-[14px] text-[#6C6C6C]">
+                  <p className="font-[400] text-[12px] text-[#6C6C6C]">
                     {staff.role}
                   </p>
                 </div>
