@@ -65,7 +65,7 @@ export default function BranchTopSelling() {
   const [timeframe, setTimeframe] = useState("this-week");
 
   return (
-    <div className="bg-white border border-gray-100 rounded-[12px] shadow-sm pt-6 pr-6 pb-8 pl-6">
+    <div className="bg-white border border-gray-100 rounded-[12px] shadow-sm pt-6 pr-6 pl-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="font-[600] text-[20px] text-[#363636]">
           Top 5 Selling Products
@@ -79,10 +79,10 @@ export default function BranchTopSelling() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-[32px]">
+      <div className="flex flex-col gap-[16px]">
         {mockProducts.map((product, index) => (
           <div key={product.id}>
-            <div className="flex items-center justify-between py-4">
+            <div className="flex items-center justify-between py-2">
               <div className="flex items-center gap-4 flex-1">
                 <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center overflow-hidden flex-shrink-0">
                   <img

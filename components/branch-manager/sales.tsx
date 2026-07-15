@@ -93,58 +93,58 @@ export default function Sales() {
         </div>
       </div>
 
-      <div className="bg-white  border border-gray-100 overflow-hidden ">
-        <div className="overflow-x-auto">
-          <table className="w-full">
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="w-full overflow-x-auto select-none">
+          <table className="w-full text-left border-collapse table-auto">
             <thead>
-              <tr className="bg-[#F7F7F7] border-b border-gray-200 h-[72px]">
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+              <tr className="border-y border-gray-50 bg-[#F9FAFB]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Order ID
                 </th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Customer
                 </th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Staff
                 </th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Sales
                 </th>
-                <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Time
                 </th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-gray-200 border-0">
+            <tbody className="divide-y divide-gray-50">
               {mockTransactions.map((transaction) => (
                 <tr
                   key={transaction.id}
-                  className="hover:bg-gray-50 transition-colors h-[96px]"
+                  className="hover:bg-gray-50 transition-colors border-b border-gray-300"
                 >
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <p className="font-[500] text-[18px] text-[#6C6C6C]">
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <p className="text-[14px] text-[#6C6C6C]">
                       {transaction.orderId}
                     </p>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <p className="font-[500] text-[18px] text-[#6C6C6C]">
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <p className="text-[14px] font-medium text-[#6C6C6C]">
                       {transaction.customer}
                     </p>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <p className="font-[500] text-[18px] text-[#6C6C6C]">
+                  <td className="px-6 py-5 whitespace-nowrap">
+                    <p className="text-[14px] font-medium text-[#6C6C6C]">
                       {transaction.staff}
                     </p>
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-start font-[500] text-[#04802E] text-[18px]">
+                  <td className="px-6 py-5 whitespace-nowrap text-start font-medium text-[#04802E] text-[14px]">
                     +₦{transaction.sales.toLocaleString()}
                   </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-start font-[500] text-[#6C6C6C] text-[16px]">
+                  <td className="px-6 py-5 whitespace-nowrap text-start text-[#6C6C6C] text-[14px]">
                     {transaction.time}
                   </td>
                 </tr>
@@ -154,29 +154,29 @@ export default function Sales() {
         </div>
 
         <div className="flex items-center justify-between p-4 border-t border-gray-100">
-          <div className="font-[500] text-[16px] text-[#6C6C6C]">
+          <div className="text-[13px] text-gray-500">
             Showing 1 to 10 of 70 order sales
           </div>
           <div className="flex items-center gap-2">
             <button className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50">
               <ChevronLeftIcon className="w-5 h-5 text-[#6C6C6C]" />
             </button>
-            <button className="w-10 h-10 rounded-lg bg-[#04802E] text-white font-[500]">
+            <button className="w-10 h-10 rounded-lg bg-[#04802E] text-white font-medium">
               1
             </button>
-            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-[500] hover:bg-gray-50">
+            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-medium hover:bg-gray-50">
               2
             </button>
-            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-[500] hover:bg-gray-50">
+            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-medium hover:bg-gray-50">
               3
             </button>
-            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-[500] hover:bg-gray-50">
+            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-medium hover:bg-gray-50">
               4
             </button>
-            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-[500] hover:bg-gray-50">
+            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-medium hover:bg-gray-50">
               ...
             </button>
-            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-[500] hover:bg-gray-50">
+            <button className="w-10 h-10 rounded-lg border border-gray-200 text-[#6C6C6C] font-medium hover:bg-gray-50">
               16
             </button>
             <button className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50">

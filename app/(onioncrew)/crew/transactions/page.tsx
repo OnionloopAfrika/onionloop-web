@@ -73,7 +73,9 @@ const TransactionsPage = () => {
 
       const matchesRef = txn.id.toLowerCase().includes(normalizedSearch);
       const matchesAmount = txn.amount.toString().includes(normalizedSearch);
-      const matchesCustomer = txn.customerName.toLowerCase().includes(normalizedSearch);
+      const matchesCustomer = txn.customerName
+        .toLowerCase()
+        .includes(normalizedSearch);
 
       return matchesStatus && (matchesRef || matchesAmount || matchesCustomer);
     });
@@ -186,13 +188,13 @@ const TransactionsPage = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
           <div className="flex sm:flex-row gap-2 w-full md:w-auto">
             <div className="flex-1">
-            <Input
-              placeholder="Search by ref or amount..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
-              prefixicon={<Search />}
-            />
+              <Input
+                placeholder="Search by ref or amount..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
+                prefixicon={<Search />}
+              />
             </div>
 
             <div className="w-[120px] md:w-[150px] bg-white">
@@ -201,10 +203,9 @@ const TransactionsPage = () => {
                 onValueChange={setStatusFilter}
                 options={statusOptions}
                 placeholder="All Status"
-              // className="w-full sm:w-48"
+                // className="w-full sm:w-48"
               />
             </div>
-
           </div>
           <span className="text-[13px] text-gray-500 font-medium whitespace-nowrap self-end md:self-auto">
             Showing {filteredTransactions.length} transactions

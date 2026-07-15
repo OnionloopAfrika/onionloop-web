@@ -148,34 +148,34 @@ export default function RecentTransactions() {
   const getStatusBadge = (status: Transaction["status"]) => {
     if (status === "Successful") {
       return (
-        <span className="px-3 py-1 rounded-full text-[12px] font-[500] bg-[#E8F5E9] text-[#04802E]">
+        <span className="px-4 py-1.5 rounded-full text-[12px] font-medium bg-[#E7F6EC] text-[#04802E] border border-[#04802E]">
           Successful
         </span>
       );
     }
     if (status === "Pending") {
       return (
-        <span className="px-3 py-1 rounded-full text-[12px] font-[500] bg-[#FFF3E0] text-[#E65100]">
+        <span className="px-4 py-1.5 rounded-full text-[12px] font-medium bg-[#FEF6E7] text-[#DD900D] border border-[#DD900D]">
           Pending
         </span>
       );
     }
     if (status === "Refunded") {
       return (
-        <span className="px-3 py-1 rounded-full text-[12px] font-[500] bg-[#E3EFFC] text-[#0D5EBA]">
+        <span className="px-4 py-1.5 rounded-full text-[12px] font-medium bg-[#E3EFFC] text-[#0D5EBA] border border-[#0D5EBA]">
           Refunded
         </span>
       );
     }
     return (
-      <span className="px-3 py-1 rounded-full text-[12px] font-[500] bg-[#FFEBEE] text-[#C62828]">
+      <span className="px-4 py-1.5 rounded-full text-[12px] font-medium bg-[#FBEAE9] text-[#C62828] border border-[#C62828]">
         Failed
       </span>
     );
   };
 
   return (
-    <div className="w-full bg-white font-sans rounded-[12px] shadow-sm">
+    <div className="w-full bg-white font-sans rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
       <div className="flex items-center justify-between p-6 border-b border-gray-100">
         <h2 className="font-[600] text-[20px] text-[#363636]">
           Recent Transactions
@@ -228,63 +228,63 @@ export default function RecentTransactions() {
           </div>
         </div>
 
-        <span className="text-[14px] text-[#6C6C6C] font-[500] whitespace-nowrap">
+        <span className="text-[13px] text-gray-500 font-medium whitespace-nowrap">
           Showing {filteredTransactions.length} transactions
         </span>
       </div>
 
-      <div className="w-full overflow-x-auto">
+      <div className="w-full overflow-x-auto select-none">
         <table className="w-full text-left border-collapse table-auto">
           <thead>
-            <tr className="bg-[#F9FAFB] border-b border-gray-100">
-              <th className="py-[10px] px-[15px] h-[93.3px] text-[20px] font-[600] text-[#6C6C6C] whitespace-nowrap">
+            <tr className="border-y border-gray-50 bg-[#F9FAFB]">
+              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                 TXN ID
               </th>
-              <th className="py-[10px] px-[15px] h-[93.3px] text-[20px] font-[600] text-[#6C6C6C] whitespace-nowrap">
+              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                 Customer Name
               </th>
-              <th className="py-[10px] px-[15px] h-[93.3px] text-[20px] font-[600] text-[#6C6C6C] whitespace-nowrap">
+              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                 Amount
               </th>
-              <th className="py-[10px] px-[15px] h-[93.3px] text-[20px] font-[600] text-[#6C6C6C] whitespace-nowrap">
+              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                 Processed by
               </th>
-              <th className="py-[10px] px-[15px] h-[93.3px] text-[20px] font-[600] text-[#6C6C6C] whitespace-nowrap">
+              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                 Trans. Type
               </th>
-              <th className="py-[10px] px-[15px] h-[93.3px] text-[20px] font-[600] text-[#6C6C6C] whitespace-nowrap">
+              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                 Status
               </th>
-              <th className="py-[10px] px-[15px] h-[93.3px] text-[20px] font-[600] text-[#6C6C6C] whitespace-nowrap">
+              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                 Date
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-50">
             {filteredTransactions.map((txn) => (
               <tr
                 key={txn.id}
-                className="hover:bg-gray-50/50 transition-colors"
+                className="hover:bg-gray-50 transition-colors border-b border-gray-300"
               >
-                <td className="px-[15px] py-[10px] h-[93.3px] text-[18px] text-[#6C6C6C] font-[500] whitespace-nowrap">
+                <td className="px-6 py-5 text-[14px] text-[#6C6C6C] whitespace-nowrap">
                   {txn.id}
                 </td>
-                <td className="px-[15px] py-[10px] h-[93.3px] text-[18px] text-[#6C6C6C] font-[500] whitespace-nowrap">
+                <td className="px-6 py-5 text-[14px] font-medium text-[#6C6C6C] whitespace-nowrap">
                   {txn.customerName}
                 </td>
-                <td className="px-[15px] py-[10px] h-[93.3px] text-[18px] whitespace-nowrap">
+                <td className="px-6 py-5 text-[14px] whitespace-nowrap">
                   {formatAmount(txn.amount, txn.status)}
                 </td>
-                <td className="px-[15px] py-[10px] h-[93.3px] text-[18px] text-[#6C6C6C] font-[500] whitespace-nowrap">
+                <td className="px-6 py-5 text-[14px] font-medium text-[#6C6C6C] whitespace-nowrap">
                   {txn.processedBy}
                 </td>
-                <td className="px-[15px] py-[10px] h-[93.3px] text-[18px] text-[#6C6C6C] font-[500] whitespace-nowrap">
+                <td className="px-6 py-5 text-[14px] font-medium text-[#6C6C6C] whitespace-nowrap">
                   {txn.transType}
                 </td>
-                <td className="px-[15px] py-[10px] h-[93.3px] whitesce-nowrap">
+                <td className="px-6 py-5 whitespace-nowrap">
                   {getStatusBadge(txn.status)}
                 </td>
-                <td className="px-[15px] py-[10px] h-[93.3px] text-[18px] text-[#6C6C6C] font-[500] whitespace-nowrap">
+                <td className="px-6 py-5 text-[14px] text-[#6C6C6C] whitespace-nowrap">
                   {txn.date}
                 </td>
               </tr>

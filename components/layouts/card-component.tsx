@@ -26,9 +26,9 @@ const StatCard: React.FC<StatCardProps> = ({
 }) => {
     const themes = {
         green: {
-            bg: 'bg-[#B5E3C4]',
+            bg: 'bg-[#C2EAD0]',
             text: 'text-[#04802E]',
-            badge: 'bg-[#B5E3C4] text-[#04802E]',
+            badge: 'bg-[#C2EAD0] text-[#04802E]',
             footer: 'text-[#04802E]',
         },
         blue: {
@@ -60,30 +60,31 @@ const StatCard: React.FC<StatCardProps> = ({
     const style = themes[themeColor];
 
     return (
-        <div className="bg-white border border-gray-100 rounded-2xl md:p-5 p-4 shadow-sm flex flex-col gap-4 w-full flex-1">
+        <div className="bg-white border border-[#E5E7EB] rounded-[8px] p-[12px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between w-full flex-1">
             <div className="flex justify-between items-start">
-                <div className={`md:p-[8px] p-1 rounded-lg ${style.bg} ${style.text}`}>
-                    {icon}
-                </div>
-                {percentage && (
-                    <span className={`md:text-[10px] text-[8px] font-medium px-2 py-1 rounded-full ${style.badge}`}>
-                        +{percentage}%
-                    </span>
-                )}
-            </div>
-
-            <div className="flex flex-col gap-1">
-                <h2 className="md:text-[28px] text-[16px] font-semibold text-gray-900 leading-tight">
+                <h2 className="text-[20px] font-semibold text-[#111827] leading-none tracking-tight">
                     {value}
                 </h2>
-                <p className="text-[#6C6C6C] md:text-[14px] text-[12px] font-normal">
-                    {label}
-                </p>
+                <div className={`p-1 rounded-[8px] flex justify-center items-center ${style.bg} ${style.text}`}>
+                    {icon}
+                </div>
             </div>
 
-            <div className={`flex items-center gap-1 text-[10px] font-normal ${style.footer}`}>
-                {showTrendIcon && (changePercentage! >= 0 ? <ArrowUpIcon color="#04802E" className='' /> : <ArrowDownIcon color="#CB1A14" className=''/> )}
-                <span className={footerColor === "purple" ? "text-[#363636]" : footerColor === "orange" ? "text-[#DD900D]" : (changePercentage! >= 0 ? "text-[#04802E]" : "text-[#CB1A14]")}>{footerText}</span>
+            <div className="flex flex-col gap-4 mt-auto">
+                <p className="text-[#4B5563] text-[12px] font-normal leading-normal">
+                    {label}
+                </p>
+
+                <div className={`flex items-center gap-1.5 text-[10px] font-medium ${style.footer}`}>
+                    {showTrendIcon && (changePercentage! >= 0 ? (
+                        <ArrowUpIcon color="#04802E" className="" />
+                    ) : (
+                        <ArrowDownIcon color="#CB1A14" className="" />
+                    ))}
+                    <span className={footerColor === "purple" ? "text-[#363636]" : footerColor === "orange" ? "text-[#DD900D]" : (changePercentage! >= 0 ? "text-[#04802E]" : "text-[#CB1A14]")}>
+                        {footerText}
+                    </span>
+                </div>
             </div>
         </div>
     );
