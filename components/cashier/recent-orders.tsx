@@ -39,13 +39,13 @@ export default function RecentOrders() {
   const getStatusStyle = (status: string) => {
     switch (status) {
       case "Success":
-        return "bg-[#E7F6EC] text-[#04802E]";
+        return "text-[#04802E] bg-[#E7F6EC] border-[#04802E]";
       case "Pending":
-        return "bg-[#FEF6E7] text-[#DD900D]";
+        return "text-[#DD900D] bg-[#FEF6E7] border-[#DD900D]";
       case "Failed":
-        return "bg-[#FBEAE9] text-[#CB1A14]";
+        return "text-[#CB1A14] bg-[#FBEAE9] border-[#CB1A14]";
       default:
-        return "bg-[#E7F6EC] text-[#04802E]";
+        return "text-[#04802E] bg-[#E7F6EC] border-[#04802E]";
     }
   };
 
@@ -62,10 +62,10 @@ export default function RecentOrders() {
           }
         />
 
-        <div className="bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] border border-gray-100">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <SearchBar
             searchPlaceholder="Search  Products or Categories"
-            statusPlaceholder="Sort by:"
+            statusPlaceholder="All Status:"
             datePlaceholder="filter by:"
             statusOptions={[
               { value: "all", label: "All Status" },
@@ -89,61 +89,61 @@ export default function RecentOrders() {
             showingText="Showing 08 of 100"
           />
 
-          <div className="overflow-x-auto">
-            <table className="w-full">
+          <div className="w-full overflow-x-auto select-none">
+            <table className="w-full text-left border-collapse table-auto">
               <thead>
-                <tr className="bg-[#F7F7F7]">
-                  <th className="text-left px-[15px] h-[93px] py-[10px] font-[600] text-[20px] text-[#6C6C6C]">
+                <tr className="border-y border-gray-50 bg-[#F9FAFB]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Order Number
                   </th>
-                  <th className="text-left px-[15px] h-[93px] py-[10px] font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Customer Name
                   </th>
-                  <th className="text-left px-[15px] h-[93px] py-[10px] font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Customer Nos
                   </th>
-                  <th className="text-left px-[15px] h-[93px] py-[10px] font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Amount
                   </th>
-                  <th className="text-left px-[15px] h-[93px] py-[10px] font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Status
                   </th>
-                  <th className="text-left px-[15px] h-[93px] py-[10px] font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Date
                   </th>
-                  <th className="px-[15px] h-[93px] py-[10px]"></th>
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-gray-50">
                 {recentOrders.map((order, index) => (
                   <tr
                     onClick={handleTransactionDetails}
                     key={index}
-                    className="border-b border-gray-100 hover:bg-[#F7F7F7] cursor-pointer"
+                    className="hover:bg-gray-50 transition-colors border-b border-gray-300 cursor-pointer"
                   >
-                    <td className="px-[15px] h-[93px] py-[10px] font-[500] text-[18px] text-[#6C6C6C]">
+                    <td className="px-6 py-5 text-[14px] text-[#6C6C6C] whitespace-nowrap">
                       {order.orderNumber}
                     </td>
-                    <td className="px-[15px] h-[93px] py-[10px] font-[500] text-[18px] text-[#131313]">
+                    <td className="px-6 py-5 text-[14px] font-medium text-[#6c6c6c] whitespace-nowrap">
                       {order.customerName}
                     </td>
-                    <td className="px-[15px] h-[93px] py-[10px] font-[500] text-[18px] text-[#131313]">
+                    <td className="px-6 py-5 text-[14px] font-medium text-[#6C6C6C] whitespace-nowrap">
                       {order.customerNos}
                     </td>
-                    <td className="px-[15px] h-[93px] py-[10px] font-[500] text-[18.38px] text-[#04802E]">
+                    <td className="px-6 py-5 text-[14px] whitespace-nowrap font-medium text-[#04802E]">
                       {order.amount}
                     </td>
-                    <td className="px-[15px] h-[93px] py-[10px]">
+                    <td className="px-6 py-5 whitespace-nowrap">
                       <span
-                        className={`px-[15.57px] py-[2.63px] rounded-[20px] font-[500] text-[18px] ${getStatusStyle(order.status)}`}
+                        className={`px-4 py-1.5 rounded-full text-[12px] font-medium border ${getStatusStyle(order.status)} capitalize`}
                       >
                         {order.status}
                       </span>
                     </td>
-                    <td className="px-[15px] h-[93px] py-[10px] font-[500] text-[18px] text-[#6C6C6C]">
+                    <td className="px-6 py-5 text-[14px] text-[#6C6C6C] whitespace-nowrap">
                       {order.date}
                     </td>
-                    <td className="px-[15px] h-[93px] py-[10px]">
+                    <td className="px-6 py-5 whitespace-nowrap">
                       <RightArrowIcon className="text-[#8A8A8A]" />
                     </td>
                   </tr>
@@ -186,7 +186,7 @@ export default function RecentOrders() {
                 <p className="font-[600] text-[24px] text-[#363636]">
                   +₦12,362.50.
                 </p>
-                <p className="font-[400] text-[14px] text-[#6C6C6C]">
+                <p className="font-[400] text-center text-[14px] text-[#6C6C6C]">
                   AYODELE OKUNADE
                 </p>
 

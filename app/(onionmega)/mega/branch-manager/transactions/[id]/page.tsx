@@ -212,67 +212,67 @@ export default function page() {
           </div>
         </div>
 
-        <div className="bg-white  border border-gray-100 overflow-hidden ">
-          <div className="overflow-x-auto">
-            <table className="w-full">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <div className="w-full overflow-x-auto select-none">
+            <table className="w-full text-left border-collapse table-auto">
               <thead>
-                <tr className="bg-[#F7F7F7] border-b border-gray-200 h-[72px]">
-                  <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                <tr className="border-y border-gray-50 bg-[#F9FAFB]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Order ID
                   </th>
-                  <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Customer Name
                   </th>
-                  <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Product Count
                   </th>
-                  <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Total Amount
                   </th>
-                  <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]">
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                     Time
                   </th>
 
-                  <th className="px-6 py-4 text-start font-[600] text-[20px] text-[#6C6C6C]"></th>
+                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-200 border-0">
+              <tbody className="divide-y divide-gray-50">
                 {mockTransactions.map((transaction) => (
                   <tr
                     onClick={() => setShowOrderDetails(true)}
                     key={transaction.id}
-                    className="hover:bg-gray-50 transition-colors h-[96px] cursor-pointer"
+                    className="hover:bg-gray-50 transition-colors border-b border-gray-300 cursor-pointer"
                   >
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <p className="font-[500] text-[18px] text-[#6C6C6C]">
+                    <td className="px-6 py-5 whitespace-nowrap">
+                      <p className="text-[14px] text-[#6C6C6C]">
                         {transaction.orderId}
                       </p>
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <p className="font-[500] text-[18px] text-[#6C6C6C]">
+                    <td className="px-6 py-5 whitespace-nowrap">
+                      <p className="text-[14px] font-medium text-[#6C6C6C]">
                         {transaction.customer}
                       </p>
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <p className="font-[500] text-[18px] text-[#6C6C6C]">
+                    <td className="px-6 py-5 whitespace-nowrap">
+                      <p className="text-[14px] font-medium text-[#6C6C6C]">
                         {transaction.product_count}
                       </p>
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap text-start font-[500] text-[#04802E] text-[18px]">
+                    <td className="px-6 py-5 whitespace-nowrap text-start font-medium text-[#04802E] text-[14px]">
                       +₦{transaction.sales.toLocaleString()}
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap text-start font-[500] text-[#6C6C6C] text-[16px]">
+                    <td className="px-6 py-5 whitespace-nowrap text-start text-[#6C6C6C] text-[14px]">
                       {transaction.time}
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap text-end">
+                    <td className="px-6 py-5 whitespace-nowrap text-end">
                       <button className="cursor-pointer text-[#6C6C6C] hover:text-[#131313] transition-colors">
-                        <RightArrowIcon className="w-[24px h-[24px" />
+                        <RightArrowIcon className="w-[24px] h-[24px]" />
                       </button>
                     </td>
                   </tr>
