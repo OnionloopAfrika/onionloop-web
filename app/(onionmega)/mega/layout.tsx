@@ -27,7 +27,39 @@ interface ProductNavItem {
   isDestructive: boolean;
 }
 
-const CASHIER_PRODUCT_NAV: ProductNavItem[] = [];
+export const CASHIER_PRODUCT_NAV: ProductNavItem[] = [
+  {
+    id: "/cashier/settings",
+    label: "My Profile",
+    icon: <ProfileIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/cashier/settings/request-leave",
+    label: "Request Leave",
+    icon: <SettingsIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/cashier/notifications",
+    label: "Notifications",
+    icon: <ControlIconSolid />,
+    isDestructive: false,
+  },
+  {
+    id: "/cashier/settings/help-and-support",
+    label: "Help & Support",
+    icon: <SupportIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/cashier/settings/logout",
+    label: "Log Out",
+    icon: <LogoutIcon />,
+    isDestructive: true,
+  },
+];
+
 export const SUPER_ADMIN_PRODUCT_NAV: ProductNavItem[] = [
   {
     id: "/super-admin/profile/my-profile",
@@ -92,7 +124,39 @@ export const GROUP_MANAGER_PRODUCT_NAV: ProductNavItem[] = [
     isDestructive: true,
   },
 ];
-const BRANCH_MANAGER_PRODUCT_NAV: ProductNavItem[] = [];
+export const BRANCH_MANAGER_PRODUCT_NAV: ProductNavItem[] = [
+  {
+    id: "/branch-manager/profile/my-profile",
+    label: "My Profile",
+    icon: <ProfileIcon />,
+    isDestructive: false,
+  },
+  // add branch information to the product nav for branch manager
+  {
+    id: "/branch-manager/profile/account-settings",
+    label: "Account Settings",
+    icon: <SettingsIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/branch-manager/profile/permission-and-access-control",
+    label: "Permission & Access Control",
+    icon: <ControlIconSolid />,
+    isDestructive: false,
+  },
+  {
+    id: "/branch-manager/profile/help-and-support",
+    label: "Help & Support",
+    icon: <SupportIcon />,
+    isDestructive: false,
+  },
+  {
+    id: "/branch-manager/profile/logout",
+    label: "Log Out",
+    icon: <LogoutIcon />,
+    isDestructive: true,
+  },
+];
 
 export default function DashboardLayout({
   children,

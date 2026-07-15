@@ -187,19 +187,59 @@ export default function StaffManagement() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-4 gap-2 py-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-6 gap-4 py-4">
                 {[
-                    { label: "Total Staffs", count: 6, sub: "All active", color: "bg-[#EDE8FC] text-[#7C53FC]", icon: <MultiUser />, className: "col-span-2 md:col-span-1" },
-                    { label: "Online now", count: 4, sub: "Using staff app", color: "bg-green-100 text-[#04802E]", icon: <TimerClock />, className: "col-span-1" },
-                    { label: "Sales so far today", count: 100, sub: "By staff", color: "bg-blue-100 text-[#0D5EBA]", icon: <SparkIcon />, className: "col-span-1" },
+                    {
+                        label: "Total Staff",
+                        count: 6,
+                        sub: "All active",
+                        iconColor: "bg-[#D5C9FC] text-[#7C53FC]",
+                        badgeColor: "bg-[#F0ECFE] text-[#7C53FC]",
+                        icon: <MultiUser />,
+                        className: "col-span-2 md:col-span-1"
+                    },
+                    {
+                        label: "Online now",
+                        count: 4,
+                        sub: "Using staff app",
+                        iconColor: "bg-[#C2EAD0] text-[#04802E]",
+                        badgeColor: "bg-[#E7F6EC] text-[#04802E]",
+                        icon: <TimerClock />,
+                        className: "col-span-1"
+                    },
+                    {
+                        label: "Sales so far today",
+                        count: 100,
+                        sub: "By staff",
+                        iconColor: "bg-[#C6DDF7] text-[#0D5EBA]",
+                        badgeColor: "bg-[#EBF3FC] text-[#0D5EBA]",
+                        icon: <SparkIcon />,
+                        className: "col-span-1"
+                    },
                 ].map((stat, i) => (
-                    <div key={i} className={`bg-white p-4 md:p-6 rounded-xl border border-gray-100 shadow-sm ${stat.className}`}>
-                        <div className={`w-10 h-10 rounded mb-4 flex items-center justify-center ${stat.color}`}>
-                            {stat.icon}
+                    <div
+                        key={i}
+                        className={`bg-white p-3 rounded-[8px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between ${stat.className}`}
+                    >
+                        <div className="flex justify-between items-start">
+                            <h3 className="text-[20px] font-semibold text-[#111827] leading-none tracking-tight">
+                                {stat.count}
+                            </h3>
+                            <div className={`p-1 rounded-[8px] flex items-center justify-center ${stat.iconColor}`}>
+                                {stat.icon}
+                            </div>
                         </div>
-                        <h3 className="text-[16px] md:text-[28px] font-semibold">{stat.count}</h3>
-                        <p className="text-gray-500 text-sm font-normal">{stat.label}</p>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full mt-2 inline-block ${stat.color} bg-opacity-20 font-medium`}>{stat.sub}</span>
+
+                        <div className="space-y-4 mt-auto">
+                            <p className="text-gray-500 text-[12px] font-normal leading-normal">
+                                {stat.label}
+                            </p>
+                            <div className="flex">
+                                <span className={`text-[10px] p-1 rounded-full font-medium ${stat.badgeColor}`}>
+                                    {stat.sub}
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

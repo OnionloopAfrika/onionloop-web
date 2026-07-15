@@ -20,6 +20,7 @@ export function InventoryStats({
     onProductAdded?.(product);
     setOpen(false);
   };
+
   return (
     <>
       <div className="space-y-[16px]">
@@ -28,65 +29,79 @@ export function InventoryStats({
           title="Inventory"
           subtitle="Manage your products and stock levels"
           btn={
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px]  ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
               <Button className="bg-white" size="md" variant="outline">
                 <DownloadIconSolid className="" /> Export
               </Button>
               <Button variant="primary" size="md" onClick={() => setOpen(true)}>
-                {" "}
                 <PlusIcon /> Add product
               </Button>
             </div>
           }
         />
 
-        <div className=" grid grid-cols-1 sm:grid-cols-3 gap-[16px]">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-[24px]">
           {inventoryStats.map((stat, i) => {
             const Icon = stat.icon;
 
             return (
-              <div className="rounded-[6px] bg-white space-y-[16px] p-[16px] shadow-[0_0_15px_rgba(0,0,0,0.15)]">
-                <div>
-                  <div className="space-y-[24px]">
-                    <div
-                      className={`w-[40px] h-[40px] rounded-[8px]  flex justify-center items-center
-                    ${
-                      stat.desc === "Total products"
-                        ? "bg-[#E7F6EC] text-[#04802E]"
+              <div
+                key={i}
+                className="bg-white p-[12px] rounded-[8px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
+              >
+                <div className="flex justify-between items-start">
+                  <p className="font-[600] text-[20px] text-[#111827] leading-none tracking-tight font-sans">
+                    {stat.figure}
+                  </p>
+
+                  <div
+                    className={`p-2 rounded-[8px] flex justify-center items-center ${stat.desc === "Total products"
+                        ? "bg-[#C2EAD0] text-[#04802E]"
                         : stat.desc === "Low stock items"
                           ? "bg-[#FEF6E7] text-[#DD900D]"
                           : stat.desc === "Out of stock"
                             ? "bg-[#FBEAE9] text-[#CB1A14]"
                             : ""
-                    }  `}
-                    >
-                      <Icon className="w-[24px] h-[24px] " />
-                    </div>
-
-                    <p className="font-[600] text-[36px] text-[#000000]">
-                      {stat.figure}
-                    </p>
+                      }`}
+                  >
+                    <Icon className="w-[18px] h-[18px]" />
                   </div>
-
-                  <p className="font-[400] text-[14px] text-[#6C6C6C]">
-                    {stat.desc}
-                  </p>
                 </div>
 
-                <span
-                  className={` rounded-[8px] flex  items-center font-[500] text-[10px] w-fit py-[5px] px-[7px]
-                    ${
-                      stat.desc === "Total products"
-                        ? "bg-[#E7F6EC] text-[#04802E]"
+                <div className="space-y-[8px] mt-auto">
+                  <p className="font-[400] text-[12px] text-[#4B5563] font-sans">
+                    {stat.desc}
+                  </p>
+
+                  <div
+                    className={`inline-flex p-1 rounded-full items-center gap-[6px] font-[500] text-[10px] font-sans ${stat.desc === "Total products"
+                      ? "text-[#04802E] bg-[#E7F6EC]"
                         : stat.desc === "Low stock items"
-                          ? "bg-[#FEF6E7] text-[#DD900D]"
+                        ? "text-[#DD900D] bg-[#FEF6E7]"
                           : stat.desc === "Out of stock"
-                            ? "bg-[#FBEAE9] text-[#CB1A14]"
+                          ? "text-[#CB1A14] bg-[#FBEAE9]"
                             : ""
-                    }  `}
-                >
-                  {stat.action}
-                </span>
+                      }`}
+                  >
+                    {/* {stat.desc === "Total products" && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2.5"
+                        stroke="currentColor"
+                        className="w-[10px] h-[10px]"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+                        />
+                      </svg>
+                    )} */}
+                    <span>{stat.action}</span>
+                  </div>
+                </div>
               </div>
             );
           })}

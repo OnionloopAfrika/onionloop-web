@@ -61,7 +61,7 @@ export const CASHIER_NAV_ITEMS: NavItem[] = [
   },
   {
     key: "alert",
-    href: "/mega/cashier/alert",
+    href: "/mega/cashier/notifications",
     label: "Alert",
     icon: (color) => <NotificationIcon color={color} />,
     activeIcon: (color) => <NotificationActiveIcon color={color} />,
