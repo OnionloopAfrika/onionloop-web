@@ -1,10 +1,24 @@
 "use client";
 
 import DashboardNav from "@/components/layouts/nav-bar";
+import MegaSidebar from "@/components/layouts/mega-sidebar";
 import { usePathname } from "next/navigation";
 import { CREW_NAV_ITEMS } from "@/utils/constant/navigation";
-import { ProfileIcon, SettingsIcon, StaffIconSolid, SupportIcon, LogoutIcon } from "@/components/icons/svgs";
-export const productNav = [
+import {
+  ProfileIcon,
+  SettingsIcon,
+  StaffIconSolid,
+  SupportIcon,
+  LogoutIcon,
+  PermissionIcon,
+} from "@/components/icons/svgs";
+interface ProductNavItem {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  isDestructive: boolean;
+}
+export const productNav: ProductNavItem[] = [
   {
     id: "profile/my-profile",
     label: "My Profile",
@@ -23,6 +37,13 @@ export const productNav = [
     icon: <StaffIconSolid />,
     isDestructive: false,
   },
+
+  {
+    id: "profile/permission-and-access-control",
+    label: "Permission & Access Control",
+    icon: <PermissionIcon />,
+    isDestructive: false,
+  },
   {
     id: "profile/help-and-support",
     label: "Help & Support",
@@ -35,7 +56,7 @@ export const productNav = [
     icon: <LogoutIcon />,
     isDestructive: true,
   },
-]
+];
 export default function DashboardLayout({
   children,
 }: {
@@ -50,20 +71,26 @@ export default function DashboardLayout({
     return <>{children}</>;
   }
 
-
   return (
-    <>
-      <DashboardNav
-        businessName="Yetty Mama Lounge"
-        userName="Margaret Ade"
-        avatarUrl="https://i.pravatar.cc/150?u=12"
-        messageCount={1}
-        notificationCount={4}
-        navItems={CREW_NAV_ITEMS}
-        productNav={productNav}
-      />
+    <div className="flex min-h-screen bg-[#F7F7F7]">
+      <MegaSidebar navItems={CREW_NAV_ITEMS} />
 
-      <main className="w-full bg-[#F7F7F7] p-4 md:p-6">{children}</main>
-    </>
+      <div className="flex-1 flex flex-col min-w-0">
+        <DashboardNav
+          businessName="Yetty Mama Lounge"
+          userName="Margaret Ade"
+          avatarUrl="https://i.pravatar.cc/150?u=12"
+          messageCount={1}
+          notificationCount={4}
+          navItems={[]}
+          showLogo={false}
+          productNav={productNav}
+        />
+
+        <main className="flex-1 p-4 md:p-6 overflow-y-auto overflow-x-hidden">
+          {children}
+        </main>
+      </div>
+    </div>
   );
 }

@@ -35,6 +35,8 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
   const menuItems = [...productNav];
   const subdomain = useSubdomain();
 
+  const normalizeId = (id: string) => id.replace(/^\//, "");
+
   return (
     <div
       className={`${!className ? "absolute top-[calc(100%+1px)] right-0 w-80 bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-4 flex flex-col items-center z-50" : className}`}
@@ -76,9 +78,9 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
       <div className="w-full flex flex-col gap-1">
         {menuItems.map((item, idx) => (
           <Link
-            href={`/${subdomain}/${item.id}`}
+            href={`/${subdomain}/${item.id.replace(/^\//, "")}`}
             key={idx}
-            className={`${active === item.id ? "bg-[#E7F6EC] text-[#04907E]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
+            className={`${active && normalizeId(active) === normalizeId(item.id) ? "bg-[#E7F6EC] text-[#04907E]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
           >
             <div
               className={`w-8 h-8 rounded-lg border border-gray-100 flex items-center justify-center shrink-0 ${item.isDestructive ? "text-[#D32F2F] bg-red-50" : "text-[#04907E]"}`}

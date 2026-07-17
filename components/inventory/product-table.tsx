@@ -2,13 +2,20 @@
 
 import { Product } from "@/types/inventory/type";
 import Image from "next/image";
-import { DeleteIcon, EditIcon, VerifyIcon } from "../icons/svgs";
+import {
+  DangerIcon,
+  DeleteIcon,
+  EditIcon,
+  MultiplyIcon,
+  VerifyIcon,
+} from "../icons/svgs";
 import Input from "../ui/input";
 import Select from "../ui/select";
 import { useState, useMemo } from "react";
 import { Modal } from "../ui/modal";
 import { EditProductForm } from "./edit-product-form";
 import Button from "../ui/button";
+import { Warning } from "./warning";
 
 type ProductTableProps = {
   products: Product[];
@@ -48,9 +55,9 @@ export function ProductTable({
       let matchesStatus = true;
       if (statusFilter !== "All") {
         const isLowStock =
-          typeof product.lowStock === "number" &&
-          product.quantity <= product.lowStock;
-        const isOutOfStock = product.quantity === 0;
+          typeof (product.lowStock || 0) === "number" &&
+          (product.quantity || 0) <= (product.lowStock || 0);
+        const isOutOfStock = (product.quantity || 0) === 0;
 
         if (statusFilter === "In Stock") {
           matchesStatus = !isLowStock && !isOutOfStock;
@@ -77,9 +84,9 @@ export function ProductTable({
 
   return (
     <>
-      <div className="bg-white shadow-sm border border-gray-100 overflow-hidden">
-        <div className="px-[15px] py-5 border-b border-gray-100 flex items-center justify-between bg-gray-50">
-          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-[9px] w-[50%]">
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-[#F9FAFB]">
+          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-3 w-[50%]">
             <div>
               <Input
                 placeholder="Search products"
@@ -110,69 +117,69 @@ export function ProductTable({
               ]}
             />
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="font-[500] text-[16px] text-[#6C6C6C]">
             Showing {filteredProducts.length} products
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full">
+        <div className="w-full overflow-x-auto select-none">
+          <table className="w-full text-left border-collapse table-auto">
             <thead>
-              <tr className="bg-[#F7F7F7] border-b border-gray-200 h-[93.36px]">
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]"></th>
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
+              <tr className="border-y border-gray-50 bg-[#F9FAFB]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Product Name
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Unit(s)
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Price (₦)
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Stock Qty
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Date
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]">
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
                   Expiration Date
                 </th>
-                <th className="px-[15px] py-[10px] text-start font-[500] text-[18px] text-[#6C6C6C]"></th>
+                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-50">
               {filteredProducts.map((product) => {
                 const isLowStock =
-                  typeof product.lowStock === "number" &&
-                  product.quantity <= product.lowStock;
-                const isOutOfStock = product.quantity === 0;
+                  typeof (product.lowStock || 0) === "number" &&
+                  (product.quantity || 0) <= (product.lowStock || 0);
+                const isOutOfStock = (product.quantity || 0) === 0;
                 const isExpired =
                   product.expiryDate &&
                   new Date(product.expiryDate) < new Date();
 
                 let stockStatus = "In Stock";
                 let statusClass =
-                  "bg-[#E7F6EC] w-fit py-[2.61px] px-[15.66px] rounded-full font-[500] text-[#04802E] text-[18.27px]";
+                  "bg-[#E7F6EC] w-fit py-[4px] px-[12px] rounded-full font-[500] text-[#04802E] text-[14px]";
 
                 if (isOutOfStock) {
                   stockStatus = "Out of Stock";
                   statusClass =
-                    "bg-[#FBEAE9] w-fit py-[2.61px] px-[15.66px] rounded-full font-[500] text-[#CB1A14] text-[18.27px]";
+                    "bg-[#FBEAE9] w-fit py-[4px] px-[12px] rounded-full font-[500] text-[#CB1A14] text-[14px]";
                 } else if (isLowStock) {
                   stockStatus = "Low Stock";
                   statusClass =
-                    "bg-[#FEF6E7] w-fit py-[2.61px] px-[15.66px] rounded-full font-[500] text-[#DD900D] text-[18.27px]";
+                    "bg-[#FEF6E7] w-fit py-[4px] px-[12px] rounded-full font-[500] text-[#DD900D] text-[14px]";
                 }
 
                 return (
                   <tr
                     key={product.id}
-                    className="hover:bg-gray-50 transition-colors h-[93px]"
+                    className="hover:bg-gray-50 transition-colors border-b border-gray-300 cursor-pointer last:border-b-0"
                   >
-                    <td className="px-[15px] py-[10px] whitespace-nowrap text-start">
-                      <div className="w-[32px] h-[32px] overflow-hidden rounded-full flex-shrink-0">
+                    <td className="px-6 py-5 whitespace-nowrap">
+                      <div className="w-8 h-8 overflow-hidden rounded-full flex-shrink-0">
                         {product.image ? (
                           <Image
                             src={product.image}
@@ -182,42 +189,46 @@ export function ProductTable({
                             className="object-cover"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gray-100 flex items-center justify-center text-xl">
+                          <div className="w-full h-full bg-gray-100 flex items-center justify-center text-lg">
                             📦
                           </div>
                         )}
                       </div>
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap">
+                    <td className="px-6 py-5 whitespace-nowrap">
                       <div className="flex items-center gap-3">
                         <div>
-                          <p className="font-medium text-[#6C6C6C] text-[18px]">
+                          <p className="text-[14px] font-medium text-[#6C6C6C]">
                             {product.name}
                           </p>
                         </div>
                       </div>
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap text-[18px] text-[#6C6C6C] font-[400]">
+                    <td className="px-6 py-5 whitespace-nowrap text-[14px] text-[#6C6C6C] font-[400]">
                       {product.unit}
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap text-start font-medium text-[#04802E] text-[18px]">
-                      +₦{product.price.toLocaleString()}
+                    <td className="px-6 py-5 whitespace-nowrap text-start font-medium text-[#04802E] text-[14px]">
+                      +₦{(product.price || 0).toLocaleString()}
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap text-start">
+                    <td className="px-6 py-5 whitespace-nowrap text-start">
                       <span className={`inline-flex ${statusClass}`}>
                         {stockStatus}
                       </span>
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap font-[500] text-[18px] text-[#6C6C6C]">
-                      {new Date(product.createdAt).toISOString().split("T")[0]}
+                    <td className="px-6 py-5 whitespace-nowrap text-[14px] text-[#6C6C6C]">
+                      {product.createdAt
+                        ? new Date(product.createdAt)
+                            .toISOString()
+                            .split("T")[0]
+                        : "N/A"}
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap font-[500] text-[18px]">
+                    <td className="px-6 py-5 whitespace-nowrap text-[14px]">
                       <span
                         className={
                           isExpired ? "text-[#CB1A14]" : "text-gray-600"
@@ -236,14 +247,16 @@ export function ProductTable({
                       </span>
                     </td>
 
-                    <td className="px-[15px] py-[10px] whitespace-nowrap text-start">
-                      <div className="flex items-center justify-end gap-[42px]">
+                    <td className="px-6 py-5 whitespace-nowrap">
+                      <div className="flex items-center justify-between gap-4">
                         <button
                           onClick={() => handleEditClick(product)}
-                          className="cursor-pointer flex items-center gap-[12px] text-light hover:text-emerald-700 transition-colors"
+                          className="cursor-pointer flex items-center gap-2 text-[#6C6C6C]  transition-colors"
                         >
-                          <EditIcon className="w-[24px] h-[24px]" />{" "}
-                          <span>Edit</span>
+                          <EditIcon className="w-6 h-6 text-[#04907E]" />
+                          <span className="text-[14px] text-[#04907E] font-[500]">
+                            Edit
+                          </span>
                         </button>
                         <button
                           onClick={() => {
@@ -252,7 +265,7 @@ export function ProductTable({
                           }}
                           className="cursor-pointer text-red-600 hover:text-red-700 transition-colors"
                         >
-                          <DeleteIcon className="w-[24px] h-[24px]" />
+                          <DeleteIcon className="w-6 h-6" />
                         </button>
                       </div>
                     </td>
