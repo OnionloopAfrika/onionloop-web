@@ -249,4 +249,12 @@ export const CREW_NAV_ITEMS: NavItem[] = [
     icon: (color) => <StaffIcon color={color} />,
     activeIcon: (color) => <StaffActiveIcon color={color} />,
   },
+
+  {
+    key: "reports",
+    href: `/crew/reports`,
+    label: "Reports",
+    icon: (color) => <ReceiptEditIcon color={color} />,
+    activeIcon: (color) => <ReceiptEditActiveIcon color={color} />,
+  },
 ];

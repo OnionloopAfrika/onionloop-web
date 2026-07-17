@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import Select from "../ui/select";
-import { SearchInput } from "../ui/search-input";
-import { Modal } from "../ui/modal";
+import { OrderInfo } from "@/components/cashier/order-details";
+import { CopyIcon, SuccessIcon } from "@/components/icons/svgs";
+import Button from "@/components/ui/button";
+import { Modal } from "@/components/ui/modal";
+import { SearchInput } from "@/components/ui/search-input";
+import Select from "@/components/ui/select";
 import Image from "next/image";
-import { CopyIcon, SuccessIcon } from "../icons/svgs";
-import { OrderInfo } from "../cashier/order-details";
-import Button from "../ui/button";
+import React, { useState } from "react";
 
 interface Transaction {
   id: string;
@@ -121,7 +121,7 @@ const mockTransactions: Transaction[] = [
   },
 ];
 
-export function TransactionTable() {
+export function CrewTransactionTable() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("Successful");
   const [locationFilter, setLocationFilter] = useState("All Locations");

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { RightArrowIcon } from "../icons/svgs";
+import { useRouter } from "next/navigation";
 
 type BreadcrumbProps = {
   firstTab: string;
@@ -14,11 +17,13 @@ export function Breadcrumb({
   firstLink,
   secondLink,
 }: BreadcrumbProps) {
+  const router = useRouter();
   return (
     <div className="flex items-center gap-[8px]">
       <Link
         href={firstLink ?? "#"}
         className="font-[400] text-[12px] text-[#6C6C6C]"
+        onClick={() => router.back()}
       >
         {firstTab}
       </Link>
