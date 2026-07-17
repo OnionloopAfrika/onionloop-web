@@ -15,9 +15,18 @@ import StatCard from "@/components/layouts/card-component";
 import Header from "@/components/layouts/header";
 
 import { MOCK_TRANSACTIONS } from "@/lib/mockdata";
-import Input from "@/components/ui/input";
-import Select from "@/components/ui/select";
-import { Search } from "@/components/staff-page/icon";
+
+import {
+  NavTabsList,
+  NavTabsTrigger,
+  Tabs,
+  TabsContent,
+} from "@/components/ui/tabs";
+import { StaffSalesPerformance } from "@/components/branch-manager/staff-sales-performance";
+import { TransactionTable } from "@/components/branch-manager/transaction-table";
+import { CrewSalesPerformance } from "@/components/crew/transaction/crew-sales-performance";
+import CrewSales from "@/components/crew/transaction/sales";
+import { CrewTransactionTable } from "@/components/crew/transaction/crew-transactiontable";
 
 interface Transaction {
   id: string;
@@ -127,149 +136,83 @@ const TransactionsPage = () => {
   }
 
   return (
-    <main className="min-h-screen font-sans">
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-start mb-2 md:mb-6">
-        <Header
-          heading="Transactions"
-          subHeading="View and manage all sales and payment records"
-        />
-        <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
-          <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700">
-            <CalendarIcon />
-            Mar 2026
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#044E49] text-white rounded-lg text-[14px] font-semibold">
-            <DownloadIconSolid />
-            Download Report
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4 gap-2 py-4 mb-8">
-        <StatCard
-          themeColor="green"
-          icon={<RevenueIcon color="#04802E" />}
-          value="₦8.1M"
-          label="This Month"
-          footerText="10% vs last month"
-          showTrendIcon
-          changePercentage={10}
-        />
-        <StatCard
-          themeColor="blue"
-          icon={<TransactionIcon color="#0D5EBA" />}
-          value="1,350"
-          label="Total Transactions"
-          footerText="8% vs yesterday"
-          showTrendIcon
-          changePercentage={8}
-        />
-        <StatCard
-          themeColor="purple"
-          icon={<LineChartIcon />}
-          value="6"
-          label="Avg. Transaction Value"
-          footerText="8% vs yesterday"
-          showTrendIcon
-          changePercentage={8}
-        />
-        <StatCard
-          themeColor="red"
-          icon={<InventoryIcon color="#CB1A14" />}
-          value="128"
-          label="Failed Transactions"
-          footerText="8% vs yesterday"
-          showTrendIcon
-          changePercentage={8}
-        />
-      </div>
-
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
-          <div className="flex sm:flex-row gap-2 w-full md:w-auto">
-            <div className="flex-1">
-              <Input
-                placeholder="Search by ref or amount..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
-                prefixicon={<Search />}
-              />
-            </div>
-
-            <div className="w-[120px] md:w-[150px] bg-white">
-              <Select
-                value={statusFilter}
-                onValueChange={setStatusFilter}
-                options={statusOptions}
-                placeholder="All Status"
-                // className="w-full sm:w-48"
-              />
-            </div>
+    <main className="min-h-screen font-sans space-y-[48px]">
+      <div className="space-y-[24px]">
+        <div className="flex flex-col md:flex-row justify-between items-start ">
+          <Header
+            heading="Transactions"
+            subHeading="View and manage all sales and payment records"
+          />
+          <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
+            <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700">
+              <CalendarIcon />
+              Mar 2026
+            </button>
+            <button className="flex items-center gap-2 px-4 py-2 bg-[#044E49] text-white rounded-lg text-[14px] font-semibold">
+              <DownloadIconSolid />
+              Download Report
+            </button>
           </div>
-          <span className="text-[13px] text-gray-500 font-medium whitespace-nowrap self-end md:self-auto">
-            Showing {filteredTransactions.length} transactions
-          </span>
         </div>
 
-        <div className="w-full overflow-x-auto select-none">
-          <table className="w-full text-left border-collapse table-auto">
-            <thead>
-              <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
-                  Transaction ID
-                </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
-                  Customer Name
-                </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
-                  Amount
-                </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
-                  Processed by
-                </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
-                  Status
-                </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
-                  Date
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-50">
-              {filteredTransactions.map((txn) => (
-                <tr
-                  key={txn.id}
-                  className="hover:bg-gray-50 transition-colors border-b border-gray-300"
-                >
-                  <td className="px-6 py-5 text-[14px] text-[#6C6C6C] whitespace-nowrap">
-                    {txn.id}
-                  </td>
-                  <td className="px-6 py-5 text-[14px] font-medium text-[#6c6c6c] whitespace-nowrap">
-                    {txn.customerName}
-                  </td>
-                  <td className="px-6 py-5 text-[14px] whitespace-nowrap">
-                    {formatAmount(txn.amount, txn.status)}
-                  </td>
-                  <td className="px-6 py-5 text-[14px] text-[#6C6C6C] font-medium whitespace-nowrap">
-                    {txn.processedBy}
-                  </td>
-                  <td className="px-6 py-5 whitespace-nowrap">
-                    <span
-                      className={`px-4 py-1.5 rounded-full text-[12px] font-medium border ${getStatusStyles(txn.status)} capitalize`}
-                    >
-                      {txn.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-5 text-[14px] text-[#6C6C6C] whitespace-nowrap">
-                    {formatDate(txn.date)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4 gap-2 py-4 ">
+          <StatCard
+            themeColor="green"
+            icon={<RevenueIcon color="#04802E" />}
+            value="₦8.1M"
+            label="This Month"
+            footerText="10% vs last month"
+            showTrendIcon
+            changePercentage={10}
+          />
+          <StatCard
+            themeColor="blue"
+            icon={<TransactionIcon color="#0D5EBA" />}
+            value="1,350"
+            label="Total Transactions"
+            footerText="8% vs yesterday"
+            showTrendIcon
+            changePercentage={8}
+          />
+          <StatCard
+            themeColor="purple"
+            icon={<LineChartIcon />}
+            value="6"
+            label="Avg. Transaction Value"
+            footerText="8% vs yesterday"
+            showTrendIcon
+            changePercentage={8}
+          />
+          <StatCard
+            themeColor="red"
+            icon={<InventoryIcon color="#CB1A14" />}
+            value="128"
+            label="Failed Transactions"
+            footerText="8% vs yesterday"
+            showTrendIcon
+            changePercentage={8}
+          />
         </div>
       </div>
+
+      <Tabs defaultValue="sales">
+        <div className="rounded-[16px] p-[16px] flex justify-start items-center bg-white mb-[24px] shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
+          <NavTabsList>
+            <NavTabsTrigger value="sales">Sales</NavTabsTrigger>
+            <NavTabsTrigger value="transactions">Transactions</NavTabsTrigger>
+          </NavTabsList>
+        </div>
+
+        <TabsContent value="sales">
+          <div className="space-y-[24px]">
+            <CrewSalesPerformance />
+            <CrewSales />
+          </div>
+        </TabsContent>
+        <TabsContent value="transactions">
+          <CrewTransactionTable />
+        </TabsContent>
+      </Tabs>
     </main>
   );
 };

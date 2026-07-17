@@ -75,6 +75,17 @@ const page = () => {
           </div> */}
 
           <InventoryStats onProductAdded={handleAddProduct} />
+          <Warning
+            icon={
+              <div className=" w-[24px] h-[24px] flex justify-center items-center bg-[#FEF6E7] rounded-[8px] border border-[#FBE2B7]">
+                <DangerIcon className="w-[9px] h-[8.5px] text-[#DD900D]" />
+              </div>
+            }
+            text="3 products are running low on stock — restock soon to avoid disruptions."
+            cancel={
+              <MultiplyIcon className="w-[20px] h-[20px] text-[#DD900D]" />
+            }
+          />
 
           <ProductTable
             products={products}
