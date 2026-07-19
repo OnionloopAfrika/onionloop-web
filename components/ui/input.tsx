@@ -41,6 +41,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ${error ? "border-danger focus:border-danger" : ""}
     ${className}
   `}
+            style={{
+              ...(props.type === "date" || props.type === "time" || props.type === "datetime-local"
+                ? {
+                    WebkitAppearance: "none",
+                    MozAppearance: "textfield",
+                  }
+                : {}),
+            }}
           />
 
           {icon && (

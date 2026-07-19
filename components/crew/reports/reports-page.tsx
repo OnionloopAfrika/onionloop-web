@@ -11,6 +11,9 @@ import SalesByHour from "./sales-by-hour";
 import { TransactionBreakdown } from "./transaction-breakdown";
 import TransactionPaymentMethod from "./transaction-payment-method";
 import { CrewTopSelling } from "./crew-topselling";
+import CrewTopstaffActivity from "./crew-topstaff-activity";
+import { CrewStaffActivity } from "./crew-staff-activity";
+import CrewReportTable from "./crew-report-table";
 
 export default async function ReportsPage() {
   const initialData = await fetchRevenue("7days");
@@ -44,7 +47,10 @@ export default async function ReportsPage() {
           <SalesByHour />
           <TransactionBreakdown />
           <TransactionPaymentMethod />
+          <CrewTopstaffActivity />
+          <CrewStaffActivity />
         </div>
+        <CrewReportTable />
       </div>
     </div>
   );

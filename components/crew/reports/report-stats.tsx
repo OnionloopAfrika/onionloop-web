@@ -9,6 +9,9 @@ import {
   StaffIcon,
   InventoryIcon,
   CalendarIcon,
+  TotalOrdersIcon,
+  AvgIcon,
+  Pending,
 } from "@/components/icons/svgs";
 
 export default function ReportStats() {
@@ -23,8 +26,8 @@ export default function ReportStats() {
           footerText=""
         />
         <StatCard
-          themeColor="orange"
-          icon={<InventoryIcon color="#DD900D" />}
+          themeColor="lemon"
+          icon={<TotalOrdersIcon color="#6D8A14" />}
           value="₦2.41M"
           label="Total Orders"
           footerText=""
@@ -47,14 +50,14 @@ export default function ReportStats() {
         />
         <StatCard
           themeColor="green"
-          icon={<ChartIcon color="#04802E" />}
+          icon={<AvgIcon color="#04802E" />}
           value="200"
           label="Successful Transaction"
           footerText=""
         />
         <StatCard
           themeColor="orange"
-          icon={<CalendarIcon color="#DD900D" />}
+          icon={<Pending color="#DD900D" />}
           value="10"
           label="Pending Transaction"
           footerText=""

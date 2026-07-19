@@ -72,6 +72,33 @@ import {
   WaveIcon,
   PhoneNumberIcon,
   RoleIcon,
+  ChevronLeftIcon,
+  VideoIcon,
+  PhoneIcon,
+  PlusIcon,
+  MicIcon,
+  SmileIcon,
+  ChatSendIcon,
+  SendIcon,
+  WalletIcon,
+  MessageIcon,
+  OverviewIcon,
+  OverviewActiveIcon,
+  TransactionActiveIcon,
+  InventoryActiveIcon,
+  StaffActiveIcon,
+  TrendingUpIcon,
+  ChevronDownIcon,
+  OnionloopIcon,
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ShareReceiptIcon,
+  TroubleIcon,
+  FailedTransactionIcon,
+  RecordIcon,
+  MuteIcon,
+  EndCall,
+  SwapIcon,
 } from "@/components/icons/svgs";
 import { Calendar } from "@/components/ui/calendar";
 
@@ -495,6 +522,117 @@ const page = () => {
         <div className="flex flex-col items-center gap-1 p-2">
           <span className="text-sm font-bold text-black">64</span>
           <RoleIcon className="w-8 h-8 text-[#04907e]" />
+        </div>
+
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">65</span>
+          <ChevronLeftIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">66</span>
+          <VideoIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">67</span>
+          <PhoneIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">68</span>
+          <PlusIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">69</span>
+          <MicIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">70</span>
+          <SmileIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">71</span>
+          <ChatSendIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">72</span>
+          <SendIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">73</span>
+          <WalletIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">74</span>
+          <MessageIcon />
+        </div>
+
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">75</span>
+          <OverviewIcon />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">76</span>
+          <OverviewActiveIcon />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">77</span>
+          <TransactionActiveIcon />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">78</span>
+          <InventoryActiveIcon />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">79</span>
+          <StaffActiveIcon />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">80</span>
+          <TrendingUpIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">81</span>
+          <ChevronDownIcon />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">82</span>
+          <OnionloopIcon />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">83</span>
+          <ArrowDownIcon color="" className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">84</span>
+          <ArrowUpIcon color="" className="w-8 h-8 text-white" />
+        </div>
+
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">85</span>
+          <ShareReceiptIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">86</span>
+          <TroubleIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">87</span>
+          <FailedTransactionIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">88</span>
+          <RecordIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">89</span>
+          <MuteIcon className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">90</span>
+          <EndCall className="w-8 h-8 text-white" />
+        </div>
+        <div className="flex flex-col items-center gap-1 p-2">
+          <span className="text-sm font-bold text-black">91</span>
+          <SwapIcon className="w-8 h-8 text-white" />
         </div>
       </div>
       <Calendar

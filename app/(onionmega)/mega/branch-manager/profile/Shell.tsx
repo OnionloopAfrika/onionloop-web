@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Header from "@/components/layouts/header";
 import ProfileDropdown from "@/components/layouts/profile-dropdown";
@@ -34,9 +34,7 @@ function ProfileLayout({
           />
         </div>
 
-        <div className="flex-1 min-w-0 w-full">
-          {children}
-        </div>
+        <div className="flex-1 min-w-0 w-full">{children}</div>
       </main>
     </div>
   );
