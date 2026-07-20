@@ -1,12 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import ProfileLayout from "../Shell";
 import { ControlAvatarIcon, SearchIcon } from "@/components/icons/svgs";
-import Input from "@/components/ui/input";
 import { SearchInput } from "@/components/ui/search-input";
-import { PermissionOverview } from "@/components/permission-and-access/overview";
-import { AccessAndScope } from "@/components/permission-and-access/access-and-scope";
-import Button from "@/components/ui/button";
 import { PermissionControls } from "@/components/group-manager/permission-controls";
 
 type Role = {

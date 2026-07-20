@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { PermissionsControls, PermissionsHeader } from "./controls";
-import Switch, { SwitchToggle } from "../ui/switch";
+import SwitchToggle from "../ui/switch-toggle";
 
 export function Transactions() {
   const [toggleStates, setToggleStates] = useState({
