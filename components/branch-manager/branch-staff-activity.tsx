@@ -72,7 +72,7 @@ export function BranchStaffActivity() {
   return (
     <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-[20px] font-semibold text-[#131313]">
+        <h2 className="text-[20px] font-semibold text-gray-900">
           Staff Activity
         </h2>
         <Link href="#" className="text-[#024E44] font-[600] text-[16px]">

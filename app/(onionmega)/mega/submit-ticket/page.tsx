@@ -52,8 +52,6 @@ export default function page() {
               <TabsList className="grid grid-cols-7 gap-[21px] overflow-x-auto">
                 <TicketsTrigger value="transaction-issue">
                   <div className="flex items-center gap-[8px] min-w-0">
-                    {" "}
-                    {/* Added min-w-0 */}
                     <SwapIcon className="flex-shrink-0" />
                     <span className="truncate">Transaction Issue</span>
                   </div>
