@@ -44,18 +44,14 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
           </div>
           <div className="space-y-[4px]">
             <h2 className="flex items-center gap-2 text-[12px] font-[600] leading-tight text-[#131313] md:text-[18px]">
-              <span className="md:hidden">
-                @joshuaakin
-              </span>
+              <span className="md:hidden">@joshuaakin</span>
               <span className="hidden text-[10px] font-[400] text-[#8A8A8A] md:inline">
                 {message.name}
               </span>
             </h2>
             <p className="text-[14px] font-[400] uppercase tracking-wider text-[#6C6C6C] md:normal-case md:tracking-normal">
               <span className="hidden md:inline">{message.role}</span>
-              <span className="md:hidden">
-                {message.name}
-              </span>
+              <span className="md:hidden">{message.name}</span>
             </p>
           </div>
         </div>
@@ -93,10 +89,11 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
               )}
               <div className="space-y-[8px]">
                 <div
-                  className={`px-4 py-2.5 text-[14px] font-[400] leading-relaxed md:text-[16px] md:font-[500] ${chat.sender === "me"
-                    ? "rounded-bl-[8px] rounded-tl-[8px] rounded-tr-[8px] rounded-br-none bg-[#04907E] text-white"
-                    : "rounded-bl-[8px] rounded-br-[8px] rounded-tr-[8px] bg-white text-[#131313]"
-                    }`}
+                  className={`px-4 py-2.5 text-[14px] font-[400] leading-relaxed md:text-[16px] md:font-[500] ${
+                    chat.sender === "me"
+                      ? "rounded-bl-[8px] rounded-tl-[8px] rounded-tr-[8px] rounded-br-none bg-[#04907E] text-white"
+                      : "rounded-bl-[8px] rounded-br-[8px] rounded-tr-[8px] bg-white text-[#131313]"
+                  }`}
                 >
                   {chat.text}
                 </div>

@@ -5,19 +5,19 @@ import { Faq } from "@/components/helps-and-support/faq";
 import { SupportHistory } from "@/components/helps-and-support/support-history";
 
 const page = () => {
-    return (
-        <ProfileLayout
-            active="/cashier/settings/help-and-support"
-            heading="Help & Support"
-            subheading="Documentation, FAQs, and contact"
-        >
-            <div className="space-y-8.75">
-                <ContactSupport />
-                <Faq />
-                <SupportHistory />
-            </div>
-        </ProfileLayout>
-    );
+  return (
+    <ProfileLayout
+      active="/cashier/settings/help-and-support"
+      heading="Help & Support"
+      subheading="Documentation, FAQs, and contact"
+    >
+      <div className="space-y-8.75">
+        <ContactSupport />
+        <Faq />
+        <SupportHistory />
+      </div>
+    </ProfileLayout>
+  );
 };
 
 export default page;

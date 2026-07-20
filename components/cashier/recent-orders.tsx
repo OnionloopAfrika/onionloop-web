@@ -155,9 +155,10 @@ export default function RecentOrders() {
       </div>
 
       <Modal
-        className="p-[32px]  rounded-[20px]"
+        className="rounded-[20px]"
         open={showTransatctionDetails}
         onOpenChange={setShowTransatctionDetails}
+        // title="  Transaction details"
       >
         <div className="space-y-[48px]">
           <div className="space-y-[34px]">

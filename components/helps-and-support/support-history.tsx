@@ -10,7 +10,7 @@ export function SupportHistory() {
         title="Latest Support History"
         subtitle="Here’s your most recent history"
         btn={
-          <Button variant="outline">
+          <Button variant="outline" size="cashierOutline">
             <span className="flex items-center gap-[10px]">
               <DownloadIcon className="fill-none w-[20px] h-[20px]" />
               <span className="font-[500] text-[16px] text-[#131313]">
