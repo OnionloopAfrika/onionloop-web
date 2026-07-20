@@ -4,10 +4,10 @@ import { DefaultPermission } from "@/components/staff-app/default-permission";
 import { MobileAppSettings } from "@/components/staff-app/mobile-app-settings";
 import { MobileSettings } from "@/components/staff-app/mobile-settings";
 import { PermissionOverview } from "@/components/permission-and-access/overview";
-import Controls from "@/components/permission-and-access/controls";
 import { AccessAndScope } from "@/components/permission-and-access/access-and-scope";
-import AssignedBranch from "@/components/permission-and-access/assigned-branch";
 import Button from "@/components/ui/button";
+import { Controls } from "@/components/permission-and-access/controls";
+import { AssignedBranch } from "@/components/permission-and-access/assigned-branch";
 
 const page = () => {
   return (

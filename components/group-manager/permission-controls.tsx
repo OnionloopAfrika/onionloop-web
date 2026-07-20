@@ -1,9 +1,9 @@
 import React from "react";
 import { PermissionOverview } from "../permission-and-access/overview";
-import Controls from "../permission-and-access/controls";
 import { AccessAndScope } from "../permission-and-access/access-and-scope";
-import AssignedBranch from "../permission-and-access/assigned-branch";
 import Button from "../ui/button";
+import { AssignedBranch } from "../permission-and-access/assigned-branch";
+import { Controls } from "../permission-and-access/controls";
 
 export function PermissionControls() {
   return (

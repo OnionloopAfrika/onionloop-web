@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-export default function AssignedBranch() {
+export function AssignedBranch() {
   const pathname = usePathname();
   const isGroupManager = pathname.includes("group-manager");
   const isSuperAdmin = pathname.includes("super-admin");

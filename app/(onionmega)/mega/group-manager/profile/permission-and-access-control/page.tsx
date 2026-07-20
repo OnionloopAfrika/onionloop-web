@@ -5,9 +5,7 @@ import { ControlAvatarIcon, SearchIcon } from "@/components/icons/svgs";
 import Input from "@/components/ui/input";
 import { SearchInput } from "@/components/ui/search-input";
 import { PermissionOverview } from "@/components/permission-and-access/overview";
-import Controls from "@/components/permission-and-access/controls";
 import { AccessAndScope } from "@/components/permission-and-access/access-and-scope";
-import AssignedBranch from "@/components/permission-and-access/assigned-branch";
 import Button from "@/components/ui/button";
 import { PermissionControls } from "@/components/group-manager/permission-controls";
 
@@ -23,7 +21,7 @@ const roles: Role[] = [
   { id: "staff", name: "Staff", userCount: 1000 },
 ];
 
-const Page = () => {
+export default function Page() {
   const [selectedRole, setSelectedRole] = useState<string>("branch-manager");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -104,6 +102,4 @@ const Page = () => {
       </div>
     </div>
   );
-};
-
-export default Page;
+}
