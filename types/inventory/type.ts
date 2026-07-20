@@ -35,6 +35,7 @@ export interface WarningProps {
   text?: string;
   cancel?: React.ReactNode;
   warning?: string;
+  subText?: string;
 }
 
 export interface InventoryStatProps {

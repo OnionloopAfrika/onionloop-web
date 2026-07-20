@@ -167,6 +167,45 @@ function TabsTrigger({
   );
 }
 
+function TicketsTrigger({
+  value,
+  children,
+  className,
+  ...props
+}: TabsTriggerProps) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("TicketsTrigger must be used within Tabs");
+
+  const isActive = context.activeTab === value;
+  const iconColor = isActive ? "#FFFFFF" : "#363636";
+
+  return (
+    <button
+      onClick={() => context.setActiveTab(value)}
+      className={`px-3 h-[54px] overflow-x-auto truncate py-2 rounded-[8px] font-[500] text-[14px] transition-all whitespace-nowrap flex justify-center items-center gap-[8px]  ${
+        isActive
+          ? "bg-[#04907E] text-white"
+          : "bg-[#F7F7F7] border border-[#C7C7C7] text-[#363636]"
+      } ${className || ""}`}
+      {...props}
+    >
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) {
+          if (typeof child.type === "function" || child.type === "svg") {
+            return React.cloneElement(child, {
+              color: iconColor,
+              className: `${(child.props as { className?: string }).className || ""} ${
+                isActive ? "text-white" : "text-[#363636]"
+              }`,
+            } as any);
+          }
+        }
+        return child;
+      })}
+    </button>
+  );
+}
+
 interface TabsContentProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   children?: ReactNode;
@@ -200,4 +239,5 @@ export {
   TodaysTrigger,
   PaymentTrigger,
   NavTabsTrigger,
+  TicketsTrigger,
 };

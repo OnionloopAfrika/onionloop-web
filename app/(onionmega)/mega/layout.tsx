@@ -17,6 +17,7 @@ import {
   ProfileIcon,
   SettingsIcon,
   SupportIcon,
+  BranchIcon,
 } from "@/components/icons/svgs";
 import { ControlIconSolid } from "../../../components/icons/svgs";
 
@@ -131,7 +132,12 @@ export const BRANCH_MANAGER_PRODUCT_NAV: ProductNavItem[] = [
     icon: <ProfileIcon />,
     isDestructive: false,
   },
-  // add branch information to the product nav for branch manager
+  {
+    id: "/branch-manager/profile/branch-information",
+    label: "Branch Information",
+    icon: <BranchIcon />,
+    isDestructive: false,
+  },
   {
     id: "/branch-manager/profile/account-settings",
     label: "Account Settings",

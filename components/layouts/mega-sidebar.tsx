@@ -40,10 +40,11 @@ export default function MegaSidebar({
       <div
         key={item.key}
         onClick={() => router.push(item.href)}
-        className={`w-full flex items-center ${isCollapsed ? "justify-center" : "justify-between"} px-4 py-3 rounded-xl transition-all duration-200 group cursor-pointer ${isActive
+        className={`w-full flex items-center ${isCollapsed ? "justify-center" : "justify-between"} px-4 py-3 rounded-xl transition-all duration-200 group cursor-pointer ${
+          isActive
             ? "bg-[#B5E3C4] text-primary-color font-[500] shadow-sm"
             : "text-gray-500 hover:bg-gray-50 font-[500]"
-          }`}
+        }`}
       >
         <div className="flex items-center gap-3">
           <div

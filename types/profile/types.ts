@@ -26,6 +26,7 @@ export interface ContactGridItem {
   icon: React.ElementType;
   title: string;
   subtitle: string;
+  url?: string;
 }
 
 export interface FAQItem {

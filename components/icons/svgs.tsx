@@ -4258,10 +4258,676 @@ export const FailedTransactionIcon = ({
   );
 };
 
-// export const PermissionIcon = () => {
+export const RecordIcon = ({ color, className = "" }: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M11.9697 22C17.4926 22 21.9697 17.5228 21.9697 12C21.9697 6.47715 17.4926 2 11.9697 2C6.44688 2 1.96973 6.47715 1.96973 12C1.96973 17.5228 6.44688 22 11.9697 22Z"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M11.9995 16.2295C14.3357 16.2295 16.2295 14.3357 16.2295 11.9995C16.2295 9.66337 14.3357 7.76953 11.9995 7.76953C9.66337 7.76953 7.76953 9.66337 7.76953 11.9995C7.76953 14.3357 9.66337 16.2295 11.9995 16.2295Z"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
 
-//   return(<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-// <path d="M12.6267 3.61329L9.18005 1.61996C8.52005 1.23996 7.48672 1.23996 6.82672 1.61996L3.34672 3.62663C1.96672 4.55996 1.88672 4.69996 1.88672 6.18663V9.80663C1.88672 11.2933 1.96672 11.44 3.37339 12.3866L6.82005 14.38C7.15338 14.5733 7.58005 14.6666 8.00005 14.6666C8.42005 14.6666 8.84672 14.5733 9.17339 14.38L12.6534 12.3733C14.0334 11.44 14.1134 11.3 14.1134 9.81329V6.18663C14.1134 4.69996 14.0334 4.55996 12.6267 3.61329ZM8.00005 10.1666C6.80672 10.1666 5.83339 9.19329 5.83339 7.99996C5.83339 6.80663 6.80672 5.83329 8.00005 5.83329C9.19339 5.83329 10.1667 6.80663 10.1667 7.99996C10.1667 9.19329 9.19339 10.1666 8.00005 10.1666Z" fill="#04907E"/>
-// </svg>
-// )
-// }
+export const MuteIcon = ({ color, className = "" }: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M16 6.3V6C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6V11"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M9.04004 14.19C9.77004 15 10.83 15.5 12 15.5C14.21 15.5 16 13.71 16 11.5V11"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M6.78027 16.9504C8.15027 18.2204 9.98027 19.0004 12.0003 19.0004C16.2203 19.0004 19.6503 15.5704 19.6503 11.3504V9.65039"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M4.34961 9.65039V11.3504C4.34961 12.4104 4.55961 13.4104 4.94961 14.3304"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M20.0697 2.83984L3.92969 18.9898"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M11 3V6"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M12 19V22"
+        stroke="#292D32"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const EndCall = ({ color, className = "" }: IconProps) => {
+  return (
+    <svg
+      width="44"
+      height="44"
+      viewBox="0 0 44 44"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <rect width="44" height="44" rx="22" fill="#CB1A14" />
+      <path
+        d="M31.97 28.33C31.97 28.69 31.89 29.06 31.72 29.42C31.55 29.78 31.33 30.12 31.04 30.44C30.55 30.98 30.01 31.37 29.4 31.62C28.8 31.87 28.15 32 27.45 32C26.43 32 25.34 31.76 24.19 31.27C23.04 30.78 21.89 30.12 20.75 29.29C19.6 28.45 18.51 27.52 17.47 26.49C16.44 25.45 15.51 24.36 14.68 23.22C13.86 22.08 13.2 20.94 12.72 19.81C12.24 18.67 12 17.58 12 16.54C12 15.86 12.12 15.21 12.36 14.61C12.6 14 12.98 13.44 13.51 12.94C14.15 12.31 14.85 12 15.59 12C15.87 12 16.15 12.06 16.4 12.18C16.66 12.3 16.89 12.48 17.07 12.74L19.39 16.01C19.57 16.26 19.7 16.49 19.79 16.71C19.88 16.92 19.93 17.13 19.93 17.32C19.93 17.56 19.86 17.8 19.72 18.03C19.59 18.26 19.4 18.5 19.16 18.74L18.4 19.53C18.29 19.64 18.24 19.77 18.24 19.93C18.24 20.01 18.25 20.08 18.27 20.16C18.3 20.24 18.33 20.3 18.35 20.36C18.53 20.69 18.84 21.12 19.28 21.64C19.73 22.16 20.21 22.69 20.73 23.22C21.27 23.75 21.79 24.24 22.32 24.69C22.84 25.13 23.27 25.43 23.61 25.61C23.66 25.63 23.72 25.66 23.79 25.69C23.87 25.72 23.95 25.73 24.04 25.73C24.21 25.73 24.34 25.67 24.45 25.56L25.21 24.81C25.46 24.56 25.7 24.37 25.93 24.25C26.16 24.11 26.39 24.04 26.64 24.04C26.83 24.04 27.03 24.08 27.25 24.17C27.47 24.26 27.7 24.39 27.95 24.56L31.26 26.91C31.52 27.09 31.7 27.3 31.81 27.55C31.91 27.8 31.97 28.05 31.97 28.33Z"
+        stroke="white"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+      />
+    </svg>
+  );
+};
+
+export const SwapIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M14.2529 2.36101C14.3318 2.28227 14.4679 2.28233 14.5469 2.36101L17.6475 5.46159C17.6866 5.50091 17.7079 5.55343 17.708 5.60808C17.708 5.61404 17.7079 5.62108 17.7061 5.62956L17.6934 5.67058C17.6904 5.67797 17.687 5.6849 17.6846 5.69206C17.672 5.72131 17.6554 5.74662 17.6387 5.76335L14.5469 8.85515C14.5042 8.89779 14.454 8.91658 14.4004 8.91667C14.3466 8.91667 14.2957 8.89789 14.2529 8.85515C14.1741 8.77618 14.174 8.64011 14.2529 8.5612L16.2861 6.528L16.998 5.81706H2.5C2.38122 5.81706 2.2921 5.7211 2.29199 5.61687C2.29199 5.50532 2.38845 5.40788 2.5 5.40788H17.0059L14.2529 2.65495C14.1742 2.57597 14.1741 2.43988 14.2529 2.36101Z"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0.833333"
+    />
+    <path
+      d="M5.45312 11.1443C5.53206 11.0657 5.66818 11.0656 5.74707 11.1443C5.82594 11.2232 5.82579 11.3593 5.74707 11.4383L3.71387 13.4725L3.00195 14.1834H17.5C17.6115 14.1834 17.7079 14.28 17.708 14.3914C17.708 14.503 17.6115 14.6004 17.5 14.6004H2.99414L5.74707 17.3533C5.82582 17.4323 5.82595 17.5684 5.74707 17.6473C5.70435 17.6899 5.65336 17.7088 5.59961 17.7088C5.54605 17.7087 5.49572 17.6898 5.45312 17.6473L2.35254 14.5467C2.31341 14.5073 2.29204 14.4548 2.29199 14.4002C2.29199 14.3849 2.29551 14.3596 2.30664 14.3299L2.30566 14.3289C2.30877 14.3212 2.31191 14.3139 2.31445 14.3064C2.32705 14.2775 2.34476 14.2527 2.36133 14.2361L5.45312 11.1443Z"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0.833333"
+    />
+  </svg>
+);
+
+export const UsersIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M10.1341 9.05834C10.0508 9.05 9.95078 9.05 9.85911 9.05834C7.87578 8.99167 6.30078 7.36667 6.30078 5.36667C6.30078 3.32501 7.95078 1.66667 10.0008 1.66667C12.0424 1.66667 13.7008 3.32501 13.7008 5.36667C13.6924 7.36667 12.1174 8.99167 10.1341 9.05834Z"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.96563 12.1333C3.94896 13.4833 3.94896 15.6833 5.96563 17.025C8.25729 18.5583 12.0156 18.5583 14.3073 17.025C16.324 15.675 16.324 13.475 14.3073 12.1333C12.024 10.6083 8.26562 10.6083 5.96563 12.1333Z"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const TicketSlashIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M1.66797 7.08333H12.7013"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5 13.75H6.075"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M9.16797 13.75H12.0846"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6.64844 17.0833H14.6318C17.5984 17.0833 18.3318 16.35 18.3318 13.425V5.74167"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M16.6596 3.12501C16.143 2.97501 15.4763 2.91667 14.6346 2.91667H5.36797C2.40964 2.91667 1.66797 3.65 1.66797 6.575V13.4167C1.66797 15.3667 1.99297 16.3417 3.09297 16.775"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M18.3346 1.66667L1.66797 18.3333"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const ReceiptIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M7.44141 1.66667L7.46641 2.9417C7.48307 3.6167 8.04141 4.16667 8.71641 4.16667H11.2331C11.9248 4.16667 12.4831 3.60001 12.4831 2.91667V1.66667"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.1667 14.1667L12.5 15.8333L14.1667 17.5"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M16.668 14.1667L18.3346 15.8333L16.668 17.5"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10.8333 18.3333H6.66667C3.75 18.3333 2.5 16.6667 2.5 14.1667V5.83334C2.5 3.33334 3.75 1.66667 6.66667 1.66667H13.3333C16.25 1.66667 17.5 3.33334 17.5 5.83334V11.6667"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const TicketHelpIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M14.168 15.3584H10.8346L7.12629 17.825C6.57629 18.1917 5.83464 17.8001 5.83464 17.1334V15.3584C3.33464 15.3584 1.66797 13.6917 1.66797 11.1917V6.19169C1.66797 3.69169 3.33464 2.02502 5.83464 2.02502H14.168C16.668 2.02502 18.3346 3.69169 18.3346 6.19169V11.1917C18.3346 13.6917 16.668 15.3584 14.168 15.3584Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10.0005 9.46667V9.29171C10.0005 8.72504 10.3505 8.42503 10.7005 8.18336C11.0422 7.95003 11.3838 7.65004 11.3838 7.10004C11.3838 6.33337 10.7672 5.71667 10.0005 5.71667C9.23383 5.71667 8.61719 6.33337 8.61719 7.10004"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M9.99495 11.4584H10.0024"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const NextIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M8.00065 14.6666C11.6825 14.6666 14.6673 11.6819 14.6673 7.99998C14.6673 4.31808 11.6825 1.33331 8.00065 1.33331C4.31875 1.33331 1.33398 4.31808 1.33398 7.99998C1.33398 11.6819 4.31875 14.6666 8.00065 14.6666Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.66602 8H9.66602"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M8.33398 10L10.334 8L8.33398 6"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const RightIcon = ({
+  color = "currentColor",
+  className = "",
+}: IconProps) => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M9.62109 3.95331L13.6678 7.99998L9.62109 12.0466"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M2.33203 8H13.552"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const LockShieldIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M13.9386 7.41337C13.9386 10.6734 11.5719 13.7267 8.3386 14.62C8.1186 14.68 7.87859 14.68 7.65859 14.62C4.42526 13.7267 2.05859 10.6734 2.05859 7.41337V4.48669C2.05859 3.94002 2.47194 3.32002 2.98527 3.11336L6.69859 1.59338C7.53192 1.25338 8.47192 1.25338 9.30526 1.59338L13.0186 3.11336C13.5253 3.32002 13.9453 3.94002 13.9453 4.48669L13.9386 7.41337Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8.0013 8.33329C8.73768 8.33329 9.33464 7.73634 9.33464 6.99996C9.33464 6.26358 8.73768 5.66663 8.0013 5.66663C7.26492 5.66663 6.66797 6.26358 6.66797 6.99996C6.66797 7.73634 7.26492 8.33329 8.0013 8.33329Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8 8.33325V10.3333"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const LeaveIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="14"
+      height="13"
+      viewBox="0 0 14 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M10 0H3.33333C1.33333 0 0 1.33333 0 3.33333V7.33333C0 9.33333 1.33333 10.6667 3.33333 10.6667V12.0867C3.33333 12.62 3.92667 12.94 4.36667 12.64L7.33333 10.6667H10C12 10.6667 13.3333 9.33333 13.3333 7.33333V3.33333C13.3333 1.33333 12 0 10 0ZM6.66667 8.11333C6.38667 8.11333 6.16667 7.88667 6.16667 7.61333C6.16667 7.34 6.38667 7.11333 6.66667 7.11333C6.94667 7.11333 7.16667 7.34 7.16667 7.61333C7.16667 7.88667 6.94667 8.11333 6.66667 8.11333ZM7.50667 5.34667C7.24667 5.52 7.16667 5.63333 7.16667 5.82V5.96C7.16667 6.23333 6.94 6.46 6.66667 6.46C6.39333 6.46 6.16667 6.23333 6.16667 5.96V5.82C6.16667 5.04667 6.73333 4.66667 6.94667 4.52C7.19333 4.35333 7.27333 4.24 7.27333 4.06667C7.27333 3.73333 7 3.46 6.66667 3.46C6.33333 3.46 6.06 3.73333 6.06 4.06667C6.06 4.34 5.83333 4.56667 5.56 4.56667C5.28667 4.56667 5.06 4.34 5.06 4.06667C5.06 3.18 5.78 2.46 6.66667 2.46C7.55333 2.46 8.27333 3.18 8.27333 4.06667C8.27333 4.82667 7.71333 5.20667 7.50667 5.34667Z"
+        fill="#04907E"
+      />
+    </svg>
+  );
+};
+
+export const BranchIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M14.6673 14.1668H14.0007V6.65348C14.0007 6.24014 13.814 5.85348 13.4873 5.60014L12.6673 4.96014L12.654 3.32681C12.654 2.96014 12.354 2.66681 11.9873 2.66681H9.71398L8.82065 1.97348C8.34065 1.59348 7.66065 1.59348 7.18065 1.97348L2.51398 5.60014C2.18732 5.85348 2.00065 6.24014 2.00065 6.64681L1.96732 14.1668H1.33398C1.06065 14.1668 0.833984 14.3935 0.833984 14.6668C0.833984 14.9401 1.06065 15.1668 1.33398 15.1668H14.6673C14.9407 15.1668 15.1673 14.9401 15.1673 14.6668C15.1673 14.3935 14.9407 14.1668 14.6673 14.1668ZM4.33398 8.50014V7.50014C4.33398 7.13348 4.63398 6.83348 5.00065 6.83348H6.33398C6.70065 6.83348 7.00065 7.13348 7.00065 7.50014V8.50014C7.00065 8.86681 6.70065 9.16681 6.33398 9.16681H5.00065C4.63398 9.16681 4.33398 8.86681 4.33398 8.50014ZM9.66732 14.1668H6.33398V12.3335C6.33398 11.7801 6.78065 11.3335 7.33398 11.3335H8.66732C9.22065 11.3335 9.66732 11.7801 9.66732 12.3335V14.1668ZM11.6673 8.50014C11.6673 8.86681 11.3673 9.16681 11.0007 9.16681H9.66732C9.30065 9.16681 9.00065 8.86681 9.00065 8.50014V7.50014C9.00065 7.13348 9.30065 6.83348 9.66732 6.83348H11.0007C11.3673 6.83348 11.6673 7.13348 11.6673 7.50014V8.50014Z"
+        fill="#04907E"
+      />
+    </svg>
+  );
+};
+
+export const OpenEyeIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M17.7096 7.62506C15.7846 4.60006 12.968 2.8584 10.0013 2.8584C8.51797 2.8584 7.0763 3.29173 5.75963 4.10007C4.44297 4.91673 3.25964 6.1084 2.29297 7.62506C1.45964 8.9334 1.45964 11.0584 2.29297 12.3667C4.21797 15.4001 7.03464 17.1334 10.0013 17.1334C11.4846 17.1334 12.9263 16.7001 14.243 15.8917C15.5596 15.0751 16.743 13.8834 17.7096 12.3667C18.543 11.0667 18.543 8.9334 17.7096 7.62506ZM10.0013 13.3667C8.13464 13.3667 6.63464 11.8584 6.63464 10.0001C6.63464 8.14173 8.13464 6.6334 10.0013 6.6334C11.868 6.6334 13.368 8.14173 13.368 10.0001C13.368 11.8584 11.868 13.3667 10.0013 13.3667Z"
+        fill={color}
+      />
+      <path
+        d="M10 7.61621C8.69167 7.61621 7.625 8.68288 7.625 9.99954C7.625 11.3079 8.69167 12.3745 10 12.3745C11.3083 12.3745 12.3833 11.3079 12.3833 9.99954C12.3833 8.69121 11.3083 7.61621 10 7.61621Z"
+        fill={color}
+      />
+    </svg>
+  );
+};
+
+export const DotIcon = () => {
+  return (
+    <svg
+      width="6"
+      height="6"
+      viewBox="0 0 6 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="3" cy="3" r="3" fill="#6C6C6C" />
+    </svg>
+  );
+};
+
+export const PermissionMenuIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M6 10C8.20914 10 10 8.20914 10 6C10 3.79086 8.20914 2 6 2C3.79086 2 2 3.79086 2 6C2 8.20914 3.79086 10 6 10Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M18 22C20.2091 22 22 20.2091 22 18C22 15.7909 20.2091 14 18 14C15.7909 14 14 15.7909 14 18C14 20.2091 15.7909 22 18 22Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const ControlAvatarIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 26 26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M23.8337 13.0001C23.8337 7.03091 18.9695 2.16675 13.0003 2.16675C7.03116 2.16675 2.16699 7.03091 2.16699 13.0001C2.16699 16.1417 3.52116 18.9692 5.66616 20.9517C5.66616 20.9626 5.66616 20.9626 5.65532 20.9734C5.76366 21.0817 5.89366 21.1684 6.00199 21.2659C6.06699 21.3201 6.12116 21.3742 6.18616 21.4176C6.38116 21.5801 6.59783 21.7317 6.80366 21.8834C6.87949 21.9376 6.94449 21.9809 7.02033 22.0351C7.22616 22.1759 7.44282 22.3059 7.67032 22.4251C7.74616 22.4684 7.83283 22.5226 7.90866 22.5659C8.12533 22.6851 8.35282 22.7934 8.59116 22.8909C8.67782 22.9342 8.76449 22.9776 8.85116 23.0101C9.08949 23.1076 9.32783 23.1942 9.56616 23.2701C9.65282 23.3026 9.73949 23.3351 9.82616 23.3567C10.0862 23.4326 10.3462 23.4976 10.6062 23.5626C10.682 23.5842 10.7578 23.6059 10.8445 23.6167C11.1478 23.6817 11.4512 23.7251 11.7653 23.7576C11.8087 23.7576 11.852 23.7684 11.8953 23.7792C12.2637 23.8117 12.632 23.8334 13.0003 23.8334C13.3687 23.8334 13.737 23.8117 14.0945 23.7792C14.1378 23.7792 14.1812 23.7684 14.2245 23.7576C14.5387 23.7251 14.842 23.6817 15.1453 23.6167C15.2212 23.6059 15.297 23.5734 15.3837 23.5626C15.6437 23.4976 15.9145 23.4434 16.1637 23.3567C16.2503 23.3242 16.337 23.2917 16.4237 23.2701C16.662 23.1834 16.9112 23.1076 17.1387 23.0101C17.2253 22.9776 17.312 22.9342 17.3987 22.8909C17.6262 22.7934 17.8537 22.6851 18.0812 22.5659C18.1678 22.5226 18.2437 22.4684 18.3195 22.4251C18.5362 22.2951 18.7528 22.1759 18.9695 22.0351C19.0453 21.9917 19.1103 21.9376 19.1862 21.8834C19.4028 21.7317 19.6087 21.5801 19.8037 21.4176C19.8687 21.3634 19.9228 21.3092 19.9878 21.2659C20.107 21.1684 20.2262 21.0709 20.3345 20.9734C20.3345 20.9626 20.3345 20.9626 20.3237 20.9517C22.4795 18.9692 23.8337 16.1417 23.8337 13.0001ZM18.352 18.3842C15.4162 16.4126 10.6062 16.4126 7.64866 18.3842C7.17199 18.6984 6.78199 19.0667 6.45699 19.4676C4.81033 17.7992 3.79199 15.5134 3.79199 13.0001C3.79199 7.91925 7.91949 3.79175 13.0003 3.79175C18.0812 3.79175 22.2087 7.91925 22.2087 13.0001C22.2087 15.5134 21.1903 17.7992 19.5437 19.4676C19.2295 19.0667 18.8287 18.6984 18.352 18.3842Z"
+        fill={color}
+      />
+      <path
+        d="M13 7.50757C10.7575 7.50757 8.9375 9.32757 8.9375 11.5701C8.9375 13.7692 10.66 15.5567 12.9458 15.6217C12.9783 15.6217 13.0217 15.6217 13.0433 15.6217C13.065 15.6217 13.0975 15.6217 13.1192 15.6217C13.13 15.6217 13.1408 15.6217 13.1408 15.6217C15.3292 15.5459 17.0517 13.7692 17.0625 11.5701C17.0625 9.32757 15.2425 7.50757 13 7.50757Z"
+        fill={color}
+      />
+    </svg>
+  );
+};
+
+export const TotalOrdersIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M6.41309 10.666L7.41309 11.666L9.57975 9.66602"
+        stroke={color}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M5.87329 1.33398L3.45996 3.75398"
+        stroke={color}
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.127 1.33398L12.5403 3.75398"
+        stroke={color}
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M1.33301 5.23372C1.33301 4.00039 1.99301 3.90039 2.81301 3.90039H13.1863C14.0063 3.90039 14.6663 4.00039 14.6663 5.23372C14.6663 6.66706 14.0063 6.56706 13.1863 6.56706H2.81301C1.99301 6.56706 1.33301 6.66706 1.33301 5.23372Z"
+        stroke={color}
+        stroke-width="1.5"
+      />
+      <path
+        d="M2.33301 6.66602L3.27301 12.426C3.48634 13.7193 3.99967 14.666 5.90634 14.666H9.92634C11.9997 14.666 12.3063 13.7593 12.5463 12.506L13.6663 6.66602"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </svg>
+  );
+};
+
+export const AvgIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M7.99967 14.6673C11.6663 14.6673 14.6663 11.6673 14.6663 8.00065C14.6663 4.33398 11.6663 1.33398 7.99967 1.33398C4.33301 1.33398 1.33301 4.33398 1.33301 8.00065C1.33301 11.6673 4.33301 14.6673 7.99967 14.6673Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const Pending = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M13.8337 8.83333C13.8337 12.0533 11.2203 14.6667 8.00033 14.6667C4.78033 14.6667 2.16699 12.0533 2.16699 8.83333C2.16699 5.61333 4.78033 3 8.00033 3C11.2203 3 13.8337 5.61333 13.8337 8.83333Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8 5.33398V8.66732"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M6 1.33398H10"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
