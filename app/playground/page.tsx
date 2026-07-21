@@ -119,8 +119,6 @@ const page = () => {
   //   "2026-04-28": true,
   // };
 
-  // tiny change
-
   return (
     <div className="w-full max-w-150 mx-auto p-6">
       Playground for this application. In this page return all custom ui
