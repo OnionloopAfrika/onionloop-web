@@ -1,6 +1,6 @@
 "use client";
-
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { DeleteIcon, EditIcon } from "../icons/svgs";
 import { SearchInput } from "../ui/search-input";
 

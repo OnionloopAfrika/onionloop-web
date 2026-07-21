@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useState } from "react";
 import { PermissionsControls, PermissionsHeader } from "./controls";
 import SwitchToggle from "../ui/switch-toggle";

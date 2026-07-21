@@ -1,3 +1,4 @@
+import React from "react";
 import { PermissionMenuIcon } from "../icons/svgs";
 import { Customers } from "./customers";
 import { Dashboard } from "./dashboard";

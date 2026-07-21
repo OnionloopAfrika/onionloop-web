@@ -1,3 +1,4 @@
+import React from "react";
 import { ProfileHeaderProps } from "@/types/profile/types";
 
 export function ProfileHeader({
