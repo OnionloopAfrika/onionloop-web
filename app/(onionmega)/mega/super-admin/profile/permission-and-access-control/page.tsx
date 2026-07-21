@@ -18,7 +18,7 @@ const roles: Role[] = [
   { id: "staff", name: "Staff", userCount: 1000 },
 ];
 
-const page = () => {
+export default function Page() {
   const [selectedRole, setSelectedRole] = useState<string>("hq-admin");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -36,7 +36,13 @@ const page = () => {
         <div className="space-y-[24px] h-fit bg-white rounded-[12px] shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-[16px] shrink-0">
           <div className="space-y-[14px]">
             <h3 className="font-semibold text-[16px] text-[#131313] ">Roles</h3>
-            <SearchInput placeholder="Search roles.." />
+            <SearchInput
+              placeholder="Search roles.."
+              value={searchQuery}
+              onChange={setSearchQuery}
+              categories={[]}
+              products={[]}
+            />
           </div>
 
           <div className="space-y-[8px]">
@@ -95,6 +101,4 @@ const page = () => {
       </div>
     </div>
   );
-};
-
-export default page;
+}

@@ -9,7 +9,7 @@ import Button from "@/components/ui/button";
 import { Controls } from "@/components/permission-and-access/controls";
 import { AssignedBranch } from "@/components/permission-and-access/assigned-branch";
 
-const page = () => {
+export default function Page() {
   return (
     <ProfileLayout
       active="/branch-manager/profile/permission-and-access-control"
@@ -32,12 +32,10 @@ const page = () => {
           </Button>
 
           <Button variant="primary" size="md">
-            Save chnages
+            Save changes
           </Button>
         </div>
       </div>
     </ProfileLayout>
   );
-};
-
-export default page;
+}
