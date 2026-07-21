@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 import { branchActivity } from "@/lib/mockdata/branch-activity";
 import { NoStaffActivity } from "../no-activity";
