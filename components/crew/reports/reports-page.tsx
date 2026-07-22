@@ -21,11 +21,11 @@ export default async function ReportsPage() {
   return (
     <div className="space-y-[24px]">
       <ProfileHeader
-        className="space-y-[8px] border-b-0 pb-[0px] "
+        className="space-y-[8px] border-b-0 pb-[0px] flex-col md:flex-row items-start md:items-center justify-between"
         title="Reports"
         subtitle="Analyze merchant, agent, and transaction performance across your aggregator network."
         btn={
-          <div className="flex items-center gap-[10px] ">
+          <div className="flex items-center gap-[10px] flex-right w-full">
             <Button variant="outline" size="cashierOutline">
               <CalendarIcon /> Mar 2026
             </Button>
@@ -40,7 +40,7 @@ export default async function ReportsPage() {
       <ReportStats />
 
       <div className="space-y-[24px]">
-        <div className="grid grid-cols-2 gap-[24px] ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px] ">
           <SalesOverview initialData={initialData} />
           <CrewTransactionVolume />
           <CrewTopSelling />

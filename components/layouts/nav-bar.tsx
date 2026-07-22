@@ -370,6 +370,7 @@ export default function DashboardNav({
                   <Link
                     href={`/${subdomain}/${item.id.replace(/^\//, "")}`}
                     key={idx}
+                    onClick={() => setShowMobileProfile(false)}
                     className={`flex items-center justify-between w-full p-2 transition-all hover:bg-gray-50 border-b border-gray-50 last:border-0 ${isProductNavActive(item.id) ? "bg-gray-50" : ""}`}
                   >
                     <div className="flex items-center gap-4">

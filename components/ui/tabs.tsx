@@ -220,7 +220,7 @@ function MessageTrigger({
   return (
     <button
       onClick={() => context.setActiveTab(value)}
-      className={`h-[44px] py-[5px] px-[12px] transition-all whitespace-nowrap font-[500] text-[16px] rounded-full  cursor-pointer ${
+      className={`h-[44px] py-[5px] px-2 transition-all whitespace-nowrap font-[500] text-[12px] sm:text-[16px] rounded-full  cursor-pointer ${
         isActive ? "bg-white text-[#024E44]" : "text-[#6C6C6C] bg-[#F7F7F7]"
       } ${className}`}
       {...props}

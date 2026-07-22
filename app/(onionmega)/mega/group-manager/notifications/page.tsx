@@ -25,7 +25,7 @@ export default function page() {
         subtitle="Real-time operational alerts across all branches"
       />
 
-      <div className="grid grid-cols-4 gap-[16px]">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-[16px]">
         <StatCard
           icon={<CautionIcon className="w-[16px] h-[16px]" />}
           value="3"
