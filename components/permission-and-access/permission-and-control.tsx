@@ -1,3 +1,5 @@
+import React from "react";
+
 import { ProfileHeader } from "../profile-header";
 import { PermissionsTable } from "./permissions-table";
 

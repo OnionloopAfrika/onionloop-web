@@ -4,18 +4,19 @@ import { DefaultPermission } from "@/components/staff-app/default-permission";
 import { MobileAppSettings } from "@/components/staff-app/mobile-app-settings";
 import { MobileSettings } from "@/components/staff-app/mobile-settings";
 
-const page = () => {
+export default function Page() {
   return (
     <ProfileLayout
       active="profile/permission-and-access-control"
       heading="Staff Settings"
       subheading="Roles, permissions, and app access"
     >
-      <div className="">
+      <div className="space-y-[40px]">
         <PermissionAndControl />
+        <DefaultPermission />
+        <MobileAppSettings />
+        <MobileSettings />
       </div>
     </ProfileLayout>
   );
-};
-
-export default page;
+}

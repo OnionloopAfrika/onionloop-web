@@ -65,8 +65,8 @@ export default function DashboardNav({
   const router = useRouter();
   const pathname = usePathname();
 
-  const isMessagesActive = pathname.startsWith("/messages");
-  const isNotificationsActive = pathname.startsWith("/notifications");
+  const isMessagesActive = pathname.includes("/messages");
+  const isNotificationsActive = pathname.includes("/notifications");
 
   const active = isMessagesActive
     ? "messages"
@@ -95,36 +95,47 @@ export default function DashboardNav({
   };
 
   const ROLES = [
-    { label: "Cashier", value: "cashier", href: "/mega/cashier/dashboard" },
+    {
+      label: "Cashier",
+      initials: "C.A",
+      value: "cashier",
+      href: "/mega/cashier/dashboard",
+    },
     {
       label: "Super Admin",
+      initials: "S.A",
       value: "super-admin",
       href: "/mega/super-admin/dashboard",
     },
     {
       label: "Group Manager",
+      initials: "G.M",
       value: "group-manager",
       href: "/mega/group-manager/dashboard",
     },
     {
       label: "Branch Manager",
+      initials: "B.M",
       value: "branch-manager",
       href: "/mega/branch-manager/dashboard",
     },
   ];
 
   const currentRole =
-    ROLES.find((role) => pathname.includes(role.value))?.value || "super-admin";
+    subdomain === "mega"
+      ? ROLES.find((role) => pathname.includes(role.value))?.value ||
+        "super-admin"
+      : null;
 
   return (
     <>
-      <nav className="w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)] sticky top-0 z-[10]">
+      <nav className="w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)] sticky top-0 z-[50]">
         <div className="flex items-center h-16 md:h-18 px-4 md:px-7 max-w-360 mx-auto justify-between">
           <div className="flex items-center gap-6">
             {showLogo && (
               <Link
                 href={`/${subdomain}`}
-                className="flex items-center gap-2 no-underline shrink-0"
+                className="flex items-center gap-2 no-underline shrink-0 md:hidden"
               >
                 <OnionloopIcon />
               </Link>
@@ -149,33 +160,41 @@ export default function DashboardNav({
             )}
           </div>
 
-          <div className="hidden md:flex items-center justify-center gap-1 flex-1">
-            {navItems.map((item) => {
-              const isActive = active === item.key;
-              return (
-                <button
-                  key={item.key}
-                  onClick={() => router.push(item.href)}
-                  className={[
-                    "relative flex items-center px-4 py-3 gap-2",
-                    "border-b-2 bg-transparent cursor-pointer",
-                    "text-[14.5px] whitespace-nowrap transition-all duration-150",
-                    isActive
-                      ? "text-[#024E44] font-bold border-b-[#024E44]"
-                      : "text-gray-500 font-normal border-b-transparent hover:text-gray-700",
-                  ].join(" ")}
-                >
-                  {isActive ? item.activeIcon(ACTIVE_COLOR) : item.icon()}
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
+          {/* {subdomain !== "crew" && (
+            <div className="hidden md:flex items-center justify-center gap-1 flex-1">
+              {navItems.map((item) => {
+                const isActive = active === item.key;
+                return (
+                  <button
+                    key={item.key}
+                    onClick={() => router.push(item.href)}
+                    className={[
+                      "relative flex items-center px-4 py-3 gap-2",
+                      "border-b-2 bg-transparent cursor-pointer",
+                      "text-[14.5px] whitespace-nowrap transition-all duration-150",
+                      isActive
+                        ? "text-[#024E44] font-bold border-b-[#024E44]"
+                        : "text-gray-500 font-normal border-b-transparent hover:text-gray-700",
+                    ].join(" ")}
+                  >
+                    {isActive ? item.activeIcon(ACTIVE_COLOR) : item.icon()}
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+          )} */}
 
           <div
             className={`${active === "messages" || active === "notifications" ? "text-[#024E44]" : "text-[#8A8A8A]"} hidden md:flex items-center gap-2 shrink-0`}
           >
-            <div onClick={() => router.push(`/${subdomain}/messages`)}>
+            <div
+              onClick={() =>
+                router.push(
+                  `/${subdomain}${currentRole ? `/${currentRole}` : ""}/messages`,
+                )
+              }
+            >
               <IconButton badge={messageCount} active={active === "messages"}>
                 {active !== "messages" ? (
                   <MessageIcon color={ACTIVE_COLOR} />
@@ -200,6 +219,12 @@ export default function DashboardNav({
             <div
               onMouseEnter={() => setNotificationDropDown(true)}
               onMouseLeave={() => setNotificationDropDown(false)}
+              onClick={() =>
+                router.push(
+                  `/${subdomain}${currentRole ? `/${currentRole}` : ""}/notifications`,
+                )
+              }
+              className="cursor-pointer"
             >
               <IconButton
                 badge={notificationCount}
@@ -431,7 +456,7 @@ export default function DashboardNav({
                   <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">
                     Switch Dashboard
                   </p>
-                  <div className="grid grid-cols-1 gap-1">
+                  <div className="grid grid-cols-4 gap-1">
                     {ROLES.map((role) => (
                       <button
                         key={role.value}
@@ -445,7 +470,7 @@ export default function DashboardNav({
                             : "text-gray-600 hover:bg-gray-50"
                         }`}
                       >
-                        {role.label}
+                        {role.initials}
                       </button>
                     ))}
                   </div>
@@ -454,7 +479,7 @@ export default function DashboardNav({
               )}
 
               {navItems.map((item) => {
-                const isActive = active === item.key;
+                const isActive = pathname.startsWith(item.href);
                 return (
                   <button
                     key={item.key}
@@ -462,16 +487,18 @@ export default function DashboardNav({
                       router.push(item.href);
                       setIsMenuOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? "bg-[#E6F0EE] text-[#024E44] font-bold"
-                        : "text-gray-500 hover:text-gray-700 font-normal"
+                        ? "bg-[#B5E3C4] text-[#024E44] font-[500] shadow-sm"
+                        : "text-gray-500 hover:bg-gray-50 font-[500]"
                     }`}
                   >
-                    <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
+                    <div
+                      className={`transition-colors duration-200 ${isActive ? "text-[#024E44]" : "text-gray-400"}`}
+                    >
                       {isActive
-                        ? item.activeIcon(ACTIVE_COLOR)
-                        : item.icon("#6B7280")}
+                        ? item.activeIcon("#024E44")
+                        : item.icon("#9CA3AF")}
                     </div>
                     {item.label}
                   </button>
@@ -479,20 +506,22 @@ export default function DashboardNav({
               })}
 
               <button
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${
                   active === "messages"
-                    ? "bg-[#E6F0EE] text-[#024E44] font-bold"
-                    : "text-gray-600 hover:bg-gray-50"
+                    ? "bg-[#B5E3C4] text-[#024E44] font-[500] shadow-sm"
+                    : "text-gray-500 hover:bg-gray-50 font-[500]"
                 }`}
                 onClick={() => {
-                  router.push(`/${subdomain}/messages`);
+                  router.push(
+                    `/${subdomain}${currentRole ? `/${currentRole}` : ""}/messages`,
+                  );
                   setIsMenuOpen(false);
                 }}
               >
-                <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
-                  {active !== "messages" ? (
-                    <MessageIcon color={ACTIVE_COLOR} />
-                  ) : (
+                <div
+                  className={`transition-colors duration-200 ${active === "messages" ? "text-[#024E44]" : "text-gray-400"}`}
+                >
+                  {active === "messages" ? (
                     <svg
                       width="24"
                       height="24"
@@ -506,26 +535,30 @@ export default function DashboardNav({
                         stroke="#024E44"
                       />
                     </svg>
+                  ) : (
+                    <MessageIcon color="#9CA3AF" />
                   )}
                 </div>
                 Messages
               </button>
 
               <button
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-[14.5px] transition-colors ${
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${
                   active === "notifications"
-                    ? "bg-[#E6F0EE] text-[#024E44] font-bold"
-                    : "text-gray-600 hover:bg-gray-50"
+                    ? "bg-[#B5E3C4] text-[#024E44] font-[500] shadow-sm"
+                    : "text-gray-500 hover:bg-gray-50 font-[500]"
                 }`}
                 onClick={() => {
-                  router.push(`/${subdomain}/notifications`);
+                  router.push(
+                    `/${subdomain}${currentRole ? `/${currentRole}` : ""}/notifications`,
+                  );
                   setIsMenuOpen(false);
                 }}
               >
-                <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
-                  {active !== "notifications" ? (
-                    <NotificationIcon color={ACTIVE_COLOR} />
-                  ) : (
+                <div
+                  className={`transition-colors duration-200 ${active === "notifications" ? "text-[#024E44]" : "text-gray-400"}`}
+                >
+                  {active === "notifications" ? (
                     <svg
                       width="24"
                       height="24"
@@ -544,6 +577,8 @@ export default function DashboardNav({
                         stroke="#024E44"
                       />
                     </svg>
+                  ) : (
+                    <NotificationIcon color="#9CA3AF" />
                   )}
                 </div>
                 Notifications

@@ -4931,3 +4931,64 @@ export const Pending = ({
     </svg>
   );
 };
+
+export const ResolvedIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M7.99967 14.6668C11.6663 14.6668 14.6663 11.6668 14.6663 8.00016C14.6663 4.3335 11.6663 1.3335 7.99967 1.3335C4.33301 1.3335 1.33301 4.3335 1.33301 8.00016C1.33301 11.6668 4.33301 14.6668 7.99967 14.6668Z"
+        stroke={color}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M5.16699 7.99995L7.05366 9.88661L10.8337 6.11328"
+        stroke={color}
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const MoreIcon = ({
+  className = "",
+  color = "currentColor",
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17C10.9 17 10 17.9 10 19Z"
+        stroke={color}
+        stroke-width="1.5"
+      />
+      <path
+        d="M10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3C10.9 3 10 3.9 10 5Z"
+        stroke={color}
+        stroke-width="1.5"
+      />
+      <path
+        d="M10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10C10.9 10 10 10.9 10 12Z"
+        stroke={color}
+        stroke-width="1.5"
+      />
+    </svg>
+  );
+};

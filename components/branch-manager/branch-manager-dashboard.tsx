@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 import { branchActivity } from "@/lib/mockdata/branch-activity";
 import { NoStaffActivity } from "../no-activity";
@@ -89,8 +90,6 @@ export function BranchManagerDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[24px]">
           <RevenueOverview initialData={initialData} />
           <BranchRecentTransactions />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
           <BranchTopSelling />
           <BranchStaffActivity />
         </div>

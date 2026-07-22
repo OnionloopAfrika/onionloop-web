@@ -51,9 +51,12 @@ const mockTransactions: Transaction[] = [
 
 export function BranchRecentTransactions() {
   return (
-    <div className="w-full bg-white font-sans lg:col-span-1 h-full flex flex-col overflow-hidden border border-gray-100 rounded-2xl shadow-sm">
+    <div
+      className="w-full bg-white font-sans flex flex-col overflow-hidden border border-gray-100 rounded-2xl shadow-sm"
+      style={{ height: "520px" }}
+    >
       <div className="flex justify-between items-center p-4 pb-2">
-        <h2 className="text-2xl font-bold text-gray-800">
+        <h2 className="text-[20px] font-semibold text-gray-900">
           Recent Transactions
         </h2>
         <Link
@@ -64,7 +67,7 @@ export function BranchRecentTransactions() {
         </Link>
       </div>
 
-      <div className="flex-1 overflow-y-auto custom-scrollbar max-h-[calc(100vh-400px)]">
+      <div className="flex-1 overflow-y-auto custom-scrollbar">
         <div className="divide-y divide-gray-100">
           {MOCK_TRANSACTIONS.map((txn) => {
             const isPositive = txn.amount >= 0;

@@ -1,3 +1,4 @@
+import React from "react";
 import { PermissionMenuIcon } from "../icons/svgs";
 import { Customers } from "./customers";
 import { Dashboard } from "./dashboard";
@@ -9,7 +10,7 @@ import { StaffManagement } from "./staff-management";
 import { SystemControl } from "./system-control";
 import { Transactions } from "./transactions";
 
-export default function Controls() {
+export function Controls() {
   return (
     <div className="grid grid-cols-3 gap-[16px]">
       <Dashboard />

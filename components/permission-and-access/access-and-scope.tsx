@@ -1,14 +1,19 @@
 "use client";
+import React from "react";
 
 import { Checkbox } from "../ui/checkbox";
 import { useState } from "react";
 
-export function AccessAndScope() {
-  const [scopes, setScopes] = useState({
-    allLocations: true,
-    groupOnly: false,
-    branchOnly: false,
-  });
+interface AccessAndScopeProps {
+  initialScopes: {
+    allLocations: boolean;
+    groupOnly: boolean;
+    branchOnly: boolean;
+  };
+}
+
+export function AccessAndScope({ initialScopes }: AccessAndScopeProps) {
+  const [scopes, setScopes] = useState(initialScopes);
 
   const handleToggle = (key: keyof typeof scopes, checked: boolean) => {
     setScopes((prev) => ({ ...prev, [key]: checked }));

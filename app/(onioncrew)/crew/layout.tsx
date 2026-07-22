@@ -82,8 +82,8 @@ export default function DashboardLayout({
           avatarUrl="https://i.pravatar.cc/150?u=12"
           messageCount={1}
           notificationCount={4}
-          navItems={[]}
-          showLogo={false}
+          navItems={CREW_NAV_ITEMS}
+          showLogo={true}
           productNav={productNav}
         />
 
