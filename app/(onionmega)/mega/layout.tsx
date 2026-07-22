@@ -214,6 +214,9 @@ export default function DashboardLayout({
       productNav = SUPER_ADMIN_PRODUCT_NAV;
   }
 
+  const flatNavItems =
+    navItems || navSections?.flatMap((section) => section.items) || [];
+
   return (
     <div className="flex min-h-screen bg-[#F7F7F7]">
       <MegaSidebar navItems={navItems} navSections={navSections} />
@@ -225,8 +228,8 @@ export default function DashboardLayout({
           avatarUrl="https://i.pravatar.cc/150?u=12"
           messageCount={1}
           notificationCount={4}
-          navItems={[]}
-          showLogo={false}
+          navItems={flatNavItems}
+          showLogo={true}
           productNav={productNav}
         />
 

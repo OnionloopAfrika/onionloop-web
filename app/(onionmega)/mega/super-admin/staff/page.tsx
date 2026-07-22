@@ -1,11 +1,9 @@
 import StaffManagement from '@/components/staff-page/mega-staff-management'
 
-const page = () => {
+export default function Page() {
   return (
     <div>
       <StaffManagement leaveRequestPath="/super-admin/staff/leave-request" />
     </div>
   )
 }
-
-export default page

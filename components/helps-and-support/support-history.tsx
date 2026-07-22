@@ -1,3 +1,4 @@
+import React from "react";
 import { SUPPORT_HISTORY } from "@/lib/mockdata/support-history";
 import { DownloadIcon } from "../icons/svgs";
 import { ProfileHeader } from "../profile-header";

@@ -52,13 +52,13 @@ export const CASHIER_NAV_ITEMS: NavItem[] = [
     icon: (color) => <NewOrder color={color} />,
     activeIcon: (color) => <NewOrderActive color={color} />,
   },
-  {
-    key: "order-details",
-    href: "/mega/cashier/order-details",
-    label: "Order Details",
-    icon: (color) => <OrderDetails color={color} />,
-    activeIcon: (color) => <OrderDetailsActive color={color} />,
-  },
+  // {
+  //   key: "order-details",
+  //   href: "/mega/cashier/order-details",
+  //   label: "Order Details",
+  //   icon: (color) => <OrderDetails color={color} />,
+  //   activeIcon: (color) => <OrderDetailsActive color={color} />,
+  // },
   {
     key: "alert",
     href: "/mega/cashier/notifications",

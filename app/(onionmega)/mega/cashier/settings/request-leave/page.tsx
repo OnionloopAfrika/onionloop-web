@@ -76,7 +76,9 @@ const Page = () => {
         onOpenChange={setOpen}
         footer={
           <div className="grid grid-cols-2 gap-[10px]">
-            <Button variant="outline">Cancel</Button>
+            <Button onClick={() => setOpen(false)} variant="outline">
+              Cancel
+            </Button>
             <Button
               onClick={() => {
                 (setOpen(false), setOpenSuccess(true));
@@ -84,7 +86,7 @@ const Page = () => {
               variant="primary"
             >
               Submit Request
-            </Button>{" "}
+            </Button>
           </div>
         }
       >

@@ -10,7 +10,7 @@ interface SwitchProps {
   id?: string;
 }
 
-export const Switch: React.FC<SwitchProps> = ({
+export const SwitchToggle: React.FC<SwitchProps> = ({
   checked,
   onCheckedChange,
   size = "md",
@@ -30,9 +30,9 @@ export const Switch: React.FC<SwitchProps> = ({
     },
 
     xl: {
-      container: "w-[55px] h-[31px]",
-      thumb: "w-[27px] h-[27px]",
-      translate: "translate-x-[23px]",
+      container: "w-[32px] h-[19.45px]",
+      thumb: "w-[16.94px] h-[16.94px]",
+      translate: "translate-x-[11px]",
     },
     lg: {
       container: "w-14 h-8",
@@ -64,7 +64,7 @@ export const Switch: React.FC<SwitchProps> = ({
           transition-colors duration-200 focus-visible:outline-none 
           focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
           ${currentSize.container}
-          ${checked ? "bg-primary-color" : "bg-[#e9e9ea]"}
+          ${checked ? "bg-[#04907E]" : "bg-[#e9e9ea]"}
           ${disabled ? "pointer-events-none" : "cursor-pointer"}
         `}
       >
@@ -82,4 +82,4 @@ export const Switch: React.FC<SwitchProps> = ({
   );
 };
 
-export default Switch;
+export default SwitchToggle;
