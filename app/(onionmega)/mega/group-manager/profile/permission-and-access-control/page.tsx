@@ -2,7 +2,12 @@
 import React, { useState } from "react";
 import { ControlAvatarIcon, SearchIcon } from "@/components/icons/svgs";
 import { SearchInput } from "@/components/ui/search-input";
-// import { PermissionControls } from "@/components/group-manager/permission-controls";
+import { PermissionControls } from "@/components/group-manager/permission-controls";
+import { AccessAndScope } from "@/components/permission-and-access/access-and-scope";
+import { AssignedBranch } from "@/components/permission-and-access/assigned-branch";
+import { Controls } from "@/components/permission-and-access/controls";
+import { PermissionOverview } from "@/components/permission-and-access/overview";
+import Button from "@/components/ui/button";
 
 type Role = {
   id: string;
@@ -65,6 +70,8 @@ const roleDataMap: Record<string, RoleData> = {
 export default function page() {
   const [selectedRole, setSelectedRole] = useState<string>("branch-manager");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const roleData = roleDataMap[selectedRole];
+
 
   return (
     <div className="space-y-[24px] md:max-h-[90vh] md:overflow-hidden md:sticky">
@@ -138,8 +145,36 @@ export default function page() {
           </div>
         </div>
 
-        <div className="flex-1 min-w-0 overflow-y-auto h-[90vh]">
-          {/* <PermissionControls roleData={roleDataMap[selectedRole]} /> */}
+        <div className="w-full  overflow-y-auto md:h-[90vh] md:pb-[100px]">
+          <div className="space-y-[40px] p-[24px] bg-white">
+            <PermissionOverview
+              roleName={roleData.roleName}
+              description={roleData.description}
+              staffCount={roleData.staffCount}
+              lastUpdated={roleData.lastUpdated}
+              showViewStaffButton={roleData.showViewStaffButton}
+            />
+            <Controls />
+
+            <div className="grid grid-cols-[2fr_1fr] max-lg:grid-cols-1 gap-[24px] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.05)] rounded-[12px] p-[16px]">
+              <AccessAndScope initialScopes={roleData.accessScopes} />
+              <AssignedBranch
+                assignedLabel={roleData.assignedLabel}
+                assignedValue={roleData.assignedValue}
+              />
+            </div>
+          </div>
+          <div className="flex justify-end items-center py-[30px] ">
+            <div className="grid grid-cols-2 gap-[16px] max-lg:w-full">
+              <Button variant="outline" size="md">
+                Cancel
+              </Button>
+
+              <Button variant="primary" size="md">
+                Save changes
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
