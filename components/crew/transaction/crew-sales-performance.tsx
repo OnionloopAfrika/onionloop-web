@@ -59,9 +59,9 @@ export function CrewSalesPerformance() {
         Staff Sales Performance
       </p>
 
-      <div className="flex items-center gap-4 bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px] h-[113px]">
-        <div className="w-[50%] grid grid-cols-[2fr_1fr] gap-[9px]">
-          <div className="">
+      <div className="flex items-center gap-4 bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px]">
+        <div className="sm:w-[50%] w-full grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-[9px]">
+          <div className="w-60 sm:w-full">
             <SearchInput
               placeholder="Search by ref or amount..."
               className="rounded-[12px]"

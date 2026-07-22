@@ -24,7 +24,7 @@ const roleData = {
   },
 };
 
-export default function Page() {
+export default function page() {
   return (
     <div className="w-full md:max-h-[90vh]  md:sticky top-0 md:overflow-hidden">
       <ProfileLayout

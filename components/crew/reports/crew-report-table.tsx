@@ -265,7 +265,7 @@ export default function CrewReportTable() {
         </table>
       </div>
 
-      <div className="flex items-center justify-between px-4 py-4">
+      <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-4">
         <span className="text-[14px] text-[#6C6C6C] font-medium">
           Showing 1 to 10 of 128 transactions
         </span>

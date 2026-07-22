@@ -107,9 +107,9 @@ const Page = () => {
             >
               <div className="flex justify-between items-center">
                 {notis.title === "Leave Request" ? (
-                  <LeaveIcon />
+                  <LeaveIcon className="w-[20px] h-[20px]" />
                 ) : (
-                  <DangerIcon className="text-[#DD900D] w-[16px] h-[16px]  stroke-[#DD900D]  " />
+                  <DangerIcon className="text-[#DD900D] w-[20px] h-[20px]  stroke-[#DD900D]  " />
                 )}
 
                 <p className="font-[400] text-[14px] text-[#8A8A8A]">

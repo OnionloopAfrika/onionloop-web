@@ -25,7 +25,7 @@ export default function page() {
         subtitle="Real-time operational alerts across all branches"
       />
 
-      <div className="grid grid-cols-4 gap-[16px]">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-[16px]">
         <StatCard
           icon={<CautionIcon className="w-[16px] h-[16px]" />}
           value="3"
@@ -58,7 +58,7 @@ export default function page() {
 
       <div className="rounded-[16px] bg-white py-[24px] px-[16px]">
         <Tabs className="space-y-[16px]" defaultValue="all">
-          <TabsList className="flex items-center gap-[8px] bg-[#F7F7F7] p-[4px] w-fit rounded-full overflow-hidden">
+          <TabsList className="w-full flex items-center gap-1 bg-[#F7F7F7] p-[4px] w-fit rounded-full overflow-hidden">
             <MessageTrigger value="all">All</MessageTrigger>
             <MessageTrigger value="critical">Critical(3)</MessageTrigger>
             <MessageTrigger value="warning">Warning(3)</MessageTrigger>

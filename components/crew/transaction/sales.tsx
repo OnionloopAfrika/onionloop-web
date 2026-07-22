@@ -60,9 +60,9 @@ export default function CrewSales() {
     <div className="space-y-[16px]">
       <p className="font-[600] text-[18px] text-[#131313]">Sales</p>
 
-      <div className="flex items-center justify-between bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px] h-[113px]">
-        <div className="flex items-center gap-4">
-          <div className="w-[400px]">
+      <div className="flex-col md:flex-row flex items-start gap-3 justify-between bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px] ">
+        <div className="sm:w-[50%] w-full grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-[9px]">
+          <div className="w-60 sm:w-full">
             <SearchInput
               placeholder="Search by ref or amount..."
               className="rounded-[12px]"
@@ -153,7 +153,7 @@ export default function CrewSales() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between p-4 border-t border-gray-100">
+        <div className="flex flex-col sm:flex-row items-center justify-between p-4 border-t border-gray-100">
           <div className="text-[13px] text-gray-500">
             Showing 1 to 10 of 70 order sales
           </div>
