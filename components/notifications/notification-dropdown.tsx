@@ -6,8 +6,16 @@ import {
   ShieldIcon,
   WarningIcon,
 } from "../icons/svgs";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useSubdomain } from "@/hooks/useSubdomain";
+
+const ROLES = [
+  { label: "Cashier", value: "cashier" },
+  { label: "Super Admin", value: "super-admin" },
+  { label: "Group Manager", value: "group-manager" },
+  { label: "Branch Manager", value: "branch-manager" },
+];
+
 type ToggleProp = {
   setNotificationDropDown: Dispatch<SetStateAction<boolean>>;
 };
@@ -17,6 +25,12 @@ export default function NotificationDropdown({
 }: ToggleProp) {
   const router = useRouter();
   const subdomain = useSubdomain();
+  const pathname = usePathname();
+  const currentRole =
+    subdomain === "mega"
+      ? ROLES.find((role) => pathname.includes(role.value))?.value ||
+        "super-admin"
+      : null;
 
   return (
     <div className="absolute top-[calc(100%+2px)] left-[-350px] right-0.5 z-50 flex max-h-[80vh] w-full min-w-[600px] max-w-[600px] flex-col items-center rounded-lg border border-gray-100 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
@@ -35,7 +49,9 @@ export default function NotificationDropdown({
         {notis.slice(0, 3).map((items, i) => (
           <div
             onClick={() => {
-              router.push(`/${subdomain}/notifications`);
+              router.push(
+                `/${subdomain}${currentRole ? `/${currentRole}` : ""}/notifications`,
+              );
               setNotificationDropDown(false);
             }}
             key={i}
@@ -98,7 +114,11 @@ export default function NotificationDropdown({
 
       <div className="flex h-[64px] items-center justify-center">
         <p
-          onClick={() => router.push(`/${subdomain}/notifications`)}
+          onClick={() =>
+            router.push(
+              `/${subdomain}${currentRole ? `/${currentRole}` : ""}/notifications`,
+            )
+          }
           className="cursor-pointer text-[16px] font-[600] text-[#024E44]"
         >
           View all notification

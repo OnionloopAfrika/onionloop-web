@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   VideoIcon,
   PhoneIcon,
@@ -10,9 +10,11 @@ import {
   SmileIcon,
   ChevronLeftIcon,
   ChatSendIcon,
+  MoreIcon,
 } from "../icons/svgs";
 import Image from "next/image";
 import Input from "../ui/input";
+import { usePathname } from "next/navigation";
 
 interface ChatScreenProps {
   message: any;
@@ -20,6 +22,36 @@ interface ChatScreenProps {
 }
 
 export function ChatScreen({ message, onBack }: ChatScreenProps) {
+  const pathname = usePathname();
+  const [isTopDropdownOpen, setIsTopDropdownOpen] = useState(false);
+  const [isBottomDropdownOpen, setIsBottomDropdownOpen] = useState(false);
+  const topDropdownRef = useRef<HTMLDivElement>(null);
+  const bottomDropdownRef = useRef<HTMLDivElement>(null);
+
+  const isSuperAdmin = pathname.includes("super-admin");
+  const isGroupManager = pathname.includes("group-manager");
+  const isBranchManager = pathname.includes("branch-manager");
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        topDropdownRef.current &&
+        !topDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsTopDropdownOpen(false);
+      }
+      if (
+        bottomDropdownRef.current &&
+        !bottomDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsBottomDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   if (!message) return null;
 
   return (
@@ -55,17 +87,42 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
             </p>
           </div>
         </div>
-        <div className="hidden items-center gap-[24px] md:flex">
-          <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
-            <VideoIcon className="h-6 w-6 text-[#6C6C6C]" />
-          </button>
-          <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
-            <PhoneIcon className="h-6 w-6 text-[#6C6C6C]" />
-          </button>
-          <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
-            <StarIcon className="h-6 w-6 text-[#6C6C6C]" />
-          </button>
-        </div>
+
+        {isSuperAdmin || isGroupManager || isBranchManager ? (
+          <div className="relative" ref={topDropdownRef}>
+            <button
+              className="p-2 text-[#8A8A8A] transition-colors hover:text-[#131313]"
+              onClick={() => setIsTopDropdownOpen(!isTopDropdownOpen)}
+            >
+              <MoreIcon className="text-[#8A8A8A] cursor-pointer" />
+            </button>
+            {isTopDropdownOpen && (
+              <div className="absolute right-0 top-full mt-2 z-50 min-w-[240px] rounded-[6px] border border-[#C7C7C7] bg-white py-1 shadow-lg">
+                <button className="w-full px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] text-left cursor-pointer hover:bg-gray-100 border-b border-b-[#C7C7C7]">
+                  Make payment
+                </button>
+                <button className="w-full px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] text-left cursor-pointer hover:bg-gray-100 border-b border-b-[#C7C7C7]">
+                  Share your QR code
+                </button>
+                <button className="w-full px-4 py-2.5 text-[14px] font-[500] text-[#6C6C6C] text-left cursor-pointer hover:bg-gray-100">
+                  Show your QR code
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="hidden items-center gap-[24px] md:flex">
+            <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
+              <VideoIcon className="h-6 w-6 text-[#6C6C6C]" />
+            </button>
+            <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
+              <PhoneIcon className="h-6 w-6 text-[#6C6C6C]" />
+            </button>
+            <button className="text-[#8A8A8A] transition-colors hover:text-[#131313]">
+              <StarIcon className="h-6 w-6 text-[#6C6C6C]" />
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="no-scrollbar flex-1 overflow-y-auto bg-[#f7f7f7] px-[16px] py-[10px] space-y-8 md:bg-white md:p-6 md:px-0">

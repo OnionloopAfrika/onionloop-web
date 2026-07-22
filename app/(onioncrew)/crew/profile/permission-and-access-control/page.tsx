@@ -11,8 +11,11 @@ export default function Page() {
       heading="Staff Settings"
       subheading="Roles, permissions, and app access"
     >
-      <div className="">
+      <div className="space-y-[40px]">
         <PermissionAndControl />
+        <DefaultPermission />
+        <MobileAppSettings />
+        <MobileSettings />
       </div>
     </ProfileLayout>
   );

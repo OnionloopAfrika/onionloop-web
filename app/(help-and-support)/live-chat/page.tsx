@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   AddIcon,
   LocationIcon,
@@ -40,6 +40,7 @@ export default function LiveChatPage() {
     avatar: "/images/ben.svg",
     name: "Onionloop Support",
   };
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const instantMessages = [
     {
@@ -74,6 +75,10 @@ export default function LiveChatPage() {
     setChatHistory([...chatHistory, newChat]);
     setInputMessage("");
     setChatStarted(true);
+  };
+
+  const handleSmileyClick = () => {
+    inputRef.current?.focus();
   };
 
   return (
@@ -155,53 +160,59 @@ export default function LiveChatPage() {
             ))}
           </div>
         )}
-
-        <div className="w-[80%] mx-auto mt-auto mb-6">
-          <div className="bg-white rounded-full border border-gray-200 shadow-sm p-3 px-[12px] flex items-center gap-3">
-            <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-              <AddIcon className="text-[#6C6C6C] w-[32px] h-[32px]" />
-            </button>
-
-            <input
-              type="text"
-              placeholder="How do I sync inventory with my staff mobile app?"
-              value={inputMessage}
-              onChange={(e) => setInputMessage(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-              className="flex-1 px-[8px] py-[12px] font-[500] text-[12px] text-[#131313] placeholder-gray-400 focus:outline-none border border-[#C7C7C7] rounded-full"
-            />
-
-            <div className="flex items-center gap-2">
+        <div className="w-[100%] fixed bottom-[0px] pb-[10px] left-0 shadow-md">
+          <div className="w-[80%] mx-auto mt-auto mb-6">
+            <div className="bg-white rounded-full border border-gray-200 shadow-sm p-3 px-[12px] flex items-center gap-3">
               <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M16 29.3337C23.2815 29.3337 29.3337 23.2945 29.3337 16.0003C29.3337 8.71903 23.2681 2.66699 15.9867 2.66699C8.69294 2.66699 2.66699 8.71903 2.66699 16.0003C2.66699 23.2945 8.70577 29.3337 16 29.3337ZM16.0006 27.1116C9.82964 27.1116 4.90079 22.17 4.90079 16.0003C4.90079 9.84288 9.81625 4.88903 15.9867 4.88903C22.1437 4.88903 27.0976 9.84343 27.111 16.0003C27.1238 22.1706 22.1565 27.1116 15.9995 27.1116M12.1956 14.8107C12.9664 14.8107 13.6067 14.1308 13.6067 13.1765C13.6067 12.2228 12.9664 11.5423 12.1956 11.5423C11.4371 11.5423 10.8096 12.2228 10.8096 13.1765C10.8096 14.1302 11.4371 14.8107 12.1956 14.8107ZM19.8424 14.8107C20.6138 14.8107 21.2546 14.1308 21.2546 13.1765C21.2546 12.2228 20.6138 11.5423 19.843 11.5423C19.0721 11.5423 18.4441 12.2228 18.4441 13.1765C18.4441 14.1302 19.071 14.8107 19.8424 14.8107ZM16 22.3011C19.1502 22.3011 21.1241 20.0657 21.1241 19.2163C21.1241 19.0461 20.9936 18.9675 20.8631 19.0724C19.9088 19.8699 18.3008 20.6541 15.9995 20.6541C13.6859 20.6541 12.0395 19.8175 11.1242 19.0852C10.9931 18.9681 10.8626 19.0461 10.8626 19.2163C10.8626 20.0657 12.8365 22.3006 15.9995 22.3006"
-                    fill="#6C6C6C"
-                  />
-                </svg>
+                <AddIcon className="text-[#6C6C6C] w-[32px] h-[32px]" />
               </button>
 
-              <button onClick={handleSendMessage}>
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+              <input
+                ref={inputRef}
+                type="text"
+                inputMode="text"
+                placeholder="How do I sync inventory with my staff mobile app?"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+                className="flex-1 px-[8px] py-[12px] font-[500] text-[12px] text-[#131313] placeholder-gray-400 focus:outline-none border border-[#C7C7C7] rounded-full"
+              />
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleSmileyClick}
+                  className="p-2 rounded-full hover:bg-gray-100 transition-colors"
                 >
-                  <rect width="32" height="32" rx="16" fill="#024E44" />
-                  <path
-                    d="M19.3123 8.76842L12.0883 11.1684C7.23229 12.7924 7.23229 15.4404 12.0883 17.0564L14.2323 17.7684L14.9443 19.9124C16.5603 24.7684 19.2163 24.7684 20.8323 19.9124L23.2403 12.6964C24.3123 9.45642 22.5523 7.68842 19.3123 8.76842ZM19.5683 13.0724L16.5283 16.1284C16.4083 16.2484 16.2563 16.3044 16.1043 16.3044C15.9523 16.3044 15.8003 16.2484 15.6803 16.1284C15.4483 15.8964 15.4483 15.5124 15.6803 15.2804L18.7203 12.2244C18.9523 11.9924 19.3363 11.9924 19.5683 12.2244C19.8003 12.4564 19.8003 12.8404 19.5683 13.0724Z"
-                    fill="white"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16 29.3337C23.2815 29.3337 29.3337 23.2945 29.3337 16.0003C29.3337 8.71903 23.2681 2.66699 15.9867 2.66699C8.69294 2.66699 2.66699 8.71903 2.66699 16.0003C2.66699 23.2945 8.70577 29.3337 16 29.3337ZM16.0006 27.1116C9.82964 27.1116 4.90079 22.17 4.90079 16.0003C4.90079 9.84288 9.81625 4.88903 15.9867 4.88903C22.1437 4.88903 27.0976 9.84343 27.111 16.0003C27.1238 22.1706 22.1565 27.1116 15.9995 27.1116M12.1956 14.8107C12.9664 14.8107 13.6067 14.1308 13.6067 13.1765C13.6067 12.2228 12.9664 11.5423 12.1956 11.5423C11.4371 11.5423 10.8096 12.2228 10.8096 13.1765C10.8096 14.1302 11.4371 14.8107 12.1956 14.8107ZM19.8424 14.8107C20.6138 14.8107 21.2546 14.1308 21.2546 13.1765C21.2546 12.2228 20.6138 11.5423 19.843 11.5423C19.0721 11.5423 18.4441 12.2228 18.4441 13.1765C18.4441 14.1302 19.071 14.8107 19.8424 14.8107ZM16 22.3011C19.1502 22.3011 21.1241 20.0657 21.1241 19.2163C21.1241 19.0461 20.9936 18.9675 20.8631 19.0724C19.9088 19.8699 18.3008 20.6541 15.9995 20.6541C13.6859 20.6541 12.0395 19.8175 11.1242 19.0852C10.9931 18.9681 10.8626 19.0461 10.8626 19.2163C10.8626 20.0657 12.8365 22.3006 15.9995 22.3006"
+                      fill="#6C6C6C"
+                    />
+                  </svg>
+                </button>
+
+                <button onClick={handleSendMessage}>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect width="32" height="32" rx="16" fill="#024E44" />
+                    <path
+                      d="M19.3123 8.76842L12.0883 11.1684C7.23229 12.7924 7.23229 15.4404 12.0883 17.0564L14.2323 17.7684L14.9443 19.9124C16.5603 24.7684 19.2163 24.7684 20.8323 19.9124L23.2403 12.6964C24.3123 9.45642 22.5523 7.68842 19.3123 8.76842ZM19.5683 13.0724L16.5283 16.1284C16.4083 16.2484 16.2563 16.3044 16.1043 16.3044C15.9523 16.3044 15.8003 16.2484 15.6803 16.1284C15.4483 15.8964 15.4483 15.5124 15.6803 15.2804L18.7203 12.2244C18.9523 11.9924 19.3363 11.9924 19.5683 12.2244C19.8003 12.4564 19.8003 12.8404 19.5683 13.0724Z"
+                      fill="white"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>

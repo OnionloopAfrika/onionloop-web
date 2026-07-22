@@ -83,27 +83,27 @@ export function PermissionsTable() {
     );
   };
 
+  const filteredEmployees = mockEmployees.filter((emp) =>
+    emp.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  const handleEmployeeClick = (employee: any) => {
+    setSearchQuery(employee.name);
+  };
+
   return (
     <div className="w-full bg-white rounded-xl shadow-sm font-sans">
       <div className="p-6 border-b border-gray-100">
         <div className="relative w-full max-w-[420px]">
-          <SearchInput placeholder="Search Employees" />
-
-          <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-gray-400">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </div>
+          <SearchInput
+            placeholder="Search Employees"
+            value={searchQuery}
+            onChange={setSearchQuery}
+            categories={[]}
+            products={[]}
+            employees={mockEmployees}
+            onEmployeeClick={handleEmployeeClick}
+          />
         </div>
       </div>
 
@@ -134,7 +134,7 @@ export function PermissionsTable() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {mockEmployees.map((emp) => (
+            {filteredEmployees.map((emp) => (
               <tr
                 key={emp.id}
                 className="hover:bg-gray-50/50 transition-colors"

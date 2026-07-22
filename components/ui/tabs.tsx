@@ -206,6 +206,30 @@ function TicketsTrigger({
   );
 }
 
+function MessageTrigger({
+  value,
+  children,
+  className,
+  ...props
+}: TabsTriggerProps) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("TabsTrigger must be used within Tabs");
+
+  const isActive = context.activeTab === value;
+
+  return (
+    <button
+      onClick={() => context.setActiveTab(value)}
+      className={`h-[44px] py-[5px] px-[12px] transition-all whitespace-nowrap font-[500] text-[16px] rounded-full  cursor-pointer ${
+        isActive ? "bg-white text-[#024E44]" : "text-[#6C6C6C] bg-[#F7F7F7]"
+      } ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
 interface TabsContentProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
   children?: ReactNode;
@@ -240,4 +264,5 @@ export {
   PaymentTrigger,
   NavTabsTrigger,
   TicketsTrigger,
+  MessageTrigger,
 };

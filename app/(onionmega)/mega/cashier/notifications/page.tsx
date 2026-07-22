@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import ProfileLayout from "../settings/Shell";
 import SearchBar from "@/components/ui/search-bar";
 import {
@@ -11,9 +12,17 @@ import {
 } from "@/components/icons/svgs";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
-  const statusOptions = [{ value: "all", label: "All Status" }];
+  const [searchValue, setSearchValue] = useState("");
+  const [statusValue, setStatusValue] = useState("all");
+  const [dateValue, setDateValue] = useState("this-month");
+
+  const statusOptions = [
+    { value: "all", label: "All Status" },
+    { value: "message", label: "Messages" },
+    { value: "warning", label: "Warnings" },
+  ];
   const dateOptions = [{ value: "this-month", label: "This Month" }];
 
   const notifications = [
@@ -59,6 +68,14 @@ const page = () => {
     },
   ];
 
+  const filteredNotifications = notifications.filter((notif) => {
+    const matchesSearch =
+      notif.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+      notif.message.toLowerCase().includes(searchValue.toLowerCase());
+    const matchesStatus = statusValue === "all" || notif.type === statusValue;
+    return matchesSearch && matchesStatus;
+  });
+
   return (
     <ProfileLayout
       active="/cashier/notifications"
@@ -68,18 +85,27 @@ const page = () => {
       <div className="space-y-[40px] bg-white">
         <SearchBar
           searchPlaceholder="Search by Request"
+          searchValue={searchValue}
+          onSearchChange={setSearchValue}
           statusOptions={statusOptions}
+          statusValue={statusValue}
+          onStatusChange={setStatusValue}
           dateOptions={dateOptions}
-          showingText="Showing 05 Request"
+          dateValue={dateValue}
+          onDateChange={setDateValue}
+          showingText={`Showing ${filteredNotifications.length} Request${filteredNotifications.length !== 1 ? "s" : ""}`}
+          categories={[]}
+          products={[]}
         />
 
         <div className="flex flex-col gap-[16px] px-[24px]">
-          {notifications.map((notis, i) => (
+          {filteredNotifications.map((notis, i) => (
             <div
+              key={notis.id}
               onClick={() => router.push("/mega/cashier/messages")}
               className="flex flex-col gap-[12px] cursor-pointer border-b border-b-[#C7C7C7] last:border-b-0 pb-[8px]"
             >
-              <div className="flex justify-between items-center]">
+              <div className="flex justify-between items-center">
                 {notis.title === "Leave Request" ? (
                   <LeaveIcon />
                 ) : (
@@ -106,4 +132,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -11,17 +11,63 @@ type Role = {
   avatar?: string;
 };
 
+type RoleData = {
+  roleName: string;
+  description: string;
+  staffCount: number;
+  lastUpdated: string;
+  showViewStaffButton: boolean;
+  assignedLabel: string;
+  assignedValue: string;
+  accessScopes: {
+    allLocations: boolean;
+    groupOnly: boolean;
+    branchOnly: boolean;
+  };
+};
+
 const roles: Role[] = [
   { id: "branch-manager", name: "Branch Manager", userCount: 8 },
   { id: "staff", name: "Staff", userCount: 1000 },
 ];
+
+const roleDataMap: Record<string, RoleData> = {
+  "branch-manager": {
+    roleName: "Branch Manager",
+    description: "Manages branch-level operations and staff.",
+    staffCount: 10,
+    lastUpdated: "May 04, 2026 by Adebayo Olaniyan (You)",
+    showViewStaffButton: true,
+    assignedLabel: "Assigned Branch",
+    assignedValue: "individual branches",
+    accessScopes: {
+      allLocations: false,
+      groupOnly: false,
+      branchOnly: true,
+    },
+  },
+  staff: {
+    roleName: "Staff",
+    description: "Performs day-to-day tasks with limited access.",
+    staffCount: 5,
+    lastUpdated: "May 05, 2026 by Adebayo Olaniyan (You)",
+    showViewStaffButton: false,
+    assignedLabel: "Assigned Branch",
+    assignedValue: "individual branches",
+    accessScopes: {
+      allLocations: false,
+      groupOnly: false,
+      branchOnly: true,
+    },
+  },
+};
 
 export default function Page() {
   const [selectedRole, setSelectedRole] = useState<string>("branch-manager");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   return (
-    <div className="space-y-[24px]">
+    <div className="space-y-[24px] md:max-h-[90vh] md:overflow-hidden md:sticky">
       <div className="space-y-[12px] ">
         <p className="font-[600] text-[24px] text-[#131313]">
           Permissions & Access Control
@@ -31,7 +77,7 @@ export default function Page() {
         </p>
       </div>
       <div className="grid grid-cols-[1fr_2fr] gap-[24px]">
-        <div className="space-y-[24px] max-h-[336px] bg-white rounded-[12px] shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-[16px] shrink-0">
+        <div className="space-y-[24px] h-fit bg-white rounded-[12px] shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-[16px] shrink-0">
           <div className="space-y-[14px]">
             <h3 className="font-semibold text-[16px] text-[#131313] ">Roles</h3>
             <SearchInput
@@ -40,6 +86,8 @@ export default function Page() {
               onChange={setSearchQuery}
               categories={[]}
               products={[]}
+              employees={[]}
+              chats={[]}
             />
           </div>
 
@@ -90,9 +138,8 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="flex-1 min-w-0">
-          {selectedRole === "branch-manager" && <PermissionControls />}
-          {selectedRole === "staff" && <PermissionControls />}
+        <div className="flex-1 min-w-0 overflow-y-auto h-[90vh]">
+          <PermissionControls roleData={roleDataMap[selectedRole]} />
         </div>
       </div>
     </div>
