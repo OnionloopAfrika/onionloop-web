@@ -50,7 +50,7 @@ export default function Notifications() {
       {notis.map((item, i) => (
         <div
           key={i}
-          className="bg-white border border-[#E5E7EB] rounded-[12px] p-[24px] flex justify-between items-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+          className="bg-white border space-y-2 border-[#E5E7EB] rounded-[12px] p-[24px] flex flex-col md:flex-row justify-between items-start md:items-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
           <div className="space-y-[16px]">
             <div className="space-y-[8px]">
@@ -73,9 +73,9 @@ export default function Notifications() {
               {item.location} <span>{item.time}</span>{" "}
             </p>
           </div>
-          <div className="flex flex-col gap-[8px]">
+          <div className="flex flex-col gap-[8px] ">
             {(item.status === "critical" || item.status === "warning") && (
-              <div className="flex flex-col gap-[8px]">
+              <div className="flex md:flex-col gap-[8px]">
                 <Button variant="primary" size="msg">
                   Resolve
                 </Button>

@@ -62,7 +62,7 @@ const roleDataMap: Record<string, RoleData> = {
   },
 };
 
-export default function Page() {
+export default function page() {
   const [selectedRole, setSelectedRole] = useState<string>("branch-manager");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
