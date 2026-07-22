@@ -12,7 +12,7 @@ import { Transactions } from "./transactions";
 
 export function Controls() {
   return (
-    <div className="grid grid-cols-3 gap-[16px]">
+    <div className="grid grid-cols-3 gap-[16px] max-lg:grid-cols-1">
       <Dashboard />
       <Transactions />
       <Reports />
