@@ -34,7 +34,7 @@ export function PermissionControls({ roleData }: PermissionControlsProps) {
           showViewStaffButton={roleData.showViewStaffButton}
         />
         <Controls />
-        <div className="grid grid-cols-[2fr_1fr] gap-[24px] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.05)] rounded-[12px] p-[16px]">
+        <div className="grid grid-cols-[2fr_1fr] max-lg:grid-cols-1 gap-[24px] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.05)] rounded-[12px] p-[16px]">
           <AccessAndScope initialScopes={roleData.accessScopes} />
           <AssignedBranch
             assignedLabel={roleData.assignedLabel}
@@ -42,8 +42,8 @@ export function PermissionControls({ roleData }: PermissionControlsProps) {
           />
         </div>
       </div>
-      <div className="flex justify-end items-center py-[30px]">
-        <div className="grid grid-cols-2 gap-[16px]">
+      <div className="flex justify-end items-center py-[30px] ">
+        <div className="grid grid-cols-2 gap-[16px] max-lg:w-full">
           <Button variant="outline" size="md">
             Cancel
           </Button>

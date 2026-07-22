@@ -100,14 +100,14 @@ export default function page() {
     <div className="w-full md:sticky ">
       <div className="space-y-[24px] md:max-h-[90vh] md:overflow-hidden ">
         <div className="space-y-[12px] ">
-          <p className="font-[600] text-[24px] text-[#131313]">
+          <p className="font-[600] text-[24px] max-lg:text-[18px]  text-[#131313]">
             Permissions & Access Control
           </p>
-          <p className="font-[500] text-[16px] text-[#363636]">
+          <p className="font-[500] text-[16px] max-lg:text-[12px]  text-[#363636]">
             Manage what each role can do in the staff app
           </p>
         </div>
-        <div className="grid grid-cols-[1fr_2fr] gap-[24px] ">
+        <div className="grid grid-cols-[1fr_2fr] gap-[24px] max-lg:grid-cols-1 ">
           <div className="space-y-[24px] h-fit bg-white rounded-[12px] shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 p-[16px] shrink-0">
             <div className="space-y-[14px]">
               <h3 className="font-semibold text-[16px] text-[#131313] ">
@@ -124,7 +124,7 @@ export default function page() {
               />
             </div>
 
-            <div className="space-y-[8px]">
+            <div className="space-y-[8px] max-lg:flex max-lg:overflow-x-scroll">
               {roles
                 .filter((role) =>
                   role.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -135,12 +135,12 @@ export default function page() {
                     onClick={() => setSelectedRole(role.id)}
                     className={`w-full flex items-center gap-[24px] py-[16px] px-[24px] rounded-[12px] transition-all ${
                       selectedRole === role.id
-                        ? "bg-[#F5FFFD] border-l-4 border-l-[#024E44]"
+                        ? "bg-[#F5FFFD] border-l-4 border-l-[#024E44]   max-lg:border-l-0    max-lg:border-b-[#024E44] max-lg:border-b max-lg:border-b-4"
                         : "hover:bg-gray-50"
                     }`}
                   >
                     <div
-                      className={`w-[52px] h-[52px] rounded-full flex items-center justify-center ${
+                      className={`w-[52px] h-[52px] max-lg:w-[24px] max-lg:h-[24px] rounded-full flex items-center justify-center ${
                         selectedRole === role.id
                           ? "bg-[#B5E3C4] text-white"
                           : "bg-[#F7F7F7] text-gray-500"
@@ -154,7 +154,7 @@ export default function page() {
                     </div>
                     <div className="flex-1 text-left  space-y-[4px]">
                       <p
-                        className={`font-medium text-[16px] ${
+                        className={`font-medium text-[16px] max-lg:text-[12px] ${
                           selectedRole === role.id
                             ? "text-[#131313]"
                             : "text-[#131313]"
@@ -162,7 +162,7 @@ export default function page() {
                       >
                         {role.name}
                       </p>
-                      <p className="text-[14px] font-[400] text-[#6C6C6C]">
+                      <p className="text-[14px] max-lg:text-[10px] font-[400] text-[#6C6C6C]">
                         {role.userCount} Users
                       </p>
                     </div>
@@ -171,7 +171,7 @@ export default function page() {
             </div>
           </div>
 
-          <div className="flex-1 min-w-0 overflow-y-auto h-[90vh]">
+          <div className="flex-1 min-w-0 overflow-y-auto h-[90vh]  md:pb-[100px]">
             <PermissionControls roleData={roleDataMap[selectedRole]} />
           </div>
         </div>

@@ -20,7 +20,7 @@ export function AccessAndScope({ initialScopes }: AccessAndScopeProps) {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-[24px]">
+    <div className="grid grid-cols-2 gap-[24px] max-lg:grid-cols-1">
       <div className="space-y-[24px]">
         <p className="font-[600] text-[16px] text-[#131313]">Access Scope</p>
         <p className="font-[400] text-[12px] text-[#6C6C6C]">
