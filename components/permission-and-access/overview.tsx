@@ -28,7 +28,7 @@ export function PermissionOverview({
     <div className="space-y-[24px]">
       <div className="flex flex-col gap-[24px] pb-[24px] border-b border-b-[#C7C7C7]">
         <div className="flex justify-between items-center">
-          <p className="font-[600] text-[16px]  max-lg:text-[14px] text-[#131313]">
+          <p className="font-[600] text-[16px] text-[#131313]">
             Role Overview
           </p>
 
@@ -46,10 +46,10 @@ export function PermissionOverview({
 
           <div className="space-y-[12px]">
             <div>
-              <p className="font-[600] text-[18px] text-[#131313] max-lg:text-[12px]">
+              <p className="font-[600] text-[18px] text-[#131313] max-lg:text-[14px]">
                 {roleName}
               </p>
-              <p className="font-[400] text-[14px] text-[#6C6C6C] max-lg:text-[10px]">
+              <p className="font-[400] text-[14px] text-[#6C6C6C] max-lg:text-[12px]">
                 {description}
               </p>
             </div>
