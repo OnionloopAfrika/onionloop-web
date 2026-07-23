@@ -28,9 +28,7 @@ export function PermissionOverview({
     <div className="space-y-[24px]">
       <div className="flex flex-col gap-[24px] pb-[24px] border-b border-b-[#C7C7C7]">
         <div className="flex justify-between items-center">
-          <p className="font-[600] text-[16px] text-[#131313]">
-            Role Overview
-          </p>
+          <p className="font-[600] text-[16px] text-[#131313]">Role Overview</p>
 
           {showViewStaffButton && (
             <Button variant="outline" size="md">
@@ -39,7 +37,7 @@ export function PermissionOverview({
           )}
         </div>
 
-        <div className="flex items-center gap-[12px]">
+        <div className="flex max-lg:items-start items-center gap-[12px]">
           <div className="w-[80px] h-[80px]  max-lg:w-[40px] max-lg:h-[40px] flex justify-center items-center rounded-full bg-[#B5E3C4] shrink-0">
             <ControlAvatarIcon className="w-[40px] h-[40px] text-[#024E44]" />
           </div>

@@ -1,10 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ControlAvatarIcon, PermissionMenuIcon, StaffIcon } from "@/components/icons/svgs";
+import React, { useState, useEffect } from "react";
+import {
+  ControlAvatarIcon,
+  PermissionMenuIcon,
+  StaffIcon,
+} from "@/components/icons/svgs";
 import { SearchInput } from "@/components/ui/search-input";
 import Button from "@/components/ui/button";
 import SwitchToggle from "@/components/ui/switch-toggle";
+import { Checkbox } from "@/components/ui/checkbox";
 
 type Role = {
   id: string;
@@ -41,15 +46,29 @@ type ApiResponse = {
 const defaultPermissions: PermissionCategory[] = [
   {
     title: "Dashboard",
-    permissions: [{ id: "view_dashboard", label: "view dashboard", enabled: true }],
+    permissions: [
+      { id: "view_dashboard", label: "view dashboard", enabled: true },
+    ],
   },
   {
     title: "Transactions",
     permissions: [
       { id: "view_transactions", label: "view transactions", enabled: true },
-      { id: "export_transactions", label: "Export transactions", enabled: true },
-      { id: "refund_transactions", label: "Refund transactions", enabled: true },
-      { id: "view_wallet_balance", label: "view wallet balance", enabled: true },
+      {
+        id: "export_transactions",
+        label: "Export transactions",
+        enabled: true,
+      },
+      {
+        id: "refund_transactions",
+        label: "Refund transactions",
+        enabled: true,
+      },
+      {
+        id: "view_wallet_balance",
+        label: "view wallet balance",
+        enabled: true,
+      },
     ],
   },
   {
@@ -73,7 +92,11 @@ const defaultPermissions: PermissionCategory[] = [
       { id: "view_staff", label: "view staff", enabled: true },
       { id: "invite_edit_staff", label: "Invite/Edit staff", enabled: true },
       { id: "deactivate_staff", label: "Deactivate Staff", enabled: true },
-      { id: "reset_staff_password", label: "Reset staff password", enabled: true },
+      {
+        id: "reset_staff_password",
+        label: "Reset staff password",
+        enabled: true,
+      },
     ],
   },
   {
@@ -101,8 +124,16 @@ const defaultPermissions: PermissionCategory[] = [
   {
     title: "System Control",
     permissions: [
-      { id: "manage_permission_access", label: "Manage permission & access", enabled: true },
-      { id: "access_system_settings", label: "Access system settings", enabled: true },
+      {
+        id: "manage_permission_access",
+        label: "Manage permission & access",
+        enabled: true,
+      },
+      {
+        id: "access_system_settings",
+        label: "Access system settings",
+        enabled: true,
+      },
       { id: "view_activity_log", label: "view activity log", enabled: true },
     ],
   },
@@ -150,7 +181,6 @@ export default function Page() {
     const fetchRolePermissions = async () => {
       try {
         setIsLoading(true);
-
         setRolesList(mockInitialData.roles);
         setRoleDataMap(mockInitialData.roleDataMap);
       } catch (error) {
@@ -204,7 +234,6 @@ export default function Page() {
       };
 
       console.log("Saving payload to API:", payload);
-
     } catch (error) {
       console.error("Failed to update role permissions:", error);
     } finally {
@@ -215,23 +244,29 @@ export default function Page() {
   if (isLoading) {
     return (
       <div className="p-4 md:p-6 bg-[#F9FAFB] min-h-screen flex items-center justify-center">
-        <p className="text-sm text-gray-500">Loading access control settings...</p>
+        <p className="text-sm text-gray-500">
+          Loading access control settings...
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="p-4 md:p-6 bg-[#F9FAFB] min-h-screen space-y-6">
+    <div className=" bg-[#F9FAFB] min-h-screen space-y-6">
       <div className="space-y-1">
-        <h1 className="font-bold text-xl md:text-2xl text-[#111827]">Permissions & Access Control</h1>
-        <p className="text-xs md:text-sm text-[#4B5563]">Manage what each role can do in the staff app</p>
+        <h1 className="font-semibold text-[24px] max-lg:text-[18px] text-[#131313]">
+          Permissions & Access Control
+        </h1>
+        <p className="font-medium text-[16px] max-lg:text-[12px] text-[#363636]">
+          Manage what each role can do in the staff app
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 items-start">
-        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm space-y-4">
-          <h2 className="font-semibold text-base text-[#111827]">Roles</h2>
+        <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.12)] space-y-4 shrink-0">
+          <h2 className="font-semibold text-base text-[#131313]">Roles</h2>
           <SearchInput
-            placeholder="Search roles..."
+            placeholder="Search roles.."
             value={searchQuery}
             onChange={setSearchQuery}
             categories={[]}
@@ -240,29 +275,43 @@ export default function Page() {
             chats={[]}
           />
 
-          <div className="space-y-2">
+          <div className="space-y-2 max-lg:flex max-lg:overflow-x-scroll">
             {rolesList
-              .filter((role) => role.name.toLowerCase().includes(searchQuery.toLowerCase()))
+              .filter((role) =>
+                role.name.toLowerCase().includes(searchQuery.toLowerCase()),
+              )
               .map((role) => {
                 const isSelected = selectedRole === role.id;
                 return (
                   <button
                     key={role.id}
                     onClick={() => setSelectedRole(role.id)}
-                    className={`w-full max-lg:shrink-0 flex items-center gap-3 p-3 rounded-xl transition-all text-left ${isSelected
-                      ? "bg-[#F5FFFD] border-l-4 border-l-[#024E44] max-lg:border-l-0 max-lg:border-b-2 max-lg:border-b-[#024E44]"
-                      : "hover:bg-gray-50"
-                      }`}
+                    className={`w-full  flex items-center gap-3 p-3 rounded-xl transition-all text-left  ${
+                      isSelected
+                        ? "bg-[#F5FFFD] border-l-4 border-l-[#024E44] max-lg:border-l-0 max-lg:border-b-2 max-lg:border-b-[#024E44]"
+                        : "hover:bg-gray-50"
+                    }`}
                   >
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${isSelected ? "bg-[#A3E6CD] text-[#04907E]" : "bg-gray-100 text-gray-500"
-                        }`}
+                      className={`w-[52px] h-[52px] max-lg:w-[36px] max-lg:h-[36px] rounded-full flex items-center justify-center shrink-0 ${
+                        isSelected
+                          ? "bg-[#B5E3C4] text-[#024E44]"
+                          : "bg-[#F7F7F7] text-[#6C6C6C]"
+                      }`}
                     >
-                      <ControlAvatarIcon className="w-5 h-5" />
+                      <ControlAvatarIcon
+                        className={
+                          isSelected ? "text-[#024E44]" : "text-[#6C6C6C]"
+                        }
+                      />
                     </div>
-                    <div>
-                      <p className="font-semibold text-sm text-[#111827]">{role.name}</p>
-                      <p className="text-xs text-[#6B7280]">{role.userCount} Users</p>
+                    <div className="flex-1 space-y-1 ">
+                      <p className="font-medium text-[16px] max-lg:text-[12px] text-[#131313]">
+                        {role.name}
+                      </p>
+                      <p className="text-[14px] max-lg:text-[10px] font-normal text-[#6C6C6C]">
+                        {role.userCount} Users
+                      </p>
                     </div>
                   </button>
                 );
@@ -271,20 +320,30 @@ export default function Page() {
         </div>
 
         {currentRoleData && (
-          <div className="space-y-6">
-            <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-100 shadow-sm space-y-6">
-              <h2 className="font-semibold text-base text-[#111827]">Role Overview</h2>
+          <div className="space-y-[40px] w-full">
+            <div></div>
+            <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-100 shadow-sm space-y-[24px]">
+              <h2 className="font-[600] text-[16px] text-[#131313]">
+                Role Overview
+              </h2>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#A3E6CD] text-[#04907E] flex items-center justify-center shrink-0">
-                  <ControlAvatarIcon className="w-6 h-6 md:w-7 md:h-7" />
+              <div className="flex   items-start sm:items-center gap-[12px] border-b border-b-[#C7C7C7] pb-[24px]">
+                <div className="w-[40px] h-[40px] md:w-[80px] md:h-[80px] rounded-full bg-[#B5E3C4] text-[#024E44] flex items-center justify-center shrink-0">
+                  <ControlAvatarIcon className="w-6 h-6 md:w-[40px] md:h-[40px] text-[#024E44]" />
                 </div>
-                <div className="space-y-1">
-                  <h3 className="font-semibold text-base md:text-lg text-[#111827]">{currentRoleData.roleName}</h3>
-                  <p className="text-xs md:text-sm text-[#6B7280]">{currentRoleData.description}</p>
-                  <div className="flex flex-wrap items-center gap-2 text-xs text-[#6B7280]">
+                <div className="space-y-[12px]">
+                  <div className="space-y-[2px]">
+                    <p className="font-[600] text-[18px] text-[#131313] max-lg:text-[14px]">
+                      {currentRoleData.roleName}
+                    </p>
+                    <p className="font-[400] text-[14px] text-[#6C6C6C] max-lg:text-[12px]">
+                      {currentRoleData.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-[8px] font-[400] text-[14px] text-[#6C6C6C]  max-lg:text-[10px]">
                     <span className="inline-flex items-center gap-1">
-                      <StaffIcon className="w-4 h-4" />
+                      <StaffIcon className="w-[16px] h-[16px]" />
                       {currentRoleData.userCount} Users assigned
                     </span>
                     <span>•</span>
@@ -293,94 +352,118 @@ export default function Page() {
                 </div>
               </div>
 
-              <hr className="border-gray-100" />
-
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                {currentRoleData.permissionCategories.map((category, catIndex) => (
-                  <div key={category.title} className="bg-white rounded-xl p-4 border border-gray-100 space-y-4">
-                    <div className="flex items-center gap-2 font-semibold text-sm text-[#111827]">
-                      <span className="text-[#04907E] font-bold">
-                        <PermissionMenuIcon className="w-4 h-4" />
-                      </span>
-                      {category.title}
+                {currentRoleData.permissionCategories.map(
+                  (category, catIndex) => (
+                    <div
+                      key={category.title}
+                      className="bg-white rounded-xl min-h-[216px] p-4 border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]  space-y-[24px] "
+                    >
+                      <div className="flex items-center gap-[12px] font-semibold text-[16px] text-[#242424]">
+                        <span className="text-[#04907E] font-bold">
+                          <PermissionMenuIcon className="w-[24px] h-[24px]" />
+                        </span>
+                        {category.title}
+                      </div>
+                      <div className="space-y-[18px]">
+                        {category.permissions.map((permission, permIndex) => (
+                          <div
+                            key={permission.id}
+                            className="flex items-center justify-between "
+                          >
+                            <span className="font-[500] text-[14px] text-[#363636]">
+                              {permission.label}
+                            </span>
+                            <SwitchToggle
+                              size="sm"
+                              checked={permission.enabled}
+                              onCheckedChange={() =>
+                                handleTogglePermission(catIndex, permIndex)
+                              }
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="space-y-3">
-                      {category.permissions.map((permission, permIndex) => (
-                        <div key={permission.id} className="flex items-center justify-between text-xs text-[#374151]">
-                          <span className="pr-2">{permission.label}</span>
-                          <SwitchToggle
-                            size="sm"
-                            checked={permission.enabled}
-                            onCheckedChange={() => handleTogglePermission(catIndex, permIndex)}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
 
-              <div className="bg-white rounded-xl p-4 md:p-6 border border-gray-100 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="font-semibold text-sm text-[#111827]">Access Scope</h4>
-                  <p className="text-xs text-[#6B7280] mt-1">
+              <div className="bg-white rounded-xl p-4 md:p-6  border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]  grid grid-cols-1 md:grid-cols-3 gap-6 ">
+                <div className="space-y-[12px]">
+                  <h4 className="font-[600] text-[16px] text-[#131313]">
+                    Access Scope
+                  </h4>
+                  <p className="font-[400] text-[12px] text-[#6C6C6C]">
                     Define the data and location this role can access
                   </p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-[8px]">
                   <label className="flex items-start gap-2 cursor-pointer">
-                    <input
-                      type="radio"
+                    <Checkbox
+                      className="w-[20px] h-[20px]"
                       name="accessScope"
-                      checked={currentRoleData.accessScope === "all"}
                       onChange={() => handleScopeChange("all")}
-                      className="mt-0.5 accent-[#04907E]"
+                      checked={currentRoleData.accessScope === "all"}
                     />
-                    <div>
-                      <p className="font-medium text-xs text-[#111827]">All locations</p>
-                      <p className="text-[11px] text-[#6B7280]">Can access and manage all locations</p>
+
+                    <div className="space-y-[4px]">
+                      <p className="font-[600] text-[12px] text-[#363636]">
+                        All locations
+                      </p>
+                      <p className="font-[400] text-[12px] text-[#6C6C6C]">
+                        Can access and manage all locations
+                      </p>
                     </div>
                   </label>
 
                   <label className="flex items-start gap-2 cursor-pointer">
-                    <input
-                      type="radio"
+                    <Checkbox
+                      className="w-[20px] h-[20px]"
                       name="accessScope"
-                      checked={currentRoleData.accessScope === "group"}
                       onChange={() => handleScopeChange("group")}
-                      className="mt-0.5 accent-[#04907E]"
+                      checked={currentRoleData.accessScope === "group"}
                     />
-                    <div>
-                      <p className="font-medium text-xs text-[#111827]">Group Only</p>
-                      <p className="text-[11px] text-[#6B7280]">
+
+                    <div className="space-y-[4px]">
+                      <p className="font-[600] text-[12px] text-[#363636]">
+                        Group Only
+                      </p>
+                      <p className="font-[400] text-[12px] text-[#6C6C6C]">
                         Can only access locations with assigned groups
                       </p>
                     </div>
                   </label>
 
                   <label className="flex items-start gap-2 cursor-pointer">
-                    <input
-                      type="radio"
+                    <Checkbox
+                      className="w-[20px] h-[20px]"
                       name="accessScope"
-                      checked={currentRoleData.accessScope === "branch"}
                       onChange={() => handleScopeChange("branch")}
-                      className="mt-0.5 accent-[#04907E]"
+                      checked={currentRoleData.accessScope === "branch"}
                     />
-                    <div>
-                      <p className="font-medium text-xs text-[#111827]">Branch/Location only</p>
-                      <p className="text-[11px] text-[#6B7280]">Can only access their assigned locations</p>
+
+                    <div className="space-y-[4px]">
+                      <p className="font-[600] text-[12px] text-[#363636]">
+                        Branch/Location only
+                      </p>
+                      <p className="font-[400] text-[12px] text-[#6C6C6C]">
+                        Can only access their assigned locations
+                      </p>
                     </div>
                   </label>
                 </div>
 
-                <div className="bg-[#F9FAFB] rounded-xl p-4 border border-gray-100 space-y-2">
-                  <p className="font-semibold text-xs text-[#111827]">Assigned Groups</p>
+                <div className=" rounded-xl p-4   border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]  space-y-2">
+                  <p className="font-semibold text-xs text-[#363636]">
+                    Assigned Groups
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {currentRoleData.assignedGroups.map((group) => (
                       <span
                         key={group}
-                        className="px-2.5 py-1 bg-[#E6F4F1] text-[#04907E] text-xs font-medium rounded-full"
+                        className="px-[16px] py-[4px] bg-[#F5FFFD] text-[#04907E] font-[500] text-[12px] rounded-full flex justify-center items-center"
                       >
                         {group}
                       </span>
@@ -390,17 +473,20 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="w-full max-w-md flex items-center justify-end gap-3">
-              <Button variant="outline" className="px-6 py-2 border-gray-300 text-gray-700 bg-white">
-                Cancel
-              </Button>
-              <Button
-                onClick={handleSaveChanges}
-                disabled={isSaving}
-                className="px-6 py-2 bg-[#024E44] hover:bg-[#013831] text-white"
-              >
-                {isSaving ? "Saving..." : "See changes"}
-              </Button>
+            <div className="flex justify-end items-center py-[30px] ">
+              <div className="grid grid-cols-2 gap-[16px] max-lg:w-full">
+                <Button variant="outline" size="md">
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleSaveChanges}
+                  disabled={isSaving}
+                  variant="primary"
+                  size="md"
+                >
+                  {isSaving ? "Saving..." : "Save changes"}
+                </Button>
+              </div>
             </div>
           </div>
         )}
