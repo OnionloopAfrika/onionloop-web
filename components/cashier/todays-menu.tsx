@@ -74,7 +74,7 @@ export function TodaysMenu() {
         subtitle="Explore our selections"
       />
 
-      <div className="flex pr-[24px] max-lg:flex-col max-lg:pb-[24px] max-lg:pr-[0px] justify-between items-center  rounded-[16px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] bg-white">
+      <div className="w-full flex md:pr-[24px] max-lg:flex-col max-lg:pb-[24px] max-lg:pr-[0px] justify-between items-center  rounded-[8px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] bg-white">
         <SearchBar
           searchPlaceholder="Search  Products or Categories"
           searchValue={searchQuery}
@@ -108,7 +108,7 @@ export function TodaysMenu() {
           products={menuItems}
         />
 
-        <div className="max-lg:w-full max-lg:px-[24px]">
+        <div className="w-50 flex justify-end max-lg:px-[24px]">
           <Button className="max-lg:w-full" variant="scan" size="scan">
             <ScanQrIcon /> Scan Item
           </Button>

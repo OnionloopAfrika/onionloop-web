@@ -51,9 +51,9 @@ export default function SearchBar({
   onCategoryClick,
 }: SearchBarProps) {
   return (
-    <div className="p-[24px] flex flex-col md:flex-row justify-between items-start md:items-center gap-[9px] border-b border-gray-100">
-      <div className="flex flex-col md:flex-row md:items-center justify-between items-start gap-[16px]  ">
-        <div className="w-full md:w-[400px]">
+    <div className="p-[24px] flex flex-col md:flex-row justify-between items-start md:items-center gap-[9px] border-b border-gray-100 w-full">
+      <div className="w-full flex flex-col md:flex-row md:items-center justify-between items-start gap-[16px]  ">
+        <div className="w-full">
           <SearchInput
             placeholder={searchPlaceholder}
             value={searchValue}
@@ -66,7 +66,7 @@ export default function SearchBar({
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-[12px]">
+        <div className="grid grid-cols-2 gap-[12px] w-full">
           <Select
             options={statusOptions}
             value={statusValue}
