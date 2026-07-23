@@ -1,8 +1,6 @@
+// branch-manager/profile/permission-and-access-control/page.tsx
 import React from "react";
 import ProfileLayout from "../Shell";
-import { DefaultPermission } from "@/components/staff-app/default-permission";
-import { MobileAppSettings } from "@/components/staff-app/mobile-app-settings";
-import { MobileSettings } from "@/components/staff-app/mobile-settings";
 import { PermissionOverview } from "@/components/permission-and-access/overview";
 import { AccessAndScope } from "@/components/permission-and-access/access-and-scope";
 import Button from "@/components/ui/button";
