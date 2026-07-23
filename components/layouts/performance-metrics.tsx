@@ -79,7 +79,7 @@ export default function PerformanceMetricDashboard({
             {metrics.map((metric) => (
                 <div
                     key={metric.id}
-                    className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-start justify-between min-h-[160px] w-full transition-all hover:shadow-md"
+                    className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm flex flex-col items-start justify-between min-h-[160px] w-full transition-all hover:shadow-md"
                 >
                     <div
                         className={`w-10 h-10 rounded-xl flex items-center justify-center ${metric.iconBg}`}

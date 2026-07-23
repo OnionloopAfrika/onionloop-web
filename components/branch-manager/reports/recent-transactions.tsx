@@ -228,7 +228,7 @@ export default function RecentTransactions() {
           </div>
         </div>
 
-        <span className="text-[13px] text-gray-500 font-medium whitespace-nowrap">
+        <span className="text-[14px] text-gray-500 font-medium whitespace-nowrap">
           Showing {filteredTransactions.length} transactions
         </span>
       </div>
@@ -237,25 +237,25 @@ export default function RecentTransactions() {
         <table className="w-full text-left border-collapse table-auto">
           <thead>
             <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+              <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                 TXN ID
               </th>
-              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+              <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                 Customer Name
               </th>
-              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+              <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                 Amount
               </th>
-              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+              <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                 Processed by
               </th>
-              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+              <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                 Trans. Type
               </th>
-              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+              <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                 Status
               </th>
-              <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+              <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                 Date
               </th>
             </tr>

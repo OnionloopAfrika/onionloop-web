@@ -174,9 +174,9 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px] h-[113px]">
-          <div className="flex items-center gap-4">
-            <div className="w-[400px]">
+        <div className="flex flex-col sm:flex-row sm:items-center items-start space-y-2 justify-between bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px]">
+          <div className="flex flex-col sm:flex-row sm:items-center items-start gap-4 w-full">
+            <div className="w-full sm:w-[400px]">
               <SearchInput
                 placeholder="Search by ref or amount..."
                 className="rounded-[12px]"
@@ -202,7 +202,7 @@ export default function Page() {
               </svg>
             </div>
           </div>
-          <div className="font-[500] text-[16px] text-[#6C6C6C]">
+          <div className="font-[500] text-[14px] text-[#6C6C6C] w-full text-start sm:text-end">
             Showing 10 transactions
           </div>
         </div>
@@ -212,22 +212,22 @@ export default function Page() {
             <table className="w-full text-left border-collapse table-auto">
               <thead>
                 <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Order ID
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Customer Name
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Product Count
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Total Amount
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Time
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">

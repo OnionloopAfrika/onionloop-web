@@ -88,17 +88,17 @@ export function SalesPerformance({
             <table className="w-full text-left border-collapse table-auto">
               <thead>
                 <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap w-[64px]"></th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap w-[64px]"></th>
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Staff Name
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Sales
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Order
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
                 </tr>
               </thead>
 

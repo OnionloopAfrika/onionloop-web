@@ -7,6 +7,7 @@ export function PersonalInfo() {
     <div className="flex flex-col gap-[40px] p-[24px] rounded-[12px] bg-white  shadow-[0_0_15px_rgba(0,0,0,0.15)]">
       <ProfileHeader
         title="Personal Information "
+        className="flex-col md:flex-row gap-4 justify-between items-start border-b-0 pb-[0px]"
         subtitle="Update your name and contact details "
         btn={
           <div className="flex gap-[5px] justify-end">

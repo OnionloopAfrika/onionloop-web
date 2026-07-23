@@ -126,19 +126,19 @@ export default function DashboardActivityGrid() {
                                     />
                                     <div>
                                         <h3 className="text-[14px] font-bold text-[#131313] md:text-[15px]">{staff.name}</h3>
-                                        <p className="text-[13px] font-normal text-gray-400">{staff.role}</p>
+                                        <p className="text-[14px] font-normal text-gray-400">{staff.role}</p>
                                     </div>
                                 </div>
 
                                 <div className="text-right">
                                     {staff.status === "Online" ? (
-                                        <p className="flex items-center justify-end gap-1.5 text-[13px] font-semibold text-light">
+                                        <p className="flex items-center justify-end gap-1.5 text-[14px] font-semibold text-light">
                                             <span className="h-1.5 w-1.5 rounded-full bg-light" />
                                             {showTimeText ? <span className="text-gray-400 font-normal">Online • </span> : "Online"}
                                             {showTimeText && relativeTime}
                                         </p>
                                     ) : (
-                                        <p className="flex items-center justify-end gap-1.5 text-[13px] font-semibold text-danger">
+                                        <p className="flex items-center justify-end gap-1.5 text-[14px] font-semibold text-danger">
                                             Offline • {relativeTime}
                                         </p>
                                     )}

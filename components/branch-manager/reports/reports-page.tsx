@@ -17,7 +17,7 @@ export function ReportsPage() {
     <div className="space-y-[24px]">
       {" "}
       <ProfileHeader
-        className="space-y-8px border-b-0 pb-[0px]"
+        className="flex-col md:flex-row gap-4 justify-between items-start mb-6 border-b-0 pb-[0px]"
         title="Reports"
         subtitle="Generate and download your assigned branch reports"
         btn={
@@ -70,7 +70,7 @@ export function ReportsPage() {
         </span>
       </div>
       <ReportStat />
-      <div className="grid grid-cols-2 gap-[24px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
         <RevenueOverview />
         <TransactionVolume />
         <TopSellingProducts />
