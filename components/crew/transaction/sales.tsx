@@ -62,7 +62,7 @@ export default function CrewSales() {
 
       <div className="flex-col md:flex-row flex items-start gap-3 justify-between bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px] ">
         <div className="sm:w-[50%] w-full grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-[9px]">
-          <div className="w-60 sm:w-full">
+          <div className="w-full">
             <SearchInput
               placeholder="Search by ref or amount..."
               className="rounded-[12px]"
@@ -98,19 +98,19 @@ export default function CrewSales() {
           <table className="w-full text-left border-collapse table-auto">
             <thead>
               <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Order ID
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Customer
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Staff
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Sales
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Time
                 </th>
               </tr>
@@ -154,7 +154,7 @@ export default function CrewSales() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between p-4 border-t border-gray-100">
-          <div className="text-[13px] text-gray-500">
+          <div className="text-[14px] text-gray-500">
             Showing 1 to 10 of 70 order sales
           </div>
           <div className="flex items-center gap-2">

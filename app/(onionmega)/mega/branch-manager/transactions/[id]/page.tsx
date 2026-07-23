@@ -179,9 +179,9 @@ export default function page() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px] h-[113px]">
-          <div className="flex items-center gap-4">
-            <div className="w-[400px]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-2 bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px]">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="w-full">
               <SearchInput
                 placeholder="Search by ref or amount..."
                 className="rounded-[12px]"
@@ -217,23 +217,23 @@ export default function page() {
             <table className="w-full text-left border-collapse table-auto">
               <thead>
                 <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Order ID
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Customer Name
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Product Count
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Total Amount
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Time
                   </th>
 
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
                 </tr>
               </thead>
 

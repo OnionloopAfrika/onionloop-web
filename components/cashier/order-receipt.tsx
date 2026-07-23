@@ -5,14 +5,30 @@ import {
   Separator,
   SingleSeparator,
   VerifyIcon,
+  ChevronLeftIcon,
 } from "../icons/svgs";
 import { SummaryHeader } from "./confirm-order";
 import { Items, OrderInfo } from "./order-details";
 import Button from "../ui/button";
 
-export function OrderReceipt() {
+export function OrderReceipt({
+  showBackButton = false,
+  onBack,
+}: {
+  showBackButton?: boolean;
+  onBack?: () => void;
+}) {
   return (
     <div className="space-y-[16px]">
+      {showBackButton && (
+        <button
+          onClick={onBack}
+          className="flex items-center gap-2 text-[#131313] font-medium md:hidden"
+        >
+          <ChevronLeftIcon />
+          Back
+        </button>
+      )}
       <SummaryHeader title="Order Receipt" />
 
       <div className="space-y-[48px]">
@@ -97,10 +113,10 @@ export function OrderReceipt() {
           <DragBtn className="mx-auto" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px]">
-            <Button variant="cashierOutline" size="cashierOutline">
+            <Button variant="cashier_Outline" size="cashier_Outline">
               Print Receipt
             </Button>
-            <Button variant="cashierSolid" size="cashierOutline">
+            <Button variant="cashierSolid" size="cashier_Outline">
               Save
             </Button>
           </div>

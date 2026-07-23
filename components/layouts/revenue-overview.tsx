@@ -48,7 +48,7 @@ export default function RevenueOverview({ initialData }: RevenueOverviewProps) {
           </h2>
           <p
             className={[
-              "mt-0.5 text-[13px] text-gray-500 transition-opacity duration-200",
+              "mt-0.5 text-[14px] text-gray-500 transition-opacity duration-200",
               isPending ? "opacity-40" : "opacity-100",
             ].join(" ")}
           >
@@ -64,7 +64,7 @@ export default function RevenueOverview({ initialData }: RevenueOverviewProps) {
               onClick={() => p !== period && setPeriod(p)}
               disabled={isPending}
               className={[
-                "rounded-full px-3 py-1 text-[13px] font-medium transition-all duration-200",
+                "rounded-full px-3 py-1 text-[14px] font-medium transition-all duration-200",
                 p === period
                   ? "bg-[#d6f0e6] text-[#1a6b4a] shadow-sm"
                   : "text-gray-500 hover:text-gray-700 disabled:cursor-wait",

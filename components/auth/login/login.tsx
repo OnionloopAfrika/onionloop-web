@@ -82,7 +82,7 @@ export default function Login() {
                         <div className="flex justify-end">
                             <button
                                 type="button"
-                                className="text-[#024E44] text-[13px] font-bold hover:underline"
+                                className="text-[#024E44] text-[14px] font-bold hover:underline"
                             >
                                 Forgot Password?
                             </button>
@@ -93,7 +93,7 @@ export default function Login() {
                         <Button
                             variant="primary"
                             className="w-full !bg-[#044E49] !py-4 !text-[16px] font-bold rounded-lg"
-                            onClick={() => router.push(`/${subdomain}`) }
+                            onClick={() => router.push(`/${subdomain}`)}
                         >
                             Sign in
                         </Button>

@@ -258,7 +258,7 @@ export default function LeaveRequestPage() {
                 </div>
 
                 <div className="p-4 border-t border-[#F0F0F0] flex justify-end md:hidden">
-                    <span className="text-[13px] text-[#6C6C6C] font-semibold">
+                    <span className="text-[14px] text-[#6C6C6C] font-semibold">
                         Showing {filteredRequests.length.toString().padStart(2, '0')} products
                     </span>
                 </div>

@@ -36,9 +36,8 @@ export function Faq() {
                 </p>
 
                 <svg
-                  className={`transition-transform duration-300 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
+                  className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""
+                    }`}
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
@@ -55,7 +54,7 @@ export function Faq() {
               </button>
 
               {isOpen && (
-                <p className="mt-3 text-[13px] text-[#6C6C6C]">
+                <p className="mt-3 text-[14px] text-[#6C6C6C]">
                   {item.answer}
                 </p>
               )}

@@ -57,7 +57,7 @@ export function Modal({
               <h2 className="text-[20px] font-bold text-center ">{title}</h2>
             )}
             {description && (
-              <p className="text-[13px] text-[#6C6C6C] text-center">
+              <p className="text-[14px] text-[#6C6C6C] text-center">
                 {description}
               </p>
             )}

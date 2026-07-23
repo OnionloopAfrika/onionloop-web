@@ -12,7 +12,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "signout"
     | "scan"
     | "cashierOutline"
-    | "cashierSolid";
+    | "cashierSolid"
+    | "cashier_Outline";
   size?:
     | "sm"
     | "md"
@@ -21,7 +22,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "msg"
     | "newOrder"
     | "scan"
-    | "cashierOutline";
+    | "cashierOutline"
+    | "cashier_Outline";
   isLoading?: boolean;
   icon?: React.ReactNode;
   children: React.ReactNode;
@@ -57,6 +59,8 @@ const Button: React.FC<ButtonProps> = ({
     scan: "bg-[#04802E] rounded-[8px] font-[500] text-[18px] text-white flex items-center gap-[10px]",
     cashierOutline:
       "inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-medium text-gray-700",
+    cashier_Outline:
+      "inline-flex items-center justify-center gap-1 border border-[2px] border-[#024E44] rounded-[6px] font-[600] text-[14px] bg-white",
     cashierSolid:
       "bg-primary-color rounded-[6px] font-[600] text-[14px] text-white",
   };
@@ -70,6 +74,7 @@ const Button: React.FC<ButtonProps> = ({
     newOrder: "px-6 py-3.5 text-[14px] md:min-w-[428px]",
     scan: "px-[10px] h-[52px] w-fit",
     cashierOutline: "px-2 py-2 w-fit",
+    cashier_Outline: "px-[24px] py-[16px] ",
   };
 
   return (

@@ -6,6 +6,7 @@ import {
   DeleteFromCart,
   DragBtn,
   RemoveFromCart,
+  ChevronLeftIcon,
 } from "../icons/svgs";
 import Image from "next/image";
 import { OrderSummary, TotalAmount } from "../order-summary";
@@ -30,7 +31,13 @@ const parsePrice = (price: string): number => {
   return Number(price.replace(/₦|,/g, ""));
 };
 
-export function ConfirmOrder() {
+export function ConfirmOrder({
+  showBackButton = false,
+  onBack,
+}: {
+  showBackButton?: boolean;
+  onBack?: () => void;
+}) {
   const { cart, setCart } = useCart();
   const [showOrderDetails, setShowOrderDetails] = useState(false);
 
@@ -74,11 +81,22 @@ export function ConfirmOrder() {
   };
 
   if (showOrderDetails) {
-    return <OrderDetails />;
+    return (
+      <OrderDetails showBackButton onBack={() => setShowOrderDetails(false)} />
+    );
   }
 
   return (
     <div className="space-y-[40px]">
+      {showBackButton && (
+        <button
+          onClick={onBack}
+          className="flex items-center gap-2 text-[#131313] font-medium"
+        >
+          <ChevronLeftIcon />
+          Back
+        </button>
+      )}
       <SummaryHeader title="Confirm Order" />
 
       <div className="bg-white rounded-[8px] p-[24px] shadow-[0_0_15px_rgba(0,0,0,0.15)]">
@@ -98,7 +116,7 @@ export function ConfirmOrder() {
           {cart.map((cartItem) => (
             <div
               key={cartItem.id}
-              className="pb-[4px] border-b border-b-[#C7C7C7] flex justify-between items-center"
+              className="pb-[4px] border-b border-b-[#C7C7C7] flex justify-between items-center last:border-b-0"
             >
               <div className="flex items-center gap-[8px]">
                 <div className="w-[48px] h-[80px] relative">
@@ -110,9 +128,15 @@ export function ConfirmOrder() {
                   />
                 </div>
                 <div className="space-y-[2px]">
-                  <p className="font-[500] text-[16px] text-[#363636] flex items-center gap-[2px]">
+                  <p className="font-[500] text-[16px]  text-[#363636] flex items-center gap-[2px]">
                     {cartItem.name} |{" "}
-                    <span className="text-[#6C6C6C]">35cl</span>
+                    <span className="text-[#6C6C6C] max-lg:text-[10px]">
+                      35cl
+                    </span>
+                  </p>
+
+                  <p className="font-[500] text-[16px] max-lg:text-[10px]  text-[#131313]">
+                    {cartItem.price}
                   </p>
                 </div>
               </div>
@@ -150,13 +174,13 @@ export function ConfirmOrder() {
       <div className="p-[16px] space-y-[24px] bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)]">
         <DragBtn className="mx-auto" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px]">
-          <Button variant="cashierOutline" size="cashierOutline">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] ">
+          <Button variant="cashier_Outline" size="cashier_Outline">
             Other Banks
           </Button>
           <Button
             variant="cashierSolid"
-            size="cashierOutline"
+            size="cashier_Outline"
             onClick={handleGenerateQrCode}
           >
             Generate QR Code
@@ -174,7 +198,9 @@ type HeaderType = {
 
 export const SummaryHeader = ({ title, className = " " }: HeaderType) => {
   return (
-    <p className={`font-[600] text-[20px] text-[#363636]  ${className}`}>
+    <p
+      className={`font-[600] text-[20px] text-[#363636] max-lg:text-[16px] ${className}`}
+    >
       {title}
     </p>
   );
