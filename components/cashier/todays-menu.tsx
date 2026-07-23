@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { ProfileHeader } from "../profile-header";
 import { Toggle } from "../toggle";
 import SearchBar from "../ui/search-bar";
@@ -14,8 +16,55 @@ import {
 } from "../ui/tabs";
 import AllMenus, { menuItems } from "./all-menus";
 
+interface MenuItem {
+  id: string;
+  name: string;
+  price: string;
+  stock: string;
+  image: string;
+  isAdded: boolean;
+  category: string;
+}
+
 export function TodaysMenu() {
   const categories = ["Drinks", "Snacks", "Groceries"];
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [dateFilter, setDateFilter] = useState("Food");
+  const [activeTab, setActiveTab] = useState("all");
+
+  const filteredItems = menuItems.filter((item) => {
+    const matchesSearch = item.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    const stockLower = item.stock.toLowerCase();
+    let matchesStatus = true;
+    if (statusFilter !== "all") {
+      if (statusFilter === "In stock") {
+        matchesStatus =
+          stockLower.includes("in stock") && !stockLower.includes("low");
+      } else if (statusFilter === "Low stock") {
+        matchesStatus = stockLower.includes("low");
+      } else if (statusFilter === "Out of stock") {
+        matchesStatus = stockLower.includes("out of stock");
+      }
+    }
+
+    let matchesDate = true;
+    if (dateFilter !== "Food") {
+      matchesDate = item.category.toLowerCase() === dateFilter.toLowerCase();
+    }
+
+    let matchesTab = true;
+    if (activeTab !== "all") {
+      matchesTab =
+        item.category.toLowerCase() === activeTab.toLowerCase() ||
+        item.name.toLowerCase().includes(activeTab.toLowerCase());
+    }
+
+    return matchesSearch && matchesStatus && matchesDate && matchesTab;
+  });
 
   return (
     <div className="space-y-[34px]">
@@ -25,11 +74,17 @@ export function TodaysMenu() {
         subtitle="Explore our selections"
       />
 
-      <div className=" pr-[24px] grid grid-cols-[2fr_1fr] items-center   rounded-[16px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] bg-white">
+      <div className="flex pr-[24px] max-lg:flex-col max-lg:pb-[24px] max-lg:pr-[0px] justify-between items-center  rounded-[16px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] bg-white">
         <SearchBar
           searchPlaceholder="Search  Products or Categories"
+          searchValue={searchQuery}
+          onSearchChange={setSearchQuery}
           statusPlaceholder="Sort by:"
+          statusValue={statusFilter}
+          onStatusChange={setStatusFilter}
           datePlaceholder="Filter by:"
+          dateValue={dateFilter}
+          onDateChange={setDateFilter}
           statusOptions={[
             { value: "all", label: "All Status" },
             { value: "In stock", label: "In stock" },
@@ -53,12 +108,19 @@ export function TodaysMenu() {
           products={menuItems}
         />
 
-        <Button className="ml-auto" variant="scan" size="scan">
-          <ScanQrIcon /> Scan Item
-        </Button>
+        <div className="max-lg:w-full max-lg:px-[24px]">
+          <Button className="max-lg:w-full" variant="scan" size="scan">
+            <ScanQrIcon /> Scan Item
+          </Button>
+        </div>
       </div>
 
-      <Tabs defaultValue="all" className="space-y-[32px]">
+      <Tabs
+        defaultValue="all"
+        className="space-y-[32px]"
+        value={activeTab}
+        onValueChange={setActiveTab}
+      >
         <TodaysMenuTabList>
           <TodaysTrigger value="all">All</TodaysTrigger>
           <TodaysTrigger value="drinks">Drinks</TodaysTrigger>
@@ -71,28 +133,28 @@ export function TodaysMenu() {
         </TodaysMenuTabList>
 
         <TabsContent value="all">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
         <TabsContent value="drinks">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
         <TabsContent value="fruits">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
         <TabsContent value="snacks">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
         <TabsContent value="burger">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
         <TabsContent value="french-fries">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
         <TabsContent value="salad">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
         <TabsContent value="others">
-          <AllMenus />
+          <AllMenus items={filteredItems} />
         </TabsContent>
       </Tabs>
     </div>

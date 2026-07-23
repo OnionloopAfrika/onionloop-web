@@ -13,6 +13,7 @@ interface MenuItem {
   stock: string;
   image: string;
   isAdded: boolean;
+  category: string;
 }
 
 export const menuItems: MenuItem[] = [
@@ -23,6 +24,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/coke.svg",
     isAdded: true,
+    category: "Drinks",
   },
   {
     id: "2",
@@ -31,6 +33,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/ice-cream.svg",
     isAdded: false,
+    category: "Drinks",
   },
   {
     id: "3",
@@ -39,6 +42,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/pepsi.svg",
     isAdded: false,
+    category: "Drinks",
   },
   {
     id: "4",
@@ -47,6 +51,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/monster.svg",
     isAdded: false,
+    category: "Drinks",
   },
   {
     id: "5",
@@ -55,6 +60,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/ice-cream.svg",
     isAdded: false,
+    category: "Snacks",
   },
   {
     id: "6",
@@ -63,6 +69,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/fanta.svg",
     isAdded: true,
+    category: "Drinks",
   },
   {
     id: "7",
@@ -71,6 +78,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/coke.svg",
     isAdded: true,
+    category: "Drinks",
   },
   {
     id: "8",
@@ -79,6 +87,7 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/ice-cream.svg",
     isAdded: false,
+    category: "Drinks",
   },
   {
     id: "9",
@@ -87,10 +96,15 @@ export const menuItems: MenuItem[] = [
     stock: "60 in stock",
     image: "/images/pepsi.svg",
     isAdded: false,
+    category: "Drinks",
   },
 ];
 
-export default function AllMenus() {
+interface AllMenusProps {
+  items?: MenuItem[];
+}
+
+export default function AllMenus({ items = menuItems }: AllMenusProps) {
   const { cart, setCart } = useCart();
   const router = useRouter();
 
@@ -108,11 +122,11 @@ export default function AllMenus() {
   };
 
   return (
-    <div className="w-full grid grid-cols-5 gap-[16.77px]">
-      {menuItems.map((item) => (
+    <div className="w-full grid grid-cols-4 gap-[16.77px] max-lg:grid-cols-2 max-lg:gap-[10px]">
+      {items.map((item) => (
         <div
           key={item.id}
-          className="gap-[6.67px] flex flex-col justify-between p-[10px] rounded-[5px] bg-[white]"
+          className="gap-[6.67px] flex flex-col justify-between p-[10px] rounded-[5px] bg-[white] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
         >
           <div
             onClick={() =>
@@ -130,7 +144,7 @@ export default function AllMenus() {
 
           <div className="flex justify-between items-center">
             <div className="space-y-[4px]">
-              <p className="font-[600] text-[20px] text-[#131313]">
+              <p className="font-[600] text-[20px] text-[#131313] max-lg:text-[16px]">
                 {item.name}
               </p>
               <p className="font-[500] text-[15px] text-[#6C6C6C]">

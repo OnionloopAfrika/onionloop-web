@@ -17,12 +17,32 @@ interface TabsContextValue {
 const TabsContext = createContext<TabsContextValue | undefined>(undefined);
 
 interface TabsProps extends HTMLAttributes<HTMLDivElement> {
-  defaultValue: string;
+  defaultValue?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
   children?: ReactNode;
 }
 
-function Tabs({ defaultValue, children, className, ...props }: TabsProps) {
-  const [activeTab, setActiveTab] = useState(defaultValue);
+function Tabs({
+  defaultValue,
+  value,
+  onValueChange,
+  children,
+  className,
+  ...props
+}: TabsProps) {
+  const [internalActiveTab, internalSetActiveTab] = useState(
+    defaultValue || "",
+  );
+  const activeTab = value !== undefined ? value : internalActiveTab;
+
+  const setActiveTab = (newValue: string) => {
+    if (onValueChange) {
+      onValueChange(newValue);
+    } else {
+      internalSetActiveTab(newValue);
+    }
+  };
 
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
@@ -102,7 +122,7 @@ function TodaysTrigger({
   return (
     <button
       onClick={() => context.setActiveTab(value)}
-      className={`h-[52px] py-[5px] px-[12px] transition-all whitespace-nowrap font-[500] text-[18px] rounded-[3px] shadow-[0_0_15px_rgba(0,0,0,0.15)] cursor-pointer ${
+      className={`h-[52px] py-[5px] px-[12px] transition-all whitespace-nowrap font-[500] text-[18px] rounded-[3px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer ${
         isActive ? "bg-[#024E44] text-white" : "text-[#8A8A8A] bg-white"
       } ${className}`}
       {...props}
@@ -126,7 +146,7 @@ function PaymentTrigger({
   return (
     <button
       onClick={() => context.setActiveTab(value)}
-      className={`h-full  p-[12px] transition-all whitespace-nowrap font-[500] text-[14px]   cursor-pointer ${
+      className={`h-full  p-[12px] transition-all whitespace-nowrap font-[500] text-[14px] max-lg:text-[12px]   cursor-pointer ${
         isActive
           ? "bg-[#F7F7F7] text-primary-color rounded-full"
           : "text-[#6C6C6C] bg-white"
