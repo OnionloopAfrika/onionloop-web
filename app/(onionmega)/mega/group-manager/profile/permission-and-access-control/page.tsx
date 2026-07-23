@@ -390,7 +390,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="w-[300px] flex items-center justify-end gap-3">
+            <div className="w-full max-w-md flex items-center justify-end gap-3">
               <Button variant="outline" className="px-6 py-2 border-gray-300 text-gray-700 bg-white">
                 Cancel
               </Button>
