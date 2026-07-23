@@ -42,8 +42,12 @@ type AccountDetails = {
 const AccountDetails = ({ title, value, className = "" }: AccountDetails) => {
   return (
     <div className="flex justify-between items-center">
-      <p className="font-[400] text-[16px] text-[#6C6C6C]">{title}</p>
-      <p className={`font-[500] text-[16px] text-[#363636]`}>{value}</p>
+      <p className="font-[400] text-[16px] text-[#6C6C6C] max-lg:text-[10px]">
+        {title}
+      </p>
+      <p className={`font-[500] text-[16px] text-[#363636] max-lg:text-[12px]`}>
+        {value}
+      </p>
     </div>
   );
 };

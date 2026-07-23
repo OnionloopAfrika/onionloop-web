@@ -8,6 +8,7 @@ import {
   Separator,
   SingleSeparator,
   DragBtn,
+  ChevronLeftIcon,
 } from "../icons/svgs";
 import Button from "../ui/button";
 import { SummaryHeader } from "./confirm-order";
@@ -23,15 +24,35 @@ import { AccountNumber } from "./account-number";
 import { Qrcode } from "./qr-code";
 import { PaymentReceived } from "./payment-received";
 
-export default function OrderDetails() {
+export default function OrderDetails({
+  showBackButton = false,
+  onBack,
+}: {
+  showBackButton?: boolean;
+  onBack?: () => void;
+}) {
   const [paymentReceived, setPaymentReceived] = useState(false);
 
   if (paymentReceived) {
-    return <PaymentReceived />;
+    return (
+      <PaymentReceived
+        showBackButton
+        onBack={() => setPaymentReceived(false)}
+      />
+    );
   }
 
   return (
     <div className="space-y-[24px]">
+      {showBackButton && (
+        <button
+          onClick={onBack}
+          className="flex items-center gap-2 text-[#131313] font-medium md:hidden"
+        >
+          <ChevronLeftIcon />
+          Back
+        </button>
+      )}
       <SummaryHeader title="Order Details" />
 
       <div className="bg-white rounded-[8px] p-[24px] shadow-[0_0_15px_rgba(0,0,0,0.15)] space-y-[16px]">
@@ -104,13 +125,13 @@ export default function OrderDetails() {
           <DragBtn className="mx-auto" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px]">
-            <Button variant="cashierOutline" size="cashierOutline">
+            <Button variant="cashier_Outline" size="cashier_Outline">
               Cancel Order
             </Button>
             <Button
               onClick={() => setPaymentReceived(true)}
               variant="cashierSolid"
-              size="cashierOutline"
+              size="cashier_Outline"
             >
               Payment Received
             </Button>
@@ -136,8 +157,12 @@ type OrderDetails = {
 export const OrderInfo = ({ title, value, className = "" }: OrderDetails) => {
   return (
     <div className="flex justify-between items-center">
-      <p className="font-[400] text-[16px] text-[#6C6C6C]">{title}</p>
-      <p className={`font-[500] text-[16px] text-[#363636] ${className}  `}>
+      <p className="font-[400] text-[16px] text-[#6C6C6C] max-lg:text-[10px]">
+        {title}
+      </p>
+      <p
+        className={`font-[500] text-[16px] text-[#363636] max-lg:text-[12px] ${className}  `}
+      >
         {value}
       </p>
     </div>
@@ -147,12 +172,16 @@ export const OrderInfo = ({ title, value, className = "" }: OrderDetails) => {
 export const Items = ({ item, nos, amount }: ItemsProps) => {
   return (
     <div className="grid grid-cols-3 w-full ">
-      <p className="font-[400] text-[16px] text-[#6C6C6C]">{item}</p>
+      <p className="font-[400] text-[16px] text-[#6C6C6C] max-lg:text-[10px]">
+        {item}
+      </p>
 
-      <p className="font-[400] text-[16px] text-[#6C6C6C] text-center">
+      <p className="font-[400] text-[16px] text-[#6C6C6C] max-lg:text-[10px] text-center">
         {nos && <span> x{nos}</span>}
       </p>
-      <p className="font-[500] text-[16px] text-[#363636] text-end">{amount}</p>
+      <p className="font-[500] text-[16px] text-[#363636] text-end max-lg:text-[12px]">
+        {amount}
+      </p>
     </div>
   );
 };

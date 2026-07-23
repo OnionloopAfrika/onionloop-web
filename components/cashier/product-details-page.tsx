@@ -14,19 +14,21 @@ export default function ProductDetailsPage({
   params: { id: string };
 }) {
   return (
-    <div className="space-y-[24px]">
+    <div className="space-y-[24px] max-lg:px-[10px]">
       <ProfileHeader
         className="border-b-0"
         title="Product Details"
         subtitle="Scan a product barcode to add to cart"
       />
 
-      <div className="flex pr-[24px] justify-between items-center  rounded-[16px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] bg-white">
+      <div className="flex pr-[24px] max-lg:flex-col max-lg:pb-[24px] max-lg:pr-0 justify-between items-center  rounded-[16px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] bg-white">
         <SearchBar />
 
-        <Button variant="scan" size="scan">
-          <ScanQrIcon /> Scan Item
-        </Button>
+        <div className="max-lg:w-full max-lg:px-[24px]">
+          <Button className="max-lg:w-full" variant="scan" size="scan">
+            <ScanQrIcon /> Scan Item
+          </Button>
+        </div>
       </div>
 
       <ScanConnected />
@@ -40,7 +42,7 @@ export default function ProductDetailsPage({
         />
       </div>
 
-      <div className=" rounded-[16px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] p-[20px] flex justify-between items-center">
+      <div className=" rounded-[16px] shadow-[0px_0px_12px_0px_rgba(0,0,0,0.08)] p-[20px] flex justify-between items-center max-lg:flex-col max-lg:gap-[20px]">
         <div className="flex items-center gap-[8px]">
           <TipsIcon />
           <div className="space-y-[2px]">
@@ -51,20 +53,20 @@ export default function ProductDetailsPage({
           </div>
         </div>
 
-        <Button variant="outline" size="lg">
+        <Button className="max-lg:w-full" variant="outline" size="lg">
           <LightIcon /> Turn on flashlight
         </Button>
       </div>
 
       <div className="space-y-[16px]">
         <div className="flex justify-between items-center">
-          <p className="font-[600] text-[20px] text-[#131313]">
+          <p className="font-[600] text-[20px] text-[#131313] max-lg:text-[14px]">
             Recent scanned items
           </p>
           <p className="font-[600] text-[16px] text-[#04907E]">Clear All</p>
         </div>
 
-        <div className="grid grid-cols-3 gap-[16px]">
+        <div className="grid grid-cols-3 gap-[16px] max-lg:grid-cols-1">
           {menuItems.slice(0, 3).map((item) => (
             <div
               key={item.id}
