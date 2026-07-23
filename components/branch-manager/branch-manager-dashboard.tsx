@@ -51,7 +51,7 @@ export function BranchManagerDashboard() {
 
   if (!initialData) {
     return (
-      <div className="space-y-[24px]">
+      <div className="">
         <ProfileHeader
           className="space-y-8px border-b-0 pb-[0px]"
           title="Lekki Branch Overview"
@@ -68,7 +68,7 @@ export function BranchManagerDashboard() {
   return (
     <div className="space-y-[24px]">
       <ProfileHeader
-        className="space-y-8px border-b-0 pb-[0px]"
+        className="flex-col md:flex-row gap-4 justify-between items-start mb-6 border-b-0 pb-[0px]"
         title="Lekki Branch Overview"
         subtitle="Here's what's happening with your business today  · Last updated 3 min ago"
         btn={

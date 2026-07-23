@@ -85,9 +85,9 @@ export function ProductTable({
   return (
     <>
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-[#F9FAFB]">
-          <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-3 w-[50%]">
-            <div>
+        <div className="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row space-y-2  space-x-2 items-start sm:items-center justify-between bg-[#F9FAFB]">
+          <div className="grid grid-cols-2 sm:grid-cols-[2fr_1fr_1fr] gap-3 w-full">
+            <div className="w-full col-span-2 sm:col-span-1">
               <Input
                 placeholder="Search products"
                 value={searchTerm}
@@ -117,7 +117,7 @@ export function ProductTable({
               ]}
             />
           </div>
-          <div className="font-[500] text-[16px] text-[#6C6C6C]">
+          <div className="font-[500] text-[16px] text-[#6C6C6C] sm:w-full sm:text-end">
             Showing {filteredProducts.length} products
           </div>
         </div>
@@ -126,26 +126,26 @@ export function ProductTable({
           <table className="w-full text-left border-collapse table-auto">
             <thead>
               <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Product Name
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Unit(s)
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Price (₦)
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Stock Qty
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Date
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Expiration Date
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
               </tr>
             </thead>
 
@@ -223,8 +223,8 @@ export function ProductTable({
                     <td className="px-6 py-5 whitespace-nowrap text-[14px] text-[#6C6C6C]">
                       {product.createdAt
                         ? new Date(product.createdAt)
-                            .toISOString()
-                            .split("T")[0]
+                          .toISOString()
+                          .split("T")[0]
                         : "N/A"}
                     </td>
 
@@ -236,13 +236,13 @@ export function ProductTable({
                       >
                         {product.expiryDate
                           ? new Date(product.expiryDate).toLocaleDateString(
-                              "en-GB",
-                              {
-                                day: "2-digit",
-                                month: "short",
-                                year: "numeric",
-                              },
-                            )
+                            "en-GB",
+                            {
+                              day: "2-digit",
+                              month: "short",
+                              year: "numeric",
+                            },
+                          )
                           : "N/A"}
                       </span>
                     </td>

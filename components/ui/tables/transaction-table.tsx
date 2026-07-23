@@ -269,7 +269,7 @@ export default function TransactionsTable() {
               placeholder="Search by transaction ID or amount..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-[48px] bg-white border border-gray-200 rounded-lg pl-10 pr-4 py-2 text-[13px] text-gray-700 placeholder-gray-400 focus:outline-none"
+              className="w-full h-[48px] bg-white border border-gray-200 rounded-lg pl-10 pr-4 py-2 text-[14px] text-gray-700 placeholder-gray-400 focus:outline-none"
             />
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
               <svg
@@ -420,7 +420,7 @@ export default function TransactionsTable() {
               })}
             </div>
 
-            <div className="text-[13px] font-medium text-gray-500 uppercase tracking-wider mb-3">
+            <div className="text-[14px] font-medium text-gray-500 uppercase tracking-wider mb-3">
               {selectedTxn.senderName}
             </div>
 

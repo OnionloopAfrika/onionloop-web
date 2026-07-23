@@ -517,7 +517,7 @@ export default function StaffManagement() {
                     <div className="flex justify-center mb-8">
                         <img src={selectedStaff?.image} className="w-20 h-20 rounded-full border-2 border-white shadow-md" />
                     </div>
-                    <div className="grid grid-cols-2 gap-y-6 mb-8 text-[13px]">
+                    <div className="grid grid-cols-2 gap-y-6 mb-8 text-[14px]">
                         <div><p className="text-[#6C6C6C]">Full Name:</p><p className="font-bold text-[#131313]">{selectedStaff?.name}</p></div>
                         <div className="text-right">
                             <p className="text-[#6C6C6C]">Status:</p>

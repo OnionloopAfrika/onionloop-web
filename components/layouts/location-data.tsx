@@ -91,8 +91,8 @@ export default function LocationManagement({
     });
 
     return (
-        <div className="w-full bg-[#FAFAFA] min-h-screen font-sans">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="w-full bg-[#FAFAFA] font-sans">
+            <div className="bg-white rounded-[8px] border border-gray-100 shadow-sm p-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex flex-wrap items-center gap-3 flex-1 max-w-4xl">
                     <div className="relative w-full max-w-[320px]">
                         <Input
@@ -101,7 +101,7 @@ export default function LocationManagement({
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             prefixicon={<Search />}
-                            className="w-full h-[48px] !bg-[#F7F7F7] border-none rounded-lg text-[13px] placeholder-gray-400 focus:outline-none"
+                            className="w-full h-[48px] !bg-[#F7F7F7] border-none rounded-lg text-[14px] placeholder-gray-400 focus:outline-none"
                         />
                     </div>
 
@@ -163,7 +163,7 @@ export default function LocationManagement({
                     {filteredData.map((loc) => {
                         const styles = getStatusStyles(loc.status);
                         return (
-                            <div key={loc.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col relative overflow-hidden">
+                            <div key={loc.id} className="bg-white rounded-lg border border-gray-100 shadow-sm p-5 flex flex-col relative overflow-hidden">
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-xl bg-[#EDE8FC] text-[#7C53FC] font-semibold text-sm flex items-center justify-center">

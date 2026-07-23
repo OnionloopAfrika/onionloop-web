@@ -239,7 +239,7 @@ export default function Page() {
   }
 
   return (
-    <div className="p-4 md:p-6 bg-[#F9FAFB] min-h-screen space-y-6">
+    <div className=" bg-[#F9FAFB] min-h-screen space-y-6">
       <div className="space-y-1">
         <h1 className="font-semibold text-[24px] max-lg:text-[18px] text-[#131313]">
           Permissions & Access Control

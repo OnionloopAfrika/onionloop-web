@@ -93,25 +93,25 @@ export default function RecentOrders() {
             <table className="w-full text-left border-collapse table-auto">
               <thead>
                 <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Order Number
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Customer Name
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Customer Nos
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Amount
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Status
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                     Date
                   </th>
-                  <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
+                  <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -158,7 +158,7 @@ export default function RecentOrders() {
         className="rounded-[20px]"
         open={showTransatctionDetails}
         onOpenChange={setShowTransatctionDetails}
-        // title="  Transaction details"
+      // title="  Transaction details"
       >
         <div className="space-y-[48px]">
           <div className="space-y-[34px]">
