@@ -14,28 +14,28 @@ export function ReportStat() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <StatCard
         themeColor="green"
-        icon={<DollarSignIcon color="#04802E" />}
+        icon={<DollarSignIcon color="#04802E" className="w-[18px] h-[18px]" />}
         value="₦12.4M"
         label="Revenue this month"
         footerText=""
       />
       <StatCard
         themeColor="blue"
-        icon={<ChartIcon color="#0D5EBA" />}
+        icon={<ChartIcon color="#0D5EBA" className="w-[18px] h-[18px]" />}
         value="3,241"
         label="Total Transaction"
         footerText=""
       />
       <StatCard
         themeColor="green"
-        icon={<TrendingUpIcon color="#04802E" />}
+        icon={<TrendingUpIcon color="#04802E" className="w-[18px] h-[18px]" />}
         value="96"
         label="Avg. Perf. Score"
         footerText=""
       />
       <StatCard
         themeColor="red"
-        icon={<FailedTransactionIcon color="#CB1A14" />}
+        icon={<FailedTransactionIcon color="#CB1A14" className="w-[18px] h-[18px]" />}
         value="0"
         label="Failed Transactions"
         footerText=""

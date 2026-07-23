@@ -85,12 +85,12 @@ export default async function Page() {
           changePercentage={12.4}
         />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6 h-125">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
         <div className="w-full lg:col-span-2 h-full">
           <RevenueOverview initialData={initialData} />
         </div>
 
-        <div className="w-full bg-white font-sans lg:col-span-1 h-full flex flex-col overflow-hidden border border-gray-100 rounded-2xl shadow-sm">
+        <div className="w-full bg-white font-sans lg:col-span-1 h-130 flex flex-col overflow-hidden border border-gray-100 rounded-2xl shadow-sm">
           <div className="flex justify-between items-center p-4 pb-2">
             <h2 className="text-2xl font-bold text-gray-800">
               Recent Transactions

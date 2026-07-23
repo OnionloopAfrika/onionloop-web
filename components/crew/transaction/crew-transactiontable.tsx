@@ -194,7 +194,7 @@ export function CrewTransactionTable() {
     <div className="w-full bg-white font-sans">
       <div className="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto flex-1 max-w-4xl">
-          <div className="relative w-full max-w-[320px]">
+          <div className="relative w-full sm:max-w-[320px]">
             <SearchInput />
           </div>
 
@@ -246,25 +246,25 @@ export function CrewTransactionTable() {
           <table className="w-full text-left border-collapse table-auto">
             <thead>
               <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   TXN ID
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Customer Name
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Amount
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Processed by
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Transaction Type
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Status
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Date
                 </th>
               </tr>

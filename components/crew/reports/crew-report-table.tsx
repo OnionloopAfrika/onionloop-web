@@ -147,14 +147,14 @@ export default function CrewReportTable() {
   return (
     <div className="w-full bg-white font-sans">
       <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
-        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto flex-1 max-w-4xl">
-          <div className="relative w-full max-w-[320px]">
+        <div className="flex flex-wrap items-center gap-3 w-full flex-1 ">
+          <div className="relative w-full sm:max-w-[320px]">
             <input
               type="text"
               placeholder="Search by ref or amount..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-[48px] bg-white border border-gray-200 rounded-lg pl-10 pr-4 py-2 text-[13px] text-gray-700 placeholder-gray-400 focus:outline-none"
+              className="w-full h-[48px] bg-white border border-gray-200 rounded-lg pl-10 pr-4 py-2 text-[14px] text-gray-700 placeholder-gray-400 focus:outline-none"
             />
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
               <svg
@@ -282,20 +282,20 @@ export default function CrewReportTable() {
               <polyline points="15 18 9 12 15 6" />
             </svg>
           </button>
-          <button className="w-8 h-8 rounded-lg bg-[#04802E] text-white text-[13px] font-medium">
+          <button className="w-8 h-8 rounded-lg bg-[#04802E] text-white text-[14px] font-medium">
             1
           </button>
-          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[13px] font-medium hover:bg-gray-50">
+          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[14px] font-medium hover:bg-gray-50">
             2
           </button>
-          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[13px] font-medium hover:bg-gray-50">
+          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[14px] font-medium hover:bg-gray-50">
             3
           </button>
-          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[13px] font-medium hover:bg-gray-50">
+          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[14px] font-medium hover:bg-gray-50">
             4
           </button>
-          <span className="text-[13px] text-[#6C6C6C] font-medium">...</span>
-          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[13px] font-medium hover:bg-gray-50">
+          <span className="text-[14px] text-[#6C6C6C] font-medium">...</span>
+          <button className="w-8 h-8 rounded-lg text-[#6C6C6C] text-[14px] font-medium hover:bg-gray-50">
             8
           </button>
           <button className="p-2 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50">

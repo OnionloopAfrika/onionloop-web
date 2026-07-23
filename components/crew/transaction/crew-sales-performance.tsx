@@ -61,7 +61,7 @@ export function CrewSalesPerformance() {
 
       <div className="flex items-center gap-4 bg-white rounded-tl-[16px] rounded-tr-[16px] p-[16px]">
         <div className="sm:w-[50%] w-full grid md:grid-cols-[2fr_1fr] grid-cols-1 gap-[9px]">
-          <div className="w-60 sm:w-full">
+          <div className="w-full">
             <SearchInput
               placeholder="Search by ref or amount..."
               className="rounded-[12px]"
@@ -94,17 +94,17 @@ export function CrewSalesPerformance() {
           <table className="w-full text-left border-collapse table-auto">
             <thead>
               <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap w-[64px]"></th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap w-[64px]"></th>
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Staff Name
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Sales
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Order
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap"></th>
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
               </tr>
             </thead>
 

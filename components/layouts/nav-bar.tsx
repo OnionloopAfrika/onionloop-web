@@ -124,7 +124,7 @@ export default function DashboardNav({
   const currentRole =
     subdomain === "mega"
       ? ROLES.find((role) => pathname.includes(role.value))?.value ||
-        "super-admin"
+      "super-admin"
       : null;
 
   return (
@@ -147,11 +147,10 @@ export default function DashboardNav({
                   <button
                     key={role.value}
                     onClick={() => router.push(role.href)}
-                    className={`px-3 py-1.5 text-[12px] font-medium rounded-md transition-all ${
-                      currentRole === role.value
+                    className={`px-3 py-1.5 text-[12px] font-medium rounded-md transition-all ${currentRole === role.value
                         ? "bg-white text-[#024E44] shadow-sm border border-gray-100"
                         : "text-gray-500 hover:text-gray-700"
-                    }`}
+                      }`}
                   >
                     {role.label}
                   </button>
@@ -278,7 +277,7 @@ export default function DashboardNav({
                   userName={userName}
                 />
                 <div className="flex flex-col gap-[1px]">
-                  <span className="text-[13px] font-bold text-gray-900 leading-tight whitespace-nowrap">
+                  <span className="text-[14px] font-bold text-gray-900 leading-tight whitespace-nowrap">
                     {businessName}
                   </span>
                   <span className="text-[11.5px] text-gray-400 leading-tight whitespace-nowrap">
@@ -356,7 +355,7 @@ export default function DashboardNav({
                 </h3>
 
                 <div className="flex items-center gap-2 text-[#666666]">
-                  <span className="text-[13px] font-normal">
+                  <span className="text-[14px] font-normal">
                     yettymamalounge.onionloopafrika.com
                   </span>
                   <button className="text-gray-400 hover:text-gray-600 transition-colors">
@@ -465,11 +464,10 @@ export default function DashboardNav({
                           router.push(role.href);
                           setIsMenuOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-2 rounded-lg text-[13px] transition-colors ${
-                          currentRole === role.value
+                        className={`w-full text-left px-3 py-2 rounded-lg text-[14px] transition-colors ${currentRole === role.value
                             ? "bg-[#E6F0EE] text-[#024E44] font-bold"
                             : "text-gray-600 hover:bg-gray-50"
-                        }`}
+                          }`}
                       >
                         {role.initials}
                       </button>
@@ -488,11 +486,10 @@ export default function DashboardNav({
                       router.push(item.href);
                       setIsMenuOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${
-                      isActive
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${isActive
                         ? "bg-[#B5E3C4] text-[#024E44] font-[500] shadow-sm"
                         : "text-gray-500 hover:bg-gray-50 font-[500]"
-                    }`}
+                      }`}
                   >
                     <div
                       className={`transition-colors duration-200 ${isActive ? "text-[#024E44]" : "text-gray-400"}`}
@@ -507,11 +504,10 @@ export default function DashboardNav({
               })}
 
               <button
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${
-                  active === "messages"
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${active === "messages"
                     ? "bg-[#B5E3C4] text-[#024E44] font-[500] shadow-sm"
                     : "text-gray-500 hover:bg-gray-50 font-[500]"
-                }`}
+                  }`}
                 onClick={() => {
                   router.push(
                     `/${subdomain}${currentRole ? `/${currentRole}` : ""}/messages`,
@@ -544,11 +540,10 @@ export default function DashboardNav({
               </button>
 
               <button
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${
-                  active === "notifications"
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14.5px] transition-all duration-200 cursor-pointer ${active === "notifications"
                     ? "bg-[#B5E3C4] text-[#024E44] font-[500] shadow-sm"
                     : "text-gray-500 hover:bg-gray-50 font-[500]"
-                }`}
+                  }`}
                 onClick={() => {
                   router.push(
                     `/${subdomain}${currentRole ? `/${currentRole}` : ""}/notifications`,
@@ -636,7 +631,7 @@ function Avatar({
           className="w-full h-full object-cover"
         />
       ) : (
-        <div className="w-full h-full bg-[#E6F0EE] flex items-center justify-center text-[13px] font-bold text-[#024E44]">
+        <div className="w-full h-full bg-[#E6F0EE] flex items-center justify-center text-[14px] font-bold text-[#024E44]">
           {businessName.charAt(0)}
         </div>
       )}
@@ -655,11 +650,10 @@ function IconButton({
 }) {
   return (
     <button
-      className={`relative p-2 rounded-xl transition-all duration-150 border border-transparent ${
-        active
+      className={`relative p-2 rounded-xl transition-all duration-150 border border-transparent ${active
           ? "bg-[#E6F0EE] text-[#024E44]"
           : "text-gray-500 hover:bg-gray-50"
-      }`}
+        }`}
     >
       {children}
       {badge !== undefined && badge > 0 && (

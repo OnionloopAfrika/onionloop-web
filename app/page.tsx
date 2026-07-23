@@ -50,7 +50,7 @@ function AppCard({ title, description, pathSegment, badge, icon }: AppCardProps)
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900 antialiased selection:bg-slate-900 selection:text-white">
+    <div className="flex mt-20 min-h-screen flex-col bg-slate-50 text-slate-900 antialiased selection:bg-slate-900 selection:text-white">
       <header className="fixed top-0 left-0 w-full bg-white h-[80px] px-8 flex items-center z-50 shadow-[0px_4px_10px_rgba(0,0,0,0.03)]">
         <OnionloopIcon />
       </header>

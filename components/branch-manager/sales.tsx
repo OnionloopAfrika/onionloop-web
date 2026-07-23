@@ -98,19 +98,19 @@ export default function Sales() {
           <table className="w-full text-left border-collapse table-auto">
             <thead>
               <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Order ID
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Customer
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Staff
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Sales
                 </th>
-                <th className="px-6 py-4 text-[13px] font-bold text-gray-500 whitespace-nowrap">
+                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
                   Time
                 </th>
               </tr>
@@ -154,7 +154,7 @@ export default function Sales() {
         </div>
 
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:items-center justify-between p-4 border-t border-gray-100">
-          <div className="text-[13px] text-gray-500">
+          <div className="text-[14px] text-gray-500">
             Showing 1 to 10 of 70 order sales
           </div>
           <div className="flex items-center gap-2">

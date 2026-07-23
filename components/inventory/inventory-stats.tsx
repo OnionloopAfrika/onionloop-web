@@ -25,11 +25,11 @@ export function InventoryStats({
     <>
       <div className="space-y-[16px]">
         <ProfileHeader
-          className="border-b-0"
+          className="flex-col md:flex-row gap-4 justify-between items-start border-b-0 pb-[0px]"
           title="Inventory"
           subtitle="Manage your products and stock levels"
           btn={
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
+            <div className="grid grid-cols-2 gap-[20px]">
               <Button className="bg-white" size="md" variant="outline">
                 <DownloadIconSolid className="" /> Export
               </Button>
