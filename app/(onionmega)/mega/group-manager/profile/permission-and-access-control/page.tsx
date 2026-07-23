@@ -1,8 +1,8 @@
+// group-manager/profile/permission-and-access-control/page.tsx
 "use client";
-import React, { useState } from "react";
-import { ControlAvatarIcon, SearchIcon } from "@/components/icons/svgs";
+import { useState } from "react";
+import { ControlAvatarIcon} from "@/components/icons/svgs";
 import { SearchInput } from "@/components/ui/search-input";
-import { PermissionControls } from "@/components/group-manager/permission-controls";
 import { AccessAndScope } from "@/components/permission-and-access/access-and-scope";
 import { AssignedBranch } from "@/components/permission-and-access/assigned-branch";
 import { Controls } from "@/components/permission-and-access/controls";
@@ -145,7 +145,7 @@ export default function page() {
           </div>
         </div>
 
-        <div className="w-full  overflow-y-auto md:h-[90vh] md:pb-[100px]">
+        {/* <div className="w-full  overflow-y-auto md:h-[90vh] md:pb-[100px]">
           <div className="space-y-[40px] p-[24px] bg-white">
             <PermissionOverview
               roleName={roleData.roleName}
@@ -175,7 +175,7 @@ export default function page() {
               </Button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

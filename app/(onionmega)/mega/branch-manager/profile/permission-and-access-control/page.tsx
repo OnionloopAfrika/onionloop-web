@@ -1,3 +1,4 @@
+// branch-manager/profile/permission-and-access-control/page.tsx
 import React from "react";
 import ProfileLayout from "../Shell";
 import { PermissionOverview } from "@/components/permission-and-access/overview";
