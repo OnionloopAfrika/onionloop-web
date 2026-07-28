@@ -2,20 +2,13 @@
 
 import { Product } from "@/types/inventory/type";
 import Image from "next/image";
-import {
-  DangerIcon,
-  DeleteIcon,
-  EditIcon,
-  MultiplyIcon,
-  VerifyIcon,
-} from "../icons/svgs";
+import { DeleteIcon, EditIcon, VerifyIcon } from "../icons/svgs";
 import Input from "../ui/input";
 import Select from "../ui/select";
 import { useState, useMemo } from "react";
 import { Modal } from "../ui/modal";
 import { EditProductForm } from "./edit-product-form";
 import Button from "../ui/button";
-import { Warning } from "./warning";
 
 type ProductTableProps = {
   products: Product[];
@@ -48,17 +41,20 @@ export function ProductTable({
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
+      const qty = product.quantity || 0;
+      const lowStockValue = product.lowStock || 0;
+
       const matchesSearch =
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.category.toLowerCase().includes(searchTerm.toLowerCase());
 
-      let matchesStatus = true;
-      if (statusFilter !== "All") {
-        const isLowStock =
-          typeof (product.lowStock || 0) === "number" &&
-          (product.quantity || 0) <= (product.lowStock || 0);
-        const isOutOfStock = (product.quantity || 0) === 0;
+      const isOutOfStock = qty === 0;
 
+      const isLowStock = qty > 0 && qty <= lowStockValue;
+
+      let matchesStatus = true;
+
+      if (statusFilter !== "All") {
         if (statusFilter === "In Stock") {
           matchesStatus = !isLowStock && !isOutOfStock;
         } else if (statusFilter === "Low Stock") {
@@ -69,9 +65,6 @@ export function ProductTable({
       }
 
       let matchesMonth = true;
-      if (monthFilter !== "This Month") {
-        matchesMonth = true;
-      }
 
       return matchesSearch && matchesStatus && matchesMonth;
     });
@@ -85,7 +78,7 @@ export function ProductTable({
   return (
     <>
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row space-y-2  space-x-2 items-start sm:items-center justify-between bg-[#F9FAFB]">
+        <div className="px-6 py-4 border-b  border-gray-100 flex flex-col sm:flex-row space-y-2 space-x-2 items-start sm:items-center justify-between bg-[#F9FAFB]">
           <div className="grid grid-cols-2 sm:grid-cols-[2fr_1fr_1fr] gap-3 w-full">
             <div className="w-full col-span-2 sm:col-span-1">
               <Input
@@ -94,6 +87,7 @@ export function ProductTable({
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
+
             <Select
               placeholder="All Status"
               value={statusFilter}
@@ -117,6 +111,7 @@ export function ProductTable({
               ]}
             />
           </div>
+
           <div className="font-[500] text-[16px] text-[#6C6C6C] sm:w-full sm:text-end">
             Showing {filteredProducts.length} products
           </div>
@@ -126,35 +121,25 @@ export function ProductTable({
           <table className="w-full text-left border-collapse table-auto">
             <thead>
               <tr className="border-y border-gray-50 bg-[#F9FAFB]">
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
-                  Product Name
-                </th>
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
-                  Unit(s)
-                </th>
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
-                  Price (₦)
-                </th>
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
-                  Stock Qty
-                </th>
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
-                  Date
-                </th>
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap">
-                  Expiration Date
-                </th>
-                <th className="px-6 py-4 text-[14px] font-bold text-gray-500 whitespace-nowrap"></th>
+                <th className="px-6 py-4"></th>
+                <th className="px-6 py-4">Product Name</th>
+                <th className="px-6 py-4">Unit(s)</th>
+                <th className="px-6 py-4">Price (₦)</th>
+                <th className="px-6 py-4">Stock Qty</th>
+                <th className="px-6 py-4">Date</th>
+                <th className="px-6 py-4">Expiration Date</th>
+                <th className="px-6 py-4"></th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-gray-50">
+            <tbody>
               {filteredProducts.map((product) => {
-                const isLowStock =
-                  typeof (product.lowStock || 0) === "number" &&
-                  (product.quantity || 0) <= (product.lowStock || 0);
-                const isOutOfStock = (product.quantity || 0) === 0;
+                const qty = product.quantity || 0;
+                const lowStockValue = product.lowStock || 0;
+
+                const isOutOfStock = qty === 0;
+                const isLowStock = qty > 0 && qty <= lowStockValue;
+
                 const isExpired =
                   product.expiryDate &&
                   new Date(product.expiryDate) < new Date();
@@ -174,61 +159,44 @@ export function ProductTable({
                 }
 
                 return (
-                  <tr
-                    key={product.id}
-                    className="hover:bg-gray-50 transition-colors border-b border-gray-300 cursor-pointer last:border-b-0"
-                  >
-                    <td className="px-6 py-5 whitespace-nowrap">
-                      <div className="w-8 h-8 overflow-hidden rounded-full flex-shrink-0">
+                  <tr key={product.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-5">
+                      <div className="w-8 h-8 overflow-hidden rounded-full">
                         {product.image ? (
                           <Image
                             src={product.image}
                             alt={product.name}
                             width={32}
                             height={32}
-                            className="object-cover"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gray-100 flex items-center justify-center text-lg">
+                          <div className="w-full h-full flex items-center justify-center">
                             📦
                           </div>
                         )}
                       </div>
                     </td>
 
-                    <td className="px-6 py-5 whitespace-nowrap">
-                      <div className="flex items-center gap-3">
-                        <div>
-                          <p className="text-[14px] font-medium text-[#6C6C6C]">
-                            {product.name}
-                          </p>
-                        </div>
-                      </div>
-                    </td>
+                    <td className="px-6 py-5">{product.name}</td>
+                    <td className="px-6 py-5">{product.unit}</td>
 
-                    <td className="px-6 py-5 whitespace-nowrap text-[14px] text-[#6C6C6C] font-[400]">
-                      {product.unit}
-                    </td>
-
-                    <td className="px-6 py-5 whitespace-nowrap text-start font-medium text-[#04802E] text-[14px]">
+                    <td className="px-6 py-5 text-[#04802E]">
                       +₦{(product.price || 0).toLocaleString()}
                     </td>
 
-                    <td className="px-6 py-5 whitespace-nowrap text-start">
-                      <span className={`inline-flex ${statusClass}`}>
-                        {stockStatus}
-                      </span>
+                    <td className="px-6 py-5">
+                      <span className={statusClass}>{stockStatus}</span>
                     </td>
 
-                    <td className="px-6 py-5 whitespace-nowrap text-[14px] text-[#6C6C6C]">
+                    <td className="px-6 py-5">
                       {product.createdAt
                         ? new Date(product.createdAt)
-                          .toISOString()
-                          .split("T")[0]
+                            .toISOString()
+                            .split("T")[0]
                         : "N/A"}
                     </td>
 
-                    <td className="px-6 py-5 whitespace-nowrap text-[14px]">
+                    <td className="px-6 py-5">
                       <span
                         className={
                           isExpired ? "text-[#CB1A14]" : "text-gray-600"
@@ -236,34 +204,28 @@ export function ProductTable({
                       >
                         {product.expiryDate
                           ? new Date(product.expiryDate).toLocaleDateString(
-                            "en-GB",
-                            {
-                              day: "2-digit",
-                              month: "short",
-                              year: "numeric",
-                            },
-                          )
+                              "en-GB",
+                              {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric",
+                              },
+                            )
                           : "N/A"}
                       </span>
                     </td>
 
-                    <td className="px-6 py-5 whitespace-nowrap">
-                      <div className="flex items-center justify-between gap-4">
-                        <button
-                          onClick={() => handleEditClick(product)}
-                          className="cursor-pointer flex items-center gap-2 text-[#6C6C6C]  transition-colors"
-                        >
+                    <td className="px-6 py-5">
+                      <div className="flex gap-4">
+                        <button onClick={() => handleEditClick(product)}>
                           <EditIcon className="w-6 h-6 text-[#04907E]" />
-                          <span className="text-[14px] text-[#04907E] font-[500]">
-                            Edit
-                          </span>
                         </button>
+
                         <button
                           onClick={() => {
                             setProductToDelete(product);
                             setOpenDelete(true);
                           }}
-                          className="cursor-pointer text-red-600 hover:text-red-700 transition-colors"
                         >
                           <DeleteIcon className="w-6 h-6" />
                         </button>
@@ -283,11 +245,7 @@ export function ProductTable({
         )}
       </div>
 
-      <Modal
-        className="max-h-[90%] overflow-scroll"
-        open={openEdit}
-        onOpenChange={setOpenEdit}
-      >
+      <Modal open={openEdit} onOpenChange={setOpenEdit}>
         <EditProductForm
           product={selectedProduct}
           onClose={() => setOpenEdit(false)}
@@ -296,59 +254,24 @@ export function ProductTable({
       </Modal>
 
       <Modal open={openDelete} onOpenChange={setOpenDelete}>
-        <div className="w-full space-y-[64px]">
-          <div className="space-y-[24px]">
-            <DeleteIcon className="mx-auto w-[42.67px] h-[48px] text-danger" />
+        <div className="space-y-6 text-center">
+          <p>Remove {productToDelete?.name}?</p>
 
-            <div className="space-y-[12px] text-center">
-              <p className="font-[600] text-[24px] text-danger">
-                Remove {productToDelete?.name}?
-              </p>
-              <p className="font-[500] text-[16px] text-[#363636]">
-                Are you sure you want to remove this product from your
-                inventory?
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-[16px]">
-            <Button variant="secondary" onClick={() => setOpenDelete(false)}>
-              Cancel
-            </Button>
+          <div className="flex gap-4 justify-center">
+            <Button onClick={() => setOpenDelete(false)}>Cancel</Button>
             <Button onClick={handleDeleted} variant="danger">
-              Remove product
+              Remove
             </Button>
           </div>
         </div>
       </Modal>
 
       <Modal open={deleted} onOpenChange={setDeleted}>
-        <div className="space-y-[64px]">
-          <div className="space-y-[40px]">
-            <VerifyIcon className="mx-auto text-light" />
+        <div className="text-center space-y-4">
+          <VerifyIcon className="mx-auto" />
+          <p>{productToDelete?.name} removed successfully!</p>
 
-            <div className="space-y-[8px] text-center">
-              <p className="font-[600] text-[24px] text-light">
-                {productToDelete?.name} removed successfully!
-              </p>
-
-              <p className="font-[500] text-[16px] text-[#363636]">
-                The product has been removed from your inventory
-              </p>
-            </div>
-          </div>
-
-          <div className="flex justify-center w-[362] mx-auto ">
-            <Button
-              onClick={() => {
-                setDeleted(false);
-                setProductToDelete(null);
-              }}
-              size="sm"
-            >
-              Done
-            </Button>
-          </div>
+          <Button onClick={() => setDeleted(false)}>Done</Button>
         </div>
       </Modal>
     </>

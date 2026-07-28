@@ -31,3 +31,30 @@ export const ROLE = "CASHIER" as
   | "SUPER_ADMIN"
   | "BRANCH_MANAGER"
   | string;
+
+export const ROLES = [
+  {
+    label: "Cashier",
+    initials: "C.A",
+    value: "cashier",
+    href: "/mega/cashier/dashboard",
+  },
+  {
+    label: "Super Admin",
+    initials: "S.A",
+    value: "super-admin",
+    href: "/mega/super-admin/dashboard",
+  },
+  {
+    label: "Group Manager",
+    initials: "G.M",
+    value: "group-manager",
+    href: "/mega/group-manager/dashboard",
+  },
+  {
+    label: "Branch Manager",
+    initials: "B.M",
+    value: "branch-manager",
+    href: "/mega/branch-manager/dashboard",
+  },
+];
