@@ -21,6 +21,14 @@ import {
   OrderDetailsActive,
   DashboardSettings,
   DashboardSettingsActive,
+  TargetIcon,
+  TargetActiveIcon,
+  EarningActiveIcon,
+  EarningIcon,
+  BusinessActiveIcon,
+  BusinessIcon,
+  AccountActiveIcon,
+  AccountIcon,
 } from "@/components/icons/svgs";
 
 export type NavItem = {
@@ -215,6 +223,62 @@ export const BRANCH_MANAGER_NAV_SECTIONS: NavSection[] = [
         label: "Reports",
         icon: (color) => <ReceiptEditIcon color={color} />,
         activeIcon: (color) => <ReceiptEditActiveIcon color={color} />,
+      },
+    ],
+  },
+];
+
+
+export const AGGREGATOR_NAV_SECTIONS: NavSection[] = [
+  {
+    label: "OVERVIEW",
+    items: [
+      {
+        key: "dashboard",
+        href: "/aggregator/dashboard",
+        label: "Dashboard",
+        icon: (color) => <Dashboard color={color} />,
+        activeIcon: (color) => <Dashboard color={color} />,
+      },
+      {
+        key: "target",
+        href: "/aggregator/target",
+        label: "Target",
+        icon: (color) => <TargetIcon color={color} />,
+        activeIcon: (color) => <TargetActiveIcon color={color} />,
+      },
+      {
+        key: "earnings",
+        href: "/aggregator/earnings",
+        label: "Earnings",
+        icon: (color) => <EarningIcon color={color} />,
+        activeIcon: (color) => <EarningActiveIcon color={color} />,
+      },
+      {
+        key: "reports",
+        href: "/aggregator/reports",
+        label: "Reports",
+        icon: (color) => <ReceiptEditIcon color={color} />,
+        activeIcon: (color) => <ReceiptEditActiveIcon color={color} />,
+      },
+    ],
+  },
+  {
+    label: "MANAGEMENT",
+    items: [
+      {
+        key: "business",
+        href: "/aggregator/business",
+        label: "Business",
+        icon: (color) => <BusinessIcon color={color} />,
+        activeIcon: (color) => <BusinessActiveIcon color={color} />,
+      },
+      {
+        key: "accounts",
+        href: "/aggregator/accounts",
+        label: "Accounts",
+        icon: (color) => <AccountIcon color={color} />,
+        activeIcon: (color) => <AccountActiveIcon color={color} />,
       },
     ],
   },
