@@ -1,0 +1,247 @@
+{
+    "header": {
+        "title": "Target",
+        "subtitle": "Track your targets, monitor performance, and maximize your earnings potential.",
+        "date": "Mar 2026"
+    },
+    "summaryCards": {
+        "availableBalance": {
+            "amount": "₦142,000",
+            "status": "On track",
+            "date": "18th Mar, 2026"
+        },
+        "expectedBalance": {
+            "amount": "₦310,400",
+            "percentage": 70,
+            "targetBalance": "₦142,000",
+            "expectedCommission": "₦168,400"
+        },
+        "quickBonus": {
+            "unlockAmount": "Unlock ₦30,000 bonus",
+            "description": "Unlock extra earnings when target targets are achieved on time"
+        }
+    },
+    "metrics": {
+        "transactionVolume": {
+            "title": "Transaction Target Volume",
+            "currentFormatted": "₦3.2M",
+            "targetFormatted": "/ ₦5M target",
+            "status": "On track",
+            "progress": 78,
+            "need": "Need ₦57k / day",
+            "current": "Current: ₦624k / day"
+        },
+        "onboardingVolume": {
+            "title": "Onboarding Target Volume",
+            "current": 30,
+            "target": "/ 50 agents, merchants, users",
+            "status": "On track",
+            "progress": 68,
+            "need": "Need 5 / day",
+            "currentRate": "Current: 5 / day"
+        },
+        "newBusinesses": {
+            "title": "New Businesses Onboarded",
+            "current": 10,
+            "target": "/ 30 new businesses",
+            "status": "Behind track",
+            "progress": 45,
+            "needText": "Need 5 more merchants to be onboarded to hit your target",
+            "additionalText": "Additional ₦17,500 if target is met"
+        },
+        "activeAgents": {
+            "title": "Active Agents",
+            "current": 12,
+            "target": "/ 75 agents",
+            "status": "Behind track",
+            "progress": 32,
+            "needText": "Need up to 50 agents to be active to be on track",
+            "additionalText": "Additional ₦47,000 if target is met"
+        },
+        "activeMerchants": {
+            "title": "Active Merchants",
+            "current": 34,
+            "target": "/ 48 merchants",
+            "status": "On track",
+            "progress": 65,
+            "needText": "Need 5 more merchants to be onboarded to hit your target",
+            "additionalText": "Additional ₦24,500 if target is met"
+        }
+    },
+    "chartData": [
+        {
+            "day": "Mon",
+            "value": 1.2
+        },
+        {
+            "day": "Tue",
+            "value": 1.8
+        },
+        {
+            "day": "Wed",
+            "value": 1.1
+        },
+        {
+            "day": "Thur",
+            "value": 1.9
+        },
+        {
+            "day": "Fri",
+            "value": 1.1
+        },
+        {
+            "day": "Sat",
+            "value": 2.4
+        },
+        {
+            "day": "Sun",
+            "value": 3.1
+        }
+    ],
+    "businesses": [
+        {
+            "id": "1",
+            "owner": "Joseph Maduabuchi",
+            "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+            "name": "De Light Superstores",
+            "type": "Agent",
+            "volume": "₦250,000.00",
+            "commission": "₦25,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 10 mins ago",
+            "inactiveStatus": "Inactive 5 days ago"
+        },
+        {
+            "id": "2",
+            "owner": "Oluwafunmilayo Robin",
+            "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
+            "name": "KFC Holdings",
+            "type": "Merchant",
+            "volume": "₦20,000.00",
+            "commission": "₦20,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 8 mins ago",
+            "inactiveStatus": "Inactive 2 days ago"
+        },
+        {
+            "id": "3",
+            "owner": "Oladimeji Vamie",
+            "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
+            "name": "Pharma Stores",
+            "type": "Merchant",
+            "volume": "₦80,000.00",
+            "commission": "₦8,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 5 mins ago",
+            "inactiveStatus": "Inactive 3 days ago"
+        },
+        {
+            "id": "4",
+            "owner": "John Onikedu",
+            "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=80",
+            "name": "Onda Onikedu Business",
+            "type": "Merchant",
+            "volume": "₦50,000.00",
+            "commission": "₦5,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 1 day ago",
+            "inactiveStatus": "Inactive 12 days ago"
+        },
+        {
+            "id": "5",
+            "owner": "Grace Wanjiku",
+            "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
+            "name": "Swift Logistics",
+            "type": "Merchant",
+            "volume": "₦300,000.00",
+            "commission": "₦30,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 0 secs ago",
+            "inactiveStatus": "Inactive 6 days ago"
+        },
+        {
+            "id": "6",
+            "owner": "Philip Tombara",
+            "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&auto=format&fit=crop&q=80",
+            "name": "Emeka & Co.",
+            "type": "Merchant",
+            "volume": "₦150,000.00",
+            "commission": "₦15,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 40 mins ago",
+            "inactiveStatus": "Inactive 3 days ago"
+        },
+        {
+            "id": "7",
+            "owner": "Joshua Agbasi",
+            "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&auto=format&fit=crop&q=80",
+            "name": "Big Bites Restaurants",
+            "type": "Merchant",
+            "volume": "₦250,000.00",
+            "commission": "₦25,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 3 secs ago",
+            "inactiveStatus": "Inactive 2 days ago"
+        },
+        {
+            "id": "8",
+            "owner": "Mary Adebayo",
+            "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80",
+            "name": "Grace Beauty Hub",
+            "type": "Merchant",
+            "volume": "₦30,000.00",
+            "commission": "₦3,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 25 mins ago",
+            "inactiveStatus": "Inactive 8 days ago"
+        },
+        {
+            "id": "9",
+            "owner": "David Iwalewa",
+            "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop&q=80",
+            "name": "Maims Cosmetics",
+            "type": "Agent",
+            "volume": "₦100,000.00",
+            "commission": "₦10,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 10 mins ago",
+            "inactiveStatus": "Inactive 7 days ago"
+        },
+        {
+            "id": "10",
+            "owner": "Hannah Nwankwo",
+            "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80",
+            "name": "Prime Med. Pharmacy",
+            "type": "Agent",
+            "volume": "₦50,000.00",
+            "commission": "₦5,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 15 mins ago",
+            "inactiveStatus": "Inactive 10 days ago"
+        },
+        {
+            "id": "11",
+            "owner": "Hannah Nwankwo",
+            "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80",
+            "name": "Prime Med. Pharmacy",
+            "type": "Agent",
+            "volume": "₦50,000.00",
+            "commission": "₦5,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 15 mins ago",
+            "inactiveStatus": "Inactive 10 days ago"
+        },
+        {
+            "id": "12",
+            "owner": "Hannah Nwankwo",
+            "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80",
+            "name": "Prime Med. Pharmacy",
+            "type": "Agent",
+            "volume": "₦50,000.00",
+            "commission": "₦5,000.00",
+            "kycLevel": "TIER 3",
+            "activeStatus": "Active 15 mins ago",
+            "inactiveStatus": "Inactive 10 days ago"
+        }
+    ]
+}

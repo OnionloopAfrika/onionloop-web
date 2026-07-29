@@ -22,9 +22,10 @@ import {
   CheckIconGreen,
 } from "./icon";
 import Header from "../layouts/header";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSubdomain } from "@/hooks/useSubdomain";
 import { PlusIcon } from "../icons/svgs";
+import { ROLES } from "@/utils/constant/const";
 
 interface Staff {
   id: string;
@@ -234,6 +235,13 @@ export default function StaffManagement({
   };
 
   const isReactivating = selectedStaff?.status === "Deactivated";
+  const pathname = usePathname();
+
+  const currentRole =
+    subdomain === "mega"
+      ? ROLES.find((role) => pathname.includes(role.value))?.value ||
+        "super-admin"
+      : null;
 
   return (
     <div className="min-h-screen">
@@ -267,7 +275,7 @@ export default function StaffManagement({
             iconColor: "bg-[#D5C9FC] text-[#7C53FC]",
             badgeColor: "bg-[#F0ECFE] text-[#7C53FC]",
             icon: <MultiUser />,
-            className: "col-span-2 md:col-span-1"
+            className: "col-span-2 md:col-span-1",
           },
           {
             label: "Online now",
@@ -276,7 +284,7 @@ export default function StaffManagement({
             iconColor: "bg-[#C2EAD0] text-[#04802E]",
             badgeColor: "bg-[#E7F6EC] text-[#04802E]",
             icon: <TimerClock />,
-            className: "col-span-1"
+            className: "col-span-1",
           },
           {
             label: "Sales so far today",
@@ -285,7 +293,7 @@ export default function StaffManagement({
             iconColor: "bg-[#C6DDF7] text-[#0D5EBA]",
             badgeColor: "bg-[#EBF3FC] text-[#0D5EBA]",
             icon: <SparkIcon />,
-            className: "col-span-1"
+            className: "col-span-1",
           },
         ].map((stat, i) => (
           <div
@@ -296,7 +304,9 @@ export default function StaffManagement({
               <h3 className="text-[20px] font-semibold text-[#111827] leading-none tracking-tight">
                 {stat.count}
               </h3>
-              <div className={`p-1 rounded-[8px] flex items-center justify-center ${stat.iconColor}`}>
+              <div
+                className={`p-1 rounded-[8px] flex items-center justify-center ${stat.iconColor}`}
+              >
                 {stat.icon}
               </div>
             </div>
@@ -306,7 +316,9 @@ export default function StaffManagement({
                 {stat.label}
               </p>
               <div className="flex">
-                <span className={`text-[10px] p-1 rounded-full font-medium ${stat.badgeColor}`}>
+                <span
+                  className={`text-[10px] p-1 rounded-full font-medium ${stat.badgeColor}`}
+                >
                   {stat.sub}
                 </span>
               </div>
@@ -427,7 +439,15 @@ export default function StaffManagement({
               </span>
             </div>
 
-            <Button variant="primary" className="!bg-[#00634B] w-full">
+            <Button
+              onClick={() =>
+                router.push(
+                  `/${subdomain}${currentRole ? `/${currentRole}` : ""}/messages`,
+                )
+              }
+              variant="primary"
+              className="!bg-[#00634B] w-full"
+            >
               Send message
             </Button>
           </div>
