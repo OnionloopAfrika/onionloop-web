@@ -163,11 +163,11 @@ export const BusinessTable: React.FC<BusinessTableProps> = ({
                                 paginatedBusinesses.map((item) => (
                                     <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
                                         <td className="py-3 px-4 font-medium text-[#6C6C6C]">
-                                            <div className="flex items-center gap-2.5">
+                                            <div className="flex items-center gap-2.5 w-10">
                                                 <img
                                                     src={item.avatar}
                                                     alt={item.owner}
-                                                    className="w-10 h-10 rounded-full object-cover"
+                                                    className="w-8 h-8 rounded-full object-cover"
                                                 />
                                             </div>
                                         </td>

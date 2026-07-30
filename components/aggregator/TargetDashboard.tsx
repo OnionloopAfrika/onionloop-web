@@ -7,6 +7,7 @@ import { TargetCard } from './TargetCard';
 import { BusinessTable } from './BusinessTable';
 import RevenueOverview from '../layouts/revenue-overview';
 import { DailyVolumeChart } from './DailyVolumeChart';
+import TrendChart, { ChartDataPoint } from '../ui/charts/trend-chart';
 
 
 export const TargetDashboard: React.FC = () => {
@@ -55,6 +56,7 @@ export const TargetDashboard: React.FC = () => {
                 />
                 <div className="w-full lg:col-span-2 h-full">
                     {/* <DailyVolumeChart /> */}
+                    <RevenueCard />
                 </div>
             </div>
 
@@ -89,3 +91,24 @@ export const TargetDashboard: React.FC = () => {
 };
 
 export default TargetDashboard;
+
+const revenueData: ChartDataPoint[] = [
+    { label: 'Mon', revenue: 1200 },
+    { label: 'Tue', revenue: 1800 },
+    { label: 'Wed', revenue: 1500 },
+    { label: 'Thu', revenue: 2100 },
+    { label: 'Fri', revenue: 1950 },
+    { label: 'Sat', revenue: 2400 },
+    { label: 'Sun', revenue: 2600 },
+];
+
+function RevenueCard() {
+    return (
+        <TrendChart
+            title="Daily Business Volume "
+            subtitle="₦2.4M earned today"
+            data={revenueData}
+            series={[{ dataKey: 'revenue', name: 'Revenue', color: '#04907E', showArea: true }]}
+        />
+    );
+}
