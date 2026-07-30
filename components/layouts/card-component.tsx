@@ -67,7 +67,7 @@ const StatCard: React.FC<StatCardProps> = ({
   const style = themes[themeColor];
 
   return (
-    <div className="bg-white border border-[#E5E7EB] rounded-[8px] p-[12px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between w-full flex-1">
+    <div className="bg-white border border-[#E5E7EB] rounded-[8px] p-[12px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col  w-full flex-1 justify-center space-y-2 ">
       <div className="flex justify-between items-start">
         <h2 className="text-[20px] font-semibold text-[#111827] leading-none tracking-tight">
           {value}
@@ -79,34 +79,36 @@ const StatCard: React.FC<StatCardProps> = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 mt-auto">
+      <div className="flex flex-col gap-4">
         <p className="text-[#4B5563] text-[12px] font-normal leading-normal">
           {label}
         </p>
 
-        <div
-          className={`flex items-center gap-1.5 text-[10px] font-medium ${style.footer}`}
-        >
-          {showTrendIcon &&
-            (changePercentage! >= 0 ? (
-              <ArrowUpIcon color="#04802E" className="" />
-            ) : (
-              <ArrowDownIcon color="#CB1A14" className="" />
-            ))}
-          <span
-            className={
-              footerColor === "purple"
-                ? "text-[#363636]"
-                : footerColor === "orange"
-                  ? "text-[#DD900D]"
-                  : changePercentage! >= 0
-                    ? "text-[#04802E]"
-                    : "text-[#CB1A14]"
-            }
+      {footerText && (
+          <div
+            className={`flex items-center gap-1.5 text-[10px] font-medium ${style.footer}`}
           >
-            {footerText}
-          </span>
-        </div>
+            {showTrendIcon &&
+              (changePercentage! >= 0 ? (
+                <ArrowUpIcon color="#04802E" className="" />
+              ) : (
+                <ArrowDownIcon color="#CB1A14" className="" />
+              ))}
+            <span
+              className={
+                footerColor === "purple"
+                  ? "text-[#363636]"
+                  : footerColor === "orange"
+                    ? "text-[#DD900D]"
+                    : changePercentage! >= 0
+                      ? "text-[#04802E]"
+                      : "text-[#CB1A14]"
+              }
+            >
+              {footerText}
+            </span>
+          </div>
+      )}
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ interface SelectProps {
   options: { value: string; label: string }[];
   disabled?: boolean;
   icon?: React.ReactNode;
+  className?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -23,6 +24,7 @@ const Select: React.FC<SelectProps> = ({
   options,
   disabled = false,
   icon,
+  className
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState("");
@@ -71,7 +73,7 @@ const Select: React.FC<SelectProps> = ({
             p-[16px] pr-12 font-semibold text-[12px] text-[#6C6C6C] cursor-pointer
             placeholder:font-normal placeholder:text-[10px] placeholder:text-[#8A8A8A]
             focus:outline-none 
-            disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400
+            disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 ${className || ""}
             ${error ? "border-red-500 focus:border-red-500" : ""}
           `}
         >
