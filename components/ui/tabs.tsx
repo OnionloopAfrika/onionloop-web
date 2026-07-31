@@ -202,10 +202,10 @@ function TicketsTrigger({
   return (
     <button
       onClick={() => context.setActiveTab(value)}
-      className={`px-3 h-[54px] overflow-x-auto truncate py-2 rounded-[8px] font-[500] text-[14px] transition-all whitespace-nowrap flex justify-center items-center gap-[8px]  ${
+      className={`px-3  overflow-x-auto truncate py-2 rounded-[8px] font-[500] text-[14px] transition-all whitespace-nowrap flex justify-center items-center gap-[8px]  ${
         isActive
           ? "bg-[#04907E] text-white"
-          : "bg-[#F7F7F7] border border-[#C7C7C7] text-[#363636]"
+          : "bg-[#FFFFFF] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-[#363636]"
       } ${className || ""}`}
       {...props}
     >

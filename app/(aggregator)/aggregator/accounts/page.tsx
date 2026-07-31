@@ -1,9 +1,12 @@
-import React from 'react'
+import { AccountsPage } from "@/components/aggregator/accounts/accounts-page";
+import React from "react";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div>
+      <AccountsPage />
+    </div>
+  );
+};
 
-export default page
+export default page;

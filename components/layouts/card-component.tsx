@@ -6,7 +6,7 @@ interface StatCardProps {
   percentage?: string;
   value: string;
   label: string;
-  footerText: string;
+  footerText?: string;
   themeColor: "green" | "blue" | "purple" | "orange" | "red" | "lemon";
   showTrendIcon?: boolean;
   changePercentage?: number;

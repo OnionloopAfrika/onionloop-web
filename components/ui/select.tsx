@@ -9,9 +9,10 @@ interface SelectProps {
   placeholder?: string;
   value?: string;
   onValueChange?: (value: string) => void;
-  options: { value: string; label: string }[];
+  options?: { value: string; label: string }[];
   disabled?: boolean;
   icon?: React.ReactNode;
+  className?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -23,13 +24,14 @@ const Select: React.FC<SelectProps> = ({
   options,
   disabled = false,
   icon,
+  className = "",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const selectedOption = options.find((opt) => opt.value === value);
+    const selectedOption = options?.find((opt) => opt.value === value);
     setSelectedLabel(selectedOption?.label || "");
   }, [value, options]);
 
@@ -67,7 +69,7 @@ const Select: React.FC<SelectProps> = ({
           onClick={() => !disabled && setIsOpen(!isOpen)}
           disabled={disabled}
           className={`
-            flex h-[48px] w-full items-center justify-between rounded-[6px] border border-[#C7C7C7] bg-[#F7F7F7]  
+            flex h-[48px] w-full items-center justify-between rounded-[6px] ${className} border border-[#C7C7C7] bg-[#F7F7F7]  
             p-[16px] pr-12 font-semibold text-[12px] text-[#6C6C6C] cursor-pointer
             placeholder:font-normal placeholder:text-[10px] placeholder:text-[#8A8A8A]
             focus:outline-none 
@@ -92,7 +94,7 @@ const Select: React.FC<SelectProps> = ({
 
         {isOpen && (
           <div className="absolute z-50 mt-1 w-full rounded-[6px] border border-[#C7C7C7] bg-white py-1 shadow-lg">
-            {options.map((option) => (
+            {options?.map((option) => (
               <div
                 key={option.value}
                 onClick={() => handleSelect(option.value, option.label)}
