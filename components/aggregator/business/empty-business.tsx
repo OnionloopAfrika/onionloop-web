@@ -155,7 +155,7 @@ export default function EmptyBusiness({
             >
               Generate Link
             </Button>
-            <Button onClick={() => setStepTwo(false)} variant="ghost">
+            <Button onClick={() => setStepTwo(false)} variant="secondary">
               Back
             </Button>
           </div>

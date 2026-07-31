@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   AggregatorIcon,
   AggregatorRevenueIcon,
@@ -10,12 +13,86 @@ import {
 } from "@/components/icons/svgs";
 import StatCard from "@/components/layouts/card-component";
 import Header from "@/components/layouts/header";
-import React from "react";
+import TrendChart, { ChartDataPoint } from "@/components/ui/charts/trend-chart";
+import RateCard, { SparklinePoint } from "@/components/ui/rate-card";
+import BusinessPerformanceTable from "@/components/aggregator/earning/business-performance-table";
+
+const networkGrowthData: ChartDataPoint[] = [
+  { label: "Mon", active: 170, new: 45 },
+  { label: "Tue", active: 232, new: 58 },
+  { label: "Wed", active: 175, new: 47 },
+  { label: "Thu", active: 253, new: 62 },
+  { label: "Fri", active: 178, new: 45 },
+  { label: "Sat", active: 320, new: 75 },
+  { label: "Sun", active: 375, new: 82 },
+];
+function NetworkGrowthCard() {
+  const [range, setRange] = useState("7days");
+
+  return (
+    <TrendChart
+      title="Network Growth"
+      subtitle="Active Businesses vs New Businesses"
+      data={networkGrowthData}
+      series={[
+        {
+          dataKey: "active",
+          name: "Active Businesses",
+          color: "#04907E",
+          showArea: true,
+        },
+        {
+          dataKey: "new",
+          name: "New Businesses",
+          color: "#166534",
+          showArea: false,
+        },
+      ]}
+      ranges={["7days", "30days", "90days"]}
+      activeRange={range}
+      onRangeChange={setRange}
+    />
+  );
+}
+
+const dormantChartData: SparklinePoint[] = [
+  { label: "1", value: 9.5 },
+  { label: "2", value: 9.0 },
+  { label: "3", value: 7.5 },
+  { label: "4", value: 6.5 },
+  { label: "5", value: 7.0 },
+  { label: "6", value: 6.8 },
+  { label: "7", value: 7.2 },
+  { label: "8", value: 6.9 },
+  { label: "9", value: 7.4 },
+  { label: "10", value: 6.4 },
+  { label: "11", value: 6.6 },
+];
+
+function DormantRateCard() {
+  return (
+    <RateCard
+      title="Dormant Rate"
+      subtitle="Businesses that stopped activities"
+      badge={{ direction: "down", value: "1.8%" }}
+      statValue="6.4%"
+      statLabel="Last 30 days"
+      comparisonText="improved from 8.2 last period"
+      chartData={dormantChartData}
+      chartColor="#dc2626"
+      breakdownTitle="BREAKDOWN"
+      breakdownItems={[
+        { label: "Dormant", value: 12, percent: 65, color: "#04802E" },
+        { label: "Voluntary exit", value: 3, percent: 20, color: "#CB1A14" },
+      ]}
+    />
+  );
+}
 
 const page = () => {
   return (
     <main>
-      <div className=" flex flex-col md:flex-row gap-4 justify-between items-start mb-6">
+      <div className=" flex flex-col md:flex-row gap-4 justify-between items-start">
         <Header
           heading="Dashboard"
           subHeading="Manage and track all businesses under your aggregator network"
@@ -75,6 +152,15 @@ const page = () => {
           changePercentage={12.4}
         />
       </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 w-full">
+        <div className="w-full md:col-span-2 h-full">
+          <NetworkGrowthCard />
+        </div>
+        <div className="col-span-1 h-full">
+          <DormantRateCard />
+        </div>
+      </div>
+      <BusinessPerformanceTable />
     </main>
   );
 };

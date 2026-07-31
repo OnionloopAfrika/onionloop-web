@@ -331,10 +331,10 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
               className="!h-10 text-xs !bg-[#F9FAFB] !border-[#E5E7EB]"
             />
           </div>
-          <div className="w-full sm:w-60">
+          <div className="w-full sm:w-50">
             <div className="w-full px-2 relative flex items-center justify-start bg-[#F9FAFB] border border-[#E5E7EB] rounded-md focus:outline-none">
               <input
-                type="text"
+                type="date"
                 value={dateValue}
                 onChange={(e) => setDateValue(e.target.value)}
                 className="h-10 px-4 text-xs font-semibold text-[#374151] border-none outline-0"
