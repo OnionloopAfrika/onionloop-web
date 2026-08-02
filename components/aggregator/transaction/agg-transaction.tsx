@@ -138,11 +138,11 @@ export default function AggTransaction() {
 
   return (
     <div className="space-y-[24px]">
-      <div className="grid grid-cols-3 gap-[16px]">
+      <div className="grid grid-cols-3 gap-[16px] max-lg:grid-cols-1">
         {STAT.map((item, i) => (
           <div
             key={i}
-            className="bg-white h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
+            className="bg-white min-h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
           >
             <p className="font-[600] text-[20px] text-[#000000]">
               {item.value}
@@ -161,7 +161,7 @@ export default function AggTransaction() {
               <SearchInput placeholder="Search business name" />
             </div>
 
-            <div className="w-[180px]">
+            <div className="w-[180px] max-lg:w-full">
               <Select
                 value={typeFilter}
                 onValueChange={setTypeFilter}
@@ -174,7 +174,7 @@ export default function AggTransaction() {
               />
             </div>
 
-            <div className="w-[150px]">
+            <div className="w-[150px] max-lg:w-full">
               <Select
                 value={dateFilter}
                 onValueChange={setDateFilter}

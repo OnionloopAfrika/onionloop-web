@@ -133,7 +133,7 @@ export function OnionBalance() {
 
   return (
     <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
-      <div className="grid grid-cols-[2fr_1fr] gap-3 p-4 w-[40%]">
+      <div className="grid grid-cols-[2fr_1fr] gap-3 p-4 w-[40%] max-lg:w-full max-lg:grid-cols-1">
         <SearchInput placeholder="Search business name" />
 
         <Select

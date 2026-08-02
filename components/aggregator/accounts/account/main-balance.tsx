@@ -133,7 +133,7 @@ export default function MainBalance() {
 
   return (
     <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
-      <div className="flex flex-col md:flex-row md:items-center gap-3 p-4 w-[40%]">
+      <div className="flex flex-col md:flex-row md:items-center gap-3 p-4 w-[40%] max-lg:w-full">
         <Select
           value={typeFilter}
           onValueChange={setTypeFilter}

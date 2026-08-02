@@ -108,7 +108,7 @@ export function VerificationQueue() {
             <SearchInput placeholder="Search business name" />
           </div>
 
-          <div className="w-[130px]">
+          <div className="w-[130px] max-lg:w-full">
             <Select
               value={statusFilter}
               onValueChange={setStatusFilter}
@@ -121,7 +121,7 @@ export function VerificationQueue() {
             />
           </div>
 
-          <div className="w-[140px]">
+          <div className="w-[140px] max-lg:w-full">
             <Select
               value={dateFilter}
               onValueChange={setDateFilter}

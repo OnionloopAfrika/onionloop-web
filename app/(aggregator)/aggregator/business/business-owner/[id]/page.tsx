@@ -25,12 +25,12 @@ export default function page() {
       <Breadcrumb firstTab="Business Owners" secondTab="De-Light SuperStores" />
 
       <div className="bg-white rounded-[16px] py-[28px] px-[24px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-        <div className="flex items-start gap-[16px]">
+        <div className="flex items-start gap-[16px] max-lg:flex-col">
           <Image src={"/images/de-light.svg"} width={64} height={64} alt="" />
 
-          <div className="flex flex-col  gap-[16px]  w-full">
+          <div className="flex flex-col  gap-[16px]  w-full ">
             <div className="flex gap-[12px]">
-              <p className="font-[600] text-[16px] text-[#131313]">
+              <p className="font-[600] text-[16px] max-lg:text-[14px] text-[#131313]">
                 De-Light SuperStores
               </p>
 
@@ -38,7 +38,7 @@ export default function page() {
                 Active
               </span>
             </div>
-            <div className=" w-full flex gap-[20px]">
+            <div className=" w-full flex gap-[20px] max-lg:flex-col">
               <div className="space-y-[10px]">
                 <div className="flex gap-[8px] items-center">
                   <ProfileCardIcon className="text-[#8A8A8A]" />
@@ -77,7 +77,7 @@ export default function page() {
 
       <Tabs className="space-y-[24px]" defaultValue="business_info">
         <div className="w-full bg-white rounded-[16px] p-[16px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <NavTabsList className="w-fit">
+          <NavTabsList className="w-fit max-lg:w-full max-lg:overflow-x-scroll">
             <NavTabsTrigger value="business_info">Business Info</NavTabsTrigger>
             <NavTabsTrigger value="performance">Performance</NavTabsTrigger>
             <NavTabsTrigger value="transactions">Transactions</NavTabsTrigger>

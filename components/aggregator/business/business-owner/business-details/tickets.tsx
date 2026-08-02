@@ -141,7 +141,7 @@ export function Tickets() {
           <SearchInput />
         </div>
 
-        <div className="w-[140px]">
+        <div className="w-[140px] max-lg:w-full">
           <Select
             value={statusFilter}
             onValueChange={setStatusFilter}

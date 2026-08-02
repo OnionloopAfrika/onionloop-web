@@ -47,7 +47,7 @@ const STAT: StatTypes[] = [
 export function Account() {
   return (
     <div className="space-y-[24px]">
-      <div className="grid grid-cols-3 gap-[16px]">
+      <div className="grid grid-cols-3 gap-[16px] max-lg:grid-cols-1">
         {STAT.map((item, i) => (
           <div
             key={i}
@@ -90,7 +90,7 @@ export function Account() {
 
       <Tabs defaultValue="main_balance">
         <div className="bg-white rounded-[16px] p-[16px] mb-[24px]">
-          <NavTabsList className="w-fit">
+          <NavTabsList className="w-fit max-lg:w-full max-lg:overflow-auto">
             <NavTabsTrigger value="main_balance">Main Balance</NavTabsTrigger>
             <NavTabsTrigger value="revenue_balance">
               Revenue Balance

@@ -300,7 +300,7 @@ export default function EmptyBusiness({
             .map((item, i) => (
               <div key={i}>
                 <div className="space-y-[32px]">
-                  <div className="grid grid-cols-2 gap-[12px]">
+                  <div className="grid grid-cols-2 gap-[12px] max-lg:grid-cols-1">
                     <Input label="First Name" placeholder="Adegoriola" />
 
                     <Input label="Last Name" placeholder="Adegoriola" />
@@ -311,7 +311,7 @@ export default function EmptyBusiness({
                     placeholder="josephmaduabuchi@mail.com"
                   />
 
-                  <div className="grid grid-cols-2 gap-3 items-start">
+                  <div className="grid grid-cols-2 gap-3 items-start max-lg:grid-cols-1">
                     <div className="flex flex-col gap-2">
                       <span className="text-[#131313] font-[600] text-[12px]">
                         Phone Number
@@ -377,12 +377,12 @@ export default function EmptyBusiness({
         onOpenChange={setStepTwoAgent}
       >
         <div className="space-y-[32px]">
-          <div className="grid grid-cols-2 gap-[12px]">
+          <div className="grid grid-cols-2 gap-[12px] max-lg:grid-cols-1">
             <Input placeholder="Adegoriola" label="Business Name" />
             <Select placeholder="Select Type" label="Business Type" />
           </div>
 
-          <div className="grid grid-cols-2 gap-[12px]">
+          <div className="grid grid-cols-2 gap-[12px] max-lg:grid-cols-1">
             <Input placeholder="Adegoriola" label="Business Location" />
             <Select placeholder="Select City" label="City" />
           </div>
@@ -410,7 +410,7 @@ export default function EmptyBusiness({
         onOpenChange={setStepThreeAgent}
       >
         <div className="space-y-[40px]">
-          <div className="grid grid-cols-2 gap-[12px]">
+          <div className="grid grid-cols-2 gap-[12px] max-lg:grid-cols-1">
             <Input label="NIN" placeholder="0000000000" />
             <Input label="BVN" placeholder="0000000000" />
           </div>
@@ -451,8 +451,8 @@ export default function EmptyBusiness({
         <div className="gap-[40px] flex flex-col items-center">
           <VerifyIcon className="text-[#04907E]" />
 
-          <div className="flex flex-col items-center gap-[8px]">
-            <p className="font-[700] text-[24px] text-[#04907E]">
+          <div className="flex flex-col items-center gap-[8px] ">
+            <p className="font-[700] text-[24px] text-[#04907E] max-lg:text-center">
               Business Added Successfully!
             </p>
 

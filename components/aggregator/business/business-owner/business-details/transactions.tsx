@@ -150,7 +150,7 @@ export function BusinessTransactions() {
             <SearchInput placeholder="Search  TXN ID, customer name, type, Amount" />
           </div>
 
-          <div className="w-[180px]">
+          <div className="w-[180px] max-lg:w-full">
             <Select
               value={statusFilter}
               onValueChange={setStatusFilter}

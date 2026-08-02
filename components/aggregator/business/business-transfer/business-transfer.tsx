@@ -19,11 +19,11 @@ export function BusinessTransfer() {
   ];
   return (
     <div className="space-y-[24px]">
-      <div className="grid grid-cols-4 gap-[16px]">
+      <div className="grid grid-cols-4 gap-[16px] max-lg:grid-cols-2">
         {BUSINESS_TRANSFER.map((item, i) => (
           <div
             key={i}
-            className="bg-white h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
+            className="bg-white min-h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
           >
             <p className="font-[600] text-[20px] text-[#000000]">
               {item.value}
@@ -35,7 +35,7 @@ export function BusinessTransfer() {
 
       <Tabs className="space-y-[24px]" defaultValue="all_transfers">
         <div className="w-full bg-white rounded-[16px] p-[16px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <NavTabsList className="w-fit">
+          <NavTabsList className="w-fit max-lg:w-full max-lg:overflow-auto">
             <NavTabsTrigger value="all_transfers">All Transfers</NavTabsTrigger>
             <NavTabsTrigger value="my_requests">My Requests</NavTabsTrigger>
             <NavTabsTrigger value="approved">Approved</NavTabsTrigger>
@@ -48,16 +48,13 @@ export function BusinessTransfer() {
         </TabsContent>
 
         <TabsContent value="my_requests">
-          {" "}
-          <MyRequests />{" "}
+          <MyRequests />
         </TabsContent>
         <TabsContent value="approved">
-          {" "}
-          <Approved />{" "}
+          <Approved />
         </TabsContent>
         <TabsContent value="rejected">
-          {" "}
-          <Rejected />{" "}
+          <Rejected />
         </TabsContent>
       </Tabs>
     </div>

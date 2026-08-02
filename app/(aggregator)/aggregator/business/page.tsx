@@ -33,7 +33,7 @@ const Page = () => {
 
       {hasBusinesses && (
         <Tabs className="space-y-[24px] " defaultValue="business_owners">
-          <TabsList className="grid grid-cols-4 w-[55%] gap-[10px] overflow-x-auto">
+          <TabsList className="grid grid-cols-4 w-[55%] gap-[10px] overflow-x-auto max-lg:w-full max-lg:grid-cols-2">
             <TicketsTrigger value="business_owners">
               <div className="flex items-center gap-[8px] min-w-0">
                 <span className="truncate">Business Owners</span>

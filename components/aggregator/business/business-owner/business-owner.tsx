@@ -51,11 +51,11 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
 
   return (
     <div className="space-y-[24px]">
-      <div className="grid grid-cols-5 gap-[16px]">
+      <div className="grid grid-cols-5 gap-[16px] max-lg:grid-cols-2">
         {STAT.map((item, i) => (
           <div
             key={i}
-            className="bg-white h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
+            className="bg-white min-h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
           >
             <p className="font-[600] text-[20px] text-[#000000]">
               {item.value}
@@ -74,7 +74,7 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
               <SearchInput />
             </div>
 
-            <div className="w-[130px]">
+            <div className="w-[130px] max-lg:w-full">
               <Select
                 value={statusFilter}
                 onValueChange={setStatusFilter}
@@ -87,7 +87,7 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
               />
             </div>
 
-            <div className="w-[140px]">
+            <div className="w-[140px] max-lg:w-full">
               <Select
                 value={dateFilter}
                 onValueChange={setDateFilter}

@@ -26,11 +26,11 @@ export async function Performance() {
 
   return (
     <div className="space-y-[24px]">
-      <div className="grid grid-cols-4 gap-[16px]">
+      <div className="grid grid-cols-4 gap-[16px] max-lg:grid-cols-2">
         {STAT.map((item, i) => (
           <div
             key={i}
-            className="bg-white h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
+            className="bg-white min-h-[82px] rounded-[8px] p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between"
           >
             <p className="font-[600] text-[20px] text-[#000000]">
               {item.value}
@@ -42,7 +42,7 @@ export async function Performance() {
         ))}
       </div>
 
-      <div className="grid grid-cols-[2fr_1fr] gap-[24px]">
+      <div className="grid grid-cols-[2fr_1fr] gap-[24px] max-lg:grid-cols-1">
         <RevenueOverview initialData={initialData} />
         <div className="space-y-[24px]">
           <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-[24px] space-y-[12px]">

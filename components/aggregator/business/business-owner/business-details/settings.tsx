@@ -2,7 +2,7 @@ export function Settings() {
   return (
     <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-[24px]">
       <div className="divide-y divide-[#E5E7EB]">
-        <div className="flex justify-between items-center py-[20px] first:pt-0">
+        <div className="flex justify-between items-center py-[20px] max-lg:flex-col max-lg:items-start max-lg:gap-[20px] first:pt-0">
           <div className="space-y-[4px]">
             <p className="font-[600] text-[14px] text-[#131313]">
               Password Management
@@ -16,7 +16,7 @@ export function Settings() {
           </button>
         </div>
 
-        <div className="flex justify-between items-center py-[20px]">
+        <div className="flex justify-between items-center py-[20px] max-lg:flex-col max-lg:items-start max-lg:gap-[20px]">
           <div className="space-y-[4px]">
             <p className="font-[600] text-[14px] text-[#131313]">Placed PND</p>
             <p className="font-[400] text-[13px] text-[#6C6C6C]">
@@ -28,7 +28,7 @@ export function Settings() {
           </button>
         </div>
 
-        <div className="flex justify-between items-center py-[20px]">
+        <div className="flex justify-between items-center py-[20px] max-lg:flex-col max-lg:items-start max-lg:gap-[20px]">
           <div className="space-y-[4px]">
             <p className="font-[600] text-[14px] text-[#131313]">Remove PND</p>
             <p className="font-[400] text-[13px] text-[#6C6C6C]">
@@ -40,7 +40,7 @@ export function Settings() {
           </button>
         </div>
 
-        <div className="flex justify-between items-center py-[20px]">
+        <div className="flex justify-between items-center py-[20px] max-lg:flex-col max-lg:items-start max-lg:gap-[20px]">
           <div className="space-y-[4px]">
             <p className="font-[600] text-[14px] text-[#131313]">
               Suspend Business
@@ -54,7 +54,7 @@ export function Settings() {
           </button>
         </div>
 
-        <div className="flex justify-between items-center py-[20px]">
+        <div className="flex justify-between items-center py-[20px] max-lg:flex-col max-lg:items-start max-lg:gap-[20px]">
           <div className="space-y-[4px]">
             <p className="font-[600] text-[14px] text-[#131313]">
               Reactivate Business
@@ -68,7 +68,7 @@ export function Settings() {
           </button>
         </div>
 
-        <div className="flex justify-between items-center py-[20px] last:pb-0">
+        <div className="flex justify-between items-center py-[20px] max-lg:flex-col max-lg:items-start max-lg:gap-[20px] last:pb-0">
           <div className="space-y-[4px]">
             <p className="font-[600] text-[14px] text-[#131313]">Transfer</p>
             <p className="font-[400] text-[13px] text-[#6C6C6C]">
