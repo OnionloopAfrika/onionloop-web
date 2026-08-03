@@ -2,7 +2,7 @@
 
 import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 interface Ticket {
   id: string;
@@ -111,6 +111,33 @@ export function Tickets() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
 
+  const filteredTickets = useMemo(() => {
+    return mockTickets.filter((ticket) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          ticket.id.toLowerCase().includes(q) ||
+          ticket.customerName.toLowerCase().includes(q) ||
+          ticket.txnType.toLowerCase().includes(q) ||
+          String(ticket.amount).includes(q) ||
+          ticket.subject.toLowerCase().includes(q) ||
+          ticket.status.toLowerCase().includes(q) ||
+          ticket.date.toLowerCase().includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      if (statusFilter && statusFilter !== "all") {
+        const statusMap: Record<string, Ticket["status"]> = {
+          resolved: "Resolved",
+          pending: "Pending",
+        };
+        if (ticket.status !== statusMap[statusFilter]) return false;
+      }
+
+      return true;
+    });
+  }, [searchQuery, statusFilter]);
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-NG", {
       style: "currency",
@@ -138,7 +165,14 @@ export function Tickets() {
     <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
       <div className="flex flex-col md:flex-row md:items-center gap-3 p-4">
         <div className="relative w-full sm:max-w-[320px]">
-          <SearchInput />
+          <SearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            categories={[]}
+            products={[]}
+            employees={[]}
+            chats={[]}
+          />
         </div>
 
         <div className="w-[140px] max-lg:w-full">
@@ -183,7 +217,7 @@ export function Tickets() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {mockTickets.map((ticket, i) => (
+            {filteredTickets.map((ticket, i) => (
               <tr key={i} className="hover:bg-gray-50/50 transition-colors">
                 <td className="px-6 py-4 text-[14px] text-[#6C6C6C] font-medium whitespace-nowrap">
                   {ticket.id}
@@ -208,6 +242,16 @@ export function Tickets() {
                 </td>
               </tr>
             ))}
+            {filteredTickets.length === 0 && (
+              <tr>
+                <td
+                  colSpan={7}
+                  className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                >
+                  No tickets match your filters.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

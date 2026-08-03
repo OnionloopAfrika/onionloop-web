@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
-import Button from "@/components/ui/button";
-import { DownloadIcon, DownloadIconSolid } from "@/components/icons/svgs";
+import { DownloadIconSolid } from "@/components/icons/svgs";
 
 interface AggTxn {
   id: string;
@@ -109,9 +108,87 @@ const mockTransactions: AggTxn[] = [
   },
 ];
 
+const MONTH_MAP: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function parseBusinessDate(dateStr: string): Date {
+  const match = dateStr.match(
+    /^([A-Za-z]{3})\s+(\d{1,2}),(\d{4})\s+at\s+(.+)$/,
+  );
+  if (!match) return new Date(NaN);
+  const [, mmm, dd, yyyy, time] = match;
+  const month = MONTH_MAP[mmm];
+  if (month === undefined) return new Date(NaN);
+  const timeStr = time.trim();
+  return new Date(
+    `${yyyy}-${String(month + 1).padStart(2, "0")}-${String(dd).padStart(2, "0")}T${timeStr}`,
+  );
+}
+
+function parseFilterDate(dateStr: string): Date {
+  const parts = dateStr.split("-");
+  if (parts.length !== 3) return new Date(NaN);
+  const [dd, mm, yyyy] = parts;
+  return new Date(`${yyyy}-${mm}-${dd}`);
+}
+
 export default function AggTransaction() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+
+  const filteredTransactions = useMemo(() => {
+    return mockTransactions.filter((txn) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          txn.id.toLowerCase().includes(q) ||
+          txn.business_name.toLowerCase().includes(q) ||
+          txn.txn_type.toLowerCase().includes(q) ||
+          String(txn.balance_before).includes(q) ||
+          String(txn.earnings).includes(q) ||
+          String(txn.balance_after).includes(q) ||
+          txn.date.toLowerCase().includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      if (typeFilter && typeFilter !== "all") {
+        const typeMap: Record<string, string> = {
+          transfer: "Transfer",
+          qr: "QR Payment",
+        };
+        if (txn.txn_type !== typeMap[typeFilter]) return false;
+      }
+
+      if (dateFilter) {
+        const itemDate = parseBusinessDate(txn.date);
+        const filterDate = parseFilterDate(dateFilter);
+        if (isNaN(itemDate.getTime()) || isNaN(filterDate.getTime()))
+          return false;
+        if (
+          itemDate.getFullYear() !== filterDate.getFullYear() ||
+          itemDate.getMonth() !== filterDate.getMonth() ||
+          itemDate.getDate() !== filterDate.getDate()
+        ) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+  }, [searchQuery, typeFilter, dateFilter]);
 
   const STAT = [
     {
@@ -158,7 +235,15 @@ export default function AggTransaction() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-4">
           <div className="flex flex-wrap items-center gap-3 flex-1">
             <div className="relative w-full sm:max-w-[280px]">
-              <SearchInput placeholder="Search business name" />
+              <SearchInput
+                value={searchQuery}
+                onChange={setSearchQuery}
+                categories={[]}
+                products={[]}
+                employees={[]}
+                chats={[]}
+                placeholder="Search business name"
+              />
             </div>
 
             <div className="w-[180px] max-lg:w-full">
@@ -223,7 +308,7 @@ export default function AggTransaction() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {mockTransactions.map((txn, i) => (
+              {filteredTransactions.map((txn, i) => (
                 <tr
                   key={i}
                   className="hover:bg-gray-50/50 transition-colors border border-b-[#C7C7C7] last:border-0"
@@ -251,13 +336,27 @@ export default function AggTransaction() {
                   </td>
                 </tr>
               ))}
+              {filteredTransactions.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={7}
+                    className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                  >
+                    No transactions match your filters.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-4 border-t border-gray-100">
           <span className="text-[14px] text-[#6C6C6C] font-medium">
-            Showing 1 to 8 of 23,654 Transactions
+            Showing{" "}
+            {filteredTransactions.length === 0
+              ? "0"
+              : `1 to ${filteredTransactions.length}`}{" "}
+            of {mockTransactions.length} Transactions
           </span>
           <div className="flex items-center gap-2">
             <button className="p-2 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50">

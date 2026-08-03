@@ -5,10 +5,39 @@ import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
 import { BUSINESSES } from "@/lib/mockdata/businesses";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 interface BusinessOwnerProps {
   onAddBusiness?: () => void;
+}
+
+const MONTH_MAP: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function parseBusinessDate(dateStr: string): Date {
+  const match = dateStr.match(
+    /^([A-Za-z]{3})\s+(\d{1,2}),(\d{4})\s+at\s+(.+)$/,
+  );
+  if (!match) return new Date(NaN);
+  const [, mmm, dd, yyyy, time] = match;
+  const month = MONTH_MAP[mmm];
+  if (month === undefined) return new Date(NaN);
+  const timeStr = time.trim();
+  return new Date(
+    `${yyyy}-${String(month + 1).padStart(2, "0")}-${String(dd).padStart(2, "0")}T${timeStr}`,
+  );
 }
 
 export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
@@ -16,6 +45,43 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+
+  const filteredBusinesses = useMemo(() => {
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+    const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+    const lastMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+
+    return BUSINESSES.filter((biz) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          biz.business_owner.toLowerCase().includes(q) ||
+          biz.business_name.toLowerCase().includes(q) ||
+          biz.phone_number.toLowerCase().includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      if (statusFilter && statusFilter !== "all") {
+        if (biz.status !== statusFilter) return false;
+      }
+
+      if (dateFilter) {
+        const d = parseBusinessDate(biz.date);
+        if (isNaN(d.getTime())) return false;
+        if (dateFilter === "this-month") {
+          if (d.getMonth() !== currentMonth || d.getFullYear() !== currentYear)
+            return false;
+        } else if (dateFilter === "last-month") {
+          if (d.getMonth() !== lastMonth || d.getFullYear() !== lastMonthYear)
+            return false;
+        }
+      }
+
+      return true;
+    });
+  }, [searchQuery, statusFilter, dateFilter]);
 
   const STAT = [
     {
@@ -71,7 +137,15 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
         <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
           <div className="flex flex-wrap items-center gap-3 w-full flex-1">
             <div className="relative w-full sm:max-w-[280px]">
-              <SearchInput />
+              <SearchInput
+                value={searchQuery}
+                onChange={setSearchQuery}
+                categories={[]}
+                products={[]}
+                employees={[]}
+                chats={[]}
+                placeholder="Search business owner, name, phone..."
+              />
             </div>
 
             <div className="w-[130px] max-lg:w-full">
@@ -136,12 +210,12 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {BUSINESSES.map((biz, i) => (
+              {filteredBusinesses.map((biz) => (
                 <tr
                   onClick={() =>
                     router.push(`/aggregator/business/business-owner/${biz.id}`)
                   }
-                  key={i}
+                  key={biz.id}
                   className="hover:bg-gray-50/50 transition-colors border-b border-[#C7C7C7] last:border-0 cursor-pointer"
                 >
                   <td className="px-6 h-[81.82px] py-4 text-[14px] text-[#6C6C6C] font-normal whitespace-nowrap">
@@ -201,13 +275,27 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
                   </td>
                 </tr>
               ))}
+              {filteredBusinesses.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={8}
+                    className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                  >
+                    No businesses match your filters.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-4 border-t border-gray-100">
           <span className="text-[14px] text-[#6C6C6C] font-medium">
-            Showing 1 to 10 of 128 businesses
+            Showing{" "}
+            {filteredBusinesses.length === 0
+              ? "0"
+              : `1 to ${filteredBusinesses.length}`}{" "}
+            of {BUSINESSES.length} businesses
           </span>
           <div className="flex items-center gap-2">
             <button className="p-2 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
 
@@ -97,7 +97,33 @@ const mockRevenue: RevenueItem[] = [
 ];
 
 export function RevenueBalance() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [earningFilter, setEarningFilter] = useState("");
+
+  const filteredRevenue = useMemo(() => {
+    return mockRevenue.filter((item) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          item.business_owner.toLowerCase().includes(q) ||
+          item.business_name.toLowerCase().includes(q) ||
+          item.earning_type.toLowerCase().includes(q) ||
+          String(item.amount).includes(q) ||
+          item.date.toLowerCase().includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      if (earningFilter && earningFilter !== "all") {
+        const typeMap: Record<string, RevenueItem["earning_type"]> = {
+          onboarding: "Onboarding",
+          transaction: "Transaction",
+        };
+        if (item.earning_type !== typeMap[earningFilter]) return false;
+      }
+
+      return true;
+    });
+  }, [searchQuery, earningFilter]);
 
   const getInitials = (name: string) => {
     return name
@@ -134,7 +160,15 @@ export function RevenueBalance() {
   return (
     <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
       <div className="grid grid-cols-[2fr_1fr] gap-3 p-4 w-[40%] max-lg:w-full max-lg:grid-cols-1">
-        <SearchInput placeholder="Search business name" />
+        <SearchInput
+          value={searchQuery}
+          onChange={setSearchQuery}
+          categories={[]}
+          products={[]}
+          employees={[]}
+          chats={[]}
+          placeholder="Search business name"
+        />
 
         <Select
           value={earningFilter}
@@ -171,7 +205,7 @@ export function RevenueBalance() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {mockRevenue.map((item, i) => (
+            {filteredRevenue.map((item, i) => (
               <tr
                 key={i}
                 className="hover:bg-gray-50/50 transition-colors border border-b-[#C7C7C7] last:border-0"
@@ -211,13 +245,27 @@ export function RevenueBalance() {
                 </td>
               </tr>
             ))}
+            {filteredRevenue.length === 0 && (
+              <tr>
+                <td
+                  colSpan={6}
+                  className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                >
+                  No revenue items match your filters.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
 
       <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-4 border-t border-gray-100">
         <span className="text-[14px] text-[#6C6C6C] font-medium">
-          Showing 1 to 10 of 128 Accounts
+          Showing{" "}
+          {filteredRevenue.length === 0
+            ? "0"
+            : `1 to ${filteredRevenue.length}`}{" "}
+          of {mockRevenue.length} Accounts
         </span>
         <div className="flex items-center gap-2">
           <button className="p-2 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50">
