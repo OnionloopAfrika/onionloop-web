@@ -46,7 +46,6 @@ export function BusinessTransfer() {
         <TabsContent value="all_transfers">
           <AllTransfers />
         </TabsContent>
-
         <TabsContent value="my_requests">
           <MyRequests />
         </TabsContent>

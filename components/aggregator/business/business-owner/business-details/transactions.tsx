@@ -2,7 +2,7 @@
 
 import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 interface BusinessTransaction {
   id: string;
@@ -112,6 +112,32 @@ export function BusinessTransactions() {
   const [statusFilter, setStatusFilter] = useState("successful");
   const [activeTab, setActiveTab] = useState("Transactions");
 
+  const filteredTransactions = useMemo(() => {
+    return mockTransactions.filter((txn) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          txn.id.toLowerCase().includes(q) ||
+          txn.customerName.toLowerCase().includes(q) ||
+          txn.txnType.toLowerCase().includes(q) ||
+          String(txn.amount).includes(q) ||
+          String(txn.earnings).includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      if (statusFilter && statusFilter !== "all") {
+        const statusMap: Record<string, BusinessTransaction["status"]> = {
+          successful: "Successful",
+          pending: "Pending",
+          failed: "Failed",
+        };
+        if (txn.status !== statusMap[statusFilter]) return false;
+      }
+
+      return true;
+    });
+  }, [searchQuery, statusFilter]);
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-NG", {
       style: "currency",
@@ -147,7 +173,15 @@ export function BusinessTransactions() {
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
         <div className="flex flex-col md:flex-row md:items-center gap-3 p-4">
           <div className="relative w-full sm:max-w-[360px]">
-            <SearchInput placeholder="Search  TXN ID, customer name, type, Amount" />
+            <SearchInput
+              value={searchQuery}
+              onChange={setSearchQuery}
+              categories={[]}
+              products={[]}
+              employees={[]}
+              chats={[]}
+              placeholder="Search  TXN ID, customer name, type, Amount"
+            />
           </div>
 
           <div className="w-[180px] max-lg:w-full">
@@ -194,7 +228,7 @@ export function BusinessTransactions() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {mockTransactions.map((txn, i) => (
+              {filteredTransactions.map((txn, i) => (
                 <tr key={i} className="hover:bg-gray-50/50 transition-colors">
                   <td className="px-6 py-4 text-[14px] text-[#6C6C6C] font-medium whitespace-nowrap">
                     {txn.id}
@@ -224,13 +258,27 @@ export function BusinessTransactions() {
                   </td>
                 </tr>
               ))}
+              {filteredTransactions.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={8}
+                    className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                  >
+                    No transactions match your filters.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-4 border-t border-gray-100">
           <span className="text-[14px] text-[#6C6C6C] font-medium">
-            Showing 1 to 10 of 70 transactions
+            Showing{" "}
+            {filteredTransactions.length === 0
+              ? "0"
+              : `1 to ${filteredTransactions.length}`}{" "}
+            of {mockTransactions.length} transactions
           </span>
           <div className="flex items-center gap-2">
             <button className="p-2 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50">

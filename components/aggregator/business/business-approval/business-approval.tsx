@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
 import SearchBar from "@/components/ui/search-bar";
 
 interface ApprovalItem {
+  id: string;
   business_name: string;
   related_name: string;
   business_type: string;
@@ -16,90 +17,127 @@ interface ApprovalItem {
 
 const mockApprovals: ApprovalItem[] = [
   {
+    id: "1",
     business_name: "De-Light SuperStores",
     related_name: "De-Light SuperStores",
     business_type: "Merchant",
-    requested_on: "May 19,2026 at 09:15am",
+    requested_on: "Aug 1,2026 at 09:15am",
     status: "Pending",
     avatar: "",
   },
   {
+    id: "2",
     business_name: "KFC Holdings",
     related_name: "God's Owned Business",
     business_type: "Merchant",
-    requested_on: "May 19,2026 at 09:15am",
-    status: "Pending",
+    requested_on: "Aug 2,2026 at 11:30am",
+    status: "Approved",
     avatar: "",
   },
   {
+    id: "3",
     business_name: "Proens Stores",
     related_name: "God's Owned Business",
     business_type: "Agent",
-    requested_on: "May 19,2026 at 09:15am",
-    status: "Pending",
+    requested_on: "Aug 3,2026 at 02:45pm",
+    status: "Rejected",
     avatar: "",
   },
   {
+    id: "4",
     business_name: "God's Owned Business",
     related_name: "God's Owned Business",
     business_type: "Merchant",
-    requested_on: "May 19,2026 at 09:15am",
-    status: "Pending",
+    requested_on: "July 15,2026 at 10:00am",
+    status: "Approved",
     avatar: "",
   },
   {
+    id: "5",
     business_name: "Swift Logistics",
     related_name: "God's Owned Business",
     business_type: "Merchant",
-    requested_on: "May 19,2026 at 09:15am",
+    requested_on: "July 20,2026 at 04:20pm",
     status: "Pending",
     avatar: "",
   },
   {
+    id: "6",
     business_name: "Emeka & co.",
     related_name: "Swift Logistics",
     business_type: "Agent",
-    requested_on: "May 19,2026 at 09:15am",
-    status: "Pending",
+    requested_on: "July 28,2026 at 08:45am",
+    status: "Approved",
     avatar: "",
   },
   {
+    id: "7",
     business_name: "Big Bites Restaurants",
     related_name: "Emeka & co.",
     business_type: "Merchant",
     requested_on: "May 19,2026 at 09:15am",
-    status: "Pending",
+    status: "Rejected",
     avatar: "",
   },
   {
+    id: "8",
     business_name: "Grace Beauty Hub",
     related_name: "Big Bites Restaurants",
     business_type: "Merchant",
-    requested_on: "May 19,2026 at 09:15am",
+    requested_on: "May 22,2026 at 01:10pm",
     status: "Pending",
     avatar: "",
   },
   {
+    id: "9",
     business_name: "Mains Cosmetics",
     related_name: "Grace Beauty Hub",
     business_type: "Agent",
-    requested_on: "May 19,2026 at 09:15am",
-    status: "Pending",
+    requested_on: "June 5,2026 at 03:05pm",
+    status: "Approved",
     avatar: "",
   },
   {
+    id: "10",
     business_name: "Prime Med. Pharmacy",
     related_name: "Prime Med. Pharmacy",
     business_type: "Agent",
-    requested_on: "May 19,2026 at 09:15am",
+    requested_on: "July 31,2026 at 07:50pm",
     status: "Pending",
     avatar: "",
   },
 ];
 
 export function BusinessApproval() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
+
+  const filteredApprovals = useMemo(() => {
+    return mockApprovals.filter((item) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          item.business_name.toLowerCase().includes(q) ||
+          item.related_name.toLowerCase().includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      if (statusFilter && statusFilter !== "all") {
+        const normalized =
+          statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1);
+        if (item.status !== normalized) return false;
+      }
+
+      if (typeFilter && typeFilter !== "all") {
+        const normalized =
+          typeFilter.charAt(0).toUpperCase() + typeFilter.slice(1);
+        if (item.business_type !== normalized) return false;
+      }
+
+      return true;
+    });
+  }, [searchQuery, statusFilter, typeFilter]);
 
   const BUSINESS_APPROVAL = [
     { value: "128", desc: "Transfer Request" },
@@ -157,7 +195,30 @@ export function BusinessApproval() {
 
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
         <div className="w-[60%] max-lg:w-full">
-          <SearchBar />
+          <SearchBar
+            searchPlaceholder="Search business name..."
+            searchValue={searchQuery}
+            onSearchChange={setSearchQuery}
+            categories={[]}
+            products={[]}
+            statusOptions={[
+              { value: "all", label: "All Status" },
+              { value: "pending", label: "Pending" },
+              { value: "approved", label: "Approved" },
+              { value: "rejected", label: "Rejected" },
+            ]}
+            statusValue={statusFilter}
+            statusPlaceholder="All Status"
+            onStatusChange={setStatusFilter}
+            dateOptions={[
+              { value: "all", label: "All Types" },
+              { value: "merchant", label: "Merchant" },
+              { value: "agent", label: "Agent" },
+            ]}
+            dateValue={typeFilter}
+            datePlaceholder="All Types"
+            onDateChange={setTypeFilter}
+          />
         </div>
 
         <div className="w-full overflow-x-auto">
@@ -183,9 +244,9 @@ export function BusinessApproval() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {mockApprovals.map((item, i) => (
+              {filteredApprovals.map((item) => (
                 <tr
-                  key={i}
+                  key={item.id}
                   className="hover:bg-gray-50/50 cursor-pointer transition-colors border border-b-[#C7C7C7] last:border-0"
                 >
                   <td className="px-6 py-4 text-[14px] font-[500] text-[#6C6C6C] whitespace-nowrap">
@@ -224,13 +285,27 @@ export function BusinessApproval() {
                   </td>
                 </tr>
               ))}
+              {filteredApprovals.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                  >
+                    No requests match your filters.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-4 border-t border-gray-100">
           <span className="text-[14px] text-[#6C6C6C] font-medium">
-            Showing 1 to 5 of 20 Requests
+            Showing{" "}
+            {filteredApprovals.length === 0
+              ? "0"
+              : `1 to ${filteredApprovals.length}`}{" "}
+            of {mockApprovals.length} Requests
           </span>
           <div className="flex items-center gap-2">
             <button className="p-2 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50">

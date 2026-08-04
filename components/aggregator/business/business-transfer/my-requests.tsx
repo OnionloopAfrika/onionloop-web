@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Button from "@/components/ui/button";
 import { SearchInput } from "@/components/ui/search-input";
 import { Modak } from "next/font/google";
@@ -88,6 +88,24 @@ export default function MyRequests() {
   const [reviewSuccess, setReviewSuccess] = useState(false);
   const [openTransferBusiness, setOpenTransferBusiness] = useState(false);
 
+  const filteredTransfers = useMemo(() => {
+    return mockTransfers.filter((item) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          item.reference_id.toLowerCase().includes(q) ||
+          item.business_name.toLowerCase().includes(q) ||
+          item.from_type.toLowerCase().includes(q) ||
+          item.to_type.toLowerCase().includes(q) ||
+          item.requested_on.toLowerCase().includes(q) ||
+          item.status.toLowerCase().includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      return true;
+    });
+  }, [searchQuery]);
+
   const handleContinue = () => {
     if (!businessName) return;
 
@@ -135,7 +153,15 @@ export default function MyRequests() {
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-4">
           <div className="relative w-full sm:max-w-[280px]">
-            <SearchInput placeholder="Search business name" />
+            <SearchInput
+              value={searchQuery}
+              onChange={setSearchQuery}
+              categories={[]}
+              products={[]}
+              employees={[]}
+              chats={[]}
+              placeholder="Search business name"
+            />
           </div>
 
           <Button onClick={() => setOpenTransferBusiness(true)} size="md">
@@ -168,7 +194,7 @@ export default function MyRequests() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {mockTransfers.map((item, i) => (
+              {filteredTransfers.map((item, i) => (
                 <tr
                   onClick={() => setOpenTransferBusiness(true)}
                   key={i}
@@ -194,6 +220,16 @@ export default function MyRequests() {
                   </td>
                 </tr>
               ))}
+              {filteredTransfers.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                  >
+                    No transfers match your filters.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Select from "@/components/ui/select";
 
 interface BalanceTransaction {
@@ -84,9 +84,73 @@ const mockTransactions: BalanceTransaction[] = [
   },
 ];
 
+const MONTH_MAP: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function parseBusinessDate(dateStr: string): Date {
+  const match = dateStr.match(
+    /^([A-Za-z]{3})\s+(\d{1,2}),(\d{4})\s+at\s+(.+)$/,
+  );
+  if (!match) return new Date(NaN);
+  const [, mmm, dd, yyyy, time] = match;
+  const month = MONTH_MAP[mmm];
+  if (month === undefined) return new Date(NaN);
+  const timeStr = time.trim();
+  return new Date(
+    `${yyyy}-${String(month + 1).padStart(2, "0")}-${String(dd).padStart(2, "0")}T${timeStr}`,
+  );
+}
+
+function parseFilterDate(dateStr: string): Date {
+  const parts = dateStr.split("-");
+  if (parts.length !== 3) return new Date(NaN);
+  const [dd, mm, yyyy] = parts;
+  return new Date(`${yyyy}-${mm}-${dd}`);
+}
+
 export default function MainBalance() {
   const [typeFilter, setTypeFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+
+  const filteredTransactions = useMemo(() => {
+    return mockTransactions.filter((txn) => {
+      if (typeFilter && typeFilter !== "all") {
+        const typeMap: Record<string, BalanceTransaction["transactionType"]> = {
+          credit: "Credit",
+          debit: "Debit",
+        };
+        if (txn.transactionType !== typeMap[typeFilter]) return false;
+      }
+
+      if (dateFilter) {
+        const itemDate = parseBusinessDate(txn.date);
+        const filterDate = parseFilterDate(dateFilter);
+        if (isNaN(itemDate.getTime()) || isNaN(filterDate.getTime()))
+          return false;
+        if (
+          itemDate.getFullYear() !== filterDate.getFullYear() ||
+          itemDate.getMonth() !== filterDate.getMonth() ||
+          itemDate.getDate() !== filterDate.getDate()
+        ) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+  }, [typeFilter, dateFilter]);
 
   const formatAmount = (amount: number) => {
     return new Intl.NumberFormat("en-NG", {
@@ -178,7 +242,7 @@ export default function MainBalance() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {mockTransactions.map((txn, i) => (
+            {filteredTransactions.map((txn, i) => (
               <tr
                 key={i}
                 className="hover:bg-gray-50/50 transition-colors border border-b-[#C7C7C7] last:border-0"
@@ -200,6 +264,16 @@ export default function MainBalance() {
                 </td>
               </tr>
             ))}
+            {filteredTransactions.length === 0 && (
+              <tr>
+                <td
+                  colSpan={5}
+                  className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                >
+                  No transactions match your filters.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

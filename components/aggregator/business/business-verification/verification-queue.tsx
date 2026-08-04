@@ -13,7 +13,7 @@ import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
 import Textarea from "@/components/ui/textarea";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 interface QueueItem {
   business_owner: string;
@@ -83,6 +83,35 @@ const mockQueue: QueueItem[] = [
   },
 ];
 
+const MONTH_MAP: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
+};
+
+function parseBusinessDate(dateStr: string): Date {
+  const match = dateStr.match(
+    /^([A-Za-z]{3})\s+(\d{1,2}),(\d{4})\s+at\s+(.+)$/,
+  );
+  if (!match) return new Date(NaN);
+  const [, mmm, dd, yyyy, time] = match;
+  const month = MONTH_MAP[mmm];
+  if (month === undefined) return new Date(NaN);
+  const timeStr = time.trim();
+  return new Date(
+    `${yyyy}-${String(month + 1).padStart(2, "0")}-${String(dd).padStart(2, "0")}T${timeStr}`,
+  );
+}
+
 export function VerificationQueue() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
@@ -90,6 +119,41 @@ export function VerificationQueue() {
 
   const [viewVerification, setViewVerification] = useState(false);
   const [verificationReview, setVerificationReview] = useState(false);
+
+  const filteredQueue = useMemo(() => {
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+    const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+    const lastMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+
+    return mockQueue.filter((item) => {
+      if (searchQuery.trim() !== "") {
+        const q = searchQuery.trim().toLowerCase();
+        const matchesSearch =
+          item.business_owner.toLowerCase().includes(q) ||
+          item.business_name.toLowerCase().includes(q) ||
+          item.phone_number.toLowerCase().includes(q) ||
+          item.address.toLowerCase().includes(q) ||
+          item.assigned_on.toLowerCase().includes(q);
+        if (!matchesSearch) return false;
+      }
+
+      if (dateFilter) {
+        const d = parseBusinessDate(item.assigned_on);
+        if (isNaN(d.getTime())) return false;
+        if (dateFilter === "this-month") {
+          if (d.getMonth() !== currentMonth || d.getFullYear() !== currentYear)
+            return false;
+        } else if (dateFilter === "last-month") {
+          if (d.getMonth() !== lastMonth || d.getFullYear() !== lastMonthYear)
+            return false;
+        }
+      }
+
+      return true;
+    });
+  }, [searchQuery, dateFilter]);
 
   const getInitials = (name: string) => {
     return name
@@ -105,7 +169,15 @@ export function VerificationQueue() {
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
         <div className="flex flex-col md:flex-row md:items-center gap-3 p-4">
           <div className="relative w-full sm:max-w-[280px]">
-            <SearchInput placeholder="Search business name" />
+            <SearchInput
+              value={searchQuery}
+              onChange={setSearchQuery}
+              categories={[]}
+              products={[]}
+              employees={[]}
+              chats={[]}
+              placeholder="Search business name"
+            />
           </div>
 
           <div className="w-[130px] max-lg:w-full">
@@ -157,7 +229,7 @@ export function VerificationQueue() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {mockQueue.map((item, i) => (
+              {filteredQueue.map((item, i) => (
                 <tr
                   onClick={() => setViewVerification(true)}
                   key={i}
@@ -198,6 +270,16 @@ export function VerificationQueue() {
                   </td>
                 </tr>
               ))}
+              {filteredQueue.length === 0 && (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="px-6 h-[200px] text-center text-[14px] text-[#6C6C6C] font-medium"
+                  >
+                    No items match your filters.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
