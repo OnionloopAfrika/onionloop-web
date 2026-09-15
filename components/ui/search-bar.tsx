@@ -66,7 +66,7 @@ export default function SearchBar({
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-[12px] w-full">
+        <div className="grid grid-cols-2 gap-[12px] w-full max-lg:grid-cols-1">
           <Select
             options={statusOptions}
             value={statusValue}
