@@ -1,17 +1,69 @@
+# Production stack: Caddy (HTTPS + subdomain routing) in front of the three apps.
+# Landing page is static and served by Caddy directly.
+#
+#   cp .env.example .env     # set ROOT_DOMAIN
+#   docker compose up --build -d
+
+x-app: &app
+  restart: unless-stopped
+  expose:
+    - "3000"
+  healthcheck:
+    test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/"]
+    interval: 30s
+    timeout: 5s
+    retries: 3
+
 services:
-  onionloop-web:
+  crew:
+    <<: *app
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: onionloop-web
-    ports:
-      - "3000:3000"
+      args: { APP: crew }
+    container_name: onion-crew
     env_file:
-      - .env.production
-    restart: unless-stopped
+      - path: ./apps/crew/.env.production
+        required: false
 
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
+  mega:
+    <<: *app
+    build:
+      context: .
+      args: { APP: mega }
+    container_name: onion-mega
+    env_file:
+      - path: ./apps/mega/.env.production
+        required: false
+
+  aggregator:
+    <<: *app
+    build:
+      context: .
+      args: { APP: aggregator }
+    container_name: onion-aggregator
+    env_file:
+      - path: ./apps/aggregator/.env.production
+        required: false
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: onion-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      ROOT_DOMAIN: ${ROOT_DOMAIN:?set ROOT_DOMAIN in .env}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./apps/landing:/srv/landing:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - crew
+      - mega
+      - aggregator
+
+volumes:
+  caddy_data:
+  caddy_config:

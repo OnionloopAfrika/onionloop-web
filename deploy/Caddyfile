@@ -1,0 +1,28 @@
+# ROOT_DOMAIN comes from .env (e.g. onionloop.com).
+# DNS: point  @, www, crew, mega, aggregator  (or a single *.onionloop.com wildcard) at this server.
+# Caddy gets and renews the HTTPS certificates on its own.
+
+{$ROOT_DOMAIN} {
+	encode gzip
+	root * /srv/landing
+	file_server
+}
+
+www.{$ROOT_DOMAIN} {
+	redir https://{$ROOT_DOMAIN}{uri} permanent
+}
+
+crew.{$ROOT_DOMAIN} {
+	encode gzip
+	reverse_proxy crew:3000
+}
+
+mega.{$ROOT_DOMAIN} {
+	encode gzip
+	reverse_proxy mega:3000
+}
+
+aggregator.{$ROOT_DOMAIN} {
+	encode gzip
+	reverse_proxy aggregator:3000
+}

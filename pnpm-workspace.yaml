@@ -1,3 +1,7 @@
+packages:
+  - "apps/*"
+
+# carried over from the original repos
 allowBuilds:
   sharp: true
   unrs-resolver: true

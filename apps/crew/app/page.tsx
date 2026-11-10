@@ -1,0 +1,7 @@
+import { redirect } from "next/navigation";
+
+// The product picker now lives in apps/landing.
+// On its own subdomain this app goes straight to its login screen.
+export default function Home() {
+  redirect("/crew/auth/login/");
+}
