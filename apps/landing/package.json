@@ -1,0 +1,10 @@
+{
+  "name": "@onion/landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx --yes serve@14 . -l 3000",
+    "build": "echo \"landing is static, nothing to build\"",
+    "start": "npx --yes serve@14 . -l 3000"
+  }
+}

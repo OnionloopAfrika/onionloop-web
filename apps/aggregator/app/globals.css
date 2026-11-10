@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-color: #024e44;
+  --danger: #cb1a14;
+  --light: #04907e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary-color: var(--primary-color);
+  --color-danger: var(--danger);
+  --color-light: var(--light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+}
+
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+.reference-table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.reference-table-header .reference-table-row {
+  background-color: #f9fafb !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+}
+
+.reference-table-head {
+  height: 81.82px !important;
+  padding: 10px 15px !important;
+  color: #6c6c6c !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+  text-align: left !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+.reference-table-body .reference-table-row {
+  border-bottom: 1px solid #c7c7c7 !important;
+}
+
+.reference-table-row {
+  transition: background-color 150ms ease;
+}
+
+.reference-table-row:hover {
+  background-color: #f9fafb;
+}
+
+.reference-table-row[data-interactive="true"] {
+  cursor: pointer;
+}
+
+.reference-table-cell {
+  height: 81.82px !important;
+  padding: 16px 24px !important;
+  color: #6c6c6c !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  white-space: nowrap !important;
+}
+
+.reference-table-cell[data-empty="true"] {
+  height: 200px !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* In your global CSS file */
+.recharts-wrapper,
+.recharts-surface {
+  outline: none !important;
+}
+
+/* Hide default date/time picker icons */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"]::-moz-calendar-picker-indicator,
+input[type="time"]::-moz-calendar-picker-indicator,
+input[type="datetime-local"]::-moz-calendar-picker-indicator {
+  display: none;
+}
