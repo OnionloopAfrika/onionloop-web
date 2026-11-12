@@ -10,7 +10,9 @@
  */
 (function () {
   var OVERRIDES = {
-    // crew: "https://crew.example.com",
+    crew: "https://onionloop-crew.vercel.app",
+    mega: "https://onionloop-mega.vercel.app",
+    aggregator: "https://onionloop-aggregator.vercel.app",
   };
 
   var DEV_PORTS = { crew: 3001, mega: 3002, aggregator: 3003 };
