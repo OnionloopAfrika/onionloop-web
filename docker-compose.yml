@@ -59,7 +59,7 @@ services:
       ROOT_DOMAIN: ${ROOT_DOMAIN:?set ROOT_DOMAIN in .env}
     volumes:
       - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./apps/entry:/srv/entry:ro
+      - ./apps/entry/public:/srv/entry:ro
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
