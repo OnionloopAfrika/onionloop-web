@@ -1,0 +1,64 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "services": {
+        "entry": {
+            "root": "apps/entry"
+        },
+        "crew": {
+            "root": "apps/crew",
+            "framework": "nextjs"
+        },
+        "mega": {
+            "root": "apps/mega",
+            "framework": "nextjs"
+        },
+        "aggregator": {
+            "root": "apps/aggregator",
+            "framework": "nextjs"
+        }
+    },
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "crew.onionloop.com"
+                }
+            ],
+            "destination": {
+                "service": "crew"
+            }
+        },
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "mega.onionloop.com"
+                }
+            ],
+            "destination": {
+                "service": "mega"
+            }
+        },
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "aggregator.onionloop.com"
+                }
+            ],
+            "destination": {
+                "service": "aggregator"
+            }
+        },
+        {
+            "source": "/(.*)",
+            "destination": {
+                "service": "entry"
+            }
+        }
+    ]
+}

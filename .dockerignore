@@ -1,9 +1,10 @@
-node_modules
-.next
+**/node_modules
+**/.next
+**/.turbo
 .git
 .gitignore
 Dockerfile
-docker-compose.yml
-docker-compose.dev.yml
-.env*
+docker-compose*.yml
+deploy
+**/.env*
 *.log

@@ -1,27 +1,35 @@
-# ── Stage 1: Dependencies ─────────────────────
-FROM node:20-alpine AS deps
-RUN corepack enable && corepack prepare pnpm@latest --activate
-WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+# One Dockerfile for every Next.js app in the repo.
+#   docker build --build-arg APP=crew -t onion-crew .
+# APP is the folder name under apps/ (crew | mega | aggregator).
 
-# ── Stage 2: Builder (used only in prod) ─────
+# ── Builder ───────────────────────────────────
 FROM node:20-alpine AS builder
-RUN corepack enable && corepack prepare pnpm@latest --activate
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN pnpm build
+ARG APP
+RUN corepack enable
+WORKDIR /repo
 
-# ── Stage 3: Runner (prod) ───────────────────
+# Copy everything (see .dockerignore), then install only this app's deps
+COPY . .
+RUN pnpm install --frozen-lockfile --filter "@onion/${APP}..."
+RUN pnpm --filter "@onion/${APP}" build
+
+# ── Runner ────────────────────────────────────
 FROM node:20-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
+ARG APP
+ENV NODE_ENV=production \
+    PORT=3000 \
+    HOSTNAME=0.0.0.0 \
+    APP_DIR=apps/${APP}
 RUN apk add --no-cache wget
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+WORKDIR /repo
+
+# Standalone output keeps the monorepo layout: /repo/apps/<app>/server.js
+COPY --from=builder /repo/apps/${APP}/.next/standalone ./
+COPY --from=builder /repo/apps/${APP}/.next/static ./apps/${APP}/.next/static
+COPY --from=builder /repo/apps/${APP}/public ./apps/${APP}/public
+
 EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD wget --spider -q http://localhost:3000 || exit 1
-CMD ["node", "server.js"]
+  CMD wget --spider -q http://localhost:3000/ || exit 1
+
+CMD ["sh", "-c", "node ${APP_DIR}/server.js"]
