@@ -19,6 +19,7 @@ services:
     <<: *app
     build:
       context: .
+      dockerfile: deploy/Dockerfile
       args: { APP: crew }
     container_name: onion-crew
     env_file:
@@ -29,6 +30,7 @@ services:
     <<: *app
     build:
       context: .
+      dockerfile: deploy/Dockerfile
       args: { APP: mega }
     container_name: onion-mega
     env_file:
@@ -39,6 +41,7 @@ services:
     <<: *app
     build:
       context: .
+      dockerfile: deploy/Dockerfile
       args: { APP: aggregator }
     container_name: onion-aggregator
     env_file:
