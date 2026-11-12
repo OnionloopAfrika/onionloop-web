@@ -1,5 +1,5 @@
 # Production stack: Caddy (HTTPS + subdomain routing) in front of the three apps.
-# Landing page is static and served by Caddy directly.
+# Entry page is static and served by Caddy directly.
 #
 #   cp .env.example .env     # set ROOT_DOMAIN
 #   docker compose up --build -d
@@ -56,7 +56,7 @@ services:
       ROOT_DOMAIN: ${ROOT_DOMAIN:?set ROOT_DOMAIN in .env}
     volumes:
       - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./apps/landing:/srv/landing:ro
+      - ./apps/entry:/srv/entry:ro
       - caddy_data:/data
       - caddy_config:/config
     depends_on:

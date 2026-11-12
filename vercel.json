@@ -1,0 +1,29 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "services": {
+        "app": {
+            "root": ".",
+            "runtime": "container"
+        },
+        "aggregator": {
+            "root": "apps/aggregator",
+            "framework": "nextjs"
+        },
+        "crew": {
+            "root": "apps/crew",
+            "framework": "nextjs"
+        },
+        "mega": {
+            "root": "apps/mega",
+            "framework": "nextjs"
+        }
+    },
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": {
+                "service": "app"
+            }
+        }
+    ]
+}

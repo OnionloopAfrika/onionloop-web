@@ -4,7 +4,7 @@
 
 {$ROOT_DOMAIN} {
 	encode gzip
-	root * /srv/landing
+	root * /srv/entry
 	file_server
 }
 
