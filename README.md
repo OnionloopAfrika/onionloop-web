@@ -46,7 +46,7 @@ Each app is deployed on its own and lives on its own subdomain:
 | `aggregator.onionloop.com` | aggregator |
 
 The entry page works out the subdomain links from whatever domain it is served on,
-so there is nothing to edit when the domain changes. Overrides go in `apps/entry/config.js`.
+so there is nothing to edit when the domain changes. Overrides go in `apps/entry/public/config.js`.
 
 ### Option A: Vercel (least work)
 
