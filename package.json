@@ -7,7 +7,7 @@
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "dev:landing": "pnpm --filter @onion/landing dev",
+    "dev:entry": "pnpm --filter @onion/entry dev",
     "dev:crew": "pnpm --filter @onion/crew dev",
     "dev:mega": "pnpm --filter @onion/mega dev",
     "dev:aggregator": "pnpm --filter @onion/aggregator dev",
