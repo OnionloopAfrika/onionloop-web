@@ -64,7 +64,7 @@ export function CrewSalesPerformance() {
           <div className="w-full">
             <SearchInput
               placeholder="Search by ref or amount..."
-              className="rounded-[12px]"
+              className=""
             />
           </div>
           <div className="flex items-center gap-2 bg-white border border-[#E5E5E5] rounded-[12px] px-4 py-3 w-fit">

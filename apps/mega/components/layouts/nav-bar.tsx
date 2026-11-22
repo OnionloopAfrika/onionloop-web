@@ -138,7 +138,7 @@ export default function DashboardNav({
   return (
     <>
       <nav className="w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)] sticky top-0 z-[50]">
-        <div className="flex items-center h-16 md:h-18 px-4 md:px-7 max-w-360 mx-auto justify-between">
+        <div className="flex items-center h-16 md:h-18 px-4 md:px-6 mx-auto justify-between">
           <div className="flex items-center gap-6">
             {showLogo && (
               <Link

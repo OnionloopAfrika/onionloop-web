@@ -30,10 +30,10 @@ export function InventoryStats({
           subtitle="Manage your products and stock levels"
           btn={
             <div className="grid grid-cols-2 gap-[20px]">
-              <Button className="bg-white" size="md" variant="outline">
+              <Button className="bg-white p-2 font-medium" size="md" variant="outline">
                 <DownloadIconSolid className="" /> Export
               </Button>
-              <Button variant="primary" size="md" onClick={() => setOpen(true)}>
+              <Button variant="primary" size="md" onClick={() => setOpen(true)} className="p-2 font-medium">
                 <PlusIcon /> Add product
               </Button>
             </div>
