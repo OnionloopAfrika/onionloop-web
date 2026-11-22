@@ -234,13 +234,13 @@ export default function StaffManagement() {
         <div className="flex gap-3 w-full md:w-auto justify-end">
           <button
             onClick={() => router.push(`/${subdomain}/staffs/leave-request`)}
-            className="inline-flex items-center justify-center gap-1 px-4 py-2.5 border border-gray-200 rounded-lg bg-white text-[14px] font-semibold text-gray-700 whitespace-nowrap shadow-sm"
+            className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-medium text-gray-700 whitespace-nowrap shadow-sm"
           >
             View Leave Request
           </button>
           <button
             onClick={() => setModalType("invite")}
-            className="flex items-center gap-2 px-4 py-2.5 bg-[#044E49] text-white rounded-lg text-[14px] font-semibold whitespace-nowrap shadow-sm"
+            className="flex items-center gap-2 p-2 bg-[#044E49] text-white rounded-lg text-[14px] font-medium whitespace-nowrap shadow-sm"
           >
             Invite New Staff
           </button>
@@ -318,7 +318,7 @@ export default function StaffManagement() {
               <Input
                 prefixicon={<Search />}
                 placeholder="Search staff..."
-                className="!bg-[#F7F7F7] border-none rounded-lg shadow-sm w-full"
+                className="!bg-[#F7F7F7] border border-[#C7C7C7] rounded-lg w-full"
               />
             </div>
             <div className="w-[120px] md:w-[150px] bg-white">

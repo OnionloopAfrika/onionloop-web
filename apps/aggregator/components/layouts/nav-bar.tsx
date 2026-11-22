@@ -96,7 +96,7 @@ export default function DashboardNav({
   return (
     <>
       <nav className="w-full bg-white border-b border-gray-100 shadow-[0_1px_4px_rgba(0,0,0,0.06)] sticky top-0 z-[50]">
-        <div className="flex items-center h-16 md:h-18 w-full px-4 md:px-7 justify-between">
+        <div className="flex items-center h-16 md:h-18 w-full px-4 md:px-6 justify-between">
           <div className="flex min-w-0 flex-1 items-center gap-4 md:gap-6">
             {showLogo && (
               <Link
