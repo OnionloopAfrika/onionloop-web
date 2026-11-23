@@ -4,8 +4,6 @@ import dashboardData from "./target-dashboard.data.json";
 import { SummaryCards } from "./SummaryCards";
 import { TargetCard } from "./TargetCard";
 import { BusinessTable } from "./BusinessTable";
-import RevenueOverview from "../layouts/revenue-overview";
-import { DailyVolumeChart } from "./DailyVolumeChart";
 import TrendChart, { ChartDataPoint } from "../ui/charts/trend-chart";
 import Header from "../layouts/header";
 
@@ -21,7 +19,7 @@ export const TargetDashboard: React.FC = () => {
 
       <SummaryCards data={dashboardData.summaryCards} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px] ">
         <TargetCard
           title={dashboardData.metrics.transactionVolume.title}
           currentFormatted={
@@ -57,7 +55,6 @@ export const TargetDashboard: React.FC = () => {
           additionalText={dashboardData.metrics.newBusinesses.additionalText}
         />
         <div className="w-full lg:col-span-2 h-full">
-          {/* <DailyVolumeChart /> */}
           <RevenueCard />
         </div>
       </div>
@@ -115,8 +112,9 @@ function RevenueCard() {
       ranges={["7days", "30days", "90days"]}
       activeRange={range}
       onRangeChange={setRange}
-      yAxisTicks={[0, 600_000, 1_200_000, 2_400_000]}
+      yAxisTicks={[0, 600_000, 1_200_000, 1_800_000, 2_400_000, 3_000_000]}
       yAxisDomain={[0, 3_000_000]}
+      yAxisTickFontSize={14}
       yAxisTickFormatter={(value) =>
         value === 0
           ? "0"
@@ -124,8 +122,6 @@ function RevenueCard() {
             ? `${value / 1_000_000}M`
             : `${value / 1_000}k`
       }
-      yAxisTickFontSize={14}
-      showAllXAxisTicks
       showLegend={false}
       series={[
         {

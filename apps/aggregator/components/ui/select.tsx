@@ -12,7 +12,9 @@ interface SelectProps {
   options?: { value: string; label: string }[];
   disabled?: boolean;
   icon?: React.ReactNode;
+  iconPosition?: "start" | "end";
   className?: string;
+  onTriggerClick?: () => void;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -24,16 +26,17 @@ const Select: React.FC<SelectProps> = ({
   options,
   disabled = false,
   icon,
+  iconPosition = "end",
   className,
+  onTriggerClick,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLabel, setSelectedLabel] = useState("");
+  const [internalSelectedLabel, setInternalSelectedLabel] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const selectedOption = options?.find((opt) => opt.value === value);
-    setSelectedLabel(selectedOption?.label || "");
-  }, [value, options]);
+  const selectedLabel =
+    value !== undefined
+      ? (options?.find((option) => option.value === value)?.label ?? "")
+      : internalSelectedLabel;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,7 +53,7 @@ const Select: React.FC<SelectProps> = ({
   }, []);
 
   const handleSelect = (optionValue: string, optionLabel: string) => {
-    setSelectedLabel(optionLabel);
+    setInternalSelectedLabel(optionLabel);
     onValueChange?.(optionValue);
     setIsOpen(false);
   };
@@ -66,30 +69,41 @@ const Select: React.FC<SelectProps> = ({
       <div className="relative">
         <button
           type="button"
-          onClick={() => !disabled && setIsOpen(!isOpen)}
+          onClick={() =>
+            !disabled &&
+            (onTriggerClick ? onTriggerClick() : setIsOpen(!isOpen))
+          }
           disabled={disabled}
           className={`
-            flex h-[48px] w-full items-center justify-between rounded-[6px] ${className}  border bg-[#F9FAFB] border-[#E5E7EB]  
-            p-[16px] pr-12 font-[500] text-[14px] text-[#A8A8A8] cursor-pointer
-    placeholder:font-[500] placeholder:text-[12px] placeholder:text-[#A8A8A8] 
+            flex h-[48px] w-fit items-center ${iconPosition === "start" ? "justify-start" : "justify-between"} gap-2 rounded-[6px] ${className} border !bg-[#f7f7f7] border-[#E5E7EB] max-lg:w-full
+            px-3 py-3 font-[500] text-[14px] text-[#A8A8A8] cursor-pointer
+            placeholder:font-[500] placeholder:text-[12px] placeholder:text-[#A8A8A8] 
             focus:outline-none 
             disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 ${className || ""}
             ${error ? "border-red-500 focus:border-red-500" : ""}
           `}
         >
+          {iconPosition === "start" && (
+            <div className="shrink-0 text-[#8A8A8A] pointer-events-none">
+              {icon || <SelectIcon />}
+            </div>
+          )}
+
           <span
-            className={
+            className={`min-w-0 flex-1 truncate whitespace-nowrap ${
               selectedLabel
-                ? "text-xs font-semibold text-start "
-                : " text-start text-[#8A8A8A]"
-            }
+                ? "text-xs font-semibold text-start"
+                : "text-start text-[#8A8A8A]"
+            }`}
           >
             {selectedLabel || placeholder}
           </span>
 
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8A8A8A] pointer-events-none">
-            {icon || <SelectIcon />}
-          </div>
+          {iconPosition === "end" && (
+            <div className="shrink-0 text-[#8A8A8A] pointer-events-none">
+              {icon || <SelectIcon />}
+            </div>
+          )}
         </button>
 
         {isOpen && (
@@ -99,8 +113,8 @@ const Select: React.FC<SelectProps> = ({
                 key={option.value}
                 onClick={() => handleSelect(option.value, option.label)}
                 className={`
-                  px-4 py-2.5 text-[14px] font-[400] text-[#98A2B3] cursor-pointer hover:bg-gray-100 last:border-b-0 border-b border-b-[#C7C7C7]
-                  ${value === option.value ? " text-[#98A2B3]" : ""}
+                  px-4 py-2.5 text-[14px] font-[400] text-[#8A8A8A] cursor-pointer hover:bg-[#f7f7f7] last:border-b-0 border-b border-b-[#C7C7C7]
+                  ${value === option.value ? " text-[#8A8A8A]" : ""}
                 `}
               >
                 {option.label}

@@ -6,8 +6,9 @@ import Input from "../ui/input";
 import Image from "next/image";
 import { ProfileHeader } from "../profile-header";
 import { SearchInput } from "../ui/search-input";
+import { NavTabsList, NavTabsTrigger, Tabs } from "../ui/tabs";
 
-const filters = ["All", "Agents", "Staff", "Friends"];
+const filters = ["All", "Managers", "Cashier"];
 
 interface MessageSidebarProps {
   messages: any[];
@@ -24,7 +25,7 @@ export function MessageSidebar({
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <div className="flex flex-col h-full  space-y-[16px] rounded-[16px]  max-md:border-0 max-md:rounded-0">
+    <div className="flex flex-col h-full  space-y-[16px] rounded-[16px] md:h-fit  max-md:border-0 max-md:rounded-0">
       <div className="space-y-[16px]">
         <div className="  flex gap-[16px] items-center">
           <SearchInput
@@ -37,29 +38,29 @@ export function MessageSidebar({
             onChatClick={(chat) => onSelect(Number(chat.id))}
           />
 
-          <button className="p-2 border border-[#C7C7C7] rounded-lg hover:bg-gray-50 h-12 w-12 flex items-center justify-center shrink-0 max-md:bg-[#F7F7F7] max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)]">
+          <button className="p-2 border bg-[#f7f7f7] border-[#E5E7EB] rounded-lg hover:bg-gray-50 h-12 w-12 flex items-center justify-center shrink-0 max-md:bg-[#F7F7F7] max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)]">
             <FilterIcon className="text-gray-500" />
           </button>
         </div>
 
-        <div className="p-[4px] h-[40px] flex gap-[16px] overflow-x-auto no-scrollbar max-md:px-0 bg-white w-fit rounded-full max-md:w-full max-md:rounded-[8px] max-md:h-[48px] max-md:px-[12px] max-md:shadow-[0_0_5px_rgba(0,0,0,0.15)] max-md:py-[10px]">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-[12px] py-[4px] rounded-full text-[14px] font-semibold whitespace-nowrap transition-colors ${
-                activeFilter === filter
-                  ? "bg-[#F7F7F7] text-[#024E44] max-md:bg-[#024E44]/10 min-w-[60px]  max-md:py-[4px] max-md:px-[12px]"
-                  : "text-[#8A8A8A] hover:text-[#131313] min-w-[60px]"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
+        <Tabs value={activeFilter} onValueChange={setActiveFilter}>
+          <div className="w-full  p-[8px] rounded-[8px] border border-[#E5E7EB]">
+            <NavTabsList className="!w-fit !gap-[16px] !overflow-x-auto !rounded-full !bg-white !p-[4px] max-md:!w-full max-md:!gap-[8px] max-md:!rounded-[8px] max-md:!px-[12px] max-md:!py-[10px] max-md:!shadow-[0_0_5px_rgba(0,0,0,0.15)]">
+              {filters.map((filter) => (
+                <NavTabsTrigger
+                  key={filter}
+                  value={filter}
+                  className="!h-[32px] !min-w-[60px] !rounded-full !px-[12px] !py-[4px] !text-[16px] max-md:!py-[4px]"
+                >
+                  {filter}
+                </NavTabsTrigger>
+              ))}
+            </NavTabsList>
+          </div>
+        </Tabs>
       </div>
 
-      <div className="flex-1 overflow-y-scroll max-md:px-0  ">
+      <div className="flex-1 overflow-y-scroll max-md:px-0  border border-[#E5E7EB] bg-[#f7f7f7] ">
         {messages
           ?.filter((msg) =>
             msg.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -67,7 +68,7 @@ export function MessageSidebar({
           .map((msg, index) => (
             <div key={msg.id} onClick={() => onSelect(msg.id)}>
               <div
-                className={`p-[16px] flex gap-3 bg-white items-center cursor-pointer transition-colors border-b border-b-[#C7C7C7] ${
+                className={`p-[16px] flex gap-3 bg-white items-center cursor-pointer transition-colors border-b border-b-[#C7C7C7] last:border-b-0 ${
                   selectedId === msg.id ? "bg-[#F7F7F7]" : "hover:bg-gray-50"
                 }`}
               >

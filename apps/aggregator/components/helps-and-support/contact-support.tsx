@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export function ContactSupport() {
   const router = useRouter();
   return (
-    <div className="space-y-10 p-6 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
+    <div className="space-y-10 p-6 rounded-xl shadow-sm bg-white">
       <ProfileHeader
         title="Contact Support"
         subtitle="We're here to help — reach us anytime"
@@ -20,10 +20,10 @@ export function ContactSupport() {
             <div
               onClick={() => router.push(item.url || "")}
               key={item.title}
-              className="flex flex-col gap-6 items-center justify-center p-4 border border-gray-300 radius-[6px] min-h-49 cursor-pointer"
+              className="flex flex-col gap-6 items-center justify-center p-4 border border-gray-300  min-h-49 cursor-pointer rounded-[12px]"
             >
               <div className="w-10 h-10 flex justify-center items-center bg-[#E7F6EC] rounded-lg">
-                <Icon className="w-6 h-6 text-[#04802E]" />
+                <Icon className="w-6 h-6 text-[#04907E]" />
               </div>
 
               <div className="text-center">

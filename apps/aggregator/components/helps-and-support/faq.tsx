@@ -12,7 +12,7 @@ export function Faq() {
   };
 
   return (
-    <div className="space-y-10 p-6 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
+    <div className="space-y-10 p-6 rounded-xl shadow-sm bg-white">
       <ProfileHeader
         title="Frequently Asked Questions"
         subtitle="Quick answers to common questions"
@@ -23,10 +23,7 @@ export function Faq() {
           const isOpen = openIndex === index;
 
           return (
-            <div
-              key={index}
-              className="border-b border-[#E5E5E5] pb-3"
-            >
+            <div key={index} className="border-b border-[#E5E5E5] pb-3">
               <button
                 onClick={() => toggle(index)}
                 className="w-full flex items-center justify-between text-left pb-3"
@@ -36,8 +33,9 @@ export function Faq() {
                 </p>
 
                 <svg
-                  className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""
-                    }`}
+                  className={`transition-transform duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
@@ -54,9 +52,7 @@ export function Faq() {
               </button>
 
               {isOpen && (
-                <p className="mt-3 text-[14px] text-[#6C6C6C]">
-                  {item.answer}
-                </p>
+                <p className="mt-3 text-[14px] text-[#6C6C6C]">{item.answer}</p>
               )}
             </div>
           );

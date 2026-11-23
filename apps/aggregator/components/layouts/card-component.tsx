@@ -73,7 +73,7 @@ const StatCard: React.FC<StatCardProps> = ({
           {value}
         </h2>
         <div
-          className={`p-1 rounded-[8px] flex justify-center items-center ${style.bg} ${style.text}`}
+          className={`p-[8px] rounded-[4px] flex justify-center items-center ${style.bg} ${style.text}`}
         >
           {icon}
         </div>

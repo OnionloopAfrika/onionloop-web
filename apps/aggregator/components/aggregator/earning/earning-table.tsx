@@ -7,12 +7,13 @@ import Table, {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { CalendarIcon, SearchIcon } from "@/components/icons/svgs";
-import Input from "@/components/ui/input";
-import React, { useState, useMemo } from "react";
+import { CalendarIcon } from "@/components/icons/svgs";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { SearchInput } from "@/components/ui/search-input";
+import { Calendar } from "@/components/ui/calendar";
 import Badge from "@/components/ui/badge";
 import Pagination from "@/components/ui/pagination";
+import Image from "next/image";
 import {
   NavTabsList,
   NavTabsTrigger,
@@ -252,7 +253,26 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
   );
   const [searchValue, setSearchValue] = useState("");
   const [dateValue, setDateValue] = useState("08-05-2026");
+  const [selectedDate, setSelectedDate] = useState<Date>(
+    new Date(2026, 4, 8),
+  );
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const datePickerRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        datePickerRef.current &&
+        !datePickerRef.current.contains(event.target as Node)
+      ) {
+        setIsCalendarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const rawData =
     activeTab === "transaction" ? MOCK_TRANSACTION_DATA : MOCK_ONBOARDING_DATA;
@@ -286,7 +306,7 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
       onValueChange={handleTabsValueChange}
       className="w-full space-y-[12px]"
     >
-      <div className="border border-[#F2F4F7] bg-white p-[16px] rounded-[14px]">
+      <div className="border border-[#F2F4F7] bg-white p-[16px] rounded-[14px] overflow-x-scroll">
         <NavTabsList className="w-full sm:w-auto">
           <NavTabsTrigger
             value="transaction"
@@ -305,8 +325,8 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
 
       <TabsContent value={activeTab}>
         <div className="bg-white rounded-[16px] border border-[#E5E7EB] shadow-sm overflow-hidden">
-          <div className="w-full md:w-1/2 p-4 border-b border-[#F3F4F6] flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div className="w-full">
+          <div className="w-full  md:w-1/2 p-4 border-b border-[#F3F4F6] flex flex-col sm:flex-row  items-center gap-3">
+            <div className="">
               <SearchInput
                 placeholder="Search business name"
                 value={searchValue}
@@ -316,16 +336,31 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
                 }}
               />
             </div>
-            <div className="w-full sm:w-50">
-              <div className="w-full px-2 relative flex items-center justify-start bg-[#F9FAFB] border border-[#E5E7EB] rounded-md focus:outline-none">
-                <input
-                  type="date"
-                  value={dateValue}
-                  onChange={(e) => setDateValue(e.target.value)}
-                  className="h-10 px-4 font-[500] text-[14px] text-[#A8A8A8] border-none outline-0"
-                />
-                <CalendarIcon className="w-4 h-4 text-[#9CA3AF]" />
-              </div>
+            <div ref={datePickerRef} className="relative w-full sm:w-50">
+              <button
+                type="button"
+                aria-label="Select earnings date"
+                aria-expanded={isCalendarOpen}
+                onClick={() => setIsCalendarOpen((open) => !open)}
+                className="flex h-[48px] w-full items-center justify-between rounded-md border border-[#E5E7EB] bg-[#f7f7f7] px-4 text-left text-[14px] font-[500] text-[#A8A8A8]"
+              >
+                <span>{dateValue}</span>
+                <CalendarIcon className="h-4 w-4 text-[#9CA3AF]" />
+              </button>
+              {isCalendarOpen && (
+                <div className="absolute left-0 top-full z-[60] mt-2">
+                  <Calendar
+                    value={selectedDate}
+                    onChange={(date) => {
+                      setSelectedDate(date);
+                      setDateValue(
+                        `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`,
+                      );
+                      setIsCalendarOpen(false);
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
@@ -333,6 +368,7 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
             <Table>
               <TableHeader>
                 <TableRow>
+                  {activeTab === "onboarding" && <TableHead></TableHead>}
                   <TableHead>Business Name</TableHead>
                   {activeTab === "onboarding" && (
                     <TableHead>KYC Level</TableHead>
@@ -354,18 +390,20 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
                 {paginatedData.length > 0 ? (
                   paginatedData.map((item) => (
                     <TableRow key={item.id}>
-                      <TableCell>
-                        <div className="flex items-center gap-3">
-                          {activeTab === "onboarding" && item.avatar && (
-                            <img
+                      {activeTab === "onboarding" && (
+                        <TableCell>
+                          {item.avatar && (
+                            <Image
                               src={item.avatar}
                               alt=""
+                              width={28}
+                              height={28}
                               className="w-7 h-7 shrink-0 rounded-full object-cover"
                             />
                           )}
-                          <span>{item.businessName}</span>
-                        </div>
-                      </TableCell>
+                        </TableCell>
+                      )}
+                      <TableCell>{item.businessName}</TableCell>
                       {activeTab === "onboarding" && (
                         <TableCell>
                           <Badge variant="tier">{item.kycLevel}</Badge>
@@ -410,7 +448,7 @@ export const EarningsTableSection: React.FC<EarningsTableProps> = ({
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={activeTab === "onboarding" ? 7 : 7}>
+                    <TableCell colSpan={activeTab === "onboarding" ? 8 : 7}>
                       No earnings activity found.
                     </TableCell>
                   </TableRow>

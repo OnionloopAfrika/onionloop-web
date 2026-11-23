@@ -1,7 +1,15 @@
 "use client";
 
-import Table, { TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import Badge from "@/components/ui/badge";
 import React, { useMemo, useState } from "react";
+import Image from "next/image";
 import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
 import Pagination from "@/components/ui/pagination";
@@ -24,7 +32,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 250,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/joshua.svg",
   },
   {
     business_owner: "Oluwafunmiike Robbin",
@@ -32,7 +40,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 120,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/grace.svg",
   },
   {
     business_owner: "Oladimeji Yemisi",
@@ -40,7 +48,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 120,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/ben.svg",
   },
   {
     business_owner: "John Chinedu",
@@ -48,7 +56,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Transaction",
     amount: 50,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/agent.svg",
   },
   {
     business_owner: "Grace Wanjiku",
@@ -56,7 +64,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 300,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/zinny.svg",
   },
   {
     business_owner: "Philip Tonbara",
@@ -64,7 +72,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 300,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/tunde.svg",
   },
   {
     business_owner: "Joshua Agbasi",
@@ -72,7 +80,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 300,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/joshua.svg",
   },
   {
     business_owner: "Mary Adebayo",
@@ -80,7 +88,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 300,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/grace.svg",
   },
   {
     business_owner: "David Iwalewa",
@@ -88,7 +96,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 300,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/ben.svg",
   },
   {
     business_owner: "Hannah Nwankwo",
@@ -96,7 +104,7 @@ const mockRevenue: RevenueItem[] = [
     earning_type: "Onboarding",
     amount: 300,
     date: "May 19,2026 at 09:15am",
-    avatar: "",
+    avatar: "/images/agent.svg",
   },
 ];
 
@@ -135,15 +143,6 @@ export function RevenueBalance() {
     return filteredRevenue.slice(startIndex, startIndex + PAGE_SIZE);
   }, [currentPage, filteredRevenue]);
 
-  const getInitials = (name: string) => {
-    return name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase();
-  };
-
   const formatAmount = (amount: number) => {
     return new Intl.NumberFormat("en-NG", {
       style: "currency",
@@ -154,126 +153,93 @@ export function RevenueBalance() {
 
   const getEarningBadge = (type: RevenueItem["earning_type"]) => {
     if (type === "Onboarding") {
-      return (
-        <span className="px-3 py-1 rounded-full text-[12px] font-medium bg-[#C6DDF7] text-[#0D5EBA]">
-          Onboarding
-        </span>
-      );
+      return <Badge variant="onboarding">Onboarding</Badge>;
     }
-    return (
-      <span className="px-3 py-1 rounded-full text-[12px] font-medium bg-[#B5E3C4] text-[#024E44]">
-        Transaction
-      </span>
-    );
+    return <Badge variant="transaction">Transaction</Badge>;
   };
 
   return (
-    <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
-      <div className="grid grid-cols-[2fr_1fr] gap-3 p-4 w-[40%] max-lg:w-full max-lg:grid-cols-1">
-        <SearchInput
-          value={searchQuery}
-          onChange={(value) => {
-            setSearchQuery(value);
-            setCurrentPage(1);
-          }}
-          categories={[]}
-          products={[]}
-          employees={[]}
-          chats={[]}
-          placeholder="Search business name"
-        />
+    <>
+      <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
+        <div className="flex items-center gap-3 max-lg:flex-col w-fit p-4">
+          <SearchInput
+            value={searchQuery}
+            onChange={(value) => {
+              setSearchQuery(value);
+              setCurrentPage(1);
+            }}
+            categories={[]}
+            products={[]}
+            employees={[]}
+            chats={[]}
+            placeholder="Search business name"
+          />
 
-        <Select
-          value={earningFilter}
-          onValueChange={(value) => {
-            setEarningFilter(value);
-            setCurrentPage(1);
-          }}
-          options={[
-            { value: "all", label: "All Earning Types" },
-            { value: "onboarding", label: "Onboarding" },
-            { value: "transaction", label: "Transaction" },
-          ]}
-          placeholder="All Earning Types"
-        />
-      </div>
+          <Select
+            value={earningFilter}
+            onValueChange={(value) => {
+              setEarningFilter(value);
+              setCurrentPage(1);
+            }}
+            options={[
+              { value: "all", label: "All Earning Types" },
+              { value: "onboarding", label: "Onboarding" },
+              { value: "transaction", label: "Transaction" },
+            ]}
+            placeholder="All Earning Types"
+          />
+        </div>
 
-      <div className="w-full overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead></TableHead>
-              <TableHead>
-                Business Owner
-              </TableHead>
-              <TableHead>
-                Business Name
-              </TableHead>
-              <TableHead>
-                Earning Type
-              </TableHead>
-              <TableHead>
-                Amount
-              </TableHead>
-              <TableHead>
-                Date
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {paginatedRevenue.map((item, i) => (
-              <TableRow
-                key={i}
-              >
-                <TableCell>
-                  {item.avatar ? (
-                    <img
+        <div className="w-full overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Business Owner</TableHead>
+                <TableHead>Business Name</TableHead>
+                <TableHead>Earning Type</TableHead>
+                <TableHead>Amount</TableHead>
+                <TableHead>Date</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {paginatedRevenue.map((item, i) => (
+                <TableRow key={i}>
+                  <TableCell>
+                    <Image
                       src={item.avatar}
                       alt={item.business_owner}
-                      className="w-9 h-9 rounded-full object-cover"
+                      width={36}
+                      height={36}
+                      className="h-9 w-9 rounded-full object-cover"
                     />
-                  ) : (
-                    <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-[12px] font-medium text-gray-600">
-                      {getInitials(item.business_owner)}
+                  </TableCell>
+
+                  <TableCell>
+                    <div className="flex items-center gap-3">
+                      <span className="text-[14px] font-[500] text-[#6C6C6C]">
+                        {item.business_owner}
+                      </span>
                     </div>
-                  )}
-                </TableCell>
-
-                <TableCell>
-                  <div className="flex items-center gap-3">
-                    <span className="text-[14px] font-[500] text-[#6C6C6C]">
-                      {item.business_owner}
-                    </span>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  {item.business_name}
-                </TableCell>
-                <TableCell>
-                  {getEarningBadge(item.earning_type)}
-                </TableCell>
-                <TableCell>
-                  {formatAmount(item.amount)}
-                </TableCell>
-                <TableCell>
-                  {item.date}
-                </TableCell>
-              </TableRow>
-            ))}
-            {filteredRevenue.length === 0 && (
-              <TableRow>
-                <TableCell
-                  colSpan={6}
-                >
-                  No revenue items match your filters.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+                  </TableCell>
+                  <TableCell>{item.business_name}</TableCell>
+                  <TableCell>{getEarningBadge(item.earning_type)}</TableCell>
+                  <TableCell>{formatAmount(item.amount)}</TableCell>
+                  <TableCell>{item.date}</TableCell>
+                </TableRow>
+              ))}
+              {filteredRevenue.length === 0 && (
+                <TableRow>
+                  <TableCell colSpan={6}>
+                    No revenue items match your filters.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </div>
-
-      <div className="border-t border-gray-100 px-4 py-4">
+      <div className="mt-4 px-4 py-4">
         <Pagination
           currentPage={currentPage}
           pageSize={PAGE_SIZE}
@@ -282,6 +248,6 @@ export function RevenueBalance() {
           onPageChange={setCurrentPage}
         />
       </div>
-    </div>
+    </>
   );
 }

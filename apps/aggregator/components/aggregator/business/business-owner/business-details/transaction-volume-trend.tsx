@@ -60,8 +60,8 @@ export default function TransactionVolumeTrend({
         ranges={periods}
         activeRange={period}
         onRangeChange={handleRangeChange}
-        yAxisTicks={[0, 600_000, 1_200_000, 2_400_000]}
-        yAxisDomain={[0, 3_000_000]}
+        yAxisTicks={[0, 600_000, 1_200_000, 1_800_000, 2_400_000]}
+        yAxisDomain={[0, 2_400_000]}
         yAxisTickFormatter={(value) =>
           value === 0
             ? "0"

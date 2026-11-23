@@ -150,10 +150,10 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
         ))}
       </div>
 
-      <div className="w-full bg-white mt-[40px] font-sans rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+      <div className="w-full bg-white font-sans rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
         <div className="flex flex-col md:flex-row md:items-center justify-between p-4 gap-4">
           <div className="flex flex-wrap items-center gap-3 w-full flex-1">
-            <div className="relative w-full sm:max-w-[280px]">
+            <div className="relative ">
               <SearchInput
                 value={searchQuery}
                 onChange={(value) => {
@@ -168,7 +168,7 @@ export function BusinessOwner({ onAddBusiness }: BusinessOwnerProps) {
               />
             </div>
 
-            <div className="w-[200px] max-lg:w-full">
+            <div className=" max-lg:w-full">
               <Select
                 value={statusFilter}
                 onValueChange={(value) => {

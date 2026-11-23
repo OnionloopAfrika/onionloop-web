@@ -1,11 +1,18 @@
 "use client";
 
-import Table, { TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import React, { useMemo, useState } from "react";
 import { SearchInput } from "@/components/ui/search-input";
 import Select from "@/components/ui/select";
-import { DownloadIconSolid } from "@/components/icons/svgs";
+import { CalendarIcon, DownloadIconSolid } from "@/components/icons/svgs";
 import Pagination from "@/components/ui/pagination";
+import { Calendar } from "@/components/ui/calendar";
 
 const PAGE_SIZE = 5;
 
@@ -243,8 +250,8 @@ export default function AggTransaction() {
 
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-4">
-          <div className="flex flex-wrap items-center gap-3 flex-1">
-            <div className="relative w-full sm:max-w-[280px]">
+          <div className="flex items-center gap-3 max-lg:flex-col w-fit p-4">
+            <div className="">
               <SearchInput
                 value={searchQuery}
                 onChange={(value) => {
@@ -259,7 +266,7 @@ export default function AggTransaction() {
               />
             </div>
 
-            <div className="w-[180px] max-lg:w-full">
+            <div className=" shrink-0">
               <Select
                 value={typeFilter}
                 onValueChange={(value) => {
@@ -275,8 +282,9 @@ export default function AggTransaction() {
               />
             </div>
 
-            <div className="w-[150px] max-lg:w-full">
+            <div className=" shrink-0">
               <Select
+                icon={<CalendarIcon />}
                 value={dateFilter}
                 onValueChange={(value) => {
                   setDateFilter(value);
@@ -291,7 +299,7 @@ export default function AggTransaction() {
             </div>
           </div>
 
-          <button className="flex items-center gap-[10px] bg-[#024E44] py-[8px] px-[12px] rounded-[8px]">
+          <button className="flex shrink-0 items-center gap-[10px] bg-[#024E44] py-[8px] px-[12px] rounded-[8px]">
             <DownloadIconSolid className="text-white" />
             <span className="font-[500] text-[16px] text-white">
               Download Report
@@ -303,62 +311,30 @@ export default function AggTransaction() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>
-                  TXN ID
-                </TableHead>
-                <TableHead>
-                  Business Name
-                </TableHead>
-                <TableHead>
-                  TXN Type
-                </TableHead>
-                <TableHead>
-                  Balance Before
-                </TableHead>
-                <TableHead>
-                  Earnings
-                </TableHead>
-                <TableHead>
-                  Balance After
-                </TableHead>
-                <TableHead>
-                  Date
-                </TableHead>
+                <TableHead>TXN ID</TableHead>
+                <TableHead>Business Name</TableHead>
+                <TableHead>TXN Type</TableHead>
+                <TableHead>Balance Before</TableHead>
+                <TableHead>Earnings</TableHead>
+                <TableHead>Balance After</TableHead>
+                <TableHead>Date</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {paginatedTransactions.map((txn, i) => (
-                <TableRow
-                  key={i}
-                >
-                  <TableCell>
-                    {txn.id}
-                  </TableCell>
-                  <TableCell>
-                    {txn.business_name}
-                  </TableCell>
-                  <TableCell>
-                    {txn.txn_type}
-                  </TableCell>
-                  <TableCell>
-                    {formatAmount(txn.balance_before)}
-                  </TableCell>
-                  <TableCell>
-                    {formatAmount(txn.earnings)}
-                  </TableCell>
-                  <TableCell>
-                    {formatAmount(txn.balance_after)}
-                  </TableCell>
-                  <TableCell>
-                    {txn.date}
-                  </TableCell>
+                <TableRow key={i}>
+                  <TableCell>{txn.id}</TableCell>
+                  <TableCell>{txn.business_name}</TableCell>
+                  <TableCell>{txn.txn_type}</TableCell>
+                  <TableCell>{formatAmount(txn.balance_before)}</TableCell>
+                  <TableCell>{formatAmount(txn.earnings)}</TableCell>
+                  <TableCell>{formatAmount(txn.balance_after)}</TableCell>
+                  <TableCell>{txn.date}</TableCell>
                 </TableRow>
               ))}
               {filteredTransactions.length === 0 && (
                 <TableRow>
-                  <TableCell
-                    colSpan={7}
-                  >
+                  <TableCell colSpan={7}>
                     No transactions match your filters.
                   </TableCell>
                 </TableRow>
@@ -366,16 +342,15 @@ export default function AggTransaction() {
             </TableBody>
           </Table>
         </div>
-
-        <div className="border-t border-gray-100 px-4 py-4">
-          <Pagination
-            currentPage={currentPage}
-            pageSize={PAGE_SIZE}
-            totalItems={filteredTransactions.length}
-            itemLabel="Transactions"
-            onPageChange={setCurrentPage}
-          />
-        </div>
+      </div>
+      <div className="mt-4 px-4 py-4">
+        <Pagination
+          currentPage={currentPage}
+          pageSize={PAGE_SIZE}
+          totalItems={filteredTransactions.length}
+          itemLabel="Transactions"
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );
