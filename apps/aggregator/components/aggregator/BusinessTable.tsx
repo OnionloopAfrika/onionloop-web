@@ -86,8 +86,8 @@ export const BusinessTable: React.FC<BusinessTableProps> = ({
       onValueChange={handleTabsValueChange}
       className="mt-6 space-y-[12px]"
     >
-      <div className="w-full bg-white p-[16px] shadow-sm rounded-2xl">
-        <NavTabsList className="inline-flex">
+      <div className="w-full bg-white p-[16px]  overflow-x-scroll shadow-sm rounded-2xl">
+        <NavTabsList className="inline-flex  ">
           <NavTabsTrigger value="active">Active Businesses</NavTabsTrigger>
           <NavTabsTrigger value="inactive">Inactive Businesses</NavTabsTrigger>
         </NavTabsList>
@@ -95,15 +95,15 @@ export const BusinessTable: React.FC<BusinessTableProps> = ({
 
       <TabsContent value={activeTab}>
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="w-full lg:w-1/2 p-4 border-b border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-3">
-            <div className="w-full">
+          <div className=" p-4 border-b border-gray-100 flex flex-col sm:flex-row  items-center gap-3">
+            <div className="">
               <SearchInput
                 placeholder="Search business name"
                 value={searchValue}
                 onChange={handleSearchChange}
               />
             </div>
-            <div className="flex items-start justify-start w-full sm:w-60">
+            <div className=" max-lg:w-full">
               <Select
                 options={filterOptions}
                 value={selectedTimeframe}

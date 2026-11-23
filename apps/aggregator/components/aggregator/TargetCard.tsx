@@ -1,5 +1,6 @@
 import React from "react";
 import Badge from "@/components/ui/badge";
+import { DotIcon } from "../icons/svgs";
 
 interface TargetCardProps {
   title: string;
@@ -25,17 +26,17 @@ export const TargetCard: React.FC<TargetCardProps> = ({
   const isOnTrack = status === "On track";
 
   return (
-    <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between h-full">
+    <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col justify-between h-full">
       <div>
-        <h3 className="text-xs font-semibold text-gray-800 tracking-tight">
+        <h3 className="text-[16px] font-semibold text-[#131313] tracking-tight">
           {title}
         </h3>
-        <div className="flex items-baseline justify-between mt-2">
-          <div className="flex items-baseline gap-1">
+        <div className="flex items-center justify-between mt-[16px]">
+          <div className="flex items-center gap-[16px]">
             <span className="text-2xl font-bold text-gray-900">
               {currentFormatted}
             </span>
-            <span className="text-xs text-gray-400 font-medium">
+            <span className="text-xs text-[#6C6C6C] font-medium">
               {targetFormatted}
             </span>
           </div>
@@ -46,7 +47,9 @@ export const TargetCard: React.FC<TargetCardProps> = ({
 
         <div className="mt-4">
           <div className="flex justify-between items-center text-[10px] text-gray-400 mb-1">
-            <span>Progress</span>
+            <span className="font-[400] text-[12px] text-[#6C6C6C]">
+              Progress
+            </span>
             <span className="font-bold text-gray-700">{progress}%</span>
           </div>
           <div
@@ -60,15 +63,20 @@ export const TargetCard: React.FC<TargetCardProps> = ({
         </div>
       </div>
 
-      <div className="mt-4 border-t border-gray-50 pt-3">
+      <div className="mt-[16px]  pt-3 flex items-center  ">
         {currentRateText ? (
-          <div className="flex justify-between items-center text-[11px]">
-            <span className="text-gray-500">{needText}</span>
-            <span className="text-gray-700 font-medium">{currentRateText}</span>
+          <div className="flex  items-center text-[11px]  gap-[20px]">
+            <span className="font-[400] text-[14px] text-[#6C6C6C]">
+              {needText}
+            </span>
+            <DotIcon className="w-[4px] h-[4px]" />
+            <span className="font-[400] text-[14px] text-[#6C6C6C]">
+              {currentRateText}
+            </span>
           </div>
         ) : (
           <div className="space-y-1 text-[11px]">
-            <p className="text-gray-500">{needText}</p>
+            <p className="font-[400] text-[14px] text-[#6C6C6C]">{needText}</p>
             {additionalText && (
               <p className="text-gray-800 font-semibold">
                 Additional{" "}

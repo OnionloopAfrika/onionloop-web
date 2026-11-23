@@ -1,9 +1,9 @@
-import NotificationsDashboard from "@/components/notifications/notifications-dashboard";
+import NotificationsDashboard from "@/components/aggregator/notifications/notifications-dashboard";
 import { notis } from "@/lib/mockdata/notis";
 
 export default function NotificationsPage() {
   return (
-    <div className="space-y-[24px]">
+    <div className="">
       <NotificationsDashboard />
     </div>
   );

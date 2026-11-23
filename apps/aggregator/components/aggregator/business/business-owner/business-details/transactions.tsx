@@ -185,7 +185,7 @@ export function BusinessTransactions() {
     <div className="w-full space-y-[16px] font-sans">
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
         <div className="flex flex-col md:flex-row md:items-center gap-3 p-4">
-          <div className="relative w-full sm:max-w-[360px]">
+          <div className="relative ">
             <SearchInput
               value={searchQuery}
               onChange={(value) => {
@@ -200,7 +200,7 @@ export function BusinessTransactions() {
             />
           </div>
 
-          <div className="w-[180px] max-lg:w-full">
+          <div className="">
             <Select
               value={statusFilter}
               onValueChange={(value) => {

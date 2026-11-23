@@ -166,7 +166,7 @@ export function InProgress() {
     <>
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
         <div className="flex flex-col md:flex-row md:items-center gap-3 p-4">
-          <div className="relative w-full sm:max-w-[280px]">
+          <div className="relative">
             <SearchInput
               value={searchQuery}
               onChange={setSearchQuery}
@@ -178,7 +178,7 @@ export function InProgress() {
             />
           </div>
 
-          <div className="w-[200px] max-lg:w-full">
+          <div className="">
             <Select
               value={statusFilter}
               onValueChange={setStatusFilter}
@@ -191,7 +191,7 @@ export function InProgress() {
             />
           </div>
 
-          <div className="w-[200px] max-lg:w-full">
+          <div className="">
             <Select
               value={dateFilter}
               onValueChange={setDateFilter}
@@ -212,6 +212,7 @@ export function InProgress() {
                 <TableHead>Business Owner</TableHead>
                 <TableHead>Business Name</TableHead>
                 <TableHead>Phone Number</TableHead>
+                <TableHead>Status</TableHead>
                 <TableHead>Address</TableHead>
                 <TableHead>Assigned On</TableHead>
               </TableRow>
@@ -240,6 +241,9 @@ export function InProgress() {
                   </TableCell>
                   <TableCell>{item.business_name}</TableCell>
                   <TableCell>{item.phone_number}</TableCell>
+                  <TableCell>
+                    <Badge variant="pending">Pending</Badge>{" "}
+                  </TableCell>
                   <TableCell>{item.address}</TableCell>
                   <TableCell>{item.assigned_on}</TableCell>
                 </TableRow>
@@ -259,8 +263,8 @@ export function InProgress() {
       <Modal
         open={reviewVerification}
         onOpenChange={setReviewVerification}
-        title="View Verification Queue"
-        description="They will receive an invite to download the Onionloop staff app ↓"
+        title="Review Verification"
+        description="They will receive an invite to download the Onionloop staff app"
         className2="border-b-0"
         className3="border-t-0"
       >
@@ -287,7 +291,7 @@ export function InProgress() {
                   </div>
 
                   <div className="flex gap-[8px] items-center">
-                    <AggCallIcon className="text-[#8A8A8A]" />{" "}
+                    <AggCallIcon className="text-[#8A8A8A]" />
                     <span className="font-[500] text-[12px] text-[#6C6C6C]">
                       +234 816 249 0242
                     </span>
@@ -295,14 +299,14 @@ export function InProgress() {
                 </div>
                 <div className="flex justify-between items-center">
                   <div className="flex gap-[8px] items-center">
-                    <AggMessageIcon className="text-[#8A8A8A]" />{" "}
+                    <AggMessageIcon className="text-[#8A8A8A]" />
                     <span className="font-[500] text-[12px] text-[#6C6C6C]">
                       josephmaduabuchi@gmail.com
                     </span>
                   </div>
 
                   <div className="flex gap-[8px] items-center">
-                    <LocationIcon className="text-[#8A8A8A]" />{" "}
+                    <LocationIcon className="text-[#8A8A8A]" />
                     <span className="font-[500] text-[12px] text-[#6C6C6C]">
                       653, Allen adekunle, Ogba, Lagos, Nigeria
                     </span>
@@ -316,12 +320,12 @@ export function InProgress() {
               Verification Status:
             </p>
 
-            <Badge variant="approved">Approved </Badge>
+            <Badge variant="in_progress">In Progress </Badge>
           </div>
 
           <p className="font-[500] text-[12px] text-[#363636]">
-            Your verification has been approved and business address has been
-            verified
+            Your verification is being reviewed, once we confirm your
+            verification we will reach out to you with teh status of your visit
           </p>
 
           <div className="space-y-[16px] mt-[48px]">

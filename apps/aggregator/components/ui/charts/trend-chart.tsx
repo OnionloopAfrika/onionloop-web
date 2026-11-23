@@ -53,13 +53,13 @@ export default function TrendChart({
   yAxisTicks,
   yAxisDomain,
   yAxisTickFormatter,
-  yAxisTickFontSize = 18,
+  yAxisTickFontSize = 14,
   showAllXAxisTicks = false,
   showLegend = true,
   height = 300,
 }: TrendChartProps) {
   return (
-    <div className="w-full rounded-2xl bg-white p-6 shadow-sm">
+    <div className="w-full rounded-2xl bg-white p-6  shadow-sm">
       <div className="mb-1 flex items-start justify-between gap-4">
         <CardHeader title={title} subtitle={subtitle ?? ""} />
 
@@ -115,7 +115,7 @@ export default function TrendChart({
           <CartesianGrid vertical={false} stroke="#D9D9D9" />
           <XAxis
             dataKey="label"
-            padding={{ left: 56 }}
+            padding={{ left: 20 }}
             axisLine={false}
             tickLine={false}
             tick={{ fill: "#6C6C6C", fontSize: 14, fontWeight: 500 }}
@@ -125,13 +125,18 @@ export default function TrendChart({
           <YAxis
             axisLine={false}
             tickLine={false}
+            width={60}
+            tickSize={0}
             tick={{
               fill: "#6C6C6C",
               fontSize: yAxisTickFontSize,
               fontWeight: 500,
+              textAnchor: "start",
             }}
+            dx={-54}
             ticks={yAxisTicks}
             domain={yAxisDomain}
+            interval={yAxisTicks ? 0 : undefined}
             tickFormatter={yAxisTickFormatter}
           />
           <Tooltip />
@@ -166,7 +171,7 @@ export default function TrendChart({
       </ResponsiveContainer>
 
       {showLegend && series.length > 0 && (
-        <div className="mt-4 flex flex-wrap justify-center gap-x-[12px] gap-y-2">
+        <div className="mt-[30px] flex flex-wrap justify-center gap-x-[12px] gap-y-2 ">
           {series.map((item) => (
             <div key={item.dataKey} className="flex items-center gap-[6px]">
               <span

@@ -17,6 +17,7 @@ import Input from "@/components/ui/input";
 import Image from "next/image";
 import Textarea from "@/components/ui/textarea";
 import { UploadIcon, VerifyIcon } from "@/components/icons/svgs";
+import { BUSINESSES } from "@/lib/mockdata/businesses";
 
 interface TransferItem {
   reference_id: string;
@@ -86,15 +87,50 @@ const mockTransfers: TransferItem[] = [
   },
 ];
 
+const transferBusinesses = Array.from(
+  new Map(
+    mockTransfers.map((transfer) => [transfer.business_name, transfer]),
+  ).values(),
+).map((transfer) => {
+  const business = BUSINESSES.find(
+    (item) => item.business_name === transfer.business_name,
+  );
+
+  return {
+    id: business?.id ?? transfer.business_name,
+    avatar: business?.avatar ?? "/images/de-light.svg",
+    business_owner: business?.business_owner,
+    business_name: transfer.business_name,
+    business_type: business?.business_type ?? transfer.from_type,
+  };
+});
+
 export default function Rejected() {
+  type Business = (typeof transferBusinesses)[number];
+
   const [searchQuery, setSearchQuery] = useState("");
   const [businessName, setBusinessName] = useState("");
-  const [showCard, setShowCard] = useState(false);
-  const [step, setStep] = useState(1);
+  const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(
+    null,
+  );
   const [openNextModal, setOpenNextModal] = useState(false);
   const [reviewBusiness, setReviewBusiness] = useState(false);
+  const [reviewConfirmed, setReviewConfirmed] = useState(false);
   const [reviewSuccess, setReviewSuccess] = useState(false);
   const [openTransferBusiness, setOpenTransferBusiness] = useState(false);
+
+  const businessSuggestions = useMemo(() => {
+    const query = businessName.trim().toLowerCase();
+    if (!query || selectedBusiness) return [];
+
+    return transferBusinesses.filter((business) =>
+      [
+        business.business_name,
+        business.business_owner,
+        business.business_type,
+      ].some((value) => value?.toLowerCase().includes(query)),
+    );
+  }, [businessName, selectedBusiness]);
 
   const filteredTransfers = useMemo(() => {
     return mockTransfers.filter((item) => {
@@ -115,15 +151,15 @@ export default function Rejected() {
   }, [searchQuery]);
 
   const handleContinue = () => {
-    if (!businessName) return;
+    if (!selectedBusiness) return;
+    setOpenNextModal(true);
+    setOpenTransferBusiness(false);
+  };
 
-    if (step === 1) {
-      setShowCard(true);
-      setStep(2);
-    } else if (step === 2) {
-      setOpenNextModal(true);
-      setOpenTransferBusiness(false);
-    }
+  const handleOpenTransferBusiness = () => {
+    setBusinessName("");
+    setSelectedBusiness(null);
+    setOpenTransferBusiness(true);
   };
 
   const getStatusBadge = (status: TransferItem["status"]) => {
@@ -145,7 +181,9 @@ export default function Rejected() {
   };
 
   const getTypeBadge = (type: string) => {
-    return <Badge variant={type === "Agent" ? "agent" : "merchant"}>{type}</Badge>;
+    return (
+      <Badge variant={type === "Agent" ? "agent" : "merchant"}>{type}</Badge>
+    );
   };
 
   return (
@@ -164,7 +202,7 @@ export default function Rejected() {
             />
           </div>
 
-          <Button onClick={() => setOpenTransferBusiness(true)} size="md">
+          <Button onClick={handleOpenTransferBusiness} size="md">
             Transfer business
           </Button>
         </div>
@@ -183,7 +221,7 @@ export default function Rejected() {
             </TableHeader>
             <TableBody>
               {filteredTransfers.map((item, i) => (
-                <TableRow onClick={() => setOpenTransferBusiness(true)} key={i}>
+                <TableRow key={i}>
                   <TableCell>{item.reference_id}</TableCell>
                   <TableCell>{item.business_name}</TableCell>
                   <TableCell>{getTypeBadge(item.from_type)}</TableCell>
@@ -210,46 +248,102 @@ export default function Rejected() {
         title="Transfer Business"
         description="Change a business's account type and submit for review and approval."
         open={openTransferBusiness}
-        onOpenChange={setOpenTransferBusiness}
+        onOpenChange={(open) => {
+          setOpenTransferBusiness(open);
+          if (!open) {
+            setBusinessName("");
+            setSelectedBusiness(null);
+          }
+        }}
         footer={
           <Button
             onClick={handleContinue}
-            className={`${businessName ? "bg-[#024E44]" : "bg-[#C7C7C7]"}`}
+            disabled={!selectedBusiness}
+            className={`${selectedBusiness ? "bg-[#024E44]" : "bg-[#C7C7C7]"}`}
           >
             Continue
           </Button>
         }
       >
         <div className="space-y-[12px]">
-          <Input
-            label="Business name"
-            placeholder="Search business name"
-            value={businessName}
-            onChange={(e: any) => setBusinessName(e.target.value)}
-          />
+          <div>
+            <Input
+              label="Business name"
+              placeholder="Search business name"
+              value={businessName}
+              onChange={(event) => {
+                setBusinessName(event.target.value);
+                setSelectedBusiness(null);
+              }}
+              autoComplete="off"
+              role="combobox"
+              aria-expanded={Boolean(businessName.trim() && !selectedBusiness)}
+              aria-controls="rejected-business-suggestions"
+            />
+            {businessName.trim() && !selectedBusiness && (
+              <div
+                id="rejected-business-suggestions"
+                role="listbox"
+                className="mt-1 max-h-60 w-full overflow-y-auto rounded-md border border-[#E5E7EB] bg-white shadow-lg"
+              >
+                {businessSuggestions.length > 0 ? (
+                  businessSuggestions.map((business) => (
+                    <button
+                      key={business.id}
+                      type="button"
+                      role="option"
+                      aria-selected={false}
+                      onClick={() => {
+                        setBusinessName(business.business_name);
+                        setSelectedBusiness(business);
+                      }}
+                      className="flex w-full flex-col items-start gap-1 px-4 py-3 text-left hover:bg-[#F7F7F7]"
+                    >
+                      <span className="font-[500] text-[14px] text-[#242424]">
+                        {business.business_name}
+                      </span>
+                      <span className="text-[12px] text-[#6C6C6C]">
+                        {business.business_owner
+                          ? `${business.business_owner} · ${business.business_type}`
+                          : business.business_type}
+                      </span>
+                    </button>
+                  ))
+                ) : (
+                  <p className="px-4 py-3 text-[14px] text-[#6C6C6C]">
+                    No businesses found.
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
-        {showCard && (
+        {selectedBusiness && (
           <div className="mt-[12px] flex justify-between items-center p-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[4px]">
             <div className="flex items-start gap-[16px]">
               <div className="w-[40px] h-[40px] relative rounded-full">
                 <Image
                   fill
-                  src={"/images/de-light.svg"}
-                  alt=""
+                  src={selectedBusiness.avatar}
+                  alt={selectedBusiness.business_name}
                   className="object-cover"
                 />
               </div>
               <div className="space-y-[4px]">
                 <p className="font-[500] text-[14px] text-[#242424]">
-                  {businessName}
+                  {selectedBusiness.business_name}
                 </p>
-                <p className="font-[400] text-[12px] text-[#6C6C6C]">
-                  Joseph Maduabuchi
-                </p>
+                {selectedBusiness.business_owner && (
+                  <p className="font-[400] text-[12px] text-[#6C6C6C]">
+                    {selectedBusiness.business_owner}
+                  </p>
+                )}
               </div>
             </div>
-            <p className="font-[400] text-[15px] text-[#04907E]">Merchant</p>
+            <p className="font-[400] text-[15px] text-[#04907E]">
+              {selectedBusiness.business_type}
+            </p>
           </div>
         )}
       </Modal>
@@ -264,7 +358,9 @@ export default function Rejected() {
         footer={
           <Button
             onClick={() => {
-              (setOpenNextModal(false), setReviewBusiness(true));
+              setOpenNextModal(false);
+              setReviewConfirmed(false);
+              setReviewBusiness(true);
             }}
           >
             Continue
@@ -277,24 +373,32 @@ export default function Rejected() {
               <div className="w-[40px] h-[40px] relative rounded-full">
                 <Image
                   fill
-                  src={"/images/de-light.svg"}
-                  alt=""
+                  src={selectedBusiness?.avatar ?? "/images/de-light.svg"}
+                  alt={selectedBusiness?.business_name ?? ""}
                   className="object-cover"
                 />
               </div>
               <div className="space-y-[4px]">
                 <p className="font-[500] text-[14px] text-[#242424]">
-                  {businessName}
+                  {selectedBusiness?.business_name}
                 </p>
-                <p className="font-[400] text-[12px] text-[#6C6C6C]">
-                  Joseph Maduabuchi
-                </p>
+                {selectedBusiness?.business_owner && (
+                  <p className="font-[400] text-[12px] text-[#6C6C6C]">
+                    {selectedBusiness.business_owner}
+                  </p>
+                )}
               </div>
             </div>
-            <p className="font-[400] text-[15px] text-[#04907E]">Merchant</p>
+            <p className="font-[400] text-[15px] text-[#04907E]">
+              {selectedBusiness?.business_type}
+            </p>
           </div>
 
-          <Input label="Current Business Type" placeholder="Merchant" />
+          <Input
+            label="Current Business Type"
+            value={selectedBusiness?.business_type ?? ""}
+            readOnly
+          />
           <Input
             label="New  Business Type"
             placeholder="Enter new business type"
@@ -350,6 +454,7 @@ export default function Rejected() {
             </Button>
 
             <Button
+              disabled={!reviewConfirmed}
               onClick={() => {
                 (setReviewBusiness(false), setReviewSuccess(true));
               }}
@@ -369,25 +474,33 @@ export default function Rejected() {
               <div className="w-[40px] h-[40px] relative rounded-full">
                 <Image
                   fill
-                  src={"/images/de-light.svg"}
-                  alt=""
+                  src={selectedBusiness?.avatar ?? "/images/de-light.svg"}
+                  alt={selectedBusiness?.business_name ?? ""}
                   className="object-cover"
                 />
               </div>
               <div className="space-y-[4px]">
                 <p className="font-[500] text-[14px] text-[#242424]">
-                  {businessName}
+                  {selectedBusiness?.business_name}
                 </p>
-                <p className="font-[400] text-[12px] text-[#6C6C6C]">
-                  Joseph Maduabuchi
-                </p>
+                {selectedBusiness?.business_owner && (
+                  <p className="font-[400] text-[12px] text-[#6C6C6C]">
+                    {selectedBusiness.business_owner}
+                  </p>
+                )}
               </div>
             </div>
           </div>
 
           <div className="space-y-[16px]">
-            <ReviewBox review="Business Name:" value="De-Light SuperStores" />
-            <ReviewBox review="Current Business Type:" value="Merchant" />
+            <ReviewBox
+              review="Business Name:"
+              value={selectedBusiness?.business_name ?? ""}
+            />
+            <ReviewBox
+              review="Current Business Type:"
+              value={selectedBusiness?.business_type ?? ""}
+            />
             <ReviewBox
               className="!text-[#04907E]"
               review="Requested Business Type:"
@@ -402,7 +515,12 @@ export default function Rejected() {
               business.
             </p>
             <div className="flex items-center gap-[8px]">
-              <input type="checkbox" />{" "}
+              <input
+                type="checkbox"
+                className="accent-primary-color"
+                checked={reviewConfirmed}
+                onChange={(event) => setReviewConfirmed(event.target.checked)}
+              />
               <span className="font-[400] text-[12px] text-[#6C6C6C]">
                 I confirm the information is correct.
               </span>

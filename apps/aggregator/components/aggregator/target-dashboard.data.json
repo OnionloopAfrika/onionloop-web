@@ -8,17 +8,17 @@
     "availableBalance": {
       "amount": "₦142,000",
       "status": "On track",
-      "date": "18th Mar, 2026"
+      "date": "30th Mar, 2026"
     },
     "expectedBalance": {
       "amount": "₦310,400",
-      "percentage": 70,
+      "percentage": 63,
       "targetBalance": "₦142,000",
-      "expectedCommission": "₦168,400"
+      "expectedCommission": "₦168,000"
     },
     "quickBonus": {
       "unlockAmount": "Unlock ₦30,000 bonus",
-      "description": "Unlock extra earnings when target targets are achieved on time"
+      "description": "Onboard 3 more merchants/users to claim your quick bonus"
     }
   },
   "metrics": {

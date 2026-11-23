@@ -188,7 +188,7 @@ export function BusinessApproval() {
       </div>
 
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
-        <div className="w-[60%] max-lg:w-full">
+        <div className="">
           <SearchBar
             searchPlaceholder="Search business name..."
             searchValue={searchQuery}

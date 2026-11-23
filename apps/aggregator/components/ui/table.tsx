@@ -5,7 +5,9 @@ import type {
   ThHTMLAttributes,
 } from "react";
 
-type TableProps = Omit<TableHTMLAttributes<HTMLTableElement>, "className">;
+type TableProps = Omit<TableHTMLAttributes<HTMLTableElement>, "className"> & {
+  density?: "default" | "compact";
+};
 type TableSectionProps = Omit<
   HTMLAttributes<HTMLTableSectionElement>,
   "className"
@@ -14,8 +16,13 @@ type TableRowProps = Omit<HTMLAttributes<HTMLTableRowElement>, "className">;
 type TableHeadProps = Omit<ThHTMLAttributes<HTMLTableCellElement>, "className">;
 type TableCellProps = Omit<TdHTMLAttributes<HTMLTableCellElement>, "className">;
 
-export default function Table(props: TableProps) {
-  return <table className="reference-table" {...props} />;
+export default function Table({ density = "default", ...props }: TableProps) {
+  return (
+    <table
+      className={`reference-table${density === "compact" ? " reference-table--compact" : ""}`}
+      {...props}
+    />
+  );
 }
 
 export function TableHeader(props: TableSectionProps) {
@@ -38,13 +45,7 @@ export function TableRow({ onClick, ...props }: TableRowProps) {
 }
 
 export function TableHead(props: TableHeadProps) {
-  return (
-    <th
-      scope="col"
-      className="reference-table-head"
-      {...props}
-    />
-  );
+  return <th scope="col" className="reference-table-head" {...props} />;
 }
 
 export function TableCell(props: TableCellProps) {

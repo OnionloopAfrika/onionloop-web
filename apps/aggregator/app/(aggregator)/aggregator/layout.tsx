@@ -57,6 +57,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const isProfilePage = pathname?.includes("/profile") ?? false;
 
   const isAuthPage =
     pathname?.includes("/auth/login") || pathname?.includes("/auth/logout");
@@ -70,10 +71,14 @@ export default function DashboardLayout({
     [];
 
   return (
-    <div className="flex min-h-screen bg-[#F7F7F7]">
+    <div
+      className={`flex bg-[#F7F7F7] ${isProfilePage ? "h-screen overflow-hidden" : "min-h-screen"}`}
+    >
       <MegaSidebar navSections={AGGREGATOR_NAV_SECTIONS} />
 
-      <div className="flex-1 flex flex-col min-w-0">
+      <div
+        className={`flex-1 flex flex-col min-w-0 ${isProfilePage ? "min-h-0" : ""}`}
+      >
         <DashboardNav
           businessName="Yetty Mama Lounge"
           userName="Margaret Ade"
@@ -84,7 +89,9 @@ export default function DashboardLayout({
           productNav={productNav}
         />
 
-        <main className="flex-1 p-4 md:p-6 overflow-y-auto overflow-x-hidden">
+        <main
+          className={`flex-1 p-4 md:p-6 ${isProfilePage ? "min-h-0 overflow-hidden" : "overflow-y-auto overflow-x-hidden"}`}
+        >
           {children}
         </main>
       </div>

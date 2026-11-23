@@ -60,9 +60,9 @@ const page = () => {
             </svg>
           }
           percentage="12.4"
-          value="₦2.41M"
+          value="₦12,548,900.50"
           label="Available Balance"
-          footerText="₦267k vs last month"
+          footerText="12.4% vs last month"
           showTrendIcon
           changePercentage={12.4}
         />
@@ -100,9 +100,9 @@ const page = () => {
             </svg>
           }
           percentage="8.4"
-          value="1,350"
+          value="₦8,650,200.00"
           label="Payout Today"
-          footerText="98 vs last month"
+          footerText="12.4% vs last month"
           showTrendIcon
           changePercentage={8.4}
         />
@@ -154,9 +154,9 @@ const page = () => {
             </svg>
           }
           percentage="12.4"
-          value="6"
+          value="₦5,340,890.20"
           label="Paid Earnings"
-          footerText="5.2 vs last month"
+          footerText="12.4% vs last month"
           footerColor="blue"
           showTrendIcon
           changePercentage={12.4}
@@ -189,9 +189,9 @@ const page = () => {
             </svg>
           }
           percentage="12.4"
-          value="120"
+          value="₦742,862.30"
           label="Pending Earnings"
-          footerText="5 out of stock"
+          footerText="12.4% vs last month"
           footerColor="green"
           showTrendIcon
           changePercentage={12.4}

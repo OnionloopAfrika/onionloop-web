@@ -6,7 +6,7 @@ import Button from "../ui/button";
 
 export function SupportHistory() {
   return (
-    <div className="space-y-[40px] p-[24px] rounded-[12px] shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
+    <div className="space-y-[40px] p-[24px] rounded-[12px] shadow-sm bg-white">
       <ProfileHeader
         title="Latest Support History"
         subtitle="Here’s your most recent history"

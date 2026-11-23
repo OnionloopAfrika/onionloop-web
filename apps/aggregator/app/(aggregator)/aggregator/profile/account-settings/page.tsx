@@ -16,7 +16,7 @@ const page = () => {
         <SecurityInformation />
         <TwoFactor />
         <Notification />
-        <Billing />
+        {/* <Billing /> */}
       </div>
     </ProfileLayout>
   );
