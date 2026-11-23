@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
 import { ProfileHeader } from "../profile-header";
 import Button from "../ui/button";
 import { useRouter } from "next/navigation";
 
 export function Billing() {
-  const router = useRouter()
+  const router = useRouter();
   return (
-    <div className="space-y-10 p-6 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.15)] bg-white">
+    <div className="space-y-10 p-6 rounded-xl shadow-sm bg-white">
       <ProfileHeader
         title="Billing & Plan"
         subtitle="Your current subscription"
@@ -33,10 +33,22 @@ export function Billing() {
 
         <div className="flex  ">
           <div className="flex gap-2.5">
-            <Button variant="outline" size="md" onClick={() => router.push("/profile/account-settings/manage-billing")}>
+            <Button
+              variant="outline"
+              size="md"
+              onClick={() =>
+                router.push("/profile/account-settings/manage-billing")
+              }
+            >
               Manage Billing
             </Button>
-            <Button variant="outline" size="md" onClick={() => router.push("/profile/account-settings/upgrade-plan")}>
+            <Button
+              variant="outline"
+              size="md"
+              onClick={() =>
+                router.push("/profile/account-settings/upgrade-plan")
+              }
+            >
               Upgrade Plan
             </Button>
           </div>

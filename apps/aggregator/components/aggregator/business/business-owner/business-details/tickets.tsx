@@ -164,7 +164,7 @@ export function Tickets() {
   return (
     <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
       <div className="flex flex-col md:flex-row md:items-center gap-3 p-4">
-        <div className="relative w-full sm:max-w-[320px]">
+        <div className="relative ">
           <SearchInput
             value={searchQuery}
             onChange={setSearchQuery}
@@ -175,7 +175,7 @@ export function Tickets() {
           />
         </div>
 
-        <div className="w-[140px] max-lg:w-full">
+        <div className="">
           <Select
             value={statusFilter}
             onValueChange={setStatusFilter}

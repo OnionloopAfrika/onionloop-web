@@ -10,9 +10,12 @@ import Table, {
 import {
   AggCallIcon,
   AggMessageIcon,
+  CalendarIcon,
   LocationIcon,
   ProfileCardIcon,
+  SuccessIcon,
   UploadIcon,
+  VerifyIcon,
 } from "@/components/icons/svgs";
 import Button from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
@@ -22,6 +25,8 @@ import Textarea from "@/components/ui/textarea";
 import Image from "next/image";
 import React, { useMemo, useState } from "react";
 import Badge from "@/components/ui/badge";
+import Input from "@/components/ui/input";
+import { Calendar } from "@/components/ui/calendar";
 
 interface QueueItem {
   business_owner: string;
@@ -124,9 +129,12 @@ export function VerificationQueue() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+  const [selectedDate, setSelectedDate] = useState<Date>();
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const [viewVerification, setViewVerification] = useState(false);
   const [verificationReview, setVerificationReview] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const filteredQueue = useMemo(() => {
     const now = new Date();
@@ -167,7 +175,7 @@ export function VerificationQueue() {
     <>
       <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
         <div className="flex flex-col md:flex-row md:items-center gap-3 p-4">
-          <div className="relative w-full sm:max-w-[280px]">
+          <div className="relative ">
             <SearchInput
               value={searchQuery}
               onChange={setSearchQuery}
@@ -179,29 +187,38 @@ export function VerificationQueue() {
             />
           </div>
 
-          <div className="w-[200px] max-lg:w-full">
-            <Select
-              value={statusFilter}
-              onValueChange={setStatusFilter}
-              options={[
-                { value: "all", label: "All Status" },
-                { value: "pending", label: "Pending" },
-                { value: "completed", label: "Completed" },
-              ]}
-              placeholder="All Status"
+          <div className="relative !max-lg:w-full !max-w-[150px]">
+            <Input
+              placeholder="22-11-2026"
+              value={
+                selectedDate
+                  ? `${String(selectedDate.getDate()).padStart(2, "0")}-${String(selectedDate.getMonth() + 1).padStart(2, "0")}-${selectedDate.getFullYear()}`
+                  : ""
+              }
+              readOnly
+              aria-haspopup="dialog"
+              aria-expanded={isCalendarOpen}
+              aria-controls="verification-date-calendar"
+              onClick={() => setIsCalendarOpen((open) => !open)}
+              className="border !bg-[#f7f7f7]  !h-[48px] !border-[#E5E7EB]  px-3 py-3 font-[500] text-[14px] text-[#A8A8A8]  cursor-pointer placeholder:font-[500] placeholder:text-[12px] placeholder:text-[#A8A8A8] "
+              icon={<CalendarIcon />}
             />
-          </div>
-
-          <div className="w-[200px] max-lg:w-full">
-            <Select
-              value={dateFilter}
-              onValueChange={setDateFilter}
-              options={[
-                { value: "this-month", label: "This Month" },
-                { value: "last-month", label: "Last Month" },
-              ]}
-              placeholder="This Month"
-            />
+            {isCalendarOpen && (
+              <div
+                id="verification-date-calendar"
+                role="dialog"
+                aria-label="Choose a date"
+                className="absolute left-0 top-full z-50 mt-2 w-[min(345px,calc(100vw-32px))]"
+              >
+                <Calendar
+                  value={selectedDate}
+                  onChange={(date) => {
+                    setSelectedDate(date);
+                    setIsCalendarOpen(false);
+                  }}
+                />
+              </div>
+            )}
           </div>
         </div>
 
@@ -259,7 +276,7 @@ export function VerificationQueue() {
 
       <Modal
         title="View Verification Queue"
-        description="They will receive an invite to download the Onionloop staff app ↓"
+        description="The details below of user for their physical verification. "
         className2="border-b-0"
         className3="border-t-0"
         footer={
@@ -335,8 +352,8 @@ export function VerificationQueue() {
       <Modal
         open={verificationReview}
         onOpenChange={setVerificationReview}
-        title="View Verification Queue"
-        description="They will receive an invite to download the Onionloop staff app ↓"
+        title="Review Verification"
+        description="Review the details below of user for their physical verification. "
         className2="border-b-0"
         className3="border-t-0"
         footer={
@@ -347,7 +364,13 @@ export function VerificationQueue() {
             >
               Cancel
             </Button>
-            <Button onClick={() => setVerificationReview(false)}>Submit</Button>
+            <Button
+              onClick={() => {
+                (setVerificationReview(false), setSuccess(true));
+              }}
+            >
+              Submit
+            </Button>
           </div>
         }
       >
@@ -453,6 +476,26 @@ export function VerificationQueue() {
 
               <Textarea placeholder="Add observation from your visit..." />
             </div>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        footer={<Button onClick={() => setSuccess(false)} children="Done" />}
+        open={success}
+        onOpenChange={setSuccess}
+      >
+        <div className="flex flex-col gap-[24px] items-center">
+          <VerifyIcon color="#04907E" />
+
+          <div className="flex flex-col gap-[8px] items-center">
+            <p className="font-[700] text-[24px] text-primary-color">
+              Verification Review Submitted
+            </p>
+            <p className="font-[500] text-[14px] text-[#363636] text-center">
+              Your verification details have been submitted successfully, we
+              will verify and get back to you in 2-3days
+            </p>
           </div>
         </div>
       </Modal>

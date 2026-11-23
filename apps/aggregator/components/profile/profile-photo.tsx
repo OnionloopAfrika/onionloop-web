@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useRef, ChangeEvent } from "react";
 import Image from "next/image";
@@ -22,7 +22,7 @@ export function ProfilePhoto() {
   };
 
   return (
-    <div className="space-y-[40px] p-[24px] shadow-[0_0_15px_rgba(0,0,0,0.15)] rounded-[12px]">
+    <div className="space-y-[40px] p-[24px] shadow-sm rounded-[12px] bg-white">
       <ProfileHeader
         title="Profile Photo"
         subtitle="Your avatar across the platform"

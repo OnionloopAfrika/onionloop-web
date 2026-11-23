@@ -93,7 +93,7 @@ function CustomDot({
         fill="white"
         fontSize={13}
         fontWeight={700}
-        fontFamily="'DM Sans', sans-serif"
+        fontFamily="var(--font-poppins), sans-serif"
       >
         {label}
       </text>

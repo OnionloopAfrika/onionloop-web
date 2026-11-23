@@ -99,9 +99,9 @@ export function SearchInput({
           onFocus={() => setIsOpen(true)}
           // !h-10 text-xs !bg-[#F9FAFB] !border-[#E5E7EB]
           className={`
-            flex h-12 w-full rounded-[6px] border bg-[#F9FAFB] border-[#E5E7EB]
-            pl-12 pr-4 font-[500] text-[14px] text-[#131313]
-            placeholder:font-[500] placeholder:text-[12px] placeholder:text-[#8A8A8A] 
+            flex h-12 w-full rounded-[6px] border bg-[#f7f7f7] border-[#E5E7EB]
+            pl-12 pr-4 font-[500] text-[14px] text-[#131313] !max-lg:min-w-full
+            placeholder:font-[500] placeholder:text-[12px] placeholder:text-[#8A8A8A]  !min-w-[350px] !max-w-[350px]
             focus:outline-none 
             ${className}
           `}

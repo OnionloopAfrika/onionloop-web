@@ -34,12 +34,12 @@ export function AccountsPage() {
           heading="Accounts"
           subHeading="View and manage business accounts, account balance, and revenue"
         />
-        <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
+        {/* <div className="flex gap-3 w-full justify-end mt-4 md:mt-0">
           <button className="inline-flex items-center justify-center gap-1 p-2 border border-gray-200 rounded-lg bg-white text-[14px] font-medium text-gray-700">
             <CalendarIcon />
             Mar 2026
           </button>
-        </div>
+        </div> */}
       </div>
 
       <Tabs defaultValue="account">

@@ -402,28 +402,28 @@ export default function EmptyBusiness({
                       </span>
 
                       <Select
-                        className="!border-[#C7C7C7] !bg-[#F7F7F7] "
+                        className="!border-[#C7C7C7] !bg-[#F7F7F7] w-full"
                         placeholder="Select gender"
                       />
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 ">
                     <span className="text-[#131313] font-[600] text-[12px]">
                       Date of Birth
                     </span>
 
-                    <div className="grid grid-cols-[1fr_2fr_2fr] gap-3">
+                    <div className="grid grid-cols-[1fr_2fr_2fr] gap-3 ">
                       <Select
-                        className="!border-[#C7C7C7] !bg-[#F7F7F7] "
+                        className="!border-[#C7C7C7] !bg-[#F7F7F7] w-full"
                         placeholder="DD"
                       />
                       <Select
-                        className="!border-[#C7C7C7] !bg-[#F7F7F7] "
+                        className="!border-[#C7C7C7] !bg-[#F7F7F7] w-full"
                         placeholder="MM"
                       />
                       <Select
-                        className="!border-[#C7C7C7] !bg-[#F7F7F7] "
+                        className="!border-[#C7C7C7] !bg-[#F7F7F7] w-full"
                         placeholder="YYYY"
                       />
                     </div>
@@ -467,7 +467,7 @@ export default function EmptyBusiness({
                 <div className="grid grid-cols-2 gap-[12px] max-lg:grid-cols-1">
                   <Input placeholder="Adegoriola" label="Business Name" />
                   <Select
-                    className="!border-[#C7C7C7] !bg-[#F7F7F7] "
+                    className="!border-[#C7C7C7] !bg-[#F7F7F7] w-full"
                     placeholder="Select Type"
                     label="Business Type"
                   />
@@ -476,7 +476,7 @@ export default function EmptyBusiness({
                 <div className="grid grid-cols-2 gap-[12px] max-lg:grid-cols-1">
                   <Input placeholder="Adegoriola" label="Business Location" />
                   <Select
-                    className="!border-[#C7C7C7] !bg-[#F7F7F7] "
+                    className="!border-[#C7C7C7] !bg-[#F7F7F7] w-full"
                     placeholder="Select City"
                     label="City"
                   />
@@ -484,7 +484,7 @@ export default function EmptyBusiness({
 
                 <div className="grid grid-cols-2 gap-[12px] max-lg:grid-cols-1">
                   <Select
-                    className="!border-[#C7C7C7] !bg-[#F7F7F7] "
+                    className="!border-[#C7C7C7] !bg-[#F7F7F7] w-full"
                     placeholder="Select State"
                     label="State"
                   />

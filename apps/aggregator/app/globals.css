@@ -11,8 +11,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-poppins);
   --color-primary-color: var(--primary-color);
   --color-danger: var(--danger);
   --color-light: var(--light);
@@ -45,7 +45,9 @@ body {
 }
 
 .reference-table-header .reference-table-row {
-  background-color: #f9fafb !important;
+  /* background-color: #f9fafb !important; */
+  background-color: #f7f7f7 !important;
+
   border-bottom: 1px solid #f3f4f6 !important;
 }
 
@@ -90,6 +92,22 @@ body {
   height: 200px !important;
   text-align: center !important;
   font-weight: 500 !important;
+}
+
+.reference-table--compact .reference-table-head {
+  height: 56px !important;
+  padding: 10px 12px !important;
+  font-size: 12px !important;
+}
+
+.reference-table--compact .reference-table-cell {
+  height: 56px !important;
+  padding: 12px !important;
+  font-size: 11px !important;
+}
+
+.reference-table--compact .reference-table-cell[data-empty="true"] {
+  height: 120px !important;
 }
 
 ::-webkit-scrollbar {

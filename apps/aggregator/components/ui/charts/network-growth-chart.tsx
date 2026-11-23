@@ -23,6 +23,8 @@ export default function NetworkGrowthCard() {
                 { dataKey: 'active', name: 'Active Businesses', color: '#04907E', showArea: true },
                 { dataKey: 'new', name: 'New Businesses', color: '#166534', showArea: false },
             ]}
+            yAxisTicks={[0, 100, 200, 300, 400]}
+            yAxisDomain={[0, 400]}
             ranges={['7days', '30days', '90days']}
             activeRange={range}
             onRangeChange={setRange}

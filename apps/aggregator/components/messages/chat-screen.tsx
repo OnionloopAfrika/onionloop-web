@@ -74,15 +74,17 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
               alt="user-avatar"
             />
           </div>
-          <div className="space-y-[4px]">
+          <div className="space-y-[4px] ">
             <h2 className="flex items-center gap-2 text-[12px] font-[600] leading-tight text-[#131313] md:text-[18px]">
               <span className="md:hidden">@joshuaakin</span>
-              <span className="hidden text-[10px] font-[400] text-[#8A8A8A] md:inline">
+              <span className="hidden text-[18px] font-[600] text-[#131313] md:inline">
                 {message.name}
               </span>
             </h2>
             <p className="text-[14px] font-[400] uppercase tracking-wider text-[#6C6C6C] md:normal-case md:tracking-normal">
-              <span className="hidden md:inline">{message.role}</span>
+              <span className="hidden md:inline font-[400] text-[14px] text-[#6C6C6C]">
+                {message.role}
+              </span>
               <span className="md:hidden">{message.name}</span>
             </p>
           </div>
@@ -146,7 +148,7 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
               )}
               <div className="space-y-[8px]">
                 <div
-                  className={`px-4 py-2.5 text-[14px] font-[400] leading-relaxed md:text-[16px] md:font-[500] ${
+                  className={`px-4 py-2.5 text-[16px] font-[500] leading-relaxed md:text-[16px] md:font-[500] ${
                     chat.sender === "me"
                       ? "rounded-bl-[8px] rounded-tl-[8px] rounded-tr-[8px] rounded-br-none bg-[#04907E] text-white"
                       : "rounded-bl-[8px] rounded-br-[8px] rounded-tr-[8px] bg-white text-[#131313]"
@@ -155,7 +157,7 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
                   {chat.text}
                 </div>
                 <p
-                  className={`mt-1 text-[12px] font-[400] text-[#363636] md:text-[14px] ${chat.sender === "me" ? "text-right" : "ml-[20px]"}`}
+                  className={`mt-1 text-[14px] font-[400] text-[#363636] md:text-[14px] ${chat.sender === "me" ? "text-right" : "ml-[20px]"}`}
                 >
                   {chat.time}
                 </p>
@@ -165,13 +167,13 @@ export function ChatScreen({ message, onBack }: ChatScreenProps) {
         ))}
       </div>
 
-      <div className="sticky bottom-0 z-10 shrink-0 bg-white p-6 px-[12px] md:static">
+      <div className="sticky bottom-0 z-10 shrink-0 bg-white p-6 px-[12px] md:static  ">
         <div className="flex items-center gap-4">
           <button className="p-2 text-[#8A8A8A] transition-colors hover:text-[#131313]">
             <PlusIcon className="h-[32px] w-[32px]" />
           </button>
-          <div className="flex w-full items-center gap-[16px]">
-            <div className="w-full rounded-full border border-[#C7C7C7] bg-white">
+          <div className="flex w-full items-center gap-[16px]  ">
+            <div className="w-full rounded-full border border-[#C7C7C7] bg-white overflow-hidden">
               <Input
                 type="text"
                 className="h-full w-full overflow-hidden rounded-full border-0 bg-white text-[14px] text-[#131313] placeholder:text-[14px] placeholder:font-[400] placeholder:text-[#6C6C6C] focus:outline-none"

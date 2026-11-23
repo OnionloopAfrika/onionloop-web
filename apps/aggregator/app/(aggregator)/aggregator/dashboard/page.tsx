@@ -51,7 +51,8 @@ function NetworkGrowthCard() {
       ranges={["7days", "30days", "90days"]}
       activeRange={range}
       onRangeChange={setRange}
-      yAxisTicks={[0, 100, 200, 300]}
+      yAxisTicks={[0, 100, 200, 300, 400]}
+      yAxisDomain={[0, 400]}
     />
   );
 }
@@ -120,7 +121,7 @@ const page = () => {
 
         <StatCard
           themeColor="green"
-          icon={<AggregatorTransactionIcon color="#0D5EBA" />}
+          icon={<AggregatorTransactionIcon color="#04802E" />}
           percentage="8.4"
           value="320"
           label="Active Business"

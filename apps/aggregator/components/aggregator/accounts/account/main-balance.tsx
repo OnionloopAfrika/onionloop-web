@@ -1,8 +1,17 @@
 "use client";
 
-import Table, { TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import React, { useMemo, useState } from "react";
+import Table, {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import Badge from "@/components/ui/badge";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Select from "@/components/ui/select";
+import { CalendarIcon } from "@/components/icons/svgs";
+import { Calendar } from "@/components/ui/calendar";
 
 interface BalanceTransaction {
   id: string;
@@ -123,7 +132,26 @@ function parseFilterDate(dateStr: string): Date {
 
 export default function MainBalance() {
   const [typeFilter, setTypeFilter] = useState("");
-  const [dateFilter, setDateFilter] = useState("");
+  const [dateFilter, setDateFilter] = useState("08-05-2026");
+  const [selectedDate, setSelectedDate] = useState<Date>(
+    new Date(2026, 4, 8),
+  );
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const datePickerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        datePickerRef.current &&
+        !datePickerRef.current.contains(event.target as Node)
+      ) {
+        setIsCalendarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const filteredTransactions = useMemo(() => {
     return mockTransactions.filter((txn) => {
@@ -165,40 +193,24 @@ export default function MainBalance() {
     type: BalanceTransaction["transactionType"],
   ) => {
     if (type === "Credit") {
-      return (
-        <span className="px-3 py-1 rounded-full text-[10.44px] font-medium bg-[#E7F6EC] text-[#04802E]">
-          Credit
-        </span>
-      );
+      return <Badge variant="successful">Credit</Badge>;
     }
-    return (
-      <span className="px-3 py-1 rounded-full text-[10.44px] font-medium text-[#CB1A14] bg-[#FBEAE9]">
-        Debit
-      </span>
-    );
+    return <Badge variant="failed">Debit</Badge>;
   };
 
   const getBalanceTypeBadge = (type: BalanceTransaction["balanceType"]) => {
     if (type === "Onboarding") {
-      return (
-        <span className="px-3 py-1 rounded-full text-[12px] font-medium bg-[#C6DDF7] text-[#0D5EBA]">
-          Onboarding
-        </span>
-      );
+      return <Badge variant="onboarding">Onboarding</Badge>;
     }
     if (type === "Transaction") {
-      return (
-        <span className="px-3 py-1 rounded-full text-[12px] font-medium bg-[#B5E3C4] text-[#024E44]">
-          Transaction
-        </span>
-      );
+      return <Badge variant="transaction">Transaction</Badge>;
     }
     return <span className="text-[14px] font-[500] text-[#6C6C6C]">---</span>;
   };
 
   return (
     <div className="w-full bg-white rounded-[12px] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] font-sans">
-      <div className="flex flex-col md:flex-row md:items-center gap-3 p-4 w-[40%] max-lg:w-full">
+      <div className="flex flex-col md:flex-row md:items-center gap-3 p-4 w-fit max-lg:w-full">
         <Select
           value={typeFilter}
           onValueChange={setTypeFilter}
@@ -210,65 +222,60 @@ export default function MainBalance() {
           placeholder="All Transaction Types"
         />
 
-        <Select
-          value={dateFilter}
-          onValueChange={setDateFilter}
-          options={[
-            { value: "08-05-2026", label: "08-05-2026" },
-            { value: "09-05-2026", label: "09-05-2026" },
-          ]}
-          placeholder="08-05-2026"
-        />
+        <div ref={datePickerRef} className="relative w-full md:w-[200px]">
+          <button
+            type="button"
+            aria-label="Select balance date"
+            aria-expanded={isCalendarOpen}
+            onClick={() => setIsCalendarOpen((open) => !open)}
+            className="flex h-[48px] w-full items-center justify-between rounded-[6px] border border-[#E5E7EB] bg-[#f7f7f7] px-3 py-3 text-[14px] font-[500] text-[#A8A8A8]"
+          >
+            <span>{dateFilter}</span>
+            <CalendarIcon className="h-4 w-4 text-[#8A8A8A]" />
+          </button>
+          {isCalendarOpen && (
+            <div className="absolute left-0 top-full z-[60] mt-2">
+              <Calendar
+                value={selectedDate}
+                onChange={(date) => {
+                  setSelectedDate(date);
+                  setDateFilter(
+                    `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`,
+                  );
+                  setIsCalendarOpen(false);
+                }}
+              />
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="w-full overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>
-                TXN ID
-              </TableHead>
-              <TableHead>
-                Transaction Type
-              </TableHead>
-              <TableHead>
-                Balance Type
-              </TableHead>
-              <TableHead>
-                Amount
-              </TableHead>
-              <TableHead>
-                Date
-              </TableHead>
+              <TableHead>TXN ID</TableHead>
+              <TableHead>Transaction Type</TableHead>
+              <TableHead>Balance Type</TableHead>
+              <TableHead>Amount</TableHead>
+              <TableHead>Date</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredTransactions.map((txn, i) => (
-              <TableRow
-                key={i}
-              >
-                <TableCell>
-                  {txn.id}
-                </TableCell>
+              <TableRow key={i}>
+                <TableCell>{txn.id}</TableCell>
                 <TableCell>
                   {getTransactionTypeBadge(txn.transactionType)}
                 </TableCell>
-                <TableCell>
-                  {getBalanceTypeBadge(txn.balanceType)}
-                </TableCell>
-                <TableCell>
-                  {formatAmount(txn.amount)}
-                </TableCell>
-                <TableCell>
-                  {txn.date}
-                </TableCell>
+                <TableCell>{getBalanceTypeBadge(txn.balanceType)}</TableCell>
+                <TableCell>{formatAmount(txn.amount)}</TableCell>
+                <TableCell>{txn.date}</TableCell>
               </TableRow>
             ))}
             {filteredTransactions.length === 0 && (
               <TableRow>
-                <TableCell
-                  colSpan={5}
-                >
+                <TableCell colSpan={5}>
                   No transactions match your filters.
                 </TableCell>
               </TableRow>

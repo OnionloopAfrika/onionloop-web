@@ -75,7 +75,7 @@ export default function MegaSidebar({
       className={`hidden md:flex flex-col ${isCollapsed ? "w-20" : "w-64"} bg-white border-r border-gray-100 h-screen sticky top-0 overflow-y-auto transition-all duration-300`}
     >
       <div
-        className={`p-6 flex items-center ${isCollapsed ? "justify-center" : "justify-between"}`}
+        className={`p-6 pr-3 flex items-center ${isCollapsed ? "justify-center" : "justify-between"}`}
       >
         {!isCollapsed && (
           <Link href="/" className="flex items-center gap-2 no-underline">
@@ -84,9 +84,9 @@ export default function MegaSidebar({
         )}
         <button
           onClick={handleToggleCollapse}
-          className="p-1.5 rounded-lg border border-gray-100 text-gray-400 hover:bg-gray-50 transition-colors"
+          className=" rounded-lg border border-gray-100 text-gray-400 hover:bg-gray-50 transition-colors"
         >
-          <SidebarTrigger />
+          <SidebarTrigger color="#8A8A8A" />
         </button>
       </div>
 
