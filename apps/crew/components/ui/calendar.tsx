@@ -8,6 +8,41 @@ interface CalendarProps {
   events?: Record<string, boolean>;
 }
 
+function CalendarArrow({
+  direction,
+  double = false,
+}: {
+  direction: "previous" | "next";
+  double?: boolean;
+}) {
+  const isPrevious = direction === "previous";
+  const path = isPrevious
+    ? double
+      ? "M10.5 3.5 6 8l4.5 4.5M6 3.5 1.5 8 6 12.5"
+      : "M9.5 3.5 5 8l4.5 4.5"
+    : double
+      ? "M3.5 3.5 8 8l-4.5 4.5M8 3.5 12.5 8 8 12.5"
+      : "M4.5 3.5 9 8l-4.5 4.5";
+
+  return (
+    <svg
+      aria-hidden="true"
+      width="14"
+      height="14"
+      viewBox="0 0 14 16"
+      fill="none"
+    >
+      <path
+        d={path}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.25"
+      />
+    </svg>
+  );
+}
+
 export function Calendar({ value, onChange, events = {} }: CalendarProps) {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(value || today);
@@ -26,10 +61,12 @@ export function Calendar({ value, onChange, events = {} }: CalendarProps) {
 
   const handleNext = () => setCurrentMonth(new Date(year, month + 1, 1));
 
-  const isSelected = (day: number) => {
-    if (!value) return false;
+  const handlePrevYear = () => setCurrentMonth(new Date(year - 1, month, 1));
 
-    const selected = new Date(value);
+  const handleNextYear = () => setCurrentMonth(new Date(year + 1, month, 1));
+
+  const isSelected = (day: number) => {
+    const selected = value ? new Date(value) : today;
 
     return (
       selected.getDate() === day &&
@@ -43,61 +80,66 @@ export function Calendar({ value, onChange, events = {} }: CalendarProps) {
   };
 
   return (
-    <div className="w-full max-w-[360px] rounded-[20px] bg-[#F5F5F5] p-[20px]">
-      <div className="flex items-center justify-between mb-[16px]">
-        <p className="text-[18px] font-semibold text-[#131313]">
+    <div className="w-full max-w-[345px] min-h-[295px] rounded-[8px] border border-[#E5E7EB] bg-white p-[20px]">
+      <div className="mb-[12px] flex items-center justify-center gap-[10px] border-b border-[#F1F1F1] pb-[12px]">
+        <button
+          type="button"
+          aria-label="Previous year"
+          onClick={handlePrevYear}
+          className="grid size-[18px] place-items-center rounded-[4px] border border-[#E5E7EB] text-[#8A8A8A] hover:bg-[#F7F7F7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005B50]"
+        >
+          <CalendarArrow direction="previous" double />
+        </button>
+        <button
+          type="button"
+          aria-label="Previous month"
+          onClick={handlePrev}
+          className="grid size-[18px] place-items-center rounded-[4px] border border-[#E5E7EB] text-[#8A8A8A] hover:bg-[#F7F7F7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005B50]"
+        >
+          <CalendarArrow direction="previous" />
+        </button>
+        <p className="min-w-[88px] text-center text-[10px] font-semibold text-[#363636]">
           {currentMonth.toLocaleString("default", {
             month: "long",
             year: "numeric",
           })}
         </p>
-
-        <div className="flex gap-[12px] items-center">
-          <button className="w-[20px] h-[20px]" onClick={handlePrev}>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7.08398 10.666L11.834 15.3327C12.1673 15.666 12.6673 15.666 13.0007 15.3327C13.334 14.9993 13.334 14.4993 13.0007 14.166L8.91732 9.99935L13.0007 5.83268C13.334 5.49935 13.334 4.99935 13.0007 4.66602C12.834 4.49935 12.6673 4.41602 12.4173 4.41602C12.1673 4.41602 12.0007 4.49935 11.834 4.66602L7.08398 9.33268C6.75065 9.74935 6.75065 10.2493 7.08398 10.666C7.08398 10.5827 7.08398 10.5827 7.08398 10.666Z"
-                fill="#121212"
-              />
-            </svg>
-          </button>
-          <button className="w-[20px] h-[20px]" onClick={handleNext}>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.9509 9.40796L8.23425 4.69962C8.15679 4.62152 8.06462 4.55952 7.96307 4.51721C7.86152 4.47491 7.7526 4.45312 7.64259 4.45312C7.53258 4.45312 7.42366 4.47491 7.32211 4.51721C7.22056 4.55952 7.12839 4.62152 7.05092 4.69962C6.89571 4.85576 6.80859 5.06697 6.80859 5.28712C6.80859 5.50728 6.89571 5.71849 7.05092 5.87462L11.1759 10.0413L7.05092 14.1663C6.89571 14.3224 6.80859 14.5336 6.80859 14.7538C6.80859 14.9739 6.89571 15.1852 7.05092 15.3413C7.1281 15.42 7.22014 15.4827 7.3217 15.5256C7.42326 15.5685 7.53233 15.5908 7.64259 15.5913C7.75284 15.5908 7.86191 15.5685 7.96348 15.5256C8.06504 15.4827 8.15708 15.42 8.23425 15.3413L12.9509 10.633C13.0355 10.5549 13.103 10.4602 13.1492 10.3548C13.1954 10.2494 13.2192 10.1355 13.2192 10.0205C13.2192 9.90537 13.1954 9.79153 13.1492 9.68612C13.103 9.5807 13.0355 9.48599 12.9509 9.40796Z"
-                fill="#121212"
-              />
-            </svg>
-          </button>
-        </div>
+        <button
+          type="button"
+          aria-label="Next month"
+          onClick={handleNext}
+          className="grid size-[18px] place-items-center rounded-[4px] border border-[#E5E7EB] text-[#8A8A8A] hover:bg-[#F7F7F7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005B50]"
+        >
+          <CalendarArrow direction="next" />
+        </button>
+        <button
+          type="button"
+          aria-label="Next year"
+          onClick={handleNextYear}
+          className="grid size-[18px] place-items-center rounded-[4px] border border-[#E5E7EB] text-[#8A8A8A] hover:bg-[#F7F7F7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005B50]"
+        >
+          <CalendarArrow direction="next" double />
+        </button>
       </div>
 
-      <div className="grid grid-cols-7 text-center text-[14px] mb-[10px]">
+      <div className="mb-[8px] grid grid-cols-7 text-center text-[12px]">
         {weekDays.map((day, i) => (
           <span
             key={day}
-            className={i === 0 || i === 6 ? "text-red-500" : "text-[#131313]"}
+            className={
+              i === 0 || i === 6
+                ? "text-[#CB1A14] font-[400] text-[12px]"
+                : "text-[#131313] font-[400] text-[12px]"
+            }
           >
             {day}
           </span>
         ))}
       </div>
 
-      <div className="grid grid-cols-7 gap-y-[12px] text-center">
+      <div className="grid grid-cols-7 gap-y-[4px] text-center">
         {Array.from({ length: firstDay }).map((_, i) => (
-          <div key={i} />
+          <div key={`empty-${i}`} />
         ))}
 
         {Array.from({ length: daysInMonth }).map((_, i) => {
@@ -113,19 +155,22 @@ export function Calendar({ value, onChange, events = {} }: CalendarProps) {
           return (
             <button
               key={day}
+              type="button"
+              aria-pressed={selected}
+              aria-label={date.toLocaleDateString()}
               onClick={() => handleSelect(day)}
-              className="flex flex-col items-center justify-center"
+              className="relative flex h-[32px] items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005B50]"
             >
               <div
                 className={`
-                  w-[36px] h-[36px] flex items-center justify-center rounded-[10px]
-                  text-[14px]
+                  flex h-[32px] w-[30px] font-[400] items-center justify-center rounded-[8px]
+                  text-[12px]
                   ${
                     selected
-                      ? "bg-indigo-600 text-white"
+                      ? "w-[44px] bg-[#024E44] text-white"
                       : isWeekend
-                        ? "text-red-500"
-                        : "text-[#6C6C6C]"
+                        ? "text-[#F04438]"
+                        : "text-[#8A8A8A]"
                   }
                 `}
               >
@@ -133,7 +178,7 @@ export function Calendar({ value, onChange, events = {} }: CalendarProps) {
               </div>
 
               {hasEvent && (
-                <div className="w-[6px] h-[6px] bg-green-500 rounded-full mt-[4px]" />
+                <span className="absolute bottom-[1px] h-[4px] w-[4px] rounded-full bg-green-500" />
               )}
             </button>
           );

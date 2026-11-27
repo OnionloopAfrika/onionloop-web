@@ -146,22 +146,31 @@ type ItemsProps = {
   item: string;
   nos?: string;
   amount: string;
+  amountStyle?: string;
 };
 
 type OrderDetails = {
   title: string;
   value: React.ReactNode;
   className?: string;
+  className1?: string;
 };
 
-export const OrderInfo = ({ title, value, className = "" }: OrderDetails) => {
+export const OrderInfo = ({
+  title,
+  value,
+  className = "",
+  className1 = "",
+}: OrderDetails) => {
   return (
-    <div className="flex justify-between items-center">
+    <div
+      className={`flex justify-between items-center pb-[12px] ${className1}`}
+    >
       <p className="font-[400] text-[16px] text-[#6C6C6C] max-lg:text-[10px]">
         {title}
       </p>
       <p
-        className={`font-[500] text-[16px] text-[#363636] max-lg:text-[12px] ${className}  `}
+        className={`font-[500] text-[16px] text-[#363636] max-lg:text-[12px] ${className}`}
       >
         {value}
       </p>
@@ -169,7 +178,7 @@ export const OrderInfo = ({ title, value, className = "" }: OrderDetails) => {
   );
 };
 
-export const Items = ({ item, nos, amount }: ItemsProps) => {
+export const Items = ({ item, nos, amount, amountStyle }: ItemsProps) => {
   return (
     <div className="grid grid-cols-3 w-full ">
       <p className="font-[400] text-[16px] text-[#6C6C6C] max-lg:text-[10px]">
@@ -179,7 +188,9 @@ export const Items = ({ item, nos, amount }: ItemsProps) => {
       <p className="font-[400] text-[16px] text-[#6C6C6C] max-lg:text-[10px] text-center">
         {nos && <span> x{nos}</span>}
       </p>
-      <p className="font-[500] text-[16px] text-[#363636] text-end max-lg:text-[12px]">
+      <p
+        className={`font-[500] text-[16px] text-[#363636] text-end max-lg:text-[12px] ${amountStyle}`}
+      >
         {amount}
       </p>
     </div>

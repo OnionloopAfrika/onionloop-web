@@ -15,7 +15,7 @@ export default function MegaSidebar({
   navItems,
   navSections,
 }: MegaSidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -42,11 +42,11 @@ export default function MegaSidebar({
         onClick={() => router.push(item.href)}
         className={`w-full flex items-center ${isCollapsed ? "justify-center" : "justify-between"} px-4 py-3 rounded-xl transition-all duration-200 group cursor-pointer ${
           isActive
-            ? "bg-[#B5E3C4] text-primary-color font-[500] shadow-sm"
-            : "text-gray-500 hover:bg-gray-50 font-[500]"
+            ? "bg-[#B5E3C4] text-[#024E44] font-[600] text-[16px]"
+            : "text-[#8A8A8A] hover:bg-gray-50 font-[500] text-[16px]"
         }`}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-[8px]">
           <div
             className={`transition-colors duration-200 ${isActive ? "text-[#024E44]" : "text-gray-400 group-hover:text-gray-600"} relative`}
           >
@@ -72,7 +72,7 @@ export default function MegaSidebar({
 
   return (
     <aside
-      className={`hidden md:flex flex-col ${isCollapsed ? "w-20" : "w-64"} bg-white border-r border-gray-100 h-screen sticky top-0 overflow-y-auto transition-all duration-300`}
+      className={`hidden md:flex flex-col ${isCollapsed ? "w-20" : "w-72"} bg-white border-r border-gray-100 h-screen sticky top-0 overflow-y-auto transition-all duration-300`}
     >
       <div
         className={`p-6 flex items-center ${isCollapsed ? "justify-center" : "justify-between"}`}
@@ -90,16 +90,16 @@ export default function MegaSidebar({
         </button>
       </div>
 
-      <div className="flex-1 py-6 px-4 space-y-6">
+      <div className="flex-1 py-6 px-4 space-y-6 ">
         {navSections ? (
           navSections.map((section, idx) => (
-            <div key={idx} className="space-y-2">
+            <div key={idx} className="space-y-[8px] ">
               {!isCollapsed && (
-                <p className="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.1em] mb-3">
+                <p className="px-4 text-[12px] font-semibold text-[#8A8A8A] uppercase tracking-[0.02em] mb-3">
                   {section.label}
                 </p>
               )}
-              <div className="space-y-[24px]">
+              <div className="space-y-[8px] ">
                 {section.items.map((item) => renderItem(item))}
               </div>
               {idx < navSections.length - 1 && !isCollapsed && (
@@ -108,7 +108,7 @@ export default function MegaSidebar({
             </div>
           ))
         ) : (
-          <div className="space-y-[24px]">
+          <div className="space-y-[16px] ">
             {navItems?.map((item) => renderItem(item))}
           </div>
         )}

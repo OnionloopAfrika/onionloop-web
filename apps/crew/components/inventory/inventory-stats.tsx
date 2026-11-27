@@ -11,8 +11,10 @@ import { DownloadIcon, DownloadIconSolid, PlusIcon } from "../icons/svgs";
 
 export function InventoryStats({
   onProductAdded,
+  onProductSaved,
 }: {
   onProductAdded?: (product: Product) => void;
+  onProductSaved?: (productName: string) => void;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -114,7 +116,10 @@ export function InventoryStats({
         onOpenChange={setOpen}
       >
         <div className="">
-          <AddProductForm onProductAdded={handleAddProduct} />
+          <AddProductForm
+            onProductAdded={handleAddProduct}
+            onProductSaved={onProductSaved}
+          />
         </div>
       </Modal>
     </>

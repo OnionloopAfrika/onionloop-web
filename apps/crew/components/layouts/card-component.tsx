@@ -69,22 +69,22 @@ const StatCard: React.FC<StatCardProps> = ({
   return (
     <div className="bg-white border border-[#E5E7EB] rounded-[8px] p-[12px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col  w-full flex-1 justify-center space-y-2 ">
       <div className="flex justify-between items-start">
-        <h2 className="text-[20px] font-semibold text-[#111827] leading-none tracking-tight">
+        <h2 className="text-[20px] font-semibold text-[#000000] leading-none tracking-tight">
           {value}
         </h2>
         <div
-          className={`p-1 rounded-[8px] flex justify-center items-center ${style.bg} ${style.text}`}
+          className={`p-[8px] rounded-[4px] flex justify-center items-center ${style.bg} ${style.text}`}
         >
           {icon}
         </div>
       </div>
 
       <div className="flex flex-col gap-4">
-        <p className="text-[#4B5563] text-[12px] font-normal leading-normal">
+        <p className="text-[#6C6C6C] text-[10px] font-normal leading-normal">
           {label}
         </p>
 
-      {footerText && (
+        {footerText && (
           <div
             className={`flex items-center gap-1.5 text-[10px] font-medium ${style.footer}`}
           >
@@ -108,7 +108,7 @@ const StatCard: React.FC<StatCardProps> = ({
               {footerText}
             </span>
           </div>
-      )}
+        )}
       </div>
     </div>
   );

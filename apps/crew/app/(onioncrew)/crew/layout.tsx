@@ -3,7 +3,7 @@
 import DashboardNav from "@/components/layouts/nav-bar";
 import MegaSidebar from "@/components/layouts/mega-sidebar";
 import { usePathname } from "next/navigation";
-import { CREW_NAV_ITEMS } from "@/utils/constant/navigation";
+import { CREW_NAV_ITEMS, CREW_NAV_SECTIONS } from "@/utils/constant/navigation";
 import {
   ProfileIcon,
   SettingsIcon,
@@ -73,7 +73,7 @@ export default function DashboardLayout({
 
   return (
     <div className="flex min-h-screen bg-[#F7F7F7]">
-      <MegaSidebar navItems={CREW_NAV_ITEMS} />
+      <MegaSidebar navSections={CREW_NAV_SECTIONS} />
 
       <div className="flex-1 flex flex-col min-w-0">
         <DashboardNav

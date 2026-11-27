@@ -12,6 +12,7 @@ export function EmptyProducts({
   open,
   setOpen,
   onProductAdded,
+  onProductSaved,
 }: AddProductProps) {
   const handleAddProduct = (product: Product) => {
     onProductAdded?.(product);
@@ -47,7 +48,10 @@ export function EmptyProducts({
         onOpenChange={setOpen}
       >
         <div className="">
-          <AddProductForm onProductAdded={handleAddProduct} />
+          <AddProductForm
+            onProductAdded={handleAddProduct}
+            onProductSaved={onProductSaved}
+          />
         </div>
       </Modal>
     </>

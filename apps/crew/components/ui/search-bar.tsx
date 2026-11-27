@@ -52,8 +52,8 @@ export default function SearchBar({
 }: SearchBarProps) {
   return (
     <div className="p-[24px] flex flex-col md:flex-row justify-between items-start md:items-center gap-[9px] border-b border-gray-100 w-full">
-      <div className="w-full flex flex-col md:flex-row md:items-center justify-between items-start gap-[16px]  ">
-        <div className="w-full">
+      <div className="w-full flex flex-col md:flex-row md:items-center  items-start gap-[16px]  ">
+        <div className="">
           <SearchInput
             placeholder={searchPlaceholder}
             value={searchValue}
@@ -62,11 +62,10 @@ export default function SearchBar({
             products={products}
             onProductClick={onProductClick}
             onCategoryClick={onCategoryClick}
-            className="rounded-[12px]"
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-[12px] w-full max-lg:grid-cols-1">
+        <div className="grid grid-cols-2 gap-[12px]  max-lg:grid-cols-1">
           <Select
             options={statusOptions}
             value={statusValue}

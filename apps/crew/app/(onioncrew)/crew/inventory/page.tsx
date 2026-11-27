@@ -1,17 +1,24 @@
 "use client";
 
-import { DangerIcon, MultiplyIcon } from "@/components/icons/svgs";
+import {
+  DangerIcon,
+  MultiplyIcon,
+  VerifyIcon,
+} from "@/components/icons/svgs";
 import { EmptyProducts } from "@/components/inventory/empty-product";
 import { InventoryStats } from "@/components/inventory/inventory-stats";
 import { ProductTable } from "@/components/inventory/product-table";
 import { Warning } from "@/components/inventory/warning";
-import { initialProducts, warning } from "@/lib/mockdata/inventory";
+import Button from "@/components/ui/button";
+import { Modal } from "@/components/ui/modal";
+import { initialProducts } from "@/lib/mockdata/inventory";
 import { Product } from "@/types/inventory/type";
 import { useEffect, useState } from "react";
 
-const page = () => {
+const InventoryPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [open, setOpen] = useState(false);
+  const [savedProductName, setSavedProductName] = useState<string | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("products");
@@ -55,6 +62,7 @@ const page = () => {
           open={open}
           setOpen={setOpen}
           onProductAdded={handleAddProduct}
+          onProductSaved={setSavedProductName}
         />
       ) : (
         <div className="space-y-[42px]">
@@ -74,7 +82,10 @@ const page = () => {
             ))}
           </div> */}
 
-          <InventoryStats onProductAdded={handleAddProduct} />
+          <InventoryStats
+            onProductAdded={handleAddProduct}
+            onProductSaved={setSavedProductName}
+          />
           <Warning
             icon={
               <div className=" w-[24px] h-[24px] flex justify-center items-center bg-[#FEF6E7] rounded-[8px] border border-[#FBE2B7]">
@@ -94,8 +105,37 @@ const page = () => {
           />
         </div>
       )}
+      <Modal
+        open={savedProductName !== null}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) setSavedProductName(null);
+        }}
+      >
+        <div className="space-y-[64px]">
+          <div className="space-y-[40px]">
+            <VerifyIcon className="mx-auto text-light" />
+            <div className="space-y-[8px] text-center">
+              <p className="font-[600] text-[24px] text-light">
+                Product saved successfully!
+              </p>
+              <p className="font-[500] text-[16px] text-[#363636]">
+                {savedProductName} has been added to the food items
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto flex w-full max-w-[362px] justify-center">
+            <Button
+              onClick={() => setSavedProductName(null)}
+              size="sm"
+              className="!bg-[#004E46] !text-white"
+            >
+              Done
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
 
-export default page;
+export default InventoryPage;

@@ -99,7 +99,9 @@ function NavTabsTrigger({
     <button
       onClick={() => context.setActiveTab(value)}
       className={`h-[44px] py-[8px] px-[16px] transition-all whitespace-nowrap font-[500] text-[16px] rounded-[8px]  cursor-pointer ${
-        isActive ? "bg-white text-primary-color" : "text-[#6C6C6C] bg-[#F7F7F7]"
+        isActive
+          ? "bg-white text-primary-color font-[700]"
+          : "text-[#6C6C6C] bg-[#F7F7F7]"
       } ${className}`}
       {...props}
     >
@@ -128,6 +130,99 @@ function TodaysTrigger({
       {...props}
     >
       {children}
+    </button>
+  );
+}
+
+interface OnboardingTriggerProps extends TabsTriggerProps {
+  label?: ReactNode;
+}
+
+function OnboardingProgressLine({
+  beforeStep,
+  className,
+}: {
+  beforeStep: number;
+  className?: string;
+}) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("TabsTrigger must be used within Tabs");
+
+  const activeStepNumber = Number(context.activeTab.split("_")[1]);
+
+  return (
+    <hr
+      className={`flex-1 border-0 border-t-[4px] transition-colors ${
+        activeStepNumber > beforeStep ? "border-[#04802E]" : "border-[#A8A8A8]"
+      } ${className ?? ""}`}
+    />
+  );
+}
+
+function OnboardingTrigger({
+  value,
+  children,
+  label,
+  className,
+  ...props
+}: OnboardingTriggerProps) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("TabsTrigger must be used within Tabs");
+
+  const isActive = context.activeTab === value;
+  const stepNumber = Number(children);
+  const activeStepNumber = Number(context.activeTab.split("_")[1]);
+  const isCompleted = stepNumber < activeStepNumber;
+  const showCheck = isCompleted;
+
+  return (
+    <button
+      onClick={() => context.setActiveTab(value)}
+      className={`flex  shrink-0 flex-col items-center gap-[12px] bg-transparent p-0 text-center cursor-pointer ${className ?? ""}`}
+      {...props}
+    >
+      <span
+        className={`flex h-[70px] w-[70px] items-center justify-center rounded-full font-[500] text-[24px] text-white transition-colors ${
+          isActive
+            ? "bg-[#04907E]"
+            : isCompleted
+              ? "bg-[#04802E]"
+              : "bg-[#A8A8A8]"
+        }`}
+      >
+        {showCheck ? (
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M6 14L11.5 19.5L22 9"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        ) : (
+          children
+        )}
+      </span>
+      {label && (
+        <span
+          className={`whitespace-normal text-[14px] font-[500] ${
+            isActive
+              ? "text-[#04907E]"
+              : isCompleted
+                ? "text-[#04802E]"
+                : "text-[#A8A8A8]"
+          }`}
+        >
+          {label}
+        </span>
+      )}
     </button>
   );
 }
@@ -202,7 +297,7 @@ function TicketsTrigger({
   return (
     <button
       onClick={() => context.setActiveTab(value)}
-      className={`px-3  overflow-x-auto truncate py-2 rounded-[8px] font-[500] cursor-pointer text-[14px] transition-all whitespace-nowrap flex justify-center items-center gap-[8px]  ${
+      className={`px-[16px]  overflow-x-auto truncate py-2 rounded-[8px] font-[500] cursor-pointer text-[14px] transition-all whitespace-nowrap flex justify-center items-center gap-[8px]  ${
         isActive
           ? "bg-[#04907E] text-white"
           : "bg-[#FFFFFF] border border-[#E5E7EB] shadow-[0_8px_30px_rgb(0,0,0,0.04)] text-[#363636]"
@@ -285,4 +380,6 @@ export {
   NavTabsTrigger,
   TicketsTrigger,
   MessageTrigger,
+  OnboardingTrigger,
+  OnboardingProgressLine,
 };

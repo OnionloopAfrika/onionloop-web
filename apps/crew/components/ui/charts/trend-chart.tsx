@@ -1,137 +1,191 @@
-'use client';
+"use client";
 
 import {
-    ComposedChart,
-    Area,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    ResponsiveContainer,
-} from 'recharts';
+  ComposedChart,
+  Area,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+import Badge from "@/components/ui/badge";
+import { CardHeader } from "@/components/layouts/card-header";
+import Card from "@/components/card";
 
 export interface ChartSeries {
-    dataKey: string;   // key in each data point (e.g. "active")
-    name: string;      // legend / tooltip label (e.g. "Active Businesses")
-    color: string;      // stroke + dot + gradient color
-    showArea?: boolean; // true = filled area (like "Active Businesses"), false/undefined = plain line
+  dataKey: string; // key in each data point (e.g. "active")
+  name: string; // legend / tooltip label (e.g. "Active Businesses")
+  color: string; // stroke + dot + gradient color
+  showArea?: boolean; // true = filled area (like "Active Businesses"), false/undefined = plain line
 }
 
 export interface ChartDataPoint {
-    label: string; // x-axis label (e.g. "Mon")
-    [key: string]: string | number;
+  label: string; // x-axis label (e.g. "Mon")
+  [key: string]: string | number;
 }
 
 interface TrendChartProps {
-    title: string;
-    subtitle?: string;
-    data: ChartDataPoint[];
-    series: ChartSeries[];
-    ranges?: string[];            // e.g. ["7days", "30days", "90days"]
-    activeRange?: string;
-    onRangeChange?: (range: string) => void;
-    height?: number;
+  title: string;
+  subtitle?: string;
+  data: ChartDataPoint[];
+  series: ChartSeries[];
+  ranges?: string[]; // e.g. ["7days", "30days", "90days"]
+  activeRange?: string;
+  onRangeChange?: (range: string) => void;
+  yAxisTicks?: number[];
+  yAxisDomain?: [number | "auto", number | "auto"];
+  yAxisTickFormatter?: (value: number) => string;
+  yAxisTickFontSize?: number;
+  showAllXAxisTicks?: boolean;
+  showLegend?: boolean;
+  height?: number;
 }
 
 export default function TrendChart({
-    title,
-    subtitle,
-    data,
-    series,
-    ranges,
-    activeRange,
-    onRangeChange,
-    height = 300,
+  title,
+  subtitle,
+  data,
+  series,
+  ranges,
+  activeRange,
+  onRangeChange,
+  yAxisTicks,
+  yAxisDomain,
+  yAxisTickFormatter,
+  yAxisTickFontSize = 14,
+  showAllXAxisTicks = false,
+  showLegend = true,
+  height = 300,
 }: TrendChartProps) {
-    return (
-        <div className="bg-white rounded-2xl shadow-sm p-4 w-full">
-            <div className="flex items-start justify-between mb-1">
-                <div>
-                    <h3 className="text-base font-semibold text-[#131313]">{title}</h3>
-                    {subtitle && <p className="text-[#6C6C6C] text-xs mt-1">{subtitle}</p>}
-                </div>
+  return (
+    <Card className="w-full  ">
+      <div className="mb-1 flex items-start justify-between gap-4">
+        <CardHeader title={title} subtitle={subtitle ?? ""} />
 
-                {ranges && ranges.length > 0 && (
-                    <div className="flex gap-2">
-                        {ranges.map((range) => (
-                            <button
-                                key={range}
-                                type="button"
-                                onClick={() => onRangeChange?.(range)}
-                                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${range === activeRange
-                                    ? 'bg-[#B5E3C4] text-[#04907E]'
-                                    : 'bg-[#F7F7F7] text-[#6C6C6C]'
-                                    }`}
-                            >
-                                {range}
-                            </button>
-                        ))}
-                    </div>
-                )}
+        {ranges && ranges.length > 0 && (
+          <div className="flex shrink-0 gap-2">
+            {ranges.map((range) => (
+              <button
+                key={range}
+                type="button"
+                onClick={() => onRangeChange?.(range)}
+                aria-pressed={range === activeRange}
+                className="rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#04907E]"
+              >
+                <Badge
+                  variant="days"
+                  className={
+                    range === activeRange
+                      ? "font-[500] text-[11.2px]"
+                      : "!bg-[#F7F7F7] !text-[#6C6C6C] font-[500] text-[11.2px]"
+                  }
+                >
+                  {range}
+                </Badge>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <ResponsiveContainer width="100%" height={height}>
+        <ComposedChart
+          data={data}
+          margin={{ top: 12, right: 12, left: 0, bottom: 4 }}
+        >
+          <defs>
+            {series
+              .filter((s) => s.showArea)
+              .map((s) => (
+                <linearGradient
+                  key={s.dataKey}
+                  id={`gradient-${s.dataKey}`}
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop offset="0%" stopColor={s.color} stopOpacity={0.35} />
+                  <stop offset="100%" stopColor={s.color} stopOpacity={0} />
+                </linearGradient>
+              ))}
+          </defs>
+
+          <CartesianGrid vertical={false} stroke="#D9D9D9" />
+          <XAxis
+            dataKey="label"
+            padding={{ left: 20 }}
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: "#6C6C6C", fontSize: 14, fontWeight: 500 }}
+            interval={showAllXAxisTicks ? 0 : undefined}
+            dy={10}
+          />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            width={60}
+            tickSize={0}
+            tick={{
+              fill: "#6C6C6C",
+              fontSize: yAxisTickFontSize,
+              fontWeight: 500,
+              textAnchor: "start",
+            }}
+            dx={-54}
+            ticks={yAxisTicks}
+            domain={yAxisDomain}
+            interval={yAxisTicks ? 0 : undefined}
+            tickFormatter={yAxisTickFormatter}
+          />
+          <Tooltip />
+
+          {series.map((s) =>
+            s.showArea ? (
+              <Area
+                key={s.dataKey}
+                type="monotone"
+                dataKey={s.dataKey}
+                name={s.name}
+                stroke={s.color}
+                strokeWidth={3}
+                fill={`url(#gradient-${s.dataKey})`}
+                dot={{ r: 5, fill: s.color, strokeWidth: 0 }}
+                activeDot={{ r: 6 }}
+              />
+            ) : (
+              <Line
+                key={s.dataKey}
+                type="monotone"
+                dataKey={s.dataKey}
+                name={s.name}
+                stroke={s.color}
+                strokeWidth={3}
+                dot={{ r: 5, fill: s.color, strokeWidth: 0 }}
+                activeDot={{ r: 6 }}
+              />
+            ),
+          )}
+        </ComposedChart>
+      </ResponsiveContainer>
+
+      {showLegend && series.length > 0 && (
+        <div className="mt-[30px] flex flex-wrap justify-center gap-x-[12px] gap-y-2 ">
+          {series.map((item) => (
+            <div key={item.dataKey} className="flex items-center gap-[6px]">
+              <span
+                className="h-[12.87px] w-[12.87px] rounded-full"
+                style={{ backgroundColor: item.color }}
+              />
+              <span className="text-[14px] font-[500] text-[#6C6C6C]">
+                {item.name}
+              </span>
             </div>
-
-            <ResponsiveContainer width="100%" height={height}>
-                <ComposedChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
-                    <defs>
-                        {series
-                            .filter((s) => s.showArea)
-                            .map((s) => (
-                                <linearGradient key={s.dataKey} id={`gradient-${s.dataKey}`} x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stopColor={s.color} stopOpacity={0.35} />
-                                    <stop offset="100%" stopColor={s.color} stopOpacity={0} />
-                                </linearGradient>
-                            ))}
-                    </defs>
-
-                    <CartesianGrid vertical={false} stroke="#eee" />
-                    <XAxis
-                        dataKey="label"
-                        axisLine={false}
-                        tickLine={false}
-                        tick={{ fill: '#6b7280', fontSize: 14 }}
-                        dy={10}
-                    />
-                    <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 14 }} />
-                    <Tooltip />
-
-                    {series.map((s) =>
-                        s.showArea ? (
-                            <Area
-                                key={s.dataKey}
-                                type="monotone"
-                                dataKey={s.dataKey}
-                                name={s.name}
-                                stroke={s.color}
-                                strokeWidth={3}
-                                fill={`url(#gradient-${s.dataKey})`}
-                                dot={{ r: 5, fill: s.color, strokeWidth: 0 }}
-                                activeDot={{ r: 6 }}
-                            />
-                        ) : (
-                            <Line
-                                key={s.dataKey}
-                                type="monotone"
-                                dataKey={s.dataKey}
-                                name={s.name}
-                                stroke={s.color}
-                                strokeWidth={3}
-                                dot={{ r: 5, fill: s.color, strokeWidth: 0 }}
-                                activeDot={{ r: 6 }}
-                            />
-                        )
-                    )}
-                </ComposedChart>
-            </ResponsiveContainer>
-
-            {/* <div className="flex gap-6 justify-center mt-4 flex-wrap">
-                {series.map((s) => (
-                    <div key={s.dataKey} className="flex items-center gap-2">
-                        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: s.color }} />
-                        <span className="text-gray-600">{s.name}</span>
-                    </div>
-                ))}
-            </div> */}
+          ))}
         </div>
-    );
+      )}
+    </Card>
+  );
 }
