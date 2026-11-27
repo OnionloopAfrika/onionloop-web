@@ -1,15 +1,11 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 const page = () => {
-    const router = useRouter()
-    useEffect(() => (
-        router.push('/crew/overview')
-    ), [router])
-  return (
-    <div className="w-full h-screen"></div>
-  )
-}
+  const router = useRouter();
+  useEffect(() => router.push("/crew/dashboard"), [router]);
+  return <div className="w-full h-screen"></div>;
+};
 
-export default page
+export default page;
