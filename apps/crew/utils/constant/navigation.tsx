@@ -28,7 +28,12 @@ import {
   BusinessActiveIcon,
   BusinessIcon,
   AccountActiveIcon,
+  MoneySendIcon,
+  LeaveRequests,
+  StaffIssues,
   AccountIcon,
+  ProfileManagement,
+  TotalOrdersIcon,
 } from "@/components/icons/svgs";
 
 export type NavItem = {
@@ -228,7 +233,6 @@ export const BRANCH_MANAGER_NAV_SECTIONS: NavSection[] = [
   },
 ];
 
-
 export const AGGREGATOR_NAV_SECTIONS: NavSection[] = [
   {
     label: "OVERVIEW",
@@ -320,5 +324,91 @@ export const CREW_NAV_ITEMS: NavItem[] = [
     label: "Reports",
     icon: (color) => <ReceiptEditIcon color={color} />,
     activeIcon: (color) => <ReceiptEditActiveIcon color={color} />,
+  },
+];
+
+export const CREW_NAV_SECTIONS: NavSection[] = [
+  {
+    label: "OVERVIEW",
+    items: [
+      {
+        key: "dashboard",
+        href: "/crew/dashboard",
+        label: "Dashboard",
+        icon: (color) => <Dashboard color={color} />,
+        activeIcon: (color) => <Dashboard color={color} />,
+      },
+    ],
+  },
+  {
+    label: "OPERATIONS",
+    items: [
+      {
+        key: "orders",
+        href: "/crew/orders",
+        label: "Orders",
+        icon: (color) => <OrderDetails color={color} />,
+        activeIcon: (color) => <OrderDetails color={color} />,
+      },
+      {
+        key: "inventory",
+        href: "/crew/inventory",
+        label: "Inventory",
+        icon: (color) => <InventoryIcon color={color} />,
+        activeIcon: (color) => <InventoryActiveIcon color={color} />,
+      },
+    ],
+  },
+  {
+    label: "FINANCE",
+    items: [
+      {
+        key: "profit-management",
+        href: "/crew/profit-management",
+        label: "Profit Management",
+        icon: (color) => <ProfileManagement color={color} />,
+        activeIcon: (color) => <ProfileManagement color={color} />,
+      },
+      {
+        key: "transactions",
+        href: "/crew/transactions",
+        label: "Transactions",
+        icon: (color) => <TransactionIcon color={color} />,
+        activeIcon: (color) => <TransactionActiveIcon color={color} />,
+      },
+      {
+        key: "reports",
+        href: "/crew/reports",
+        label: "Reports",
+        icon: (color) => <ReceiptEditIcon color={color} />,
+        activeIcon: (color) => <ReceiptEditActiveIcon color={color} />,
+      },
+    ],
+  },
+  {
+    label: "TEAM",
+    items: [
+      {
+        key: "staff",
+        href: "/crew/staffs",
+        label: "Staff",
+        icon: (color) => <StaffIcon color={color} />,
+        activeIcon: (color) => <StaffActiveIcon color={color} />,
+      },
+      {
+        key: "leave-request",
+        href: "/crew/staffs/leave-request",
+        label: "Leave Requests",
+        icon: (color) => <LeaveRequests color={color} />,
+        activeIcon: (color) => <LeaveRequests color={color} />,
+      },
+      {
+        key: "staff-issues",
+        href: "/crew/staffs",
+        label: "Staff Issues",
+        icon: (color) => <StaffIssues color={color} />,
+        activeIcon: (color) => <StaffIssues color={color} />,
+      },
+    ],
   },
 ];

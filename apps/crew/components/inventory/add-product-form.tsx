@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Input from "../ui/input";
 import Select from "../ui/select";
 import { Calendar } from "../ui/calendar";
@@ -11,33 +11,59 @@ import { Modal } from "../ui/modal";
 import { VerifyIcon } from "../icons/svgs";
 import { Product, ProductFormState } from "@/types/inventory/type";
 
+const defaultCategories = [
+  { value: "Food", label: "Food" },
+  { value: "Beverages", label: "Beverages" },
+  { value: "Drinks", label: "Drinks" },
+  { value: "Snacks", label: "Snacks" },
+  { value: "Grocceries", label: "Grocceries" },
+  { value: "Household", label: "Household" },
+  { value: "Stationaries", label: "Stationaries" },
+  { value: "Water", label: "Water" },
+  { value: "Alcoholics", label: "Alcoholics" },
+];
+
 export function AddProductForm({
   onProductAdded,
+  onProductSaved,
 }: {
   onProductAdded?: (product: Product) => void;
+  onProductSaved?: (productName: string) => void;
 }) {
-  const [selectedRole, setSelectedRole] = useState("");
-  const [selected, setSelected] = useState<string[]>([]);
   const [showCalendar, setShowCalendar] = useState(false);
-  const [productSaved, setProductSaved] = useState(false);
+  const [formError, setFormError] = useState("");
+  const imageInputRef = useRef<HTMLInputElement>(null);
+  const [customCategories, setCustomCategories] = useState<string[]>([]);
+  const [selectedCustomCategories, setSelectedCustomCategories] = useState<
+    string[]
+  >([]);
+  const [categoryDraft, setCategoryDraft] = useState("");
+  const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+  const [categorySaved, setCategorySaved] = useState(false);
+  const [savedCategoryNames, setSavedCategoryNames] = useState("");
+  const [categoryError, setCategoryError] = useState("");
 
   const [productForm, setProductForm] = useState<ProductFormState>({
     productName: "",
     category: "",
     unit: "",
     price: "",
+    costPrice: "",
     quantity: "",
     selectedDate: undefined,
     lowStockThreshold: "",
     imageBase64: "",
   });
 
-  const handleFieldChange = (field: keyof ProductFormState) => (value: any) => {
-    setProductForm(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
+  const handleFieldChange =
+    <K extends keyof ProductFormState>(field: K) =>
+    (value: ProductFormState[K]) => {
+      setFormError("");
+      setProductForm((prev) => ({
+        ...prev,
+        [field]: value,
+      }));
+    };
 
   const resetForm = () => {
     setProductForm({
@@ -45,19 +71,24 @@ export function AddProductForm({
       category: "",
       unit: "",
       price: "",
+      costPrice: "",
       quantity: "",
       selectedDate: undefined,
       lowStockThreshold: "",
       imageBase64: "",
     });
-    setSelectedRole("");
   };
 
   const handleFileSelect = (file: File | null) => {
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        handleFieldChange("imageBase64")(reader.result as string);
+      reader.onload = () => {
+        if (typeof reader.result === "string") {
+          handleFieldChange("imageBase64")(reader.result);
+        }
+      };
+      reader.onerror = () => {
+        setFormError("Unable to read this image. Please choose another file.");
       };
       reader.readAsDataURL(file);
     } else {
@@ -65,33 +96,173 @@ export function AddProductForm({
     }
   };
 
+  const openCustomCategoryModal = () => {
+    let categoriesToUse = customCategories;
+    try {
+      const saved = localStorage.getItem("inventory-custom-categories");
+      if (saved) {
+        const parsed: unknown = JSON.parse(saved);
+        if (
+          !Array.isArray(parsed) ||
+          !parsed.every((category) => typeof category === "string")
+        ) {
+          throw new Error("Saved custom categories have an invalid format.");
+        }
+        categoriesToUse = parsed;
+      }
+    } catch (error) {
+      console.error("Unable to load custom product categories:", error);
+      setCategoryError("Unable to load categories. Please try again.");
+      return;
+    }
+
+    setCustomCategories(categoriesToUse);
+    setCategoryDraft("");
+    setCategoryError("");
+    setSelectedCustomCategories(
+      categoriesToUse.includes(productForm.category)
+        ? [productForm.category]
+        : [],
+    );
+    setCategoryModalOpen(true);
+  };
+
+  const addCategoryDraft = () => {
+    const categories = categoryDraft
+      .split(",")
+      .map((category) => category.trim())
+      .filter(Boolean);
+
+    if (categories.length === 0) {
+      setCategoryError("Enter a category name first.");
+      return;
+    }
+
+    const uniqueCategories = Array.from(
+      new Map(
+        [...customCategories, ...categories].map((category) => [
+          category.toLocaleLowerCase(),
+          category,
+        ]),
+      ).values(),
+    );
+
+    setCustomCategories(uniqueCategories);
+    setSelectedCustomCategories((selected) =>
+      Array.from(
+        new Set([
+          ...selected,
+          ...categories.map(
+            (category) =>
+              uniqueCategories.find(
+                (saved) =>
+                  saved.toLocaleLowerCase() === category.toLocaleLowerCase(),
+              ) ?? category,
+          ),
+        ]),
+      ),
+    );
+    setCategoryDraft("");
+    setCategoryError("");
+  };
+
+  const saveCustomCategories = () => {
+    const pendingCategories = categoryDraft
+      .split(",")
+      .map((category) => category.trim())
+      .filter(Boolean);
+    const allCategories = Array.from(
+      new Map(
+        [...customCategories, ...pendingCategories].map((category) => [
+          category.toLocaleLowerCase(),
+          category,
+        ]),
+      ).values(),
+    );
+    const selectedCategories = Array.from(
+      new Set([...selectedCustomCategories, ...pendingCategories]),
+    );
+
+    if (selectedCategories.length === 0) {
+      setCategoryError("Add or select at least one category.");
+      return;
+    }
+
+    const selectedCategory = selectedCategories[0];
+    try {
+      localStorage.setItem(
+        "inventory-custom-categories",
+        JSON.stringify(allCategories),
+      );
+    } catch (error) {
+      console.error("Unable to save custom product categories:", error);
+      setCategoryError("Unable to save categories. Please try again.");
+      return;
+    }
+
+    setCustomCategories(allCategories);
+    setProductForm((previous) => ({
+      ...previous,
+      category: selectedCategory,
+    }));
+    setSavedCategoryNames(selectedCategories.join(", "));
+    setCategoryModalOpen(false);
+    setCategorySaved(true);
+    setCategoryError("");
+  };
+
   const handleSave = () => {
+    const name = productForm.productName.trim();
+    const costPrice = Number(productForm.costPrice);
+    const sellingPrice = Number(productForm.price);
+    const quantity = Number(productForm.quantity);
+    const thresholdText = productForm.lowStockThreshold.trim();
+    const lowStock = thresholdText ? Number(thresholdText) : 10;
+
     if (
-      !productForm.productName ||
+      !name ||
       !productForm.category ||
       !productForm.unit ||
+      !productForm.costPrice ||
       !productForm.price ||
       !productForm.quantity ||
       !productForm.selectedDate
     ) {
+      setFormError("Please complete all required product fields.");
+      return;
+    }
+
+    if (
+      !Number.isFinite(costPrice) ||
+      costPrice < 0 ||
+      !Number.isFinite(sellingPrice) ||
+      sellingPrice < 0 ||
+      !Number.isInteger(quantity) ||
+      quantity < 0 ||
+      (thresholdText && (!Number.isInteger(lowStock) || lowStock < 0))
+    ) {
+      setFormError(
+        "Enter valid non-negative prices and whole stock quantities.",
+      );
       return;
     }
 
     const newProduct: Product = {
       id: `prod_${Date.now()}`,
-      name: productForm.productName,
+      name,
       category: productForm.category,
       unit: productForm.unit,
-      price: parseFloat(productForm.price),
-      quantity: parseInt(productForm.quantity),
+      price: sellingPrice,
+      costPrice,
+      quantity,
       expiryDate: productForm.selectedDate.toISOString().split("T")[0],
-      lowStock: productForm.lowStockThreshold ? parseInt(productForm.lowStockThreshold) : 10,
+      lowStock,
       image: productForm.imageBase64 || undefined,
       createdAt: new Date().toISOString(),
     };
 
     onProductAdded?.(newProduct);
-    setProductSaved(true);
+    onProductSaved?.(name);
     resetForm();
   };
 
@@ -115,7 +286,9 @@ export function AddProductForm({
                 placeholder="Input Enter product name"
                 label="Product Name"
                 value={productForm.productName}
-                onChange={(e) => handleFieldChange("productName")(e.target.value)}
+                onChange={(e) =>
+                  handleFieldChange("productName")(e.target.value)
+                }
               />
             </div>
 
@@ -124,17 +297,20 @@ export function AddProductForm({
                 label="Category"
                 placeholder="Select Category"
                 value={productForm.category}
-                onValueChange={handleFieldChange("category")}
+                onValueChange={(value) => {
+                  if (value === "Custom") {
+                    openCustomCategoryModal();
+                    return;
+                  }
+                  handleFieldChange("category")(value);
+                }}
+                className="w-full !border-[#C7C7C7] !bg-[#F7F7F7] "
                 options={[
-                  { value: "Food", label: "Food" },
-                  { value: "Beverages", label: "Beverages" },
-                  { value: "Drinks", label: "Drinks" },
-                  { value: "Snacks", label: "Snacks" },
-                  { value: "Grocceries", label: "Grocceries" },
-                  { value: "Household", label: "Household" },
-                  { value: "Stationaries", label: "Stationaries" },
-                  { value: "Water", label: "Water" },
-                  { value: "Alcoholics", label: "Alcoholics" },
+                  ...defaultCategories,
+                  ...customCategories.map((category) => ({
+                    value: category,
+                    label: category,
+                  })),
                   { value: "Custom", label: "Custom" },
                 ]}
               />
@@ -144,6 +320,7 @@ export function AddProductForm({
                 placeholder="Select Unit"
                 value={productForm.unit}
                 onValueChange={handleFieldChange("unit")}
+                className="w-full !border-[#C7C7C7] !bg-[#F7F7F7] "
                 options={[
                   { value: "Pieces", label: "Pieces" },
                   { value: "kilogram", label: "kilogram" },
@@ -158,19 +335,51 @@ export function AddProductForm({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-[11px]">
               <Input
                 placeholder="₦0.00"
-                label="Price (₦)"
+                label="Cost Price (₦)"
                 type="number"
-                value={productForm.price}
-                onChange={(e) => handleFieldChange("price")(e.target.value)}
+                min="0"
+                step="0.01"
+                value={productForm.costPrice ?? ""}
+                onChange={(e) => handleFieldChange("costPrice")(e.target.value)}
               />
 
               <Input
                 placeholder="0"
-                label="Quantity"
+                label="Selling Price (₦)"
                 type="number"
-                value={productForm.quantity}
-                onChange={(e) => handleFieldChange("quantity")(e.target.value)}
+                min="0"
+                step="0.01"
+                value={productForm.price}
+                onChange={(e) => handleFieldChange("price")(e.target.value)}
               />
+            </div>
+
+            <Input
+              placeholder="0"
+              label="Stock Quantity"
+              type="number"
+              min="0"
+              step="1"
+              value={productForm.quantity}
+              onChange={(e) => handleFieldChange("quantity")(e.target.value)}
+            />
+
+            <div className="space-y-[8px]">
+              <Input
+                placeholder="<10"
+                label="Low Stock Threshold (optional)"
+                type="number"
+                min="0"
+                step="1"
+                value={productForm.lowStockThreshold}
+                onChange={(e) =>
+                  handleFieldChange("lowStockThreshold")(e.target.value)
+                }
+              />
+              <p className="font-[500] text-[12px] text-[#6C6C6C]">
+                This item will be marked as &apos;Low in stock&apos; when stock
+                falls between this number
+              </p>
             </div>
 
             <div className="space-y-[12px]">
@@ -180,7 +389,11 @@ export function AddProductForm({
               <div className="relative space-y-[8px]">
                 <Input
                   placeholder="Select date"
-                  value={productForm.selectedDate ? productForm.selectedDate.toLocaleDateString() : ""}
+                  value={
+                    productForm.selectedDate
+                      ? productForm.selectedDate.toLocaleDateString()
+                      : ""
+                  }
                   readOnly
                   prefixicon={
                     <button
@@ -215,28 +428,54 @@ export function AddProductForm({
               </div>
             </div>
 
-            <div className="space-y-[8px]">
-              <Input
-                placeholder="<10"
-                label="Low Stock Threshold (optional)"
-                type="number"
-                value={productForm.lowStockThreshold}
-                onChange={(e) => handleFieldChange("lowStockThreshold")(e.target.value)}
-              />
-              <p className="font-[500] text-[12px] text-[#6C6C6C]">
-                This item will be marked as 'Low in stock' when stock falls
-                between this number
-              </p>
-            </div>
-
-            <div>
+            {productForm.imageBase64 ? (
+              <div className="space-y-[12px]">
+                <p className="block font-semibold text-[12px] text-[#131313]">
+                  Upload Image
+                </p>
+                <div className="relative h-[220px] w-full">
+                  <Image
+                    src={productForm.imageBase64}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    alt="Product image preview"
+                    unoptimized
+                    className="rounded-[8px] object-cover"
+                  />
+                </div>
+                <input
+                  ref={imageInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    if (file) handleFileSelect(file);
+                    event.target.value = "";
+                  }}
+                />
+                <Button
+                  variant="secondary"
+                  className="max-w-[343px] !text-light"
+                  onClick={() => imageInputRef.current?.click()}
+                >
+                  Update Image
+                </Button>
+              </div>
+            ) : (
               <FileUpload
                 label="Upload Image"
                 onFileSelect={handleFileSelect}
               />
-            </div>
+            )}
           </div>
         </div>
+
+        {formError && (
+          <p role="alert" className="text-[12px] text-danger">
+            {formError}
+          </p>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px]">
           <Button variant="secondary" size="sm">
@@ -245,28 +484,128 @@ export function AddProductForm({
           <Button onClick={handleSave}>Save Product</Button>
         </div>
       </div>
+      <Modal
+        open={categoryModalOpen}
+        onOpenChange={(open) => {
+          setCategoryModalOpen(open);
+          if (!open) setCategoryError("");
+        }}
+      >
+        <div className="space-y-[32px]">
+          <div className="space-y-[12px] text-center">
+            <p className="font-[600] text-[20px] text-[#131313]">
+              Add New Category
+            </p>
+            <p className="text-[14px] text-[#363636]">
+              Enter any categories of your choice or select from the options
+              below
+            </p>
+          </div>
 
-      <Modal open={productSaved} onOpenChange={setProductSaved}>
-        <div className="space-y-[64px]">
-          <div className="space-y-[40px]">
-            <VerifyIcon className="mx-auto text-light" />
-
-            <div className="space-y-[8px] text-center">
-              <p className="font-[600] text-[24px] text-light">
-                Product saved successfully!
-              </p>
-
-              <p className="font-[500] text-[16px] text-[#363636]">
-                {productForm.productName} has been added to the inventory
-              </p>
+          <div className="space-y-2">
+            <label
+              htmlFor="custom-category-name"
+              className="block font-semibold text-[12px] text-[#131313]"
+            >
+              Category Name
+            </label>
+            <div className="flex gap-2">
+              <Input
+                id="custom-category-name"
+                placeholder="Enter category name"
+                value={categoryDraft}
+                onChange={(event) => {
+                  setCategoryDraft(event.target.value);
+                  setCategoryError("");
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    event.preventDefault();
+                    addCategoryDraft();
+                  }
+                }}
+                className="!bg-white"
+              />
+              {/* <button
+                type="button"
+                onClick={addCategoryDraft}
+                className="shrink-0 rounded-[6px] border border-[#E5E7EB] px-3 text-[13px] text-[#6C6C6C]"
+              >
+                + Add
+              </button> */}
             </div>
           </div>
 
-          <div className="flex justify-center w-[362] mx-auto ">
-            <Button onClick={() => setProductSaved(false)} size="sm">
-              Done
+          {customCategories.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {customCategories.map((category) => {
+                const isSelected = selectedCustomCategories.includes(category);
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() =>
+                      setSelectedCustomCategories((selected) =>
+                        isSelected
+                          ? selected.filter((item) => item !== category)
+                          : [...selected, category],
+                      )
+                    }
+                    className={`rounded-[4px] fon-[500] border px-3 py-2 text-[12px] ${
+                      isSelected
+                        ? "border-[#04907E] text-[#04907E]"
+                        : "border-[#E5E7EB] text-[#6C6C6C]"
+                    }`}
+                  >
+                    {isSelected ? "✓ " : "+ "}
+                    {category}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {categoryError && (
+            <p role="alert" className="text-[12px] text-danger">
+              {categoryError}
+            </p>
+          )}
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => setCategoryModalOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button size="sm" onClick={saveCustomCategories}>
+              Save Category
             </Button>
           </div>
+        </div>
+      </Modal>
+
+      <Modal open={categorySaved} onOpenChange={setCategorySaved}>
+        <div className="space-y-[64px] text-center">
+          <div className="space-y-[24px]">
+            <VerifyIcon className="mx-auto text-light" color="#04907E" />
+            <div className="space-y-[8px]">
+              <p className="font-[600] text-[24px] text-[#04907E]">
+                Category saved successfully!
+              </p>
+              <p className="font-[500] text-[16px] text-[#363636]">
+                {savedCategoryNames} has been added to the category section
+              </p>
+            </div>
+          </div>
+          <Button
+            className="max-w-[362px] !bg-[#004E46] !text-white"
+            onClick={() => setCategorySaved(false)}
+          >
+            Done
+          </Button>
         </div>
       </Modal>
     </>

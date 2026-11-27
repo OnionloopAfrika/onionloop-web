@@ -16,6 +16,7 @@ interface ProfileDropdownProps {
   avatarUrl?: string;
   active?: string;
   className?: string;
+  onLogoutSelect?: () => void;
   productNav: {
     id: string;
     label: string;
@@ -30,6 +31,7 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
   avatarUrl,
   active,
   className,
+  onLogoutSelect,
   productNav,
 }) => {
   const menuItems = [...productNav];
@@ -76,24 +78,52 @@ const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
       </div>
 
       <div className="w-full flex flex-col gap-1">
-        {menuItems.map((item, idx) => (
-          <Link
-            href={`/${subdomain}/${item.id.replace(/^\//, "")}`}
-            key={idx}
-            className={`${active && normalizeId(active) === normalizeId(item.id) ? "bg-[#E7F6EC] text-[#04907E]" : ""} flex items-center gap-2 w-full p-2 rounded-xl hover:bg-[#E7F6EC] transition-all group`}
-          >
-            <div
-              className={`w-8 h-8 rounded-lg border border-gray-100 flex items-center justify-center shrink-0 ${item.isDestructive ? "text-[#D32F2F] bg-red-50" : "text-[#04907E]"}`}
+        {menuItems.map((item, idx) => {
+          const isActive =
+            active !== undefined &&
+            normalizeId(active) === normalizeId(item.id);
+          const hoverClassName = item.isDestructive
+            ? "hover:bg-red-50"
+            : "hover:bg-[#E7F6EC]";
+          const itemClassName = `${isActive ? "bg-[#E7F6EC] text-[#04907E]" : ""} flex items-center gap-2 w-full p-2 rounded-xl ${hoverClassName} transition-all group`;
+          const itemContent = (
+            <>
+              <div
+                className={`w-8 h-8 rounded-lg border border-gray-100 flex items-center justify-center shrink-0 ${item.isDestructive ? "text-[#D32F2F] bg-red-50" : "text-[#04907E]"}`}
+              >
+                {item.icon}
+              </div>
+              <span
+                className={`text-[14px] font-[500] ${isActive ? (item.isDestructive ? "text-[#D32F2F] font-bold" : "text-[#04907E] font-bold") : item.isDestructive ? "text-[#D32F2F]" : "text-[#131313]"}`}
+              >
+                {item.label}
+              </span>
+            </>
+          );
+
+          if (item.id === "profile/logout") {
+            return (
+              <button
+                type="button"
+                key={idx}
+                onClick={onLogoutSelect}
+                className={`${itemClassName} text-left`}
+              >
+                {itemContent}
+              </button>
+            );
+          }
+
+          return (
+            <Link
+              href={`/${subdomain}/${item.id.replace(/^\//, "")}`}
+              key={idx}
+              className={itemClassName}
             >
-              {item.icon}
-            </div>
-            <span
-              className={`text-[12px] font-normal ${item.isDestructive ? "text-[#D32F2F]" : ""} ${item.isDestructive && active === item.id ? "text-[#D32F2F] font-bold" : ""} ${active === item.id ? " text-[#04907E] font-bold" : ""}`}
-            >
-              {item.label}
-            </span>
-          </Link>
-        ))}
+              {itemContent}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

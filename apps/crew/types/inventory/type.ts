@@ -6,6 +6,7 @@ export interface Product {
   category: string;
   unit: string;
   price: number;
+  costPrice?: number;
   quantity: number;
   expiryDate?: string;
   lowStock?: number;
@@ -18,6 +19,7 @@ export interface ProductFormState {
   category: string;
   unit: string;
   price: string;
+  costPrice?: string;
   quantity: string;
   selectedDate: Date | undefined;
   lowStockThreshold: string;
@@ -28,6 +30,7 @@ export interface AddProductProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   onProductAdded?: (product: Product) => void;
+  onProductSaved?: (productName: string) => void;
 }
 
 export interface WarningProps {

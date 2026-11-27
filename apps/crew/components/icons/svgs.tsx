@@ -53,7 +53,7 @@ export const TransactionIcon = ({
 );
 
 export const AggregatorTransactionIcon = ({
-  color = "currentColor",
+  color = "#7C53FC",
   className,
 }: IconProps) => (
   <svg
@@ -62,15 +62,23 @@ export const AggregatorTransactionIcon = ({
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
     <path
-      d="M1.49048 13.4446C1.69322 13.9231 2.07743 14.3065 2.55591 14.5091C2.13685 14.3319 1.79018 14.0165 1.57446 13.6194L1.49048 13.4446Z"
-      fill="#04802E"
-      stroke="#04802E"
+      d="M1.33301 1.33301V12.6663C1.33301 13.773 2.22634 14.6663 3.33301 14.6663H14.6663"
+      stroke-miterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke="#7C53FC"
+      color={color}
     />
     <path
-      d="M3.33338 11.8334C3.22004 11.8334 3.10004 11.7934 3.00671 11.7134C2.80004 11.5334 2.77338 11.22 2.95338 11.0067L6.01338 7.43336C6.34671 7.04669 6.82671 6.81336 7.33338 6.79336C7.84004 6.78002 8.34004 6.96669 8.70004 7.32669L9.33338 7.96002C9.50004 8.12669 9.71338 8.20669 9.95338 8.20669C10.1867 8.20002 10.4 8.09336 10.5534 7.91336L13.6134 4.34002C13.7934 4.13336 14.1067 4.10669 14.32 4.28669C14.5267 4.46669 14.5534 4.78002 14.3734 4.99336L11.3134 8.56669C10.98 8.95336 10.5 9.18669 9.99338 9.20669C9.48004 9.22002 8.98671 9.03336 8.62671 8.67336L8.00004 8.04002C7.83338 7.87336 7.61338 7.78669 7.38004 7.79336C7.14671 7.80002 6.93338 7.90669 6.78004 8.08669L3.72004 11.66C3.61338 11.7734 3.47338 11.8334 3.33338 11.8334Z"
-      fill="#04802E"
+      d="M3.33301 11.3337L6.39301 7.76034C6.89967 7.17367 7.79967 7.13366 8.34634 7.68699L8.97967 8.32033C9.52634 8.867 10.4263 8.83366 10.933 8.24699L13.9997 4.66699"
+      stroke-miterlimit="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke="#7C53FC"
+      color={color}
     />
   </svg>
 );
@@ -5719,6 +5727,314 @@ export const ArrowDownCircleIcon = ({
       <path
         d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM15.53 13.03L12.53 16.03C12.38 16.18 12.19 16.25 12 16.25C11.81 16.25 11.62 16.18 11.47 16.03L8.47 13.03C8.18 12.74 8.18 12.26 8.47 11.97C8.76 11.68 9.24 11.68 9.53 11.97L11.25 13.69V8.5C11.25 8.09 11.59 7.75 12 7.75C12.41 7.75 12.75 8.09 12.75 8.5V13.69L14.47 11.97C14.76 11.68 15.24 11.68 15.53 11.97C15.82 12.26 15.82 12.74 15.53 13.03Z"
         fill={color}
+      />
+    </svg>
+  );
+};
+
+export const ProfileManagement = ({
+  className = "",
+  color = "#8A8A8A",
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M2 11V9C2 5.5 4 4 7 4H17C20 4 22 5.5 22 9V15C22 18.5 20 20 17 20H12"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M14.5 12C14.5 13.3807 13.3807 14.5 12 14.5C10.6193 14.5 9.5 13.3807 9.5 12C9.5 10.6193 10.6193 9.5 12 9.5C13.3807 9.5 14.5 10.6193 14.5 12Z"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M18.5 9.5V14.5"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M2 15.5H7.34003C7.98003 15.5 8.5 16.02 8.5 16.66V17.94"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M3.21997 14.2803L2 15.5002L3.21997 16.7202"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M8.5 20.7798H3.15997C2.51997 20.7798 2 20.2598 2 19.6198V18.3398"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M7.28125 22.0005L8.50122 20.7806L7.28125 19.5605"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+    </svg>
+  );
+};
+
+export const LeaveRequests = ({
+  className = "",
+  color = "#8A8A8A",
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M16 2H8C4 2 2 4 2 8V21C2 21.55 2.45 22 3 22H16C20 22 22 20 22 16V8C22 4 20 2 16 2Z"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M12.9108 7.84015L7.72077 13.0302C7.52077 13.2302 7.33077 13.6202 7.29077 13.9002L7.01078 15.8802C6.91078 16.6002 7.41077 17.1002 8.13077 17.0002L10.1108 16.7202C10.3908 16.6802 10.7808 16.4902 10.9808 16.2902L16.1708 11.1002C17.0608 10.2102 17.4908 9.17015 16.1708 7.85015C14.8508 6.52015 13.8108 6.94015 12.9108 7.84015Z"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M12.1699 8.58008C12.6099 10.1501 13.8399 11.3901 15.4199 11.8301"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+    </svg>
+  );
+};
+
+export const StaffIssues = ({
+  className = "",
+  color = "#8A8A8A",
+}: IconProps) => {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M12 9V14"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M11.9994 21.4103H5.93944C2.46944 21.4103 1.01944 18.9303 2.69944 15.9003L5.81944 10.2803L8.75944 5.00027C10.5394 1.79027 13.4594 1.79027 15.2394 5.00027L18.1794 10.2903L21.2994 15.9103C22.9794 18.9403 21.5194 21.4203 18.0594 21.4203H11.9994V21.4103Z"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M11.9941 17H12.0031"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+    </svg>
+  );
+};
+
+export const AddStaffIcon = ({
+  className = "",
+  color = "#04907E",
+}: IconProps) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M14.1673 5.83366C14.1673 8.13485 12.3018 10.0003 10.0007 10.0003C7.69946 10.0003 5.83398 8.13485 5.83398 5.83366C5.83398 3.53247 7.69946 1.66699 10.0007 1.66699C12.3018 1.66699 14.1673 3.53247 14.1673 5.83366Z"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M2.8418 18.3333C2.8418 15.1083 6.05013 12.5 10.0001 12.5C10.8001 12.5 11.5751 12.6083 12.3001 12.8083"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M18.3327 15.0003C18.3327 15.267 18.2994 15.5253 18.2327 15.7753C18.1577 16.1087 18.0244 16.4337 17.8494 16.717C17.2744 17.6837 16.216 18.3337 14.9993 18.3337C14.141 18.3337 13.366 18.0086 12.7827 17.4753C12.5327 17.2586 12.316 17.0003 12.1493 16.717C11.841 16.217 11.666 15.6253 11.666 15.0003C11.666 14.1003 12.0244 13.2753 12.6077 12.6753C13.216 12.0503 14.066 11.667 14.9993 11.667C15.9827 11.667 16.8743 12.092 17.4743 12.7753C18.0077 13.367 18.3327 14.1503 18.3327 15.0003Z"
+        stroke-width="1.25"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M16.2411 14.9834H13.7578"
+        stroke-width="1.25"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M15 13.7666V16.2583"
+        stroke-width="1.25"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+    </svg>
+  );
+};
+
+export const ExportReportIcon = ({
+  className = "",
+  color = "#04907E",
+}: IconProps) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M13.6997 7.41699C16.6997 7.67533 17.9247 9.21699 17.9247 12.592V12.7003C17.9247 16.4253 16.4331 17.917 12.7081 17.917H7.28307C3.55807 17.917 2.06641 16.4253 2.06641 12.7003V12.592C2.06641 9.24199 3.27474 7.70033 6.22474 7.42533"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M10 12.4999V3.0166"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M12.7923 4.87467L10.0007 2.08301L7.20898 4.87467"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+    </svg>
+  );
+};
+
+export const OpenTransactionsIcon = ({
+  className = "",
+  color = "#04907E",
+}: IconProps) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M12.9842 9.99993C12.9842 11.6499 11.6509 12.9833 10.0009 12.9833C8.35091 12.9833 7.01758 11.6499 7.01758 9.99993C7.01758 8.34993 8.35091 7.0166 10.0009 7.0166C11.6509 7.0166 12.9842 8.34993 12.9842 9.99993Z"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M9.99987 16.8913C12.9415 16.8913 15.6832 15.1579 17.5915 12.1579C18.3415 10.9829 18.3415 9.00794 17.5915 7.83294C15.6832 4.83294 12.9415 3.09961 9.99987 3.09961C7.0582 3.09961 4.31654 4.83294 2.4082 7.83294C1.6582 9.00794 1.6582 10.9829 2.4082 12.1579C4.31654 15.1579 7.0582 16.8913 9.99987 16.8913Z"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+    </svg>
+  );
+};
+
+export const RiaghtArrow = ({
+  className = "",
+  color = "#ffffff",
+}: IconProps) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M12.0254 4.94141L17.0837 9.99974L12.0254 15.0581"
+        stroke-width="1.25"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
+      />
+      <path
+        d="M2.91699 10H16.942"
+        stroke-width="1.25"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke={color}
       />
     </svg>
   );
